@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge;" />
+    <title></title>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,300italic,400italic,600,600italic,700,700italic' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" href="jquery-ui/jquery-ui.css" />
+
+
+    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/styleie9.css" />
+</head>
+<body id="body" browser="">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		
+	</nav>
+    <div class="container">
+    
+    	<div class="row">
+    		<div class="container resetContainer">
+			<div class="row headerRow" id="headerRow">
+	        		<div class="col-md-12">
+		            	<div class="row header">
+		            		<div class="col-md-12">
+				                <div class="row headerMenuBar">
+				                    <div class="col-md-9">#Slide2Decide</div>
+				                    <div class="col-md-3"></div>
+				                </div>
+				                <div class="row">
+				                    <div class="col-md-12 bannerQuestion">Who will win the Premier League 2014/2015</div>
+				                </div>
+				                <div class="row instructionsHeader">
+				                    <div class="col-md-3"><div class="row"><div class="col-md-3"><div class="headerNumbers">1</div></div><div class="col-md-9"><div>Tap for Importance</div></div></div></div>
+				                    <div class="col-md-6"><div class="row"><div class="col-md-3"><div class="headerNumbers">2</div></div><div class="col-md-9"><div>Slide to Score</div></div></div></div>
+				                    <div class="col-md-3"><div class="row"><div class="col-md-3"><div class="headerNumbers">3</div></div><div class="col-md-9"><div>Results</div></div></div></div>
+				                </div>
+				             </div>
+		                </div>
+		                
+		                <div class="row" id="labelHeader">
+		                	<div class="col-md-3"></div>
+		                    <div class="col-md-6 labelRow">
+		                        <ul id="sliderLabels" class="sliderLabel sliderWrapper">
+		
+		                        </ul>
+		                    </div>
+		                    <div class="col-md-3"></div>
+		                </div>
+		                <div class="row">
+		                	<div class="col-md-3"></div>
+		                    <div class="col-md-6 buttonRow">
+		                    	<div class="row">
+		                    		<div class="col-md-4">
+		                    			<div class="row">
+		                    			
+		                    				<div class="col-md-9">
+					                    		<div class="buttonBackground">
+					                        		<button class=" leftRightButton fa fa-caret-left fa-2x" onClick="updateSliderPostion('left',this.id)" id="updateLeft"></button>
+					                        	</div>
+					                        </div>
+					                        <div class="col-md-3"></div>
+				                        </div>
+			                        </div>
+			                        <div class="col-md-4"></div>
+			                        <div class="col-md-4">
+			                        	<div class="row">
+		                    				<div class="col-md-10"></div>
+		                    				<div class="col-md-2 ">
+					                    		<div class="buttonBackground">
+													<button class="leftRightButton fa fa-caret-right fa-2x" onClick="updateSliderPostion('right',this.id)" id="updateRight"></button>
+												</div>
+					                        </div>
+					                 
+										</div>
+									</div>
+								</div>
+		                    </div>
+		                    <div class="col-md-3"></div>
+	                   </div> 
+	                </div>
+	        	</div>
+		</div>
+    	
+    	</div>
+    
+    
+    
+        <div class="row"> 
+	        <div class="col-md-12">
+           
+                
+                <div class="row" id="fillerRow"><div class="col-md-12"></div></div>
+				<!-- the module template --->
+                <div class="row">
+                    <div class="col-md-9" id="modules"></div>
+                    <div class="col-md-3">
+                            <ul class="chartContainer"></ul>
+                    </div>
+
+                </div>
+            </div>
+            <!-- end of the module template --->
+
+
+
+        </div>
+    </div>
+    <script src="jquery/jquery-2.1.3.js"></script>
+    <script src="jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/javascripts/bootstrap.js"></script>
+    <script src="bower_components/javascripts/bootstrap/collapse.js"></script>
+    <script src="bower_components/javascripts/bootstrap/transition.js"></script>
+    <script src="bower_components/javascripts/bootstrap/carousel.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.1.1/tinysort.js"></script>
+    <script src="Chart.min.js"></script>
+    <script src="js/templateModule.js"></script>
+    <script src="js/templateModuleIphone.js"></script>
+    <script src="js/sliderModules.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
+<!--<script id="slider-template" type="text/x-handlebars-template">
+                    {{#each this}}
+                        <div class="row">
+                            <div class="col-md-2">
+                                <button type="button" id="button3D" class="btn btn-default">Set Value</button>
+                                <span class="button3DValue"></span>
+                            </div>
+                            <div class="col-md-10">
+                                <ul class="list-inline moduleList">
+                                    <li id="">
+                                        <ul id="sliderList" class="list-inline">
+                                            
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <div id="totalValue" class="totalValue"></div>
+                                    </li>
+                               </ul>
+                            </div>
+                        </div>
+                    {{/each}}
+                </script>-->

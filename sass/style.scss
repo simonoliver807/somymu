@@ -1,0 +1,843 @@
+@import "stylesheets/_bootstrap.scss";
+@import "_sassMixins.scss";
+// chart header colors
+$colors: #6e958d #978062 #759caf #70ccd3 #424809 #1d355b #cf9ae4 #6e958d #978062 #edfbb1 #70ccd3 #424809 #1d355b #cf9ae4;
+// slider colors
+$color1: 		#883682;
+$color2: 		#1f74c9;
+$color3: 		#fdc732;
+$color4: 		#e2282f;
+$color5: 		#4fbd55;
+$color6: 		#d10b49;
+$scrollButton: 	#e9eaed;
+
+
+// primary colors
+$w: 	#fff;
+$b: 	#000;
+$grey:	#e9eaed;
+$lgrey: #f4f4f6;
+
+// padding
+$intHeadPad: 10%;
+$headerDBlue: #2797ba;
+
+// font size
+$headerNumberFont: 255%;
+
+body{
+    font-family: "Open Sans" !important;
+    font-size: 14px;
+
+}
+@media screen and (max-width: 700px) {
+    body {
+        background-color: #fff;
+    }
+}
+ ul {
+    padding: 0;
+}
+/* main page */
+.selector {
+	border:1px solid black;
+    width:1px;
+}
+.col-md-8 {
+    width: 66%;
+    float:left;
+}
+.col-md-2 {
+    width: 16%;
+    float:left;
+}
+.resetContainer {
+	padding: 0;	
+	position: fixed;
+	 z-index: 9999;
+}
+.navbar { border: 0; }
+
+.navbar-inverse {
+    background-color: #2797ba;
+    border-color: #fff;
+}
+	
+// header
+.headerRow {
+  background: #fff;
+  margin: 0;
+  width: 100%;
+	.header {
+		font-size: 13px;	
+		.headerMenuBar {
+	    	background-color: $headerDBlue;
+		    color: white;
+		    font-weight: 300;
+		    font-size: 265%;
+		    height: 50px;
+		}
+		.bannerQuestion {
+		    font-size: 18px;
+		    color: black;
+		    padding: 30px 0;
+		
+		}
+		.instructionsHeader {
+			background-color: #dff0f5;
+			.headerNumbers {
+				background-color: $headerDBlue;
+				padding: 0 $intHeadPad;
+				font-size: $headerNumberFont;
+				display: inline-block;
+			}
+		}
+	}
+		.buttonRow {
+			color: $lgrey;
+			.buttonBackground{
+				display: inline-block;
+				background: $grey; 
+				.leftRightButton {
+					border:none;
+					position: absolute;
+				}
+			}
+		}
+}
+
+.chartContainer .canvasContainer #chartHeader7 {
+    background-color: #000;
+    font-size: 12px;
+    height: 20%;
+    margin: 0;
+    width: 100%;
+}
+.chartContainer .canvasContainer #chartHeader7 .caretStyle {
+    color: #fff;
+    height: 100%;
+    width: 100%;
+}
+.chartContainer .canvasContainer #chartHeader7 .sliderTotalSmall {
+    color: #000;
+    font-weight: 600;
+}
+/*.chartContainer { 
+	position: relative;
+	canvasContainer {
+		position: absolute; top: 0; left: 0;
+    	transition: all 1s ease-out;
+	}
+	canvasContainer:nth-child(1) { transform: translate3d(0, 0%, 0); }		
+	canvasContainer:nth-child(2) { transform: translate3d(0, 0%, 0); }
+	canvasContainer:nth-child(3) { transform: translate3d(0, 0%, 0); }
+} */
+
+
+/* fillers */
+.fillerDiv25 {
+    height: 25%;
+}
+
+/* tooltip */
+     .tooltip-inner {
+        background-color: #000;
+        border-radius: 0;
+        color: #fff;
+        font-size: 12px;
+        margin: 0 6px 0 0;
+        max-width: 320px;
+        padding: 11%;
+        text-align: center;
+        text-decoration: none;
+        width: 100%;
+        z-index: 99999999;
+    }
+    .tooltip.top .tooltip-arrow {
+        border-top-color: #000;
+        border-width: 12px 12px 0;
+        bottom: 0;
+        left: 50%;
+        margin-left: -12px;
+    }
+/* canvas chart */
+.chartContainer{
+    height: 100%;
+    width: 100%;
+    color: $w;
+    cursor: default;
+    .canvasContainer {
+        width: 100%;
+        position: relative;
+        margin: 0 0 0px 0;
+        @each $currentColor in $colors {
+        $i: index($colors, $currentColor);
+          #chartHeader#{($i - 1)} {
+             background-color: $currentColor;
+             margin: 0 0 0px; 
+             width: 100%;
+             height: 20%;
+             font-size: 12px;
+             .caretStyle {
+                 color: $w;
+                 width: 100%;
+                 height: 100%;
+             }
+             .sliderTotalSmall {
+             	color: #000;
+             	font-weight: 600;
+             }
+           }
+        }
+        .canvasBackground {
+        	background: $lgrey;
+        }
+        .sliderTotal {
+            color: $b;
+            font-size: 38px;
+            font-weight: 900;
+            left: 46%;
+            position: absolute;
+            top: 47%;
+            z-index: 999;
+        }
+    }
+}
+.canvasStyle {
+
+}
+/* button styling*/
+.moduleButtonLabel {
+    font-weight: 600;
+}
+.scrollButtonLeft {
+	color: $scrollButton;
+	position: absolute;	
+	left: 36%;
+	top: 50%;
+	font-size: 32px;
+}
+.scrollButtonRight {
+	color: $scrollButton;
+	position: absolute;	
+	left: 62%;
+	top: 50%;
+}
+/* slider scale */
+.maxMin {
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    height: 100%;
+    margin: 0 auto;
+    width: 33%;
+}
+.sliderScale {
+    border-left: 1px solid black;
+    height: 100%;
+    margin: 0 auto;
+    width: 1px;
+}
+.scaleMiddle {
+    border-top: 1px solid black;
+    bottom: 50%;
+    height: 1px;
+    left: 27%;
+    position: relative;
+    width: 50%;
+}
+/* the slider styling*/
+.sliderWrapper {
+	@include transition(all, 1s, ease-in-out);	
+	position: relative;
+	height: 100%;
+	right: 0px;
+}
+.sliderRow { 
+    display: inline-block;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding-top: 5px;
+    height: 80px;
+}
+
+.labelRow {
+    overflow: hidden;
+    height: 20px;
+}
+.sliderSpacer {
+    display: inline-block;
+}
+.sliderContainer {
+   display: inline-block;
+    height: 100%;
+    list-style: outside none none;
+    margin: 0 auto; 
+	padding: 0 20px;
+	}
+
+.sliderLabelContainer {
+    display: inline-block;
+    font-size: 12px;
+    height: 35px;
+    list-style: outside none none;
+    margin: 0 auto;
+    padding: 0px;
+    text-align: center;
+    width: 115px;
+}
+.sliderLabel {
+	padding-left: 0px;	
+}
+.sliderLabelMobile {
+	display: none;	
+}
+/* remove default style from slider elements */
+.slider {
+    background: url(''); 
+	border: 0;
+	height: 78%;
+/*    width:100%;*/
+	width: 45px;
+	margin: 0 auto;
+}
+@media screen and (min-width: 701px) {
+	/* style the slider handles per column */
+	#sliderStyle0 .handleStyle {
+	    background-color: #ffffff;
+	    border-bottom: 3px solid rgb(136, 54, 130);
+	    border-top: 3px solid rgb(136, 54, 130);
+	}
+	#sliderStyle1 .handleStyle {
+	    background-color: #ffffff;
+	    border-bottom: 3px solid rgb(31, 116, 201);
+	    border-top: 3px solid rgb(31, 116, 201);
+	}
+	#sliderStyle2 .handleStyle {
+	    background-color: #ffffff;
+	    border-bottom: 3px solid rgb(253, 199, 50);
+	    border-top: 3px solid rgb(253, 199, 50);
+	}
+	#sliderStyle3 .handleStyle {
+	    background-color: #ffffff;
+	    border-bottom: 3px solid rgb(226, 40, 47);
+	    border-top: 3px solid rgb(226, 40, 47);
+	}
+	#sliderStyle4 .handleStyle {
+	    background-color: #ffffff;
+	    border-bottom: 3px solid rgb(79, 189, 85);
+	    border-top: 3px solid rgb(79, 189, 85);
+	}
+	#sliderStyle5 .handleStyle {
+	    background-color: #ffffff;
+	    border-bottom: 3px solid rgb(136, 54, 130);
+	    border-top: 3px solid rgb(136, 54, 130);
+	}
+}
+.slider .handleStyle {
+    background: url("") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 0 none;
+    border-radius: 0;
+    color: #000000;
+    height: 10px;
+    left: 0em;
+    width: 100%;
+}
+.slider .handleStyle:hover {
+    background: url('');
+    border:0;
+    color: #000000;
+}
+/* style the factor button */
+.factorIcon {
+    width:50px;
+    height: 50px;
+    margin: 0 auto;
+}
+.overlayDiv {
+    position: relative;
+    z-index: 100;
+    width:50px;
+    height:50px;
+}
+/* factor button 0 */
+.greyOut{
+	@include background-opacity(#d3d3d3, 0.5);
+	@include border-radius(5px);
+	position: absolute;
+	z-index: 999;
+	width: 61.5%;
+	.greyOutPlus {
+		height: 15%;
+		width: 10%;
+	}
+}
+.greyOutClick {
+	cursor: default;	
+}
+    .row{
+        .moduleRow0{
+        }
+    }
+        #moduleButton0{
+            color: $color1;
+            .buttonInner0{
+                font-size: 0.5em;
+            }
+        }
+    .fa-plus {
+    	cursor: default;
+    }
+#moduleButton0 .overlayDiv1 {
+    background:radial-gradient(circle farthest-side, $color1 3.99px, #fff 4.99px, #fff 22.5px, $color1 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+    
+}
+#moduleButton0 .overlayDiv2 {
+    background:radial-gradient(circle farthest-side, $color1 8.99px, #fff 9.99px, #fff 22.5px, $color1 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton0 .overlayDiv3 {
+    background:radial-gradient(circle farthest-side, $color1 13.99px, #fff 14.99px, #fff 22.5px, $color1 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton0 .overlayDiv4 {
+     background:radial-gradient(circle farthest-side, $color1 18.99px, #fff 19.99px, #fff 22.5px, $color1 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton0 .overlayDiv5 {
+     background:radial-gradient(circle farthest-side, $color1 23.99px, #fff 24.99px, #fff 22.5px, #fff 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+/*#moduleButton0 .overlayDiv5 {
+    background: radial-gradient(circle faFcrthest-side, rgb(136, 54, 130) 13.00px, #fff 13.00px, #fff 13.5px, rgb(136, 54, 130) 5.75px, #fff 16px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+    
+}*/
+/* factor button 1 */
+#moduleButton1 .overlayDiv1 {
+    background:radial-gradient(circle farthest-side, $color2 3.99px, #fff 4.99px, #fff 22.5px, $color2 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton1 .overlayDiv2 {
+    background:radial-gradient(circle farthest-side, $color2 8.99px, #fff 9.99px, #fff 22.5px, $color2 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton1 .overlayDiv3 {
+    background:radial-gradient(circle farthest-side, $color2 13.99px, #fff 14.99px, #fff 22.5px, $color2 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton1 .overlayDiv4 {
+     background:radial-gradient(circle farthest-side, $color2 18.99px, #fff 19.99px, #fff 22.5px, $color2 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton1 .overlayDiv5 {
+     background:radial-gradient(circle farthest-side, $color2 23.99px, #fff 24.99px, #fff 22.5px, $color2 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+/*#moduleButton0 .overlayDiv5 {
+    background: radial-gradient(circle farthest-side, rgb(136, 54, 130) 13.00px, #fff 13.00px, #fff 13.5px, rgb(136, 54, 130) 5.75px, #fff 16px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+    
+}*/
+/* factor button 2 */
+#moduleButton2 .overlayDiv1 {
+    background:radial-gradient(circle farthest-side, $color3 3.99px, #fff 4.99px, #fff 22.5px, $color3 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton2 .overlayDiv2 {
+    background:radial-gradient(circle farthest-side, $color3 8.99px, #fff 9.99px, #fff 22.5px, $color3 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton2 .overlayDiv3 {
+    background:radial-gradient(circle farthest-side, $color3 13.99px, #fff 14.99px, #fff 22.5px, $color3 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton2 .overlayDiv4 {
+     background:radial-gradient(circle farthest-side, $color3 18.99px, #fff 19.99px, #fff 22.5px, $color3 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton2 .overlayDiv5 {
+     background:radial-gradient(circle farthest-side, $color3 23.99px, #fff 24.99px, #fff 22.5px, $color3 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+/*#moduleButton0 .overlayDiv5 {
+    background: radial-gradient(circle farthest-side, rgb(136, 54, 130) 13.00px, #fff 13.00px, #fff 13.5px, rgb(136, 54, 130) 5.75px, #fff 16px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+    
+}*/
+/* factor button 3 */
+#moduleButton3 .overlayDiv1 {
+    background:radial-gradient(circle farthest-side, $color4 3.99px, #fff 4.99px, #fff 22.5px, $color4 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton3 .overlayDiv2 {
+    background:radial-gradient(circle farthest-side, $color4 8.99px, #fff 9.99px, #fff 22.5px, $color4 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton3 .overlayDiv3 {
+    background:radial-gradient(circle farthest-side, $color4 13.99px, #fff 14.99px, #fff 22.5px, $color4 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton3 .overlayDiv4 {
+     background:radial-gradient(circle farthest-side, $color4 18.99px, #fff 19.99px, #fff 22.5px, $color4 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton3 .overlayDiv5 {
+     background:radial-gradient(circle farthest-side, $color4 23.99px, #fff 24.99px, #fff 22.5px, $color4 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+/*#moduleButton0 .overlayDiv5 {
+    background: radial-gradient(circle farthest-side, rgb(136, 54, 130) 13.00px, #fff 13.00px, #fff 13.5px, rgb(136, 54, 130) 5.75px, #fff 16px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+    
+}*/
+/* factor button 4 */
+#moduleButton4 .overlayDiv1 {
+    background:radial-gradient(circle farthest-side, $color5 3.99px, #fff 4.99px, #fff 22.5px, $color5 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton4 .overlayDiv2 {
+    background:radial-gradient(circle farthest-side, $color5 8.99px, #fff 9.99px, #fff 22.5px, $color5 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton4 .overlayDiv3 {
+    background:radial-gradient(circle farthest-side, $color5 13.99px, #fff 14.99px, #fff 22.5px, $color5 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton4 .overlayDiv4 {
+     background:radial-gradient(circle farthest-side, $color5 18.99px, #fff 19.99px, #fff 22.5px, $color5 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton4 .overlayDiv5 {
+     background:radial-gradient(circle farthest-side, $color5 23.99px, #fff 24.99px, #fff 22.5px, $color5 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+
+/*#moduleButton0 .overlayDiv5 {
+    background: radial-gradient(circle farthest-side, rgb(136, 54, 130) 13.00px, #fff 13.00px, #fff 13.5px, rgb(136, 54, 130) 5.75px, #fff 16px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+    
+}*/
+/* factor button 5 */
+#moduleButton5 .overlayDiv1 {
+    background:radial-gradient(circle farthest-side, $color6 3.99px, #fff 4.99px, #fff 22.5px, $color6 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton5 .overlayDiv2 {
+    background:radial-gradient(circle farthest-side, $color6 8.99px, #fff 9.99px, #fff 22.5px, $color6 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton5 .overlayDiv3 {
+    background:radial-gradient(circle farthest-side, $color6 13.99px, #fff 14.99px, #fff 22.5px, $color6 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton5 .overlayDiv4 {
+     background:radial-gradient(circle farthest-side, $color6 18.99px, #fff 19.99px, #fff 22.5px, $color6 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+#moduleButton5 .overlayDiv5 {
+     background:radial-gradient(circle farthest-side, $color6 23.99px, #fff 24.99px, #fff 22.5px, $color6 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+}
+
+/*#moduleButton0 .overlayDiv5 {
+    background: radial-gradient(circle farthest-side, rgb(136, 54, 130) 13.00px, #fff 13.00px, #fff 13.5px, rgb(136, 54, 130) 5.75px, #fff 16px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width:100%;
+    height:100%;
+    
+}*/
+@media screen and (min-width: 701px) and (max-width: 995px){
+	
+		.sliderRow { margin-left: 110px; }
+}
+
+@media screen and (max-width: 700px) {
+    // header
+	.headerRow {
+		background: #fff;
+		  margin: 0;
+		  width: 100%;
+			.header {
+				font-size: 13px;	
+				.headerMenuBar {
+			    	background-color: $headerDBlue;
+				    color: white;
+				    font-weight: 300;
+				    font-size: 265%;
+				    height: 50px;
+				}
+				.bannerQuestion {
+				    font-size: 18px;
+				    color: black;
+				    padding: 30px 0;
+				    text-align: center;
+				
+				}
+				.instructionsHeader {
+					background-color: #dff0f5;
+					display: none;
+					.headerNumbers {
+						background-color: $headerDBlue;
+						padding: 0 $intHeadPad;
+						font-size: $headerNumberFont;
+						display: inline-block;
+						}
+					}
+				}
+				.buttonRow {
+					color: $lgrey;
+					.buttonBackground{
+						display: none;
+						background: $grey; 
+						.leftRightButton {
+							border:none;
+							position: absolute;
+						}
+					}
+				}
+		}
+	.sliderRow {
+		width: 100%;
+		padding: 0 0 0 0;
+		height: 580px;
+	}
+	.sliderContainer {
+		border-bottom: 1px solid #A8A8A8;
+	    height: 66px;
+	    list-style: outside none none;
+	    margin: 0 auto;
+	    text-align: center;
+		width: 100% !important;
+	}
+	.sliderLabelMobile {
+		display: block;	
+	 }
+	
+		/* style the slider handles per column */
+	#sliderStyle0 .handleStyle {
+	    background-color: #ffffff;
+	    
+	    border-left: 3px solid rgb(136, 54, 130);
+	    border-right: 3px solid rgb(136, 54, 130);
+	}
+	#sliderStyle1 .handleStyle {
+	    background-color: #ffffff;
+	    border-left: 3px solid rgb(31, 116, 201);
+	    border-right: 3px solid rgb(31, 116, 201);
+	}
+	#sliderStyle2 .handleStyle {
+	    background-color: #ffffff;
+	    border-left: 3px solid rgb(253, 199, 50);
+	    border-right: 3px solid rgb(253, 199, 50);
+	}
+	#sliderStyle3 .handleStyle {
+	    background-color: #ffffff;
+	    border-left: 3px solid rgb(226, 40, 47);
+	    border-right: 3px solid rgb(226, 40, 47);
+	}
+	#sliderStyle4 .handleStyle {
+	    background-color: #ffffff;
+	    border-left: 3px solid rgb(79, 189, 85);
+	    border-right: 3px solid rgb(79, 189, 85);
+	}
+	#sliderStyle5 .handleStyle {
+	    background-color: #ffffff;
+	    border-left: 3px solid rgb(136, 54, 130);
+	    border-right: 3px solid rgb(136, 54, 130);
+	}
+	.slider .handleStyle {
+	    background: url("") repeat scroll 0 0 rgba(0, 0, 0, 0);
+	    border: 0 none;
+	    border-radius: 0;
+	    color: #000000;
+	    height: 15px;
+	    left: 0em;
+	    width: 10px;
+	}
+	.sliderWrapper {
+		position: relative;
+		height: 100%;
+		padding: 15px 0 0 0;
+		right: 0px;
+		width: 100% !important;
+	}
+	.maxMin {
+	    border: 0;
+	    height: 1px;
+	    margin: 0;
+	    width: 100%;
+	}
+	.sliderScale {
+	  border-left: 0;
+	  height: 100%;
+	  margin: 0 auto;
+	  width: 0px;
+	}
+	.scaleMiddle {
+	  border-top: 0;
+	  bottom: 0;
+	  height: 0;
+	  left: 0;
+	  position: relative;
+	  width: 0;
+	}
+	.slider {
+	  border: 1px solid #dddddd;
+	  background: #eeeeee url("images/ui-bg_highlight-soft_100_eeeeee_1x100.png") 50% top repeat-x;
+	  color: #333333;
+	  @include border-radius(5px);
+	  height: 14%;
+  	  width: 100%;
+  	  margin: 4% 0 0 0;
+	}
+	.smallModule {
+
+	}
+	.centerText {
+		text-align: center;
+	}
+	.factorWrapper {
+		display: table;
+		width: 100%;
+		margin: 0;
+		.buttonColumn {
+			display: table-footer-group;
+		}
+		.labelColumn {
+			display: table-header-group;
+			text-align: center;
+		}
+	}
+	.factorOverlay {
+		width: 100%;
+		height: 75px;
+		pointer-events: none;
+		position: absolute;
+		z-index: 999;
+	}
+	.factorOverlay0 {
+		background-color: rgba(255, 153, 255, 0.6);
+	}
+	.factorOverlay1 {
+		background-color: rgba(153, 255, 255, 0.6);
+	}
+	.factorOverlay2 {
+		background-color: rgba(255, 255, 204, 0.6);
+	}
+	.factorOverlay3 {
+		background-color: rgba(255, 102, 102, 0.6);
+	}
+	.factorOverlay4 {
+		background-color: rgba(153, 255, 153, 0.6);
+	}
+		.factorOverlay5 {
+		background-color: rgba(255, 255, 204, 0.6);
+	}
+}
+
+@media screen and (max-width: 375px) {
+    // header
+	.headerRow {
+		background: #fff;
+		  margin: 0;
+		  width: 100%;
+			.header {
+				font-size: 13px;	
+				.headerMenuBar {
+			    	background-color: $headerDBlue;
+				    color: white;
+				    font-weight: 300;
+				    font-size: 265%;
+				    height: 50px;
+				}
+				.bannerQuestion {
+				    font-size: 18px;
+				    color: black;
+				    padding: 30px 0;
+				
+				}
+				.instructionsHeader {
+					background-color: #dff0f5;
+					display: none;
+					.headerNumbers {
+						background-color: $headerDBlue;
+						padding: 0 $intHeadPad;
+						font-size: $headerNumberFont;
+						display: inline-block;
+						}
+					}
+				}
+				.buttonRow {
+					color: $lgrey;
+					.buttonBackground{
+						display: none;
+						background: $grey; 
+						.leftRightButton {
+							border:none;
+							position: absolute;
+						}
+					}
+				}
+		}
+		.sliderRow {
+			width: 100%;
+		}
+		.sliderContainer {
+		    height: 65px;
+		    list-style: outside none none;
+		    margin: 0 auto;
+			width: 100% !important;
+		}
+	.slider .handleStyle {
+	    background: url("") repeat scroll 0 0 rgba(0, 0, 0, 0);
+	    border: 0 none;
+	    border-radius: 0;
+	    color: #000000;
+	    height: 15px;
+	    left: 0em;
+	    width: 10px;
+	}
+	.sliderWrapper {
+		position: relative;
+		height: 100%;
+		padding: 15px 0 0 0;
+		right: 0px;
+		width: 100% !important;
+	}
+
+}
