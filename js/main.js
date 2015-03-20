@@ -36,10 +36,12 @@ function changeSlider() {
 	if(screenWidth <= 1024 ){
 		var orientation = $( ".slider" ).slider( "option", "orientation" );
 		$('.slider').slider( "option", "orientation", "horizontal" );
+		$('.handleStyle').addClass("fa-rotate-90");
 	}
 	if(screenWidth > 1024){
 		var orientation = $( ".slider" ).slider( "option", "orientation" );
 		$('.slider').slider( "option", "orientation", "vertical" );
+		$('.handleStyle').removeClass("fa-rotate-90");
 		window.scrollTo(0, 0);
 	}
 //	var setHeight =  $('#headerRow').height(); 
