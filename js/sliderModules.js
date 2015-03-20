@@ -144,8 +144,8 @@ var UIModule = (function () {
                 this.ie9 = 'ie9';
             };
             // set up screen size
-            // this.windowWidth = window.outerWidth;
-            this.windowWidth = window.outerWidth;
+             this.windowWidth = window.outerWidth;
+           // this.windowWidth = 1024;
             var templateModule = new TemplateModule()
             
             // create a template module to handle creating our templates
@@ -194,6 +194,8 @@ var UIModule = (function () {
                 doughnutArray[sliderColumn].setDoughnutID(sliderColumn, ordinalPosition);
                 doughnutArray[sliderColumn].doughnutObject = templateModule.createDoughnut(sliderColumn, doughnutArray[sliderColumn].data, sliderLabels[sliderColumn], ordinalPosition);
             }
+            // resize all the charts
+            $('canvas').css({width:'100%',height:'100%'});
             for (var slider = 0; slider < numberOfSliders; slider++) {
                 for (var sliderRow = 0; sliderRow < numberOfSliders; sliderRow++) {
                     var sliderID = sliderRow + '_' + slider;
@@ -203,7 +205,12 @@ var UIModule = (function () {
             // update the handle style and the height of the button colmuns
             var e = document.getElementsByClassName('ui-slider-handle');
             for (var i = 0; i < e.length; i++) {
-                e[i].className = e[i].className + ' handleStyle';
+            	if(this.windowWidth < 1024){
+            		e[i].className = e[i].className + ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle';
+            	}
+            	else {
+            		e[i].className = e[i].className + ' fa fa-minus-square fa-lg handleStyle';
+            	}
             }
 
             //var heightOfRow = $('.sliderRow').outerHeight();
@@ -225,6 +232,9 @@ var UIModule = (function () {
 //                var sliderWidth = (innerWidth / 100) * 9.7;
 //                $('.sliderContainer').css('width', sliderWidth + 'px');
             }
+            // update the chart positions so only the css is updated
+            this.updateChartPositions();
+           
         },
         setButtonValue: function (buttonID) {
             var button = buttonArray[buttonID];
@@ -331,16 +341,28 @@ var UIModule = (function () {
         	for(var i = 0; i < this.numberOfSliders; i++){
         		document.getElementById('canvasContainer'+i).setAttribute('totalScore', doughnutArray[i].totalScore);	
         	}
-        	for(var i = 0; i < this.numberOfSliders; i++){
-	            var collapseID = 'collapse' + i;
-	            var collapseClassName = document.getElementById('collapse1').className;
-	            $('#' + collapseID).collapse('hide');
-	            doughnutArray[i].chartStatus = false;
-	            document.getElementById('caretToggle' + i).className = "fa fa-caret-up fa-lg";
-	            document.getElementById('sliderTotal' + i).style.visibility = "hidden";
-        	}
-        	tinysort('ul.chartContainer>li',{attr:'totalScore',order:'desc'});        	
-      		
+        	tinysort('ul.results>li',{attr:'totalScore',order:'desc'}); 
+        	$('.results').children('li').each(function () {
+        	    this.className = "";
+        	});
+        	var count = 1;
+        	self = this;
+        	$('.results').children('li').each(function () {
+        		var op = self.getOrdinalPosition(count);
+        		var thisID = this.id;
+        		thisID = thisID.match(/[0-9]+/g);
+        		$('#ordianlPosition'+thisID[0]).text(op);
+        		if(count == 1){
+        			$('#canvas'+thisID[0]).css('display','block');
+        		}
+        		else {
+        			$('#canvas'+thisID[0]).css('display','none');
+        		}
+        		count = count + 1;
+
+        	});
+        	var firstLi = $('.results');
+        	firstLi.children(":first").addClass("first");
         },
         getOrdinalPosition: function (n) {
         	var s=["th","st","nd","rd"],

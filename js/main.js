@@ -8,8 +8,10 @@ function l(output){
 var modules = new UIModule();
 modules.init(8, 5);
 
-var setHeight =  $('#headerRow').height(); 
-document.getElementById('fillerRow').style.height = setHeight+'px';
+
+//filler row i was using to push the sliders down below the nav bar
+//var setHeight =  $('#headerRow').height(); 
+//document.getElementById('fillerRow').style.height = setHeight+'px';
 var iHeight = window.screen.height;
 $('.leftRightButton').css('top', iHeight/3);
 
@@ -18,21 +20,30 @@ $('.leftRightButton').css('top', iHeight/3);
 var setButtonValue = function (id) { var buttonID = id.match(/[0-9]+/g); modules.setButtonValue(buttonID); }
 var setSliderValue = function (ui, id) { var sliderID = id.match(/[0-9]+/g); modules.setSliderValue(ui.value, sliderID); }
 var updateChartPosition = function(ui, id) { modules.updateChartPositions(id);}
+
+$( document ).bind( 'mobileinit', function(){
+	  $.mobile.loader.prototype.options.text = "";
+	  $.mobile.loader.prototype.options.textVisible = false;
+	  $.mobile.loader.prototype.options.theme = "a";
+	  $.mobile.loader.prototype.options.html = "";
+	  $.mobile.hidePageLoadingMsg();
+	});
+
 //window resize event so we change the slider for vertical to horizontal
 window.onresize = changeSlider;
 function changeSlider() {
-	l($('body').outerWidth());
 	var screenWidth = window.outerWidth;
-	if(screenWidth < 700 ){
+	if(screenWidth <= 1024 ){
 		var orientation = $( ".slider" ).slider( "option", "orientation" );
 		$('.slider').slider( "option", "orientation", "horizontal" );
 	}
-	if(screenWidth > 700){
+	if(screenWidth > 1024){
 		var orientation = $( ".slider" ).slider( "option", "orientation" );
 		$('.slider').slider( "option", "orientation", "vertical" );
+		window.scrollTo(0, 0);
 	}
-	var setHeight =  $('#headerRow').height(); 
-	document.getElementById('fillerRow').style.height = setHeight+'px';
+//	var setHeight =  $('#headerRow').height(); 
+//	document.getElementById('fillerRow').style.height = setHeight+'px';
 	
 	
 }
@@ -100,7 +111,7 @@ $('.buttonColumn').mouseover(function () {
     $('.tooltip').tooltip('hide');
 });
 // hide the tool tip at the top
-document.getElementById('labelHeader').addEventListener('mouseover',
+document.getElementById('tabs').addEventListener('mouseover',
     function () {
         var sliderArray = modules.getSliderArray();
         for (var i = 0; i < sliderArray.length; i++) {
@@ -248,5 +259,7 @@ function updateSliderPostion(direction, buttonID){
 	$('.sliderWrapper').css({right: newPos});
 	
 }
-	
+$('.slider').on("taphold",function(){
+	  console.log('lsdkjf');
+});
 	

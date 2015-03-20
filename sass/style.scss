@@ -1,4 +1,4 @@
-@import "stylesheets/_bootstrap.scss";
+/*@import "../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";*/
 @import "_sassMixins.scss";
 // chart header colors
 $colors: #6e958d #978062 #759caf #70ccd3 #424809 #1d355b #cf9ae4 #6e958d #978062 #edfbb1 #70ccd3 #424809 #1d355b #cf9ae4;
@@ -11,6 +11,10 @@ $color5: 		#4fbd55;
 $color6: 		#d10b49;
 $scrollButton: 	#e9eaed;
 
+//Chart key div width height font size
+$ckdw: 12px;
+$ckdh: 12px;
+$ckfs: 8pt;
 
 // primary colors
 $w: 	#fff;
@@ -25,12 +29,8 @@ $headerDBlue: #2797ba;
 // font size
 $headerNumberFont: 255%;
 
-body{
-    font-family: "Open Sans" !important;
-    font-size: 14px;
 
-}
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 992px) {
     body {
         background-color: #fff;
     }
@@ -105,7 +105,43 @@ body{
 			}
 		}
 }
+.chartKey {
+	list-style: none;
+	li {
+		font-size: $ckfs;
+		background: none;
+		height: 10%;
+		table {
+			width:25%;
+		 	.chartKeyDiv1{
+		 		background: $color1;
+				width: $ckdw;
+				height: $ckdh;
+			}
+			.chartKeyDiv2{
+		 		background: $color2;
+				width: $ckdw;
+				height: $ckdh;
+			}
+			.chartKeyDiv3{
+		 		background: $color3;
+				width: $ckdw;
+				height: $ckdh;
+			}
+			.chartKeyDiv4{
+		 		background: $color4;
+				width: $ckdw;
+				height: $ckdh;
+			}
+			.chartKeyDiv5{
+		 		background: $color5;
+				width: $ckdw;
+				height: $ckdh;
+			}
+		}	
+	}
 
+}
 .chartContainer .canvasContainer #chartHeader7 {
     background-color: #000;
     font-size: 12px;
@@ -160,52 +196,13 @@ body{
         left: 50%;
         margin-left: -12px;
     }
-/* canvas chart */
-.chartContainer{
-    height: 100%;
-    width: 100%;
-    color: $w;
-    cursor: default;
-    .canvasContainer {
-        width: 100%;
-        position: relative;
-        margin: 0 0 0px 0;
-        @each $currentColor in $colors {
-        $i: index($colors, $currentColor);
-          #chartHeader#{($i - 1)} {
-             background-color: $currentColor;
-             margin: 0 0 0px; 
-             width: 100%;
-             height: 20%;
-             font-size: 12px;
-             .caretStyle {
-                 color: $w;
-                 width: 100%;
-                 height: 100%;
-             }
-             .sliderTotalSmall {
-             	color: #000;
-             	font-weight: 600;
-             }
-           }
-        }
-        .canvasBackground {
-        	background: $lgrey;
-        }
-        .sliderTotal {
-            color: $b;
-            font-size: 38px;
-            font-weight: 900;
-            left: 46%;
-            position: absolute;
-            top: 47%;
-            z-index: 999;
-        }
-    }
+canvas {
+	
 }
-.canvasStyle {
+.canvasBackground {
+	display: block;	
+}
 
-}
 /* button styling*/
 .moduleButtonLabel {
     font-weight: 600;
@@ -247,7 +244,7 @@ body{
 }
 /* the slider styling*/
 .sliderWrapper {
-	@include transition(all, 1s, ease-in-out);	
+	@include transition(right, 1s, ease-in-out);	
 	position: relative;
 	height: 100%;
 	right: 0px;
@@ -257,7 +254,7 @@ body{
     overflow-y: hidden;
     overflow-x: hidden;
     padding-top: 5px;
-    height: 80px;
+    height: 160px;
 }
 
 .labelRow {
@@ -300,37 +297,40 @@ body{
 	width: 45px;
 	margin: 0 auto;
 }
-@media screen and (min-width: 701px) {
+.sliderTotal {
+            color: $b;
+            cursor: default;
+            font-size: 20px;
+            font-weight: 600;
+            
+            left:50%;
+   top:50%;
+   -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+   transform: translate(-50%, -50%);
+            
+            z-index: 999;
+            position: absolute;
+        }
+@media screen and (min-width: 993px) {
 	/* style the slider handles per column */
 	#sliderStyle0 .handleStyle {
-	    background-color: #ffffff;
-	    border-bottom: 3px solid rgb(136, 54, 130);
-	    border-top: 3px solid rgb(136, 54, 130);
+	    color: rgb(136, 54, 130);
 	}
 	#sliderStyle1 .handleStyle {
-	    background-color: #ffffff;
-	    border-bottom: 3px solid rgb(31, 116, 201);
-	    border-top: 3px solid rgb(31, 116, 201);
+	    color: rgb(31, 116, 201);
 	}
 	#sliderStyle2 .handleStyle {
-	    background-color: #ffffff;
-	    border-bottom: 3px solid rgb(253, 199, 50);
-	    border-top: 3px solid rgb(253, 199, 50);
+	    color: rgb(253, 199, 50);
 	}
 	#sliderStyle3 .handleStyle {
-	    background-color: #ffffff;
-	    border-bottom: 3px solid rgb(226, 40, 47);
-	    border-top: 3px solid rgb(226, 40, 47);
+	    color: rgb(226, 40, 47);
 	}
 	#sliderStyle4 .handleStyle {
-	    background-color: #ffffff;
-	    border-bottom: 3px solid rgb(79, 189, 85);
-	    border-top: 3px solid rgb(79, 189, 85);
+	   color: rgb(79, 189, 85);
 	}
 	#sliderStyle5 .handleStyle {
-	    background-color: #ffffff;
-	    border-bottom: 3px solid rgb(136, 54, 130);
-	    border-top: 3px solid rgb(136, 54, 130);
+	    color: rgb(136, 54, 130);
 	}
 }
 .slider .handleStyle {
@@ -581,12 +581,8 @@ body{
     height:100%;
     
 }*/
-@media screen and (min-width: 701px) and (max-width: 995px){
-	
-		.sliderRow { margin-left: 110px; }
-}
 
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 992px) {
     // header
 	.headerRow {
 		background: #fff;
@@ -650,35 +646,22 @@ body{
 	
 		/* style the slider handles per column */
 	#sliderStyle0 .handleStyle {
-	    background-color: #ffffff;
-	    
-	    border-left: 3px solid rgb(136, 54, 130);
-	    border-right: 3px solid rgb(136, 54, 130);
+	    color: rgb(136, 54, 130);
 	}
 	#sliderStyle1 .handleStyle {
-	    background-color: #ffffff;
-	    border-left: 3px solid rgb(31, 116, 201);
-	    border-right: 3px solid rgb(31, 116, 201);
+	    color: rgb(31, 116, 201);
 	}
 	#sliderStyle2 .handleStyle {
-	    background-color: #ffffff;
-	    border-left: 3px solid rgb(253, 199, 50);
-	    border-right: 3px solid rgb(253, 199, 50);
+	    color: rgb(253, 199, 50);
 	}
 	#sliderStyle3 .handleStyle {
-	    background-color: #ffffff;
-	    border-left: 3px solid rgb(226, 40, 47);
-	    border-right: 3px solid rgb(226, 40, 47);
+	    color: rgb(226, 40, 47);
 	}
 	#sliderStyle4 .handleStyle {
-	    background-color: #ffffff;
-	    border-left: 3px solid rgb(79, 189, 85);
-	    border-right: 3px solid rgb(79, 189, 85);
+	    color: rgb(79, 189, 85);
 	}
 	#sliderStyle5 .handleStyle {
-	    background-color: #ffffff;
-	    border-left: 3px solid rgb(136, 54, 130);
-	    border-right: 3px solid rgb(136, 54, 130);
+	    color: rgb(136, 54, 130);
 	}
 	.slider .handleStyle {
 	    background: url("") repeat scroll 0 0 rgba(0, 0, 0, 0);
