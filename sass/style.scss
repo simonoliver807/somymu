@@ -32,7 +32,7 @@ $headerNumberFont: 255%;
 
 @media screen and (max-width: 992px) {
     body {
-        background-color: #fff;
+        background-color: $w;
     }
 }
  ul {
@@ -63,47 +63,12 @@ $headerNumberFont: 255%;
     border-color: #fff;
 }
 	
-// header
-.headerRow {
-  background: #fff;
-  margin: 0;
-  width: 100%;
-	.header {
-		font-size: 13px;	
-		.headerMenuBar {
-	    	background-color: $headerDBlue;
-		    color: white;
-		    font-weight: 300;
-		    font-size: 265%;
-		    height: 50px;
-		}
-		.bannerQuestion {
-		    font-size: 18px;
-		    color: black;
-		    padding: 30px 0;
-		
-		}
-		.instructionsHeader {
-			background-color: #dff0f5;
-			.headerNumbers {
-				background-color: $headerDBlue;
-				padding: 0 $intHeadPad;
-				font-size: $headerNumberFont;
-				display: inline-block;
-			}
-		}
+.buttonBackground{
+	display: inline-block;
+	background: $grey; 
+	.leftRightButton {
+		border:none;
 	}
-		.buttonRow {
-			color: $lgrey;
-			.buttonBackground{
-				display: inline-block;
-				background: $grey; 
-				.leftRightButton {
-					border:none;
-					position: absolute;
-				}
-			}
-		}
 }
 .chartKey {
 	list-style: none;
@@ -142,21 +107,39 @@ $headerNumberFont: 255%;
 	}
 
 }
-.chartContainer .canvasContainer #chartHeader7 {
-    background-color: #000;
-    font-size: 12px;
-    height: 20%;
-    margin: 0;
-    width: 100%;
+.chartKeyText {
+	line-height:12px;	
 }
-.chartContainer .canvasContainer #chartHeader7 .caretStyle {
-    color: #fff;
-    height: 100%;
-    width: 100%;
+.chartKeyRow {
+	padding: 5px 0 0 0;	
 }
-.chartContainer .canvasContainer #chartHeader7 .sliderTotalSmall {
-    color: #000;
-    font-weight: 600;
+.chartKeyDiv1{
+	background: $color1;
+	width: $ckdw;
+	height: $ckdh;
+}
+.chartKeyDiv2{
+	background: $color2;
+	width: $ckdw;
+	height: $ckdh;
+}
+.chartKeyDiv3{
+		background: $color3;
+	width: $ckdw;
+	height: $ckdh;
+}
+.chartKeyDiv4{
+		background: $color4;
+	width: $ckdw;
+	height: $ckdh;
+}
+.chartKeyDiv5{
+		background: $color5;
+	width: $ckdw;
+	height: $ckdh;
+}
+.postionWidth {
+	width:47px;
 }
 /*.chartContainer { 
 	position: relative;
@@ -255,8 +238,8 @@ canvas {
     overflow-x: hidden;
     padding-top: 5px;
     height: 160px;
+    width: 550px;
 }
-
 .labelRow {
     overflow: hidden;
     height: 20px;
@@ -270,6 +253,7 @@ canvas {
     list-style: outside none none;
     margin: 0 auto; 
 	padding: 0 20px;
+	width: 110px;	
 	}
 
 .sliderLabelContainer {
@@ -298,20 +282,18 @@ canvas {
 	margin: 0 auto;
 }
 .sliderTotal {
-            color: $b;
-            cursor: default;
-            font-size: 20px;
-            font-weight: 600;
-            
-            left:50%;
-   top:50%;
-   -webkit-transform: translate(-50%, -50%);
-    -moz-transform: translate(-50%, -50%);
-   transform: translate(-50%, -50%);
-            
-            z-index: 999;
-            position: absolute;
-        }
+      color: $b;
+      cursor: default;
+      font-size: 20px;
+      font-weight: 600;
+      left:67px;
+	 top:50%;
+-webkit-transform: translate(-50%, -50%);
+-moz-transform: translate(-50%, -50%);
+transform: translate(-50%, -50%);
+      z-index: 999;
+      position: absolute;
+  }
 @media screen and (min-width: 993px) {
 	/* style the slider handles per column */
 	#sliderStyle0 .handleStyle {
@@ -362,7 +344,6 @@ canvas {
 /* factor button 0 */
 .greyOut{
 	@include background-opacity(#d3d3d3, 0.5);
-	@include border-radius(5px);
 	position: absolute;
 	z-index: 999;
 	width: 61.5%;
@@ -581,246 +562,19 @@ canvas {
     height:100%;
     
 }*/
-
-@media screen and (max-width: 992px) {
-    // header
-	.headerRow {
-		background: #fff;
-		  margin: 0;
-		  width: 100%;
-			.header {
-				font-size: 13px;	
-				.headerMenuBar {
-			    	background-color: $headerDBlue;
-				    color: white;
-				    font-weight: 300;
-				    font-size: 265%;
-				    height: 50px;
-				}
-				.bannerQuestion {
-				    font-size: 18px;
-				    color: black;
-				    padding: 30px 0;
-				    text-align: center;
-				
-				}
-				.instructionsHeader {
-					background-color: #dff0f5;
-					display: none;
-					.headerNumbers {
-						background-color: $headerDBlue;
-						padding: 0 $intHeadPad;
-						font-size: $headerNumberFont;
-						display: inline-block;
-						}
-					}
-				}
-				.buttonRow {
-					color: $lgrey;
-					.buttonBackground{
-						display: none;
-						background: $grey; 
-						.leftRightButton {
-							border:none;
-							position: absolute;
-						}
-					}
-				}
-		}
-	.sliderRow {
-		width: 100%;
-		padding: 0 0 0 0;
-		height: 580px;
-	}
-	.sliderContainer {
-		border-bottom: 1px solid #A8A8A8;
-	    height: 66px;
-	    list-style: outside none none;
-	    margin: 0 auto;
-	    text-align: center;
-		width: 100% !important;
-	}
-	.sliderLabelMobile {
-		display: block;	
-	 }
-	
-		/* style the slider handles per column */
-	#sliderStyle0 .handleStyle {
-	    color: rgb(136, 54, 130);
-	}
-	#sliderStyle1 .handleStyle {
-	    color: rgb(31, 116, 201);
-	}
-	#sliderStyle2 .handleStyle {
-	    color: rgb(253, 199, 50);
-	}
-	#sliderStyle3 .handleStyle {
-	    color: rgb(226, 40, 47);
-	}
-	#sliderStyle4 .handleStyle {
-	    color: rgb(79, 189, 85);
-	}
-	#sliderStyle5 .handleStyle {
-	    color: rgb(136, 54, 130);
-	}
-	.slider .handleStyle {
-	    background: url("") repeat scroll 0 0 rgba(0, 0, 0, 0);
-	    border: 0 none;
-	    border-radius: 0;
-	    color: #000000;
-	    height: 15px;
-	    left: 0em;
-	    width: 10px;
-	}
-	.sliderWrapper {
-		position: relative;
-		height: 100%;
-		padding: 15px 0 0 0;
-		right: 0px;
-		width: 100% !important;
-	}
-	.maxMin {
-	    border: 0;
-	    height: 1px;
-	    margin: 0;
-	    width: 100%;
-	}
-	.sliderScale {
-	  border-left: 0;
-	  height: 100%;
-	  margin: 0 auto;
-	  width: 0px;
-	}
-	.scaleMiddle {
-	  border-top: 0;
-	  bottom: 0;
-	  height: 0;
-	  left: 0;
-	  position: relative;
-	  width: 0;
-	}
-	.slider {
-	  border: 1px solid #dddddd;
-	  background: #eeeeee url("images/ui-bg_highlight-soft_100_eeeeee_1x100.png") 50% top repeat-x;
-	  color: #333333;
-	  @include border-radius(5px);
-	  height: 14%;
-  	  width: 100%;
-  	  margin: 4% 0 0 0;
-	}
-	.smallModule {
-
-	}
-	.centerText {
-		text-align: center;
-	}
-	.factorWrapper {
-		display: table;
-		width: 100%;
-		margin: 0;
-		.buttonColumn {
-			display: table-footer-group;
-		}
-		.labelColumn {
-			display: table-header-group;
-			text-align: center;
-		}
-	}
-	.factorOverlay {
-		width: 100%;
-		height: 75px;
-		pointer-events: none;
-		position: absolute;
-		z-index: 999;
-	}
-	.factorOverlay0 {
-		background-color: rgba(255, 153, 255, 0.6);
-	}
-	.factorOverlay1 {
-		background-color: rgba(153, 255, 255, 0.6);
-	}
-	.factorOverlay2 {
-		background-color: rgba(255, 255, 204, 0.6);
-	}
-	.factorOverlay3 {
-		background-color: rgba(255, 102, 102, 0.6);
-	}
-	.factorOverlay4 {
-		background-color: rgba(153, 255, 153, 0.6);
-	}
-		.factorOverlay5 {
-		background-color: rgba(255, 255, 204, 0.6);
+@media (min-width: 768px){
+	.container {
+  		width: 100%;
 	}
 }
-
-@media screen and (max-width: 375px) {
-    // header
-	.headerRow {
-		background: #fff;
-		  margin: 0;
-		  width: 100%;
-			.header {
-				font-size: 13px;	
-				.headerMenuBar {
-			    	background-color: $headerDBlue;
-				    color: white;
-				    font-weight: 300;
-				    font-size: 265%;
-				    height: 50px;
-				}
-				.bannerQuestion {
-				    font-size: 18px;
-				    color: black;
-				    padding: 30px 0;
-				
-				}
-				.instructionsHeader {
-					background-color: #dff0f5;
-					display: none;
-					.headerNumbers {
-						background-color: $headerDBlue;
-						padding: 0 $intHeadPad;
-						font-size: $headerNumberFont;
-						display: inline-block;
-						}
-					}
-				}
-				.buttonRow {
-					color: $lgrey;
-					.buttonBackground{
-						display: none;
-						background: $grey; 
-						.leftRightButton {
-							border:none;
-							position: absolute;
-						}
-					}
-				}
-		}
-		.sliderRow {
-			width: 100%;
-		}
-		.sliderContainer {
-		    height: 65px;
-		    list-style: outside none none;
-		    margin: 0 auto;
-			width: 100% !important;
-		}
-	.slider .handleStyle {
-	    background: url("") repeat scroll 0 0 rgba(0, 0, 0, 0);
-	    border: 0 none;
-	    border-radius: 0;
-	    color: #000000;
-	    height: 15px;
-	    left: 0em;
-	    width: 10px;
+@media (min-width: 992px){
+	.container {
+  		width: 970px;
 	}
-	.sliderWrapper {
-		position: relative;
-		height: 100%;
-		padding: 15px 0 0 0;
-		right: 0px;
-		width: 100% !important;
-	}
-
 }
+@media (min-width: 1200px){
+	.container {
+  		width: 1170px;
+	}
+}
+@import "_style_992.scss";

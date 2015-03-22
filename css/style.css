@@ -30,37 +30,11 @@ ul {
   background-color: #2797ba;
   border-color: #fff; }
 
-.headerRow {
-  background: #fff;
-  margin: 0;
-  width: 100%; }
-  .headerRow .header {
-    font-size: 13px; }
-    .headerRow .header .headerMenuBar {
-      background-color: #2797ba;
-      color: white;
-      font-weight: 300;
-      font-size: 265%;
-      height: 50px; }
-    .headerRow .header .bannerQuestion {
-      font-size: 18px;
-      color: black;
-      padding: 30px 0; }
-    .headerRow .header .instructionsHeader {
-      background-color: #dff0f5; }
-      .headerRow .header .instructionsHeader .headerNumbers {
-        background-color: #2797ba;
-        padding: 0 10%;
-        font-size: 255%;
-        display: inline-block; }
-  .headerRow .buttonRow {
-    color: #f4f4f6; }
-    .headerRow .buttonRow .buttonBackground {
-      display: inline-block;
-      background: #e9eaed; }
-      .headerRow .buttonRow .buttonBackground .leftRightButton {
-        border: none;
-        position: absolute; }
+.buttonBackground {
+  display: inline-block;
+  background: #e9eaed; }
+  .buttonBackground .leftRightButton {
+    border: none; }
 
 .chartKey {
   list-style: none; }
@@ -91,21 +65,39 @@ ul {
         width: 12px;
         height: 12px; }
 
-.chartContainer .canvasContainer #chartHeader7 {
-  background-color: #000;
-  font-size: 12px;
-  height: 20%;
-  margin: 0;
-  width: 100%; }
+.chartKeyText {
+  line-height: 12px; }
 
-.chartContainer .canvasContainer #chartHeader7 .caretStyle {
-  color: #fff;
-  height: 100%;
-  width: 100%; }
+.chartKeyRow {
+  padding: 5px 0 0 0; }
 
-.chartContainer .canvasContainer #chartHeader7 .sliderTotalSmall {
-  color: #000;
-  font-weight: 600; }
+.chartKeyDiv1 {
+  background: #883682;
+  width: 12px;
+  height: 12px; }
+
+.chartKeyDiv2 {
+  background: #1f74c9;
+  width: 12px;
+  height: 12px; }
+
+.chartKeyDiv3 {
+  background: #fdc732;
+  width: 12px;
+  height: 12px; }
+
+.chartKeyDiv4 {
+  background: #e2282f;
+  width: 12px;
+  height: 12px; }
+
+.chartKeyDiv5 {
+  background: #4fbd55;
+  width: 12px;
+  height: 12px; }
+
+.postionWidth {
+  width: 47px; }
 
 /*.chartContainer { 
 	position: relative;
@@ -200,7 +192,8 @@ ul {
   overflow-y: hidden;
   overflow-x: hidden;
   padding-top: 5px;
-  height: 160px; }
+  height: 160px;
+  width: 550px; }
 
 .labelRow {
   overflow: hidden;
@@ -214,7 +207,8 @@ ul {
   height: 100%;
   list-style: outside none none;
   margin: 0 auto;
-  padding: 0 20px; }
+  padding: 0 20px;
+  width: 110px; }
 
 .sliderLabelContainer {
   display: inline-block;
@@ -246,7 +240,7 @@ ul {
   cursor: default;
   font-size: 20px;
   font-weight: 600;
-  left: 50%;
+  left: 67px;
   top: 50%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
@@ -304,10 +298,6 @@ ul {
   background: #d3d3d3;
   /* The Fallback */
   background: rgba(211, 211, 211, 0.5);
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  -ms-border-radius: 5px;
-  border-radius: 5px;
   position: absolute;
   z-index: 999;
   width: 61.5%; }
@@ -517,45 +507,60 @@ ul {
     height:100%;
     
 }*/
+@media (min-width: 768px) {
+  .container {
+    width: 100%; } }
+@media (min-width: 992px) {
+  .container {
+    width: 970px; } }
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px; } }
 @media screen and (max-width: 992px) {
-  .headerRow {
-    background: #fff;
-    margin: 0;
+  .containter {
     width: 100%; }
-    .headerRow .header {
-      font-size: 13px; }
-      .headerRow .header .headerMenuBar {
-        background-color: #2797ba;
-        color: white;
-        font-weight: 300;
-        font-size: 265%;
-        height: 50px; }
-      .headerRow .header .bannerQuestion {
-        font-size: 18px;
-        color: black;
-        padding: 30px 0;
-        text-align: center; }
-      .headerRow .header .instructionsHeader {
-        background-color: #dff0f5;
-        display: none; }
-        .headerRow .header .instructionsHeader .headerNumbers {
-          background-color: #2797ba;
-          padding: 0 10%;
-          font-size: 255%;
-          display: inline-block; }
-    .headerRow .buttonRow {
-      color: #f4f4f6; }
-      .headerRow .buttonRow .buttonBackground {
-        display: none;
-        background: #e9eaed; }
-        .headerRow .buttonRow .buttonBackground .leftRightButton {
-          border: none;
-          position: absolute; }
+
+  .buttonBackground {
+    display: none; }
+
+  div.ui-slider {
+    display: inline-block;
+    height: 10px;
+    margin: 0 2% 0 20px;
+    overflow: visible;
+    padding: 0;
+    position: relative;
+    top: 4px;
+    width: 95%;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    -ms-border-radius: 1em;
+    border-radius: 1em; }
 
   .sliderRow {
     width: 100%;
     padding: 0 0 0 0;
-    height: 580px; }
+    height: 100%; }
+
+  .sliderBackground0 {
+    border: medium none;
+    height: 10px;
+    width: 0%;
+    padding-right: 7px;
+    background: #883682;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    -ms-border-radius: 1em;
+    border-radius: 1em; }
+
+  .sliderBackground1 {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    width: 0%;
+    height: 100%;
+    background: #1f74c9; }
 
   .sliderContainer {
     border-bottom: 1px solid #A8A8A8;
@@ -588,26 +593,38 @@ ul {
     color: #883682; }
 
   .slider .handleStyle {
-    background: url("") repeat scroll 0 0 transparent;
-    border: 0 none;
-    border-radius: 0;
-    color: #000000;
-    height: 15px;
-    left: 0em;
-    width: 10px; }
+    background: #fff;
+    height: 12px;
+    margin: 2px 0 0 -15px;
+    outline: 0 none;
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    z-index: 1; }
+
+  .slider .handleStyle:hover {
+    background: #fff;
+    height: 12px;
+    margin: 2x 0 0 -15px;
+    outline: 0 none;
+    position: absolute;
+    top: 50%;
+    width: 30px;
+    z-index: 1; }
 
   .sliderWrapper {
     position: relative;
     height: 100%;
     padding: 15px 0 0 0;
-    right: 0px;
+    right: 0px !important;
+    -moz-transition-property: none;
+    -webkit-transition-property: none;
+    -o-transition-property: none;
+    transition-property: none;
     width: 100% !important; }
 
   .maxMin {
-    border: 0;
-    height: 1px;
-    margin: 0;
-    width: 100%; }
+    display: none; }
 
   .sliderScale {
     border-left: 0;
@@ -633,7 +650,7 @@ ul {
     border-radius: 5px;
     height: 14%;
     width: 100%;
-    margin: 4% 0 0 0; }
+    margin: 15px 0 0 0; }
 
   .centerText {
     text-align: center; }
@@ -714,15 +731,6 @@ ul {
     list-style: outside none none;
     margin: 0 auto;
     width: 100% !important; }
-
-  .slider .handleStyle {
-    background: url("") repeat scroll 0 0 transparent;
-    border: 0 none;
-    border-radius: 0;
-    color: #000000;
-    height: 15px;
-    left: 0em;
-    width: 10px; }
 
   .sliderWrapper {
     position: relative;

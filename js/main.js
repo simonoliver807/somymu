@@ -6,7 +6,7 @@ function l(output){
 }
 
 var modules = new UIModule();
-modules.init(8, 5);
+modules.init(15, 5);
 
 
 //filler row i was using to push the sliders down below the nav bar
@@ -17,9 +17,9 @@ $('.leftRightButton').css('top', iHeight/3);
 
 //alert(window.screen.width);
 
-var setButtonValue = function (id) { var buttonID = id.match(/[0-9]+/g); modules.setButtonValue(buttonID); }
-var setSliderValue = function (ui, id) { var sliderID = id.match(/[0-9]+/g); modules.setSliderValue(ui.value, sliderID); }
-var updateChartPosition = function(ui, id) { modules.updateChartPositions(id);}
+var setButtonValue = function (id) { var buttonID = id.match(/[0-9]+/g); modules.setButtonValue(buttonID); };
+var setSliderValue = function (ui, id) { var sliderID = id.match(/[0-9]+/g); modules.setSliderValue(ui.value, sliderID); };
+var updateChartPosition = function(ui, id) { modules.updateChartPositions(id);};
 
 $( document ).bind( 'mobileinit', function(){
 	  $.mobile.loader.prototype.options.text = "";
@@ -33,21 +33,42 @@ $( document ).bind( 'mobileinit', function(){
 window.onresize = changeSlider;
 function changeSlider() {
 	var screenWidth = window.outerWidth;
-	if(screenWidth <= 1024 ){
+	if(screenWidth <= 992 && !modules.windowResizeBool){
 		var orientation = $( ".slider" ).slider( "option", "orientation" );
 		$('.slider').slider( "option", "orientation", "horizontal" );
 		$('.handleStyle').addClass("fa-rotate-90");
+		// update the grey outs
+		var buttonArray = modules.getButtonArray();
+		for(var i = 0; i < buttonArray.length; i++){
+			if(buttonArray[i].disabledBool){
+				setGreyOut(false, i);
+				setGreyOut(true, i);
+			}
+		}
+		modules.windowResizeBool = true;
 	}
-	if(screenWidth > 1024){
-		var orientation = $( ".slider" ).slider( "option", "orientation" );
-		$('.slider').slider( "option", "orientation", "vertical" );
-		$('.handleStyle').removeClass("fa-rotate-90");
+	if(screenWidth > 992){
+		if(modules.windowResizeBool){
+			var orientation = $( ".slider" ).slider( "option", "orientation" );
+			$('.slider').slider( "option", "orientation", "vertical" );
+			$('.handleStyle').removeClass("fa-rotate-90");
+			 // set up the width of the slider container
+	        var rowWidth = $('.sliderRow').outerWidth();
+	        // devide the set width of a slider row by the number of sliders giving the width per slider
+	        var containerWidth = (rowWidth / 5) * modules.numberOfSliders;
+	        $('.sliderWrapper').css('width', containerWidth);
+	        modules.windowResizeBool = false;
+		}
+		// update the grey outs
+		var buttonArray = modules.getButtonArray();
+		for(var i = 0; i < buttonArray.length; i++){
+			if(buttonArray[i].disabledBool){
+				setGreyOut(false, i);
+				setGreyOut(true, i);
+			}
+		}
 		window.scrollTo(0, 0);
-	}
-//	var setHeight =  $('#headerRow').height(); 
-//	document.getElementById('fillerRow').style.height = setHeight+'px';
-	
-	
+	}	
 }
 //tooltip events show on hover
 $('.sliderContainer').hover(function (event) {
@@ -126,7 +147,7 @@ document.getElementById('tabs').addEventListener('mouseover',
         $('.tooltip').tooltip('hide');
     }, false);
 $('.leftRightButton').on('mouseOver', function() { 
-	$('.tooltip').tooltip('hide'); })
+	$('.tooltip').tooltip('hide'); });
 $('.chartHeader').click(function () {
     var chartArray = modules.getChartArray();
     var id = this.id.match(/[0-9]+/g);
@@ -145,24 +166,41 @@ $('.chartHeader').click(function () {
         document.getElementById(sliderTotalID).style.visibility = "visible";
     }
 
-})
-
+});
+function setGreyOut(hideShow, id) {
+	if(hideShow){
+		var greyOutWidth = $('.moduleRow'+id ).outerWidth();
+		var greyOutHeight = $('.moduleRow'+id ).outerHeight();
+		var rowOffset = $('.moduleRow'+id ).offset();
+		document.getElementById('greyOut'+id).setAttribute('class','fa fa-plus fa-lg greyOutClick');
+		$('body').append('<div class="greyOut" id="greyOutOverlay'+id+'" style="width:'+greyOutWidth+'px;height:'+greyOutHeight+'px;top:'+rowOffset.top+'px;left:'+rowOffset.left+'px;">'+
+						 '<div class="greyOutPlus" id="greyOutPlus'+id+'" onclick="turnOffGrey(this.id)"></div>'+
+						 '</div>');
+	}
+	else {
+		var element = document.getElementById("greyOutOverlay"+id);
+		element.parentNode.removeChild(element);
+	}
+}
 // grey out the sliders, button and chart
 $('.greyOutClick').click(function () {
 	var id = this.id.match(/[0-9]+/g);
-	var greyOutWidth = $('.moduleRow'+id ).outerWidth();
-	var greyOutHeight = $('.moduleRow'+id ).outerHeight();
-	var rowOffset = $('.moduleRow'+id ).offset();
+//	var greyOutWidth = $('.moduleRow'+id ).outerWidth();
+//	var greyOutHeight = $('.moduleRow'+id ).outerHeight();
+//	var rowOffset = $('.moduleRow'+id ).offset();
+//	var buttonArray = modules.getButtonArray();
+//	var buttonUpdateID = 0;
+//	document.getElementById('greyOut'+id).setAttribute('class','fa fa-plus fa-lg greyOutClick');
+//	$('body').append('<div class="greyOut" id="greyOutOverlay'+id+'" style="width:'+greyOutWidth+'px;height:'+greyOutHeight+'px;top:'+rowOffset.top+'px;left:'+rowOffset.left+'px;">'+
+//					 '<div class="greyOutPlus" id="greyOutPlus'+id+'" onclick="turnOffGrey(this.id)"></div>'+
+//					 '</div>');
 	var buttonArray = modules.getButtonArray();
 	var buttonUpdateID = 0;
-	document.getElementById('greyOut'+id).setAttribute('class','fa fa-plus fa-lg greyOutClick');
-	$('body').append('<div class="greyOut" id="greyOutOverlay'+id+'" style="width:'+greyOutWidth+'px;height:'+greyOutHeight+'px;top:'+rowOffset.top+'px;left:'+rowOffset.left+'px;">'+
-					 '<div class="greyOutPlus" id="greyOutPlus'+id+'" onclick="turnOffGrey(this.id)"></div>'+
-					 '</div>');
+	setGreyOut(true, id);
 	// set the disabled bool for sliders to true
 	var sliderArray = modules.getSliderArray();
 	for(var i = 0; i < sliderArray.length; i++){
-		sliderArray[i][id].disabledBool = true
+		sliderArray[id][i].disabledBool = true;
 	}
 	// remove the segemnts disabled
 	modules.removeChartSegment(id);
@@ -175,7 +213,7 @@ $('.greyOutClick').click(function () {
 			buttonArray[i].buttonUpdateID = buttonUpdateID;
 			buttonUpdateID += 1;
 		}
-		else { buttonArray[i].buttonUpdateID = undefined;}
+		else { buttonArray[i].buttonUpdateID = null;}
 	}
 	modules.updateButtonValue(id);
 	
@@ -185,7 +223,8 @@ function turnOffGrey(id){
 	var plusMinusSignID = 'greyOut' + id;
 	var buttonArray = modules.getButtonArray();
 	var buttonUpdateID = 0;
-	$('#greyOutOverlay'+id).remove();
+	setGreyOut(false, id);
+	//$('#greyOutOverlay'+id).remove();
 	document.getElementById(plusMinusSignID).setAttribute('class','fa fa-minus fa-lg greyOutClick');
 	buttonArray[id].disabledBool = false;
 	for(var i = 0; i < modules.numberOfButtons; i++){
@@ -193,12 +232,12 @@ function turnOffGrey(id){
 			buttonArray[i].buttonUpdateID = buttonUpdateID;
 			buttonUpdateID += 1;
 		}
-		else { buttonArray[i].buttonUpdateID = undefined;}	
+		else { buttonArray[i].buttonUpdateID = null;}	
 	}
 	// set the disabled bool for sliders to true
 	var sliderArray = modules.getSliderArray();
 	for(var i = 0; i < sliderArray.length; i++){
-		sliderArray[i][id].disabledBool = false
+		sliderArray[id][i].disabledBool = false;
 	}
 	modules.addChartSegment(id);
 	modules.updateButtonValue(id);
@@ -238,9 +277,6 @@ $('.collapse').on('hidden.bs.collapse', function () {
 });
 
 function updateSliderPostion(direction, buttonID){
-	//var elem = document.getElementById('sliderColumns0');
-	//elem.style.right = "100px";
-	
 	var currentPos = $('.sliderWrapper').css('right');
 	currentPos = currentPos.match(/[0-9]+/g);
 	if(direction == 'right' && (modules.currentSlider + 5) < modules.numberOfSliders){
@@ -261,7 +297,4 @@ function updateSliderPostion(direction, buttonID){
 	$('.sliderWrapper').css({right: newPos});
 	
 }
-$('.slider').on("taphold",function(){
-	  console.log('lsdkjf');
-});
 	

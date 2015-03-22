@@ -33,12 +33,12 @@ var TemplateModule = (function () {
                   '</div>');
 
             var moduleButton = document.getElementById('moduleButton' + buttonID);
-            moduleButton.onclick = function () { setButtonValue(this.id); }
+            moduleButton.onclick = function () { setButtonValue(this.id); };
         },
         createSlider: function (sliderID, slider, label, windowWidth) {
 	        $('#sliderColumns' + slider).append('<li class="sliderContainer" id="sliderStyle'+slider+'">' +
 	        		'<div class="sliderLabelMobile">' + label + '</div>'+
-	                '<div id="slider' + sliderID + '" class="slider"></div>' +
+	                '<div id="slider' + sliderID + '" class="slider"><div id="sliderBackground' + sliderID + '" class="sliderBackground' + slider + '"></div></div>' +
 	        '</li>');
 	            
 	        if(windowWidth <=992 ){
@@ -80,14 +80,6 @@ var TemplateModule = (function () {
 	        }
             $('#slider'+sliderID).append('<div class="maxMin"><div class="sliderScale"></div><div class="scaleMiddle"></div></div>');
             $('#slider' + sliderID).find('span').attr('id', sliderID);
-            //$('#' + sliderID).mouseover(function () {
-            //    modules.updateTooltip(this.id,'show');
-            //}).mouseout(function () {
-            //    modules.updateTooltip(this.id, 'hide');
-            //});
-
-
-
         },
         createDoughnut: function (doughnutID, data, sliderLabel, ordinalPosition) {
         	var liClass = "";
@@ -96,7 +88,7 @@ var TemplateModule = (function () {
 				            		'<div id="chartHeader'+doughnutID+'" class="result-header factor">'+
 							            '<div id="ordianlPosition' + doughnutID + '" class="col-xs-2 col-md-2 position">'+ ordinalPosition + '</div>'+
 							            '<div class="col-xs-8 col-md-8 position">'+ sliderLabel +'</div>'+
-							            '<div class="col-xs-2 col-md-2 position">'+
+							            '<div class="col-xs-2 col-md-2 position postionWidth">'+
 							            	'<span id="sliderTotalSmall' + doughnutID + '" class="badge"></span>'+
 							            '</div>'+
 							        '</div>'+                   
@@ -114,14 +106,43 @@ var TemplateModule = (function () {
 	            											'<div class="col-xs-8 col-md-8">'+
 	                                                        	'<div class="row" style="height: 10%">'+
 	                                                        		'<div class="col-xs-12 col-md-12">'+
-	                                                        			'<ul class="chartKey">'+
-            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv1"></div></td><td></td><td>Manager</td></tr></table></li>'+
-            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv2"></div></td><td></td><td>Goal Keeper</td></tr></table></li>'+
-            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv3"></div></td><td></td><td>Midfield</td></tr></table></li>'+
-            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv4"></div></td><td></td><td><div style="display:block">League Position</div></td></tr></table></li>'+
-            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv5"></div></td><td></td><td>Attack</td></tr></table></li>'+
-            															'</ul>'+
-	                                                        			
+//	                                                        			'<ul class="chartKey">'+
+//            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv1"></div></td><td></td><td>Manager</td></tr></table></li>'+
+//            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv2"></div></td><td></td><td>Goal Keeper</td></tr></table></li>'+
+//            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv3"></div></td><td></td><td>Midfield</td></tr></table></li>'+
+//            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv4"></div></td><td></td><td><div style="display:block">League Position</div></td></tr></table></li>'+
+//            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv5"></div></td><td></td><td>Attack</td></tr></table></li>'+
+//            															'</ul>'+
+		                                                        		'<div class="row chartKeyRow">'+
+	                                                    					'<div class="col-md-2">'+
+	                                                    						'<div class="chartKeyDiv1"></div>'+
+	                                                    					'</div>'+
+	                                                    					'<div class="col-md-10 chartKeyText">Manager</div>'+                                   
+	                                                    				'</div>'+
+	                                                    				'<div class="row chartKeyRow">'+
+	                                                						'<div class="col-md-2">'+
+	                                                							'<div class="chartKeyDiv2"></div>'+
+	                                                						'</div>'+
+	                                                						'<div class="col-md-10 chartKeyText">Goal Keeper</div>'+                                   
+	                                                					'</div>'+
+	                                                					'<div class="row chartKeyRow">'+
+                                                							'<div class="col-md-2">'+
+                                                								'<div class="chartKeyDiv3"></div>'+
+                                                							'</div>'+
+                                                							'<div class="col-md-10 chartKeyText">Midfield</div>'+                                   
+                                                						'</div>'+
+                                                						'<div class="row chartKeyRow">'+
+                                                						'<div class="col-md-2">'+
+                                                							'<div class="chartKeyDiv4"></div>'+
+                                                						'</div>'+
+                                                						'<div class="col-md-10 chartKeyText">League Position & Recent Form</div>'+                                   
+                                                						'</div>'+
+                                                						'<div class="row chartKeyRow">'+
+                                            							'<div class="col-md-2">'+
+                                            								'<div class="chartKeyDiv5"></div>'+
+                                            							'</div>'+
+                                            							'<div class="col-md-10 chartKeyText">Attack</div>'+                                   
+                                            						'</div>'+
 	                                                        		'</div>'+
 	                                                        	'</div>'+
 	                                                        '</div>'+
@@ -142,5 +163,5 @@ var TemplateModule = (function () {
             showTooltips: false
                 });
         }
-    }
+    };
 });
