@@ -57,60 +57,91 @@
         </div>
     </nav>
 
-    <div id="questiontext">
+
+        <div id="questiontext1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Who will win the Premier Leagure 2014/15</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+<div id="fixedHeader" class="fixedHeader">
+    <div class="whiteHeader">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <h1>Who will win the Premier Leagure 2014/15</h1>
+            <div id="questiontext">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Who will win the Premier Leagure 2014/15</h1>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-	
-
-
-    <div id="tabs">
+    <div class="blueHeader">
         <div class="container">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="tab">
-						1 <span>Tap</span>
-					</div>
+            <div id="Div1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="tab">
+						        1 <span>Tap</span>
+					        </div>
+                        </div>
+				        <div class="col-md-6">
+                            <div class="tab">
+						        2 <span>Slide</span>
+					        </div>
+                        </div>
+				        <div class="col-md-3 zeroPaddingLeft">
+                            <div class="tab">
+						        3 <span>Decide</span>
+					        </div>
+                        </div>
+                    </div>
                 </div>
-				<div class="col-md-6">
-                    <div class="tab">
-						2 <span>Slide</span>
-					</div>
-                </div>
-				<div class="col-md-3">
-                    <div class="tab">
-						3 <span>Decide</span>
-					</div>
-                </div>
-
             </div>
         </div>
     </div>
-    
+    <div id="labels">
+        <div class="container">
+            <div id="Div2">
+                <div class="container">
+                    <div class="row sliderNav">
+                        <div class="col-md-3"></div>
+                        <div class="col-md-6 zeroPaddingRight">
+                            <div class="navButtonContainer">
+                                <div class="buttonBackground">
+	                                <button class=" leftRightButton fa fa-caret-left fa-2x" onClick="updateSliderPostion('left',this.id)" id="Button2"></button>
+	                            </div>
+                            </div>
 
-      <div class="row sliderNav">
-         <div class="navButtonContainer">
-             <div class="buttonBackground">
-	            <button class=" leftRightButton fa fa-caret-left fa-2x" onClick="updateSliderPostion('left',this.id)" id="Button1"></button>
-	         </div>
-         </div>
-         <div class="sliderNavContainer">
-             <ul id="sliderNavWrapper" class="sliderNavWrapper">
-             </ul>
-        </div> 
-        <div class="navButtonContainer">
-	        <div class="buttonBackground">
-			    <button class="leftRightButton fa fa-caret-right fa-2x" onClick="updateSliderPostion('right',this.id)" id="updateRight"></button>
-		    </div>
+                            <div class="sliderNavContainer">
+                                <ul id="sliderNavWrapper" class="sliderNavWrapper">
+                                </ul>
+                            </div>   
+                            <div style="float:right;" class="navButtonContainer right">
+	                            <div class="buttonBackground">
+			                        <button class="leftRightButton fa fa-caret-right fa-2x" onClick="updateSliderPostion('right',this.id)" id="Button1"></button>
+		                        </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                        
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div> 
-      
+    </div>
+</div>
+
+
+
+
 	<div id="game-content">
         <div class="container">
             <div class="row">

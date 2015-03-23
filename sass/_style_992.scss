@@ -3,7 +3,16 @@
 	.containter {
 		width: 100%;
 	}
-	.buttonBackground {
+	#game-content {
+		padding: 0;
+	}
+	#questiontext1 {
+		display: block;
+	}
+	#fixedHeader {
+		display: none;
+	}
+	.sliderNav {
 		display: none;
 	}
 	div.ui-slider {
@@ -31,10 +40,36 @@
   		@include border-radius(1em);
 	}
 	.sliderBackground1 {
-		@include border-radius(5px);
-		width: 0%;
-  		height: 100%;
+		border: medium none;
+    	height: 10px;
+    	width: 0%;
+    	padding-right: 7px;
   		background: $color2;
+  		@include border-radius(1em);
+	}
+	.sliderBackground2 {
+		border: medium none;
+    	height: 10px;
+    	width: 0%;
+    	padding-right: 7px;
+  		background: $color3;
+  		@include border-radius(1em);
+	}
+	.sliderBackground3 {
+		border: medium none;
+    	height: 10px;
+    	width: 0%;
+    	padding-right: 7px;
+  		background: $color4;
+  		@include border-radius(1em);
+	}
+	.sliderBackground4 {
+		border: medium none;
+    	height: 10px;
+    	width: 0%;
+    	padding-right: 7px;
+  		background: $color5;
+  		@include border-radius(1em);
 	}
 	.sliderContainer {
 		border-bottom: 1px solid #A8A8A8;

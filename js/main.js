@@ -137,7 +137,7 @@ $('.buttonColumn').mouseover(function () {
     $('.tooltip').tooltip('hide');
 });
 // hide the tool tip at the top
-document.getElementById('tabs').addEventListener('mouseover',
+document.getElementById('fixedHeader').addEventListener('mouseover',
     function () {
         var sliderArray = modules.getSliderArray();
         for (var i = 0; i < sliderArray.length; i++) {
@@ -286,18 +286,17 @@ function updateSliderPostion(direction, buttonID){
 		document.getElementById(buttonID).disabled = true;
 		var newPos =  parseInt(currentPos[0]) + modules.sliderWidth + 'px';
 		modules.currentSlider += 1;
-		setTimeout(function(){ l('sdfs'); document.getElementById(buttonID).disabled = false; }, 1000);
+		setTimeout(function(){ document.getElementById(buttonID).disabled = false; }, 1000);
 
 	}
 	else if(direction == 'left' && modules.currentSlider > 0) {
 		document.getElementById(buttonID).disabled = true;
 		var newPos =  parseInt(currentPos[0]) - modules.sliderWidth + 'px';
 		modules.currentSlider -= 1;
-		setTimeout(function(){ l('sdfs'); document.getElementById(buttonID).disabled = false; }, 1000);
-		//a = setInterval(function(){ updateSliderPostion('left'); }, 1000);
+		setTimeout(function(){ document.getElementById(buttonID).disabled = false; }, 1000);
 	}
-	//else {clearInterval(a);}
-	$('.sliderWrapper').css({right: newPos});
+	$('.sliderWrapper').css({ right: newPos });
+	$('.sliderNavWrapper').css({ right: newPos });
 	
 }
 	

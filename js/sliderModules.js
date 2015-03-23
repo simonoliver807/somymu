@@ -232,6 +232,10 @@ var UIModule = (function () {
                 $('.sliderWrapper').css('width', containerWidth);
                 $('.sliderNavWrapper').css('width', containerWidth);
                 this.sliderWidth = $('.sliderContainer').outerWidth();
+                // set the offset for the gameContent
+                var gameOffset = $('.fixedHeader').height();
+                document.getElementById('game-content').style.padding = '240px 0 0 0';
+
               
             }
             // update the chart positions so only the css is updated

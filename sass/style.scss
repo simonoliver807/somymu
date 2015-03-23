@@ -62,18 +62,43 @@ $headerNumberFont: 255%;
     background-color: #2797ba;
     border-color: #fff;
 }
+.fixedHeader {
+	position: fixed;
+	width: 100%;
+	z-index: 998;
+}
+.whiteHeader {
+	background: $w;
+}
+.blueHeader {
+	background: #1597a7;
+		.zeroPaddingLeft {
+			padding-left: 0;
+		}
+}
+#questiontext1 {
+    color: #000;
+	display: none;
+    margin-top: 75px;
+    min-height: 75px;
+}
 // the navigation bar for the labels
 .sliderNav {
-	position: fixed;
+	background: $w;
 	height: 45px;
-	left: 100px;
-	z-index: 9999;
+		.zeroPaddingRight {
+			padding-right: 0;
+		}
 }
 .sliderNavContainer {
-	width: 525px;
-	overflow: hidden;
+	display: inline-block;
+    overflow: hidden;
+    width: 518px;
 }
 .sliderNavWrapper {
+	height: 100%;
+	margin: 0;
+	position: relative;
 	transition: right 1s ease-in-out;	
 }
 .sliderLabelContainer {
@@ -134,11 +159,15 @@ $headerNumberFont: 255%;
 }
 .chartKeyText {
 	font-family: "Open Sans" ;
-	 font-size: 8pt;
+	font-size: 8pt;
 	line-height:12px;	
+	padding-left: 5px;
 }
 .chartKeyRow {
-	padding: 5px 0 0 0;	
+ /* empty */
+}
+.chartKeyFillerRow {
+	height: 5px;
 }
 .chartKeyDiv1{
 	background: $color1;

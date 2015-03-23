@@ -112,9 +112,13 @@ var TemplateModule = (function () {
 	                                                        			
             																'<table style="width:100%">'+
                                                                                 '<tr class="chartKeyRow"><td><div class="chartKeyDiv1"></div></td><td></td><td class="chartKeyText">Manager</td></tr>' +
+                                                                                '<tr class="chartKeyFillerRow"><td></td><td></td><td></td></tr>' +
             															        '<tr class="chartKeyRow"><td><div class="chartKeyDiv2"></div></td><td></td><td class="chartKeyText">Goal Keeper</td></tr>' +
+                                                                                '<tr class="chartKeyFillerRow"><td></td><td></td><td></td></tr>' +
                                                                                 '<tr class="chartKeyRow"><td><div class="chartKeyDiv3"></div></td><td></td><td class="chartKeyText">Midfield</td></tr>' +
+                                                                                '<tr class="chartKeyFillerRow"><td></td><td></td><td></td></tr>' +
                                                                                 '<tr class="chartKeyRow"><td><div class="chartKeyDiv4"></div></td><td></td><td class="chartKeyText">League Position & Recent Form</td></tr>' +
+                                                                                '<tr class="chartKeyFillerRow"><td></td><td></td><td></td></tr>' +
                                                                                 '<tr class="chartKeyRow"><td><div class="chartKeyDiv5"></div></td><td></td><td class="chartKeyText">Attack</td></tr>' +
             																'</table>'+
 

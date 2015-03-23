@@ -30,17 +30,40 @@ ul {
   background-color: #2797ba;
   border-color: #fff; }
 
-.sliderNav {
+.fixedHeader {
   position: fixed;
-  height: 45px;
-  left: 100px;
-  z-index: 9999; }
+  width: 100%;
+  z-index: 998; }
+
+.whiteHeader {
+  background: #fff; }
+
+.blueHeader {
+  background: #1597a7; }
+  .blueHeader .zeroPaddingLeft {
+    padding-left: 0; }
+
+#questiontext1 {
+  color: #000;
+  display: none;
+  margin-top: 75px;
+  min-height: 75px; }
+
+.sliderNav {
+  background: #fff;
+  height: 45px; }
+  .sliderNav .zeroPaddingRight {
+    padding-right: 0; }
 
 .sliderNavContainer {
-  width: 525px;
-  overflow: hidden; }
+  display: inline-block;
+  overflow: hidden;
+  width: 518px; }
 
 .sliderNavWrapper {
+  height: 100%;
+  margin: 0;
+  position: relative;
   transition: right 1s ease-in-out; }
 
 .sliderLabelContainer {
@@ -92,10 +115,14 @@ ul {
 .chartKeyText {
   font-family: "Open Sans";
   font-size: 8pt;
-  line-height: 12px; }
+  line-height: 12px;
+  padding-left: 5px; }
 
 .chartKeyRow {
-  padding: 5px 0 0 0; }
+  /* empty */ }
+
+.chartKeyFillerRow {
+  height: 5px; }
 
 .chartKeyDiv1 {
   background: #883682;
@@ -535,7 +562,16 @@ ul {
   .containter {
     width: 100%; }
 
-  .buttonBackground {
+  #game-content {
+    padding: 0; }
+
+  #questiontext1 {
+    display: block; }
+
+  #fixedHeader {
+    display: none; }
+
+  .sliderNav {
     display: none; }
 
   div.ui-slider {
@@ -569,13 +605,48 @@ ul {
     border-radius: 1em; }
 
   .sliderBackground1 {
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    -ms-border-radius: 5px;
-    border-radius: 5px;
+    border: medium none;
+    height: 10px;
     width: 0%;
-    height: 100%;
-    background: #1f74c9; }
+    padding-right: 7px;
+    background: #1f74c9;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    -ms-border-radius: 1em;
+    border-radius: 1em; }
+
+  .sliderBackground2 {
+    border: medium none;
+    height: 10px;
+    width: 0%;
+    padding-right: 7px;
+    background: #fdc732;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    -ms-border-radius: 1em;
+    border-radius: 1em; }
+
+  .sliderBackground3 {
+    border: medium none;
+    height: 10px;
+    width: 0%;
+    padding-right: 7px;
+    background: #e2282f;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    -ms-border-radius: 1em;
+    border-radius: 1em; }
+
+  .sliderBackground4 {
+    border: medium none;
+    height: 10px;
+    width: 0%;
+    padding-right: 7px;
+    background: #4fbd55;
+    -webkit-border-radius: 1em;
+    -moz-border-radius: 1em;
+    -ms-border-radius: 1em;
+    border-radius: 1em; }
 
   .sliderContainer {
     border-bottom: 1px solid #A8A8A8;
