@@ -56,6 +56,9 @@ $headerNumberFont: 255%;
 	position: fixed;
 	 z-index: 9999;
 }
+#game-content {
+	padding-top: 240px;
+}
 .navbar { border: 0; }
 
 .navbar-inverse {
@@ -99,6 +102,7 @@ $headerNumberFont: 255%;
 	height: 100%;
 	margin: 0;
 	position: relative;
+	right: 0px;
 	transition: right 1s ease-in-out;	
 }
 .sliderLabelContainer {
@@ -121,53 +125,25 @@ $headerNumberFont: 255%;
 }
 // charts
 .chartKey {
-	list-style: none;
-	li {
-		font-size: $ckfs;
-		background: none;
-		height: 10%;
-		table {
-			width:25%;
-		 	.chartKeyDiv1{
-		 		background: $color1;
-				width: $ckdw;
-				height: $ckdh;
-			}
-			.chartKeyDiv2{
-		 		background: $color2;
-				width: $ckdw;
-				height: $ckdh;
-			}
-			.chartKeyDiv3{
-		 		background: $color3;
-				width: $ckdw;
-				height: $ckdh;
-			}
-			.chartKeyDiv4{
-		 		background: $color4;
-				width: $ckdw;
-				height: $ckdh;
-			}
-			.chartKeyDiv5{
-		 		background: $color5;
-				width: $ckdw;
-				height: $ckdh;
-			}
-		}	
-	}
+	width: 100%;
 
 }
 .chartKeyText {
 	font-family: "Open Sans" ;
-	font-size: 8pt;
+	font-size: 7pt;
 	line-height:12px;	
 	padding-left: 5px;
 }
 .chartKeyRow {
  /* empty */
 }
-.chartKeyFillerRow {
+.heightFiller10 {
+	height: 10px;
+    width: 100%;
+}
+.heightFiller5 {
 	height: 5px;
+	width: 100%;
 }
 .chartKeyDiv1{
 	background: $color1;
@@ -215,6 +191,9 @@ $headerNumberFont: 255%;
 }
 
 /* tooltip */
+	.tooltip {
+		z-index:997;
+	}
      .tooltip-inner {
         background-color: #000;
         border-radius: 0;
@@ -226,7 +205,6 @@ $headerNumberFont: 255%;
         text-align: center;
         text-decoration: none;
         width: 100%;
-        z-index: 99999999;
     }
     .tooltip.top .tooltip-arrow {
         border-top-color: #000;
@@ -329,16 +307,16 @@ canvas {
 }
 .sliderTotal {
       color: $b;
-      cursor: default;
-      font-size: 20px;
-      font-weight: 600;
-      left:67px;
-	 top:50%;
--webkit-transform: translate(-50%, -50%);
--moz-transform: translate(-50%, -50%);
-transform: translate(-50%, -50%);
-      z-index: 999;
-      position: absolute;
+    cursor: default;
+    font-size: 20px;
+    font-weight: 600;
+    left: 72px;
+    position: absolute;
+    top: 47%;
+	-webkit-transform: translate(-50%, -50%);
+	 -moz-transform: translate(-50%, -50%);
+	 transform: translate(-50%, -50%);
+    z-index: 995;
   }
 @media screen and (min-width: 993px) {
 	/* style the slider handles per column */

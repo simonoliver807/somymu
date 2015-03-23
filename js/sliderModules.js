@@ -43,7 +43,7 @@ var SliderModule = (function () {
                 this.sliderValue = sliderValue - 1;
                 //  update the tooltip
                 var position = $('#' + this.sliderID).offset();
-                position.left = position.left;
+                position.left = position.left - 2;
                 position.top = position.top - 35;
                 $('.tooltip').css({ left: position.left, top: position.top });
                 if(this.sliderValue < 10){this.setSliderValue = '00'+this.sliderValue;}
@@ -206,7 +206,7 @@ var UIModule = (function () {
             	doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, doughnutArray[i].data, sliderLabels[i], ordinalPosition);
     		}
             	// resize all the charts
-            $('canvas').css({width:'100%',height:'100%'});
+            $('canvas').css({width:'110%',height:'90%'});
 //            for (var slider = 0; slider < numberOfSliders; slider++) {
 //                for (var sliderRow = 0; sliderRow < numberOfSliders; sliderRow++) {
 //                    var sliderID = sliderRow + '_' + slider;
@@ -231,12 +231,7 @@ var UIModule = (function () {
                 var containerWidth = (rowWidth / 5) * numberOfSliders;
                 $('.sliderWrapper').css('width', containerWidth);
                 $('.sliderNavWrapper').css('width', containerWidth);
-                this.sliderWidth = $('.sliderContainer').outerWidth();
-                // set the offset for the gameContent
-                var gameOffset = $('.fixedHeader').height();
-                document.getElementById('game-content').style.padding = '240px 0 0 0';
-
-              
+                this.sliderWidth = $('.sliderContainer').outerWidth();         
             }
             // update the chart positions so only the css is updated
             this.updateChartPositions();

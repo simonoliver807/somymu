@@ -19,10 +19,10 @@ function OffScroll() {
 
 
 
-$("#id-navbar-collapse").find("a").add("#fr_converse .fr_simple_btn").click(function () {
-    var elem = $(this).attr("href");
-    $('html, body').animate({ scrollTop: $(elem).offset().top }, 1000);
-});
+//$("#id-navbar-collapse").find("a").add("#fr_converse .fr_simple_btn").click(function () {
+//    var elem = $(this).attr("href");
+//    $('html, body').animate({ scrollTop: $(elem).offset().top }, 1000);
+//});
 
 function setHeight() {
     var hgt = $(window).height();

@@ -23,6 +23,9 @@ ul {
   position: fixed;
   z-index: 9999; }
 
+#game-content {
+  padding-top: 240px; }
+
 .navbar {
   border: 0; }
 
@@ -64,6 +67,7 @@ ul {
   height: 100%;
   margin: 0;
   position: relative;
+  right: 0px;
   transition: right 1s ease-in-out; }
 
 .sliderLabelContainer {
@@ -84,45 +88,24 @@ ul {
     border: none; }
 
 .chartKey {
-  list-style: none; }
-  .chartKey li {
-    font-size: 8pt;
-    background: none;
-    height: 10%; }
-    .chartKey li table {
-      width: 25%; }
-      .chartKey li table .chartKeyDiv1 {
-        background: #883682;
-        width: 12px;
-        height: 12px; }
-      .chartKey li table .chartKeyDiv2 {
-        background: #1f74c9;
-        width: 12px;
-        height: 12px; }
-      .chartKey li table .chartKeyDiv3 {
-        background: #fdc732;
-        width: 12px;
-        height: 12px; }
-      .chartKey li table .chartKeyDiv4 {
-        background: #e2282f;
-        width: 12px;
-        height: 12px; }
-      .chartKey li table .chartKeyDiv5 {
-        background: #4fbd55;
-        width: 12px;
-        height: 12px; }
+  width: 100%; }
 
 .chartKeyText {
   font-family: "Open Sans";
-  font-size: 8pt;
+  font-size: 7pt;
   line-height: 12px;
   padding-left: 5px; }
 
 .chartKeyRow {
   /* empty */ }
 
-.chartKeyFillerRow {
-  height: 5px; }
+.heightFiller10 {
+  height: 10px;
+  width: 100%; }
+
+.heightFiller5 {
+  height: 5px;
+  width: 100%; }
 
 .chartKeyDiv1 {
   background: #883682;
@@ -167,6 +150,9 @@ ul {
   height: 25%; }
 
 /* tooltip */
+.tooltip {
+  z-index: 997; }
+
 .tooltip-inner {
   background-color: #000;
   border-radius: 0;
@@ -177,8 +163,7 @@ ul {
   padding: 11%;
   text-align: center;
   text-decoration: none;
-  width: 100%;
-  z-index: 99999999; }
+  width: 100%; }
 
 .tooltip.top .tooltip-arrow {
   border-top-color: #000;
@@ -284,13 +269,13 @@ ul {
   cursor: default;
   font-size: 20px;
   font-weight: 600;
-  left: 67px;
-  top: 50%;
+  left: 72px;
+  position: absolute;
+  top: 47%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  z-index: 999;
-  position: absolute; }
+  z-index: 995; }
 
 @media screen and (min-width: 993px) {
   /* style the slider handles per column */
@@ -559,8 +544,10 @@ ul {
   .container {
     width: 1170px; } }
 @media screen and (max-width: 992px) {
-  .containter {
-    width: 100%; }
+  .container {
+    width: 100%;
+    padding: 0;
+    margin: 0; }
 
   #game-content {
     padding: 0; }

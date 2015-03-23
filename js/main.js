@@ -60,6 +60,9 @@ function changeSlider() {
 	        var containerWidth = (rowWidth / 5) * modules.numberOfSliders;
 	        $('.sliderWrapper').css('width', containerWidth);
 	        $('.sliderNavWrapper').css('width', containerWidth);
+		    // collapse the navbar;
+	        document.getElementById('navbarCollapse').className = "";
+	        document.getElementById('navbarCollapse').className = "navbar-collapse collapse";
 	        modules.windowResizeBool = false;
 		}
 		// update the grey outs
@@ -295,8 +298,9 @@ function updateSliderPostion(direction, buttonID){
 		modules.currentSlider -= 1;
 		setTimeout(function(){ document.getElementById(buttonID).disabled = false; }, 1000);
 	}
-	$('.sliderWrapper').css({ right: newPos });
 	$('.sliderNavWrapper').css({ right: newPos });
+	$('.sliderWrapper').css({ right: newPos });
+
 	
 }
 	

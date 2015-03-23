@@ -55,7 +55,7 @@ p{
 
 
 .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
-height:60px  !important;
+/*height:60px  !important;*/
 }
 
 .navbar-brand {
