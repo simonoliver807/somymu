@@ -6,7 +6,7 @@ function l(output){
 }
 
 var modules = new UIModule();
-modules.init(15, 5);
+modules.init(8, 5);
 
 
 //filler row i was using to push the sliders down below the nav bar
@@ -36,7 +36,8 @@ function changeSlider() {
 	if(screenWidth <= 992 && !modules.windowResizeBool){
 		var orientation = $( ".slider" ).slider( "option", "orientation" );
 		$('.slider').slider( "option", "orientation", "horizontal" );
-		$('.handleStyle').addClass("fa-rotate-90");
+		$('.handleStyle').addClass("fa-rotate-90 fa-lg");
+		$('.handleStyle').removeClass("fa-2x");
 		// update the grey outs
 		var buttonArray = modules.getButtonArray();
 		for(var i = 0; i < buttonArray.length; i++){
@@ -51,12 +52,14 @@ function changeSlider() {
 		if(modules.windowResizeBool){
 			var orientation = $( ".slider" ).slider( "option", "orientation" );
 			$('.slider').slider( "option", "orientation", "vertical" );
-			$('.handleStyle').removeClass("fa-rotate-90");
+			$('.handleStyle').removeClass("fa-rotate-90 fa-lg");
+			$('.handleStyle').addClass("fa-2x");
 			 // set up the width of the slider container
-	        var rowWidth = $('.sliderRow').outerWidth();
+			var rowWidth = modules.sliderRowWidth;
 	        // devide the set width of a slider row by the number of sliders giving the width per slider
 	        var containerWidth = (rowWidth / 5) * modules.numberOfSliders;
 	        $('.sliderWrapper').css('width', containerWidth);
+	        $('.sliderNavWrapper').css('width', containerWidth);
 	        modules.windowResizeBool = false;
 		}
 		// update the grey outs

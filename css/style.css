@@ -30,8 +30,32 @@ ul {
   background-color: #2797ba;
   border-color: #fff; }
 
-.buttonBackground {
+.sliderNav {
+  position: fixed;
+  height: 45px;
+  left: 100px;
+  z-index: 9999; }
+
+.sliderNavContainer {
+  width: 525px;
+  overflow: hidden; }
+
+.sliderNavWrapper {
+  transition: right 1s ease-in-out; }
+
+.sliderLabelContainer {
   display: inline-block;
+  font-size: 8pt;
+  list-style: none;
+  text-align: center;
+  width: 105px; }
+
+.navButtonContainer {
+  display: inline-block;
+  list-style: none;
+  width: 24px; }
+
+.buttonBackground {
   background: #e9eaed; }
   .buttonBackground .leftRightButton {
     border: none; }
@@ -66,6 +90,8 @@ ul {
         height: 12px; }
 
 .chartKeyText {
+  font-family: "Open Sans";
+  font-size: 8pt;
   line-height: 12px; }
 
 .chartKeyRow {
@@ -160,7 +186,7 @@ ul {
   border-top: 1px solid black;
   height: 100%;
   margin: 0 auto;
-  width: 33%; }
+  width: 100%; }
 
 .sliderScale {
   border-left: 1px solid black;
@@ -193,7 +219,7 @@ ul {
   overflow-x: hidden;
   padding-top: 5px;
   height: 160px;
-  width: 550px; }
+  width: 525px; }
 
 .labelRow {
   overflow: hidden;
@@ -204,21 +230,11 @@ ul {
 
 .sliderContainer {
   display: inline-block;
-  height: 100%;
+  height: 160px;
   list-style: outside none none;
   margin: 0 auto;
   padding: 0 20px;
-  width: 110px; }
-
-.sliderLabelContainer {
-  display: inline-block;
-  font-size: 12px;
-  height: 35px;
-  list-style: outside none none;
-  margin: 0 auto;
-  padding: 0px;
-  text-align: center;
-  width: 115px; }
+  width: 105px; }
 
 .sliderLabel {
   padding-left: 0px; }
@@ -230,10 +246,11 @@ ul {
 .slider {
   background: url("");
   border: 0;
-  height: 78%;
+  height: 106px;
   /*    width:100%;*/
-  width: 15px;
-  margin: 0 auto; }
+  position: relative;
+  margin: 14.5px auto 0 auto;
+  width: 12px; }
 
 .sliderTotal {
   color: #000;
@@ -268,18 +285,16 @@ ul {
   #sliderStyle5 .handleStyle {
     color: #883682; } }
 .slider .handleStyle {
-  background: url("") repeat scroll 0 0 transparent;
+  background: #fff;
   border: 0 none;
-  border-radius: 0;
-  color: #000000;
-  height: 10px;
-  left: 0em;
-  width: 100%; }
+  height: 25px;
+  left: -6px;
+  position: absolute;
+  width: 22px; }
 
 .slider .handleStyle:hover {
-  background: url("");
-  border: 0;
-  color: #000000; }
+  background: #fff;
+  border: 0; }
 
 /* style the factor button */
 .factorIcon {
@@ -689,54 +704,5 @@ ul {
 
   .factorOverlay5 {
     background-color: rgba(255, 255, 204, 0.6); } }
-@media screen and (max-width: 375px) {
-  .headerRow {
-    background: #fff;
-    margin: 0;
-    width: 100%; }
-    .headerRow .header {
-      font-size: 13px; }
-      .headerRow .header .headerMenuBar {
-        background-color: #2797ba;
-        color: white;
-        font-weight: 300;
-        font-size: 265%;
-        height: 50px; }
-      .headerRow .header .bannerQuestion {
-        font-size: 18px;
-        color: black;
-        padding: 30px 0; }
-      .headerRow .header .instructionsHeader {
-        background-color: #dff0f5;
-        display: none; }
-        .headerRow .header .instructionsHeader .headerNumbers {
-          background-color: #2797ba;
-          padding: 0 10%;
-          font-size: 255%;
-          display: inline-block; }
-    .headerRow .buttonRow {
-      color: #f4f4f6; }
-      .headerRow .buttonRow .buttonBackground {
-        display: none;
-        background: #e9eaed; }
-        .headerRow .buttonRow .buttonBackground .leftRightButton {
-          border: none;
-          position: absolute; }
-
-  .sliderRow {
-    width: 100%; }
-
-  .sliderContainer {
-    height: 65px;
-    list-style: outside none none;
-    margin: 0 auto;
-    width: 100% !important; }
-
-  .sliderWrapper {
-    position: relative;
-    height: 100%;
-    padding: 15px 0 0 0;
-    right: 0px;
-    width: 100% !important; } }
 
 /*# sourceMappingURL=style.css.map */

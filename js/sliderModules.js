@@ -43,7 +43,7 @@ var SliderModule = (function () {
                 this.sliderValue = sliderValue - 1;
                 //  update the tooltip
                 var position = $('#' + this.sliderID).offset();
-                position.left = position.left - 6;
+                position.left = position.left;
                 position.top = position.top - 35;
                 $('.tooltip').css({ left: position.left, top: position.top });
                 if(this.sliderValue < 10){this.setSliderValue = '00'+this.sliderValue;}
@@ -155,7 +155,11 @@ var UIModule = (function () {
             this.numberOfButtons = numberOfButtons;
             this.currentSlider = 0;
             this.windowResizeBool = false;
+            ///////////////////////////////////////////////////////////////////////////////////////
+            // have hard code the width of the sider row and the slider container maybe get from hidden input on index page
+            ///////////////////////////////////////////////////////////////////////////////////////
             this.sliderWidth = 110;
+            this.sliderRowWidth = 525;
             
             
             
@@ -170,14 +174,20 @@ var UIModule = (function () {
             //lets create an array of buttons and a array of doughnuts to start
             var sliderLabels = ['Arsenal', 'Chelsea', 'Liverpool', 'Portsmouth', 'Man United', 'Man City', 'Leeds', 'Bournemouth'];
             var buttonLabels = ['Manager', 'Goal Keeper & Defence', 'Midfield', 'league Position & Recent Form', 'Attack'];
+
+
+            // add a label for each slider
+            for (var i = 0; i < sliderLabels.length; i++) {
+                $('#sliderNavWrapper').append('<li class="sliderLabelContainer">' + sliderLabels[i] + '</li>');
+            }
+
+
             for (var i = 0; i < numberOfButtons; i++) {
                 buttonArray[i] = new ButtonModule();
                 buttonArray[i].setButtonID(i);
                 templateModule.createButton(i, buttonLabels[i]);
             }
             for (var sliderColumn = 0; sliderColumn < numberOfButtons; sliderColumn++) {
-            	  // add a label for each slider
-                $('#sliderLabels').append('<li class="sliderLabelContainer">' + sliderLabels[sliderColumn] + '</li>');
                 // for each column of sliders, one for each button, create a column
                 var sliderColumnArray = [];
                 for (var i = 0; i < numberOfSliders; i++) {
@@ -210,16 +220,17 @@ var UIModule = (function () {
             		e[i].className = e[i].className + ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle';
             	}
             	else {
-            		e[i].className = e[i].className + ' fa fa-minus-square fa-lg handleStyle';
+            		e[i].className = e[i].className + ' fa fa-minus-square fa-2x handleStyle';
             	}
             }
             // don't need to do this for iphone
             if(this.windowWidth > 992){
                 // set up the width of the slider container
-            	var rowWidth = $('.sliderRow').outerWidth();  
+                var rowWidth = this.sliderRowWidth;
                 // devide the set width of a slider row by the number of sliders giving the width per slider
                 var containerWidth = (rowWidth / 5) * numberOfSliders;
                 $('.sliderWrapper').css('width', containerWidth);
+                $('.sliderNavWrapper').css('width', containerWidth);
                 this.sliderWidth = $('.sliderContainer').outerWidth();
               
             }

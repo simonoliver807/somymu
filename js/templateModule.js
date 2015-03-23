@@ -105,43 +105,50 @@ var TemplateModule = (function () {
 	                                                        '</div>'+
 	            											'<div class="col-xs-8 col-md-8">'+
 	                                                        	'<div class="row" style="height: 10%">'+
-	                                                        		'<div class="col-xs-12 col-md-12">'+
-//	                                                        			'<ul class="chartKey">'+
-//            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv1"></div></td><td></td><td>Manager</td></tr></table></li>'+
-//            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv2"></div></td><td></td><td>Goal Keeper</td></tr></table></li>'+
-//            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv3"></div></td><td></td><td>Midfield</td></tr></table></li>'+
-//            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv4"></div></td><td></td><td><div style="display:block">League Position</div></td></tr></table></li>'+
-//            																'<li><table style="width:100%"><tr><td><div class="chartKeyDiv5"></div></td><td></td><td>Attack</td></tr></table></li>'+
-//            															'</ul>'+
-		                                                        		'<div class="row chartKeyRow">'+
-	                                                    					'<div class="col-md-2">'+
-	                                                    						'<div class="chartKeyDiv1"></div>'+
-	                                                    					'</div>'+
-	                                                    					'<div class="col-md-10 chartKeyText">Manager</div>'+                                   
-	                                                    				'</div>'+
-	                                                    				'<div class="row chartKeyRow">'+
-	                                                						'<div class="col-md-2">'+
-	                                                							'<div class="chartKeyDiv2"></div>'+
-	                                                						'</div>'+
-	                                                						'<div class="col-md-10 chartKeyText">Goal Keeper</div>'+                                   
-	                                                					'</div>'+
-	                                                					'<div class="row chartKeyRow">'+
-                                                							'<div class="col-md-2">'+
-                                                								'<div class="chartKeyDiv3"></div>'+
-                                                							'</div>'+
-                                                							'<div class="col-md-10 chartKeyText">Midfield</div>'+                                   
-                                                						'</div>'+
-                                                						'<div class="row chartKeyRow">'+
-                                                						'<div class="col-md-2">'+
-                                                							'<div class="chartKeyDiv4"></div>'+
-                                                						'</div>'+
-                                                						'<div class="col-md-10 chartKeyText">League Position & Recent Form</div>'+                                   
-                                                						'</div>'+
-                                                						'<div class="row chartKeyRow">'+
-                                            							'<div class="col-md-2">'+
-                                            								'<div class="chartKeyDiv5"></div>'+
-                                            							'</div>'+
-                                            							'<div class="col-md-10 chartKeyText">Attack</div>'+                                   
+	                                                        		'<div class="col-xs-12 col-md-12">' +
+
+
+
+	                                                        			
+            																'<table style="width:100%">'+
+                                                                                '<tr class="chartKeyRow"><td><div class="chartKeyDiv1"></div></td><td></td><td class="chartKeyText">Manager</td></tr>' +
+            															        '<tr class="chartKeyRow"><td><div class="chartKeyDiv2"></div></td><td></td><td class="chartKeyText">Goal Keeper</td></tr>' +
+                                                                                '<tr class="chartKeyRow"><td><div class="chartKeyDiv3"></div></td><td></td><td class="chartKeyText">Midfield</td></tr>' +
+                                                                                '<tr class="chartKeyRow"><td><div class="chartKeyDiv4"></div></td><td></td><td class="chartKeyText">League Position & Recent Form</td></tr>' +
+                                                                                '<tr class="chartKeyRow"><td><div class="chartKeyDiv5"></div></td><td></td><td class="chartKeyText">Attack</td></tr>' +
+            																'</table>'+
+
+
+
+		                                                        		//'<div class="chartKeyRow">'+
+	                                                    				
+	                                                    				//		'<div class="chartKeyDiv1"></div>'+
+
+	                                                    				//	'<div chartKeyText">Manager</div>'+                                   
+	                                                    				//'</div>'+
+	                                                    				//'<div class="row chartKeyRow">'+
+	                                                					//	'<div class="col-md-2">'+
+	                                                					//		'<div class="chartKeyDiv2"></div>'+
+	                                                					//	'</div>'+
+	                                                					//	'<div class="col-md-10 chartKeyText">Goal Keeper</div>'+                                   
+	                                                					//'</div>'+
+	                                                					//'<div class="row chartKeyRow">'+
+                                                						//	'<div class="col-md-2">'+
+                                                						//		'<div class="chartKeyDiv3"></div>'+
+                                                						//	'</div>'+
+                                                						//	'<div class="col-md-10 chartKeyText">Midfield</div>'+                                   
+                                                						//'</div>'+
+                                                						//'<div class="row chartKeyRow">'+
+                                                						//'<div class="col-md-2">'+
+                                                						//	'<div class="chartKeyDiv4"></div>'+
+                                                						//'</div>'+
+                                                						//'<div class="col-md-10 chartKeyText">League Position & Recent Form</div>'+                                   
+                                                						//'</div>'+
+                                                						//'<div class="row chartKeyRow">'+
+                                            							//'<div class="col-md-2">'+
+                                            							//	'<div class="chartKeyDiv5"></div>'+
+                                            							//'</div>'+
+                                            							//'<div class="col-md-10 chartKeyText">Attack</div>'+                                   
                                             						'</div>'+
 	                                                        		'</div>'+
 	                                                        	'</div>'+

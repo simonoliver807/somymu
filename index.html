@@ -94,17 +94,21 @@
     </div>
     
 
-      <div class="row">
-      	<div class="col-md-6">
-	      	<div class="buttonBackground">
-	        	<button class=" leftRightButton fa fa-caret-left fa-2x" onClick="updateSliderPostion('left',this.id)" id="updateLeft"></button>
-	        </div>
-	    </div>
-	    <div class="col-md-6">
+      <div class="row sliderNav">
+         <div class="navButtonContainer">
+             <div class="buttonBackground">
+	            <button class=" leftRightButton fa fa-caret-left fa-2x" onClick="updateSliderPostion('left',this.id)" id="Button1"></button>
+	         </div>
+         </div>
+         <div class="sliderNavContainer">
+             <ul id="sliderNavWrapper" class="sliderNavWrapper">
+             </ul>
+        </div> 
+        <div class="navButtonContainer">
 	        <div class="buttonBackground">
-				<button class="leftRightButton fa fa-caret-right fa-2x" onClick="updateSliderPostion('right',this.id)" id="updateRight"></button>
-			</div>
-		</div>
+			    <button class="leftRightButton fa fa-caret-right fa-2x" onClick="updateSliderPostion('right',this.id)" id="updateRight"></button>
+		    </div>
+        </div>
       </div> 
       
 	<div id="game-content">

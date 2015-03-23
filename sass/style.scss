@@ -62,14 +62,39 @@ $headerNumberFont: 255%;
     background-color: #2797ba;
     border-color: #fff;
 }
-	
-.buttonBackground{
+// the navigation bar for the labels
+.sliderNav {
+	position: fixed;
+	height: 45px;
+	left: 100px;
+	z-index: 9999;
+}
+.sliderNavContainer {
+	width: 525px;
+	overflow: hidden;
+}
+.sliderNavWrapper {
+	transition: right 1s ease-in-out;	
+}
+.sliderLabelContainer {
 	display: inline-block;
+	font-size: 8pt;
+	list-style: none;
+	text-align: center;
+	width: 105px;
+}	
+.navButtonContainer {
+	display: inline-block;
+	list-style: none;
+	width: 24px;
+}
+.buttonBackground{
 	background: $grey; 
 	.leftRightButton {
 		border:none;
 	}
 }
+// charts
 .chartKey {
 	list-style: none;
 	li {
@@ -108,6 +133,8 @@ $headerNumberFont: 255%;
 
 }
 .chartKeyText {
+	font-family: "Open Sans" ;
+	 font-size: 8pt;
 	line-height:12px;	
 }
 .chartKeyRow {
@@ -209,7 +236,7 @@ canvas {
     border-top: 1px solid black;
     height: 100%;
     margin: 0 auto;
-    width: 33%;
+    width: 100%;
 }
 .sliderScale {
     border-left: 1px solid black;
@@ -238,7 +265,7 @@ canvas {
     overflow-x: hidden;
     padding-top: 5px;
     height: 160px;
-    width: 550px;
+    width: 525px;
 }
 .labelRow {
     overflow: hidden;
@@ -249,23 +276,12 @@ canvas {
 }
 .sliderContainer {
    display: inline-block;
-    height: 100%;
+    height: 160px;
     list-style: outside none none;
     margin: 0 auto; 
 	padding: 0 20px;
-	width: 110px;	
+	width: 105px;	
 	}
-
-.sliderLabelContainer {
-    display: inline-block;
-    font-size: 12px;
-    height: 35px;
-    list-style: outside none none;
-    margin: 0 auto;
-    padding: 0px;
-    text-align: center;
-    width: 115px;
-}
 .sliderLabel {
 	padding-left: 0px;	
 }
@@ -276,10 +292,11 @@ canvas {
 .slider {
     background: url(''); 
 	border: 0;
-	height: 78%;
+	height: 106px;
 /*    width:100%;*/
-	width: 15px;
-	margin: 0 auto;
+	position: relative;
+	margin: 14.5px auto 0 auto;
+	width: 12px;
 }
 .sliderTotal {
       color: $b;
@@ -297,37 +314,35 @@ transform: translate(-50%, -50%);
 @media screen and (min-width: 993px) {
 	/* style the slider handles per column */
 	#sliderStyle0 .handleStyle {
-	    color: rgb(136, 54, 130);
+	    color: #883682;
 	}
 	#sliderStyle1 .handleStyle {
-	    color: rgb(31, 116, 201);
+	    color: #1f74c9;
 	}
 	#sliderStyle2 .handleStyle {
-	    color: rgb(253, 199, 50);
+	    color: #fdc732;
 	}
 	#sliderStyle3 .handleStyle {
-	    color: rgb(226, 40, 47);
+	    color: #e2282f;
 	}
 	#sliderStyle4 .handleStyle {
-	   color: rgb(79, 189, 85);
+	   color: #4fbd55;
 	}
 	#sliderStyle5 .handleStyle {
-	    color: rgb(136, 54, 130);
+	    color: #883682;
 	}
 }
 .slider .handleStyle {
-    background: url("") repeat scroll 0 0 rgba(0, 0, 0, 0);
+    background: #fff;
     border: 0 none;
-    border-radius: 0;
-    color: #000000;
-    height: 10px;
-    left: 0em;
-    width: 100%;
+    height: 25px;
+    left: -6px;
+	position: absolute;
+    width: 22px;
 }
 .slider .handleStyle:hover {
-    background: url('');
+    background: #fff;
     border:0;
-    color: #000000;
 }
 /* style the factor button */
 .factorIcon {
