@@ -56,17 +56,15 @@
     <!-- /.container-fluid -->
 </nav>
  
-
-
-        <div id="questiontext1">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-12 col-md-12">
-                        <h1>Who will win the Premier Leagure 2014/15</h1>
-                    </div>
-                </div>
+<div id="questiontext1">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                <h1>Who will win the Premier Leagure 2014/15</h1>
             </div>
         </div>
+    </div>
+</div>
 
 
 <div id="fixedHeader" class="fixedHeader">
@@ -87,16 +85,31 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-3 col-md-3">
-                            <div id="tabTap" class="tab">
-						        1 <span>Tap</span>
-					        </div>
+                            <div class="dropdown">
+                                <button id="tabTap" class="tab" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        
+                                     1 <span>Tap</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    ...
+                                </ul>
+                            </div>
+
+
                         </div>
 				        <div class="col-sm-6 col-md-6">
-                            <div id="tabSlide" class="tab">
-						        2 <span>Slide</span>
-					        </div>
+                             <div class="dropdown">
+                                <button id="tabSlide" class="tab" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        
+                                     2 <span>Slide</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                    ...
+                                </ul>
+                            </div>
                         </div>
 				        <div class="col-sm-3 col-md-3 zeroPaddingLeft">
+
                             <div id="tabDecide" class="tab">
 						        3 <span>Decide</span>
 					        </div>
@@ -119,7 +132,7 @@
 	                            </div>
                             </div>
 
-                            <div class="sliderNavContainer">
+                            <div id="labelsSecondCol" class="sliderNavContainer">
                                 <ul id="sliderNavWrapper" class="sliderNavWrapper">
                                 </ul>
                             </div>   
@@ -159,6 +172,7 @@
                 </div>
             </div>  
         </div>
+        <div id="highLightOverlay" highLightOverlay="" ></div>
     </div>
 
 

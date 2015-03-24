@@ -296,34 +296,65 @@ function updateSliderPostion(direction, buttonID){
 	$('.sliderWrapper').css({ right: newPos });
 }
 $('.tab').click(function (event) {
-    var id = event.target.id;
-    switch(id) {
+    var id = event.currentTarget.id;
+    addHighLight(id);
+});
+function addHighLight(id) {
+    switch (id) {
         case "tabTap":
             var classNames = document.getElementById('tabTap').className;
             var showHide = classNames.indexOf('selectBackground');
             if (showHide === -1) {
                 document.getElementById('tabTap').className = classNames + ' selectBackground';
                 $('.buttonColumn').addClass('selectBackground');
-                $('.overlayDiv').addClass('.overlayDivColored1');
                 var labelClassNames = document.getElementById('labelsFirstCol').className;
                 document.getElementById('labelsFirstCol').className = labelClassNames + ' selectBackground';
                 $('.overlayDiv').addClass('bc');
-
+                var tapTabWidth = $('.buttonColumn').outerWidth();
+                var offsetPos = $('#labelsFirstCol').offset();
+                updateOverlay(offsetPos.left, offsetPos.top, tapTabWidth, screen.height, 'tabTap');
             }
             else {
                 $('#tabTap').removeClass('selectBackground');
                 $('.buttonColumn').removeClass('selectBackground');
                 document.getElementById('labelsFirstCol').className = labelClassNames + 'col-sm-3 col-md-3';
                 $('.overlayDiv').removeClass('bc');
-
-              
+                updateOverlay(0, 0, 0, 0, '');
             }
             break;
         case "tabSlide":
-            
+            var classNames = document.getElementById('tabSlide').className;
+            var showHide = classNames.indexOf('selectBackground');
+            if (showHide === -1) {
+                document.getElementById('tabSlide').className = classNames + ' selectBackground';
+                var labelClassNames = document.getElementById('labelsFirstCol').className;
+                document.getElementById('labelsSecondCol').className = labelClassNames + ' selectBackground';
+                var tapSlideWidth = $('.sliderRow').outerWidth();
+                var offsetPos = $('#labelsSecondCol').offset();
+                updateOverlay(offsetPos.left, offsetPos.top, tapTabWidth, screen.height, 'tabTap');
+            }
+            else {
+                $('#tabslide').removeClass('selectBackground');
+                var labelClassNames = document.getElementById('labelsFirstCol').className;
+                document.getElementById('labelsSecondCol').className = labelClassNames + ' selectBackground';
+                updateOverlay(0, 0, 0, 0, '');
+            }
             break;
         case "tabDecide":
-            
+
             break;
     }
-});
+}
+function updateOverlay(posLeft, posTop, el_width, el_height, attrVal) {
+    document.getElementById('highLightOverlay').style.left = posLeft + 'px';
+    document.getElementById('highLightOverlay').style.top = posTop + 'px';
+    document.getElementById('highLightOverlay').style.width = el_width + 'px';
+    document.getElementById('highLightOverlay').style.height = el_height + 'px';
+    document.getElementById('highLightOverlay').setAttribute('highLightOverlay', attrVal);
+
+}
+document.getElementById('highLightOverlay').addEventListener('click',
+    function () {
+        var attrVal = document.getElementById('highLightOverlay').getAttribute('highLightOverlay');
+        addHighLight(attrVal);
+    });

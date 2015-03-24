@@ -10,6 +10,8 @@ $color4: 		#e2282f;
 $color5: 		#4fbd55;
 $color6: 		#d10b49;
 $scrollButton: 	#e9eaed;
+
+
 // click background color
 $cbc:			#73c1ca;
 
@@ -39,6 +41,9 @@ $headerNumberFont: 255%;
 }
  ul {
     padding: 0;
+}
+a:hover {
+	text-decoration: none;
 }
 /* main page */
 .selector {
@@ -204,13 +209,13 @@ footer {
     height: 25%;
 }
 
-/* tooltip */
+/* bs tooltip */
 	.tooltip {
 		z-index:997;
 	}
      .tooltip-inner {
         background-color: #000;
-        border-radius: 0;
+        $color6dius: 0;
         color: #fff;
         font-size: 12px;
         margin: 0 6px 0 0;
@@ -227,8 +232,32 @@ footer {
         left: 50%;
         margin-left: -12px;
     }
-canvas {
-	
+/* bs dropdown */
+.dropdown-menu {
+	border: 1px solid #2797ba;
+	@include border-radius(0);
+}
+.dropdown-menu:before {
+  position: absolute;
+  top: -7px;
+  left: 9px;
+  display: inline-block;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-left: 7px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: '';
+}
+
+.dropdown-menu:after {
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  display: inline-block;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
+  border-left: 6px solid transparent;
+  content: '';
 }
 .canvasBackground {
 	display: block;	
@@ -401,6 +430,9 @@ canvas {
 
 .buttonColumn {
 	height : 160px
+}
+#highLightOverlay {
+	position: absolute;
 }
 @import "_style_buttons.scss";
 @media (min-width: 768px){

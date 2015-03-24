@@ -5,6 +5,9 @@
 ul {
   padding: 0; }
 
+a:hover {
+  text-decoration: none; }
+
 /* main page */
 .selector {
   border: 1px solid black;
@@ -160,13 +163,12 @@ footer {
 .fillerDiv25 {
   height: 25%; }
 
-/* tooltip */
+/* bs tooltip */
 .tooltip {
   z-index: 997; }
 
 .tooltip-inner {
   background-color: #000;
-  border-radius: 0;
   color: #fff;
   font-size: 12px;
   margin: 0 6px 0 0;
@@ -182,6 +184,35 @@ footer {
   bottom: 0;
   left: 50%;
   margin-left: -12px; }
+
+/* bs dropdown */
+.dropdown-menu {
+  border: 1px solid #2797ba;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0; }
+
+.dropdown-menu:before {
+  position: absolute;
+  top: -7px;
+  left: 9px;
+  display: inline-block;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-left: 7px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: ''; }
+
+.dropdown-menu:after {
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  display: inline-block;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
+  border-left: 6px solid transparent;
+  content: ''; }
 
 .canvasBackground {
   display: block; }
@@ -353,6 +384,9 @@ footer {
   } */
 .buttonColumn {
   height: 160px; }
+
+#highLightOverlay {
+  position: absolute; }
 
 /* factor button 0 */
 #moduleButton0 .overlayDiv1 {
@@ -588,6 +622,32 @@ footer {
   width: 100%;
   height: 100%; }
 
+/* factor button 0 with background color  */
+#moduleButton4 .bc.overlayDiv1 {
+  background: radial-gradient(circle farthest-side, #4fbd55 3.99px, #73c1ca 4.99px, #73c1ca 22.5px, #4fbd55 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton4 .bc.overlayDiv2 {
+  background: radial-gradient(circle farthest-side, #4fbd55 8.99px, #73c1ca 9.99px, #73c1ca 22.5px, #4fbd55 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton4 .bc.overlayDiv3 {
+  background: radial-gradient(circle farthest-side, #4fbd55 13.99px, #73c1ca 14.99px, #73c1ca 22.5px, #4fbd55 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton4 .bc.overlayDiv4 {
+  background: radial-gradient(circle farthest-side, #4fbd55 18.99px, #73c1ca 19.99px, #73c1ca 22.5px, #4fbd55 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton4 .bc.overlayDiv5 {
+  background: radial-gradient(circle farthest-side, #4fbd55 23.99px, #73c1ca 24.99px, #73c1ca 22.5px, #73c1ca 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
 /* factor button 5 */
 #moduleButton5 .overlayDiv1 {
   background: radial-gradient(circle farthest-side, #d10b49 3.99px, #fff 4.99px, #fff 22.5px, #d10b49 23.75px, #fff 25px) repeat scroll 0 0 transparent;
@@ -614,6 +674,32 @@ footer {
   width: 100%;
   height: 100%; }
 
+/* factor button 0 with background color  */
+#moduleButton5 .bc.overlayDiv1 {
+  background: radial-gradient(circle farthest-side, #d10b49 3.99px, #73c1ca 4.99px, #73c1ca 22.5px, #d10b49 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton5 .bc.overlayDiv2 {
+  background: radial-gradient(circle farthest-side, #d10b49 8.99px, #73c1ca 9.99px, #73c1ca 22.5px, #d10b49 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton5 .bc.overlayDiv3 {
+  background: radial-gradient(circle farthest-side, #d10b49 13.99px, #73c1ca 14.99px, #73c1ca 22.5px, #d10b49 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton5 .bc.overlayDiv4 {
+  background: radial-gradient(circle farthest-side, #d10b49 18.99px, #73c1ca 19.99px, #73c1ca 22.5px, #d10b49 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton5 .bc.overlayDiv5 {
+  background: radial-gradient(circle farthest-side, #d10b49 23.99px, #73c1ca 24.99px, #73c1ca 22.5px, #73c1ca 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
 @media (min-width: 768px) {
   .container {
     width: 100%; } }
@@ -625,7 +711,7 @@ footer {
     width: 1170px; } }
 @media (max-width: 1200px) {
   body {
-    background-color: pink; } }
+    background-color: #fff; } }
 ul {
   padding: 0; }
 
