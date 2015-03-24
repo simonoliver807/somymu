@@ -159,7 +159,7 @@ var UIModule = (function () {
             // have hard code the width of the sider row and the slider container maybe get from hidden input on index page
             ///////////////////////////////////////////////////////////////////////////////////////
             this.sliderWidth = 110;
-            this.sliderRowWidth = 525;
+            //this.sliderRowWidth = 525;
             
             
             
@@ -177,7 +177,7 @@ var UIModule = (function () {
 
 
             // add a label for each slider
-            for (var i = 0; i < sliderLabels.length; i++) {
+            for (var i = 0; i < this.numberOfSliders; i++) {
                 $('#sliderNavWrapper').append('<li class="sliderLabelContainer">' + sliderLabels[i] + '</li>');
             }
 
@@ -206,13 +206,7 @@ var UIModule = (function () {
             	doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, doughnutArray[i].data, sliderLabels[i], ordinalPosition);
     		}
             	// resize all the charts
-            $('canvas').css({width:'110%',height:'90%'});
-//            for (var slider = 0; slider < numberOfSliders; slider++) {
-//                for (var sliderRow = 0; sliderRow < numberOfSliders; sliderRow++) {
-//                    var sliderID = sliderRow + '_' + slider;
-//                    templateModule.createSlider(sliderID, slider, sliderLabels[sliderRow], this.windowWidth);
-//                }
-//            }
+            $('canvas').css({width:'95%',height:'95%'});
             // update the handle style and the height of the button colmuns
             var e = document.getElementsByClassName('ui-slider-handle');
             for (var i = 0; i < e.length; i++) {
@@ -226,12 +220,12 @@ var UIModule = (function () {
             // don't need to do this for iphone
             if(this.windowWidth > 992){
                 // set up the width of the slider container
-                var rowWidth = this.sliderRowWidth;
-                // devide the set width of a slider row by the number of sliders giving the width per slider
-                var containerWidth = (rowWidth / 5) * numberOfSliders;
+                //var rowWidth = this.sliderRowWidth;
+
+                // multiply the number of sliders by the width of the sliders to give the slider container width
+                var containerWidth = (this.sliderWidth * this.numberOfSliders) + 30;
                 $('.sliderWrapper').css('width', containerWidth);
-                $('.sliderNavWrapper').css('width', containerWidth);
-                this.sliderWidth = $('.sliderContainer').outerWidth();         
+                $('.sliderNavWrapper').css('width', containerWidth);    
             }
             // update the chart positions so only the css is updated
             this.updateChartPositions();

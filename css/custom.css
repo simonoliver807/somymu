@@ -113,6 +113,7 @@ border-color:#1597a7  !important;
 	text-align:left;
 	font-size:24px;
 	padding-left:5px;
+    cursor: default;
 }
 
 .tab span

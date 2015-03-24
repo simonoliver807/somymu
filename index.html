@@ -61,7 +61,7 @@
         <div id="questiontext1">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-sm-12 col-md-12">
                         <h1>Who will win the Premier Leagure 2014/15</h1>
                     </div>
                 </div>
@@ -74,7 +74,7 @@
         <div class="container">
             <div id="questiontext">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-sm-12">
                         <h1>Who will win the Premier Leagure 2014/15</h1>
                     </div>
                 </div>
@@ -86,18 +86,18 @@
             <div id="Div1">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3">
-                            <div class="tab">
+                        <div class="col-sm-3 col-md-3">
+                            <div id="tabTap" class="tab">
 						        1 <span>Tap</span>
 					        </div>
                         </div>
-				        <div class="col-md-6">
-                            <div class="tab">
+				        <div class="col-sm-6 col-md-6">
+                            <div id="tabSlide" class="tab">
 						        2 <span>Slide</span>
 					        </div>
                         </div>
-				        <div class="col-md-3 zeroPaddingLeft">
-                            <div class="tab">
+				        <div class="col-sm-3 col-md-3 zeroPaddingLeft">
+                            <div id="tabDecide" class="tab">
 						        3 <span>Decide</span>
 					        </div>
                         </div>
@@ -111,11 +111,11 @@
             <div id="Div2">
                 <div class="container">
                     <div class="row sliderNav">
-                        <div class="col-md-3"></div>
-                        <div class="col-md-6 zeroPaddingRight">
+                        <div id="labelsFirstCol" class="col-sm-3 col-md-3"></div>
+                        <div class="col-sm-6 col-md-6 zeroPaddingRight">
                             <div class="navButtonContainer">
-                                <div class="buttonBackground">
-	                                <button class=" leftRightButton fa fa-caret-left fa-2x" onClick="updateSliderPostion('left',this.id)" id="Button2"></button>
+                                <div class="sliderNavButton">
+	                                <button class=" fa fa-chevron-left fa-2x" onClick="updateSliderPostion('left',this.id)" id="Button2"></button>
 	                            </div>
                             </div>
 
@@ -124,12 +124,12 @@
                                 </ul>
                             </div>   
                             <div style="float:right;" class="navButtonContainer right">
-	                            <div class="buttonBackground">
-			                        <button class="leftRightButton fa fa-caret-right fa-2x" onClick="updateSliderPostion('right',this.id)" id="Button1"></button>
+	                            <div class="sliderNavButton">
+			                        <button class="fa fa-chevron-right fa-2x" onClick="updateSliderPostion('right',this.id)" id="Button1"></button>
 		                        </div>
                             </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-sm-3 col-md-3">
                         
                         </div>
                     </div>
@@ -141,15 +141,15 @@
 
 
     <div id="game-content">
-        <div class="container">
+       <div class="container">
             <div id="Div3">
 
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-9" id="modules">
+                        <div class="col-sm-9 col-md-9" id="modules">
 					
                         </div>
-				        <div class="col-md-3">
+				        <div class="col-sm-3 col-md-3">
                             <ul class="results">
 
 					        </ul>
@@ -161,42 +161,25 @@
         </div>
     </div>
 
-<!--	<div id="game-content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9" id="modules">
-					
-                </div>
-				<div class="col-md-3">
-                    <ul class="results">
 
-					</ul>
-                </div>
-
-            </div>
-        </div>
-    </div>-->  	
-
-
-   
         <footer>
 		 <div class="container">
             <div class="row">
-                <div class="col-lg-3">
+                <div class="col-sm-3 col-md-3 col-lg-3">
 					<img class="img-responsive" src="Images/Logo.png" alt="">
                     <p>Lorum Ipsem</p>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-sm-2 col-md-2 col-lg-2">
                     Menu
                 </div>
-				<div class="col-lg-2">
+				<div class="col-sm-2 col-md-2 col-lg-2">
                     Menu
                 </div>
-				<div class="col-lg-2">
+				<div class="col-sm-2 col-md-2 col-lg-2">
                     Twitter
 					Facebook
                 </div>
-				<div class="col-lg-3">
+				<div class="col-sm-2 col-md-2 col-lg-3">
                     Twitter Feed
                 </div>
             </div>

@@ -6,16 +6,8 @@ function l(output){
 }
 
 var modules = new UIModule();
-modules.init(8, 5);
+modules.init(15, 6);
 
-
-//filler row i was using to push the sliders down below the nav bar
-//var setHeight =  $('#headerRow').height(); 
-//document.getElementById('fillerRow').style.height = setHeight+'px';
-var iHeight = window.screen.height;
-$('.leftRightButton').css('top', iHeight/3);
-
-//alert(window.screen.width);
 
 var setButtonValue = function (id) { var buttonID = id.match(/[0-9]+/g); modules.setButtonValue(buttonID); };
 var setSliderValue = function (ui, id) { var sliderID = id.match(/[0-9]+/g); modules.setSliderValue(ui.value, sliderID); };
@@ -54,10 +46,12 @@ function changeSlider() {
 			$('.slider').slider( "option", "orientation", "vertical" );
 			$('.handleStyle').removeClass("fa-rotate-90 fa-lg");
 			$('.handleStyle').addClass("fa-2x");
+
 			 // set up the width of the slider container
-			var rowWidth = modules.sliderRowWidth;
+		    //var rowWidth = modules.sliderRowWidth;
+
 	        // devide the set width of a slider row by the number of sliders giving the width per slider
-	        var containerWidth = (rowWidth / 5) * modules.numberOfSliders;
+			var containerWidth = (this.sliderWidth * this.numberOfSliders) + 30;
 	        $('.sliderWrapper').css('width', containerWidth);
 	        $('.sliderNavWrapper').css('width', containerWidth);
 		    // collapse the navbar;
@@ -300,7 +294,36 @@ function updateSliderPostion(direction, buttonID){
 	}
 	$('.sliderNavWrapper').css({ right: newPos });
 	$('.sliderWrapper').css({ right: newPos });
-
-	
 }
-	
+$('.tab').click(function (event) {
+    var id = event.target.id;
+    switch(id) {
+        case "tabTap":
+            var classNames = document.getElementById('tabTap').className;
+            var showHide = classNames.indexOf('selectBackground');
+            if (showHide === -1) {
+                document.getElementById('tabTap').className = classNames + ' selectBackground';
+                $('.buttonColumn').addClass('selectBackground');
+                $('.overlayDiv').addClass('.overlayDivColored1');
+                var labelClassNames = document.getElementById('labelsFirstCol').className;
+                document.getElementById('labelsFirstCol').className = labelClassNames + ' selectBackground';
+                $('.overlayDiv').addClass('bc');
+
+            }
+            else {
+                $('#tabTap').removeClass('selectBackground');
+                $('.buttonColumn').removeClass('selectBackground');
+                document.getElementById('labelsFirstCol').className = labelClassNames + 'col-sm-3 col-md-3';
+                $('.overlayDiv').removeClass('bc');
+
+              
+            }
+            break;
+        case "tabSlide":
+            
+            break;
+        case "tabDecide":
+            
+            break;
+    }
+});
