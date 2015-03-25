@@ -11,6 +11,10 @@ function addClass(id,className){
 	var allClassNames = document.getElementById(id).className;
 	return allClassNames + ' ' +  className;
 }
+function getCSSint(el) {
+    var strVal = el.replace('px', '');
+    return parseInt(strVal);
+}
 
 var modules = new UIModule();
 modules.init(15, 6);
@@ -31,6 +35,21 @@ $( document ).bind( 'mobileinit', function(){
 //window resize event so we change the slider for vertical to horizontal
 window.onresize = changeSlider;
 function changeSlider() {
+
+    document.getElementById('screenSize').innerHTML = screen.width;
+
+
+
+    var classNames = document.getElementById('tabTap').className;
+    var showHide = classNames.indexOf('selectBackground');
+    if (showHide !== -1) {
+        addHighLight('tabTap');
+    }
+    var classNames = document.getElementById('tabSlide').className;
+    var showHide = classNames.indexOf('selectBackground');
+    if (showHide !== -1) {
+        addHighLight('tabSlide');
+    }
 	var screenWidth = window.outerWidth;
 	if(screenWidth <= 992 && !modules.windowResizeBool){
 		var orientation = $( ".slider" ).slider( "option", "orientation" );
@@ -312,41 +331,63 @@ function addHighLight(id) {
             var classNames = document.getElementById('tabTap').className;
             var showHide = classNames.indexOf('selectBackground');
             if (showHide === -1) {
+                classNames = document.getElementById('tabSlide').className;
+                showHide = classNames.indexOf('selectBackground');
+                if (showHide !== -1) {
+                    addHighLight('tabSlide');
+                }
                 document.getElementById('tabTap').className = classNames + ' selectBackground';
-                $('.buttonColumn').addClass('selectBackground');
-                document.getElementById('labelsFirstCol').className = addClass('labelsFirstCol', 'selectBackground');
                 $('.overlayDiv').addClass('bc');
-                var tapTabWidth = $('.buttonColumn').outerWidth();
-                var offsetPos = $('#labelsFirstCol').offset();
-                updateOverlay(offsetPos.left, offsetPos.top, tapTabWidth, screen.height, 'tabTap');
+                var tapTabWidth = document.getElementById('labelsFirstCol').getBoundingClientRect().width;
+                var offsetPos = $('#modules').offset();
+                var leftMinusPadding = offsetPos.left + getCSSint($('#labelsFirstCol').css('padding-left'));
+                var topAdjsut = offsetPos.top - getCSSint($('#labelsFirstCol').css('height'));
+                var gameHeight = $('#game-content').height() + getCSSint($('#labelsFirstCol').css('height'));
+                document.getElementById('sliderNav').style.background = '0';
+                document.getElementById('button1').style.background = '0';
+                document.getElementById('button2').style.background = '0';
+                updateOverlay('highLightOverlay1', leftMinusPadding, topAdjsut, tapTabWidth, gameHeight, 'tabTap', false);
+                updateOverlay('highLightOverlay2', leftMinusPadding, topAdjsut, tapTabWidth, gameHeight, 'tabTap', true);
             }
             else {
                 $('#tabTap').removeClass('selectBackground');
                 $('.buttonColumn').removeClass('selectBackground');
                 document.getElementById('labelsFirstCol').className = removeClass('labelsFirstCol','selectBackground');
                 $('.overlayDiv').removeClass('bc');
-                updateOverlay(0, 0, 0, 0, '');
+                updateOverlay('highLightOverlay1', 0, 0, 0, 0, '', false);
+                updateOverlay('highLightOverlay2', 0, 0, 0, 0, '', false);
             }
             break;
         case "tabSlide":
             var classNames = document.getElementById('tabSlide').className;
             var showHide = classNames.indexOf('selectBackground');
             if (showHide === -1) {
+                classNames = document.getElementById('tabTap').className;
+                showHide = classNames.indexOf('selectBackground');
+                if (showHide !== -1) {
+                    addHighLight('tabTap');
+                }
                 document.getElementById('tabSlide').className = classNames + ' selectBackground';
-                document.getElementById('labelsSecondCol').className = addClass('labelsSecondCol', 'selectBackground');
-                document.getElementById('button1').className = addClass('button1', 'backgroundCBC');
-                document.getElementById('button2').className = addClass('button2', 'backgroundCBC');
-                $('.sliderRow').addClass('selectBackground');
-                var tapSlideWidth = $('.sliderRow').outerWidth();
-                var offsetPos = $('#labelsSecondCol').offset();
-                updateOverlay(offsetPos.left, offsetPos.top, tapTabWidth, screen.height, 'tabTap');
+                var tapTabWidth = document.getElementById('labelsSecondCol').getBoundingClientRect().width;
+                var offsetPosLeft = $('#sliderRow0').offset().left;
+                var offsetPosTop = $('#game-content').offset().top;
+                var widthMinusPadding = tapTabWidth - getCSSint($('#labelsSecondCol').css('padding-left'));
+                var leftMinusPadding = offsetPosLeft + getCSSint($('#labelsSecondCol').css('padding-left'));
+                var topAdjsut = offsetPosTop- getCSSint($('#labelsSecondCol').css('height'));
+                var gameHeight = $('#game-content').height() + getCSSint($('#labelsFirstCol').css('height'));
+                document.getElementById('sliderNav').style.background = '0';
+                document.getElementById('button1').style.background = '0';
+                document.getElementById('button2').style.background = '0';
+                updateOverlay('highLightOverlay1', leftMinusPadding, topAdjsut, widthMinusPadding, gameHeight, 'tabSlide', false);
+                updateOverlay('highLightOverlay2', leftMinusPadding, topAdjsut, widthMinusPadding, gameHeight, 'tabSlide', true);
             }
             else {
                 $('#tabSlide').removeClass('selectBackground');
-                document.getElementById('labelsSecondCol').className = removeClass('labelsSecondCol','selectBackground');
-                document.getElementById('button1').className = removeClass('button1', 'backgroundCBC');
-                document.getElementById('button2').className = removeClass('button2', 'backgroundCBC');
-                updateOverlay(0, 0, 0, 0, '');
+                document.getElementById('sliderNav').style.background = '#fff';
+                document.getElementById('button1').style.background = '#fff';
+                document.getElementById('button2').style.background = '#fff';
+                updateOverlay('highLightOverlay1', 0, 0, 0, 0, '', false);
+                updateOverlay('highLightOverlay2', 0, 0, 0, 0, '', false);
             }
             break;
         case "tabDecide":
@@ -354,16 +395,20 @@ function addHighLight(id) {
             break;
     }
 }
-function updateOverlay(posLeft, posTop, el_width, el_height, attrVal) {
-    document.getElementById('highLightOverlay').style.left = posLeft + 'px';
-    document.getElementById('highLightOverlay').style.top = posTop + 'px';
-    document.getElementById('highLightOverlay').style.width = el_width + 'px';
-    document.getElementById('highLightOverlay').style.height = el_height + 'px';
-    document.getElementById('highLightOverlay').setAttribute('highLightOverlay', attrVal);
+function updateOverlay(id, posLeft, posTop, el_width, el_height, attrVal, withBG) {
+    document.getElementById(id).style.left = posLeft + 'px';
+    document.getElementById(id).style.top = posTop + 'px';
+    document.getElementById(id).style.width = el_width + 'px';
+    document.getElementById(id).style.height = el_height + 'px';
+    if (withBG) {
+        document.getElementById(id).style.background = '#73c1ca';
+        document.getElementById(id).style.zIndex = '-1';
+    }
+    document.getElementById(id).setAttribute(id, attrVal);
 
 }
-document.getElementById('highLightOverlay').addEventListener('click',
+document.getElementById('highLightOverlay1').addEventListener('click',
     function () {
-        var attrVal = document.getElementById('highLightOverlay').getAttribute('highLightOverlay');
+        var attrVal = document.getElementById('highLightOverlay1').getAttribute('highLightOverlay1');
         addHighLight(attrVal);
     });

@@ -28,7 +28,7 @@ var TemplateModule = (function () {
 
 
                      '</div>' +
-                     '<div class="col-sm-8 col-md-8 sliderRow"><ul class="sliderWrapper" id="sliderColumns' + buttonID + '"><li style="width:30px;display:inline-block;list-style:none;height:5px;"></li></ul>' +
+                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 sliderRow"><ul class="sliderWrapper" id="sliderColumns' + buttonID + '"><li style="width:30px;display:inline-block;list-style:none;height:5px;"></li></ul>' +
                      '</div>' +
                   '</div>');
 

@@ -1,0 +1,566 @@
+/*@import "../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";*/
+@media screen and (max-width: 992px) {
+  body {
+    background-color: #fff; } }
+ul {
+  padding: 0; }
+
+a:hover {
+  text-decoration: none; }
+
+/* main page */
+.selector {
+  border: 1px solid black;
+  width: 1px; }
+
+.col-md-8 {
+  width: 66%;
+  float: left; }
+
+.col-md-2 {
+  width: 16%;
+  float: left; }
+
+footer {
+  position: relative;
+  z-index: 9999; }
+
+.resetContainer {
+  padding: 0;
+  position: fixed;
+  z-index: 9999; }
+
+#game-content {
+  padding-top: 240px; }
+
+#labelsFirstCol {
+  height: 100%; }
+
+.navbar {
+  border: 0; }
+
+.navbar-inverse {
+  background-color: #2797ba;
+  border-color: #fff; }
+
+.fixedHeader {
+  position: fixed;
+  width: 100%;
+  z-index: 998; }
+
+.whiteHeader {
+  background: #fff; }
+
+.blueHeader {
+  background: #1597a7; }
+  .blueHeader .zeroPaddingLeft {
+    padding-left: 0; }
+
+#questiontext1 {
+  color: #000;
+  display: none;
+  margin-top: 75px;
+  min-height: 75px; }
+
+.sliderNav {
+  height: 45px; }
+  .sliderNav .zeroPaddingRight {
+    padding-right: 0; }
+
+.sliderNavContainer {
+  display: inline-block;
+  overflow: hidden;
+  width: 518px; }
+
+.sliderNavWrapper {
+  height: 100%;
+  margin: 0;
+  position: relative;
+  right: 0px;
+  transition: right 1s ease-in-out; }
+
+.sliderLabelContainer {
+  display: inline-block;
+  font-size: 8pt;
+  list-style: none;
+  text-align: center;
+  width: 105px; }
+
+.navButtonContainer {
+  display: inline-block;
+  list-style: none;
+  width: 24px; }
+
+.sliderNavButton {
+  color: #1597a7; }
+  .sliderNavButton button {
+    background: 0; }
+
+.chartKey {
+  width: 100%; }
+
+.chartKeyText {
+  font-family: "Open Sans";
+  font-size: 7pt;
+  line-height: 12px;
+  padding-left: 5px; }
+
+.chartKeyRow {
+  /* empty */ }
+
+.heightFiller10 {
+  height: 10px;
+  width: 100%; }
+
+.heightFiller5 {
+  height: 5px;
+  width: 100%; }
+
+.widthFiller10 {
+  height: 100%;
+  width: 10px; }
+
+.chartKeyDiv1 {
+  background: #883682;
+  width: 12px;
+  height: 12px; }
+
+.chartKeyDiv2 {
+  background: #1f74c9;
+  width: 12px;
+  height: 12px; }
+
+.chartKeyDiv3 {
+  background: #fdc732;
+  width: 12px;
+  height: 12px; }
+
+.chartKeyDiv4 {
+  background: #e2282f;
+  width: 12px;
+  height: 12px; }
+
+.chartKeyDiv5 {
+  background: #4fbd55;
+  width: 12px;
+  height: 12px; }
+
+.postionWidth {
+  width: 47px; }
+
+/*.chartContainer { 
+	position: relative;
+	canvasContainer {
+		position: absolute; top: 0; left: 0;
+    	transition: all 1s ease-out;
+	}
+	canvasContainer:nth-child(1) { transform: translate3d(0, 0%, 0); }		
+	canvasContainer:nth-child(2) { transform: translate3d(0, 0%, 0); }
+	canvasContainer:nth-child(3) { transform: translate3d(0, 0%, 0); }
+} */
+/* fillers */
+.fillerDiv25 {
+  height: 25%; }
+
+/* bs tooltip */
+.tooltip {
+  z-index: 997; }
+
+.tooltip-inner {
+  background-color: #000;
+  color: #fff;
+  font-size: 12px;
+  margin: 0 6px 0 0;
+  max-width: 320px;
+  padding: 11%;
+  text-align: center;
+  text-decoration: none;
+  width: 100%; }
+
+.tooltip.top .tooltip-arrow {
+  border-top-color: #000;
+  border-width: 12px 12px 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -12px; }
+
+/* bs dropdown */
+.dropdown-menu {
+  border: 1px solid #2797ba;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  border-radius: 0; }
+
+.dropdown-menu:before {
+  position: absolute;
+  top: -7px;
+  left: 9px;
+  display: inline-block;
+  border-right: 7px solid transparent;
+  border-bottom: 7px solid #ccc;
+  border-left: 7px solid transparent;
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+  content: ''; }
+
+.dropdown-menu:after {
+  position: absolute;
+  top: -6px;
+  left: 10px;
+  display: inline-block;
+  border-right: 6px solid transparent;
+  border-bottom: 6px solid #ffffff;
+  border-left: 6px solid transparent;
+  content: ''; }
+
+.canvasBackground {
+  display: block; }
+
+/* button styling*/
+.moduleButtonLabel {
+  font-weight: 600; }
+
+.scrollButtonLeft {
+  color: #e9eaed;
+  position: absolute;
+  left: 36%;
+  top: 50%;
+  font-size: 32px; }
+
+.scrollButtonRight {
+  color: #e9eaed;
+  position: absolute;
+  left: 62%;
+  top: 50%; }
+
+/* slider scale */
+.maxMin {
+  border-bottom: 1px solid black;
+  border-top: 1px solid black;
+  height: 100%;
+  margin: 0 auto;
+  width: 100%; }
+
+.sliderScale {
+  border-left: 1px solid black;
+  height: 100%;
+  margin: 0 auto;
+  width: 1px; }
+
+.scaleMiddle {
+  border-top: 1px solid black;
+  bottom: 50%;
+  height: 1px;
+  left: 27%;
+  position: relative;
+  width: 50%; }
+
+/* the slider styling*/
+.sliderWrapper {
+  -webkit-transition: right 1s ease-in-out;
+  -moz-transition: right 1s ease-in-out;
+  -ms-transition: right 1s ease-in-out;
+  -o-transition: right 1s ease-in-out;
+  transition: right 1s ease-in-out;
+  position: relative;
+  height: 100%;
+  right: 0px; }
+
+.sliderRow {
+  display: inline-block;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  padding-top: 5px;
+  height: 160px; }
+
+.labelRow {
+  overflow: hidden;
+  height: 20px; }
+
+.sliderSpacer {
+  display: inline-block; }
+
+.sliderContainer {
+  display: inline-block;
+  height: 160px;
+  list-style: outside none none;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 105px; }
+
+.sliderLabel {
+  padding-left: 0px; }
+
+.sliderLabelMobile {
+  display: none; }
+
+/* remove default style from slider elements */
+.slider {
+  background: url("");
+  border: 0;
+  height: 106px;
+  /*    width:100%;*/
+  position: relative;
+  margin: 14.5px auto 0 auto;
+  width: 12px; }
+
+.sliderTotal {
+  color: #000;
+  cursor: default;
+  font-size: 20px;
+  font-weight: 600;
+  left: 72px;
+  position: absolute;
+  top: 47%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 995; }
+
+@media screen and (min-width: 993px) {
+  /* style the slider handles per column */
+  #sliderStyle0 .handleStyle {
+    color: #883682; }
+
+  #sliderStyle1 .handleStyle {
+    color: #1f74c9; }
+
+  #sliderStyle2 .handleStyle {
+    color: #fdc732; }
+
+  #sliderStyle3 .handleStyle {
+    color: #e2282f; }
+
+  #sliderStyle4 .handleStyle {
+    color: #4fbd55; }
+
+  #sliderStyle5 .handleStyle {
+    color: #883682; } }
+.slider .handleStyle {
+  background: #fff;
+  border: 0 none;
+  height: 25px;
+  left: -6px;
+  position: absolute;
+  width: 22px; }
+
+.slider .handleStyle:hover {
+  background: #fff;
+  border: 0; }
+
+/* style the factor button */
+.factorIcon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto; }
+
+.overlayDiv {
+  position: relative;
+  z-index: 100;
+  width: 50px;
+  height: 50px; }
+
+/* factor button 0 */
+.greyOut {
+  background: #d3d3d3;
+  /* The Fallback */
+  background: rgba(211, 211, 211, 0.5);
+  position: absolute;
+  z-index: 997;
+  width: 61.5%; }
+  .greyOut .greyOutPlus {
+    height: 15%;
+    width: 10%; }
+
+/*      #moduleButton0{
+          color: $color1;
+          .buttonInner0{
+              font-size: 0.5em;
+          }
+      }
+  .fa-plus {
+  	cursor: default;
+  } */
+.buttonColumn {
+  height: 160px; }
+
+.highLightOverlay {
+  position: absolute;
+  z-index: 998; }
+
+/* UI 2 */
+.factorGreen {
+  background: green;
+  text-align: center; }
+
+.factorYellow {
+  background: yellow; }
+
+/* factor button 0 */
+#moduleButton0 .overlayDiv1 {
+  background: radial-gradient(circle farthest-side, #883682 3.99px, #fff 4.99px, #fff 22.5px, #883682 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton0 .overlayDiv2 {
+  background: radial-gradient(circle farthest-side, #883682 8.99px, #fff 9.99px, #fff 22.5px, #883682 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton0 .overlayDiv3 {
+  background: radial-gradient(circle farthest-side, #883682 13.99px, #fff 14.99px, #fff 22.5px, #883682 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton0 .overlayDiv4 {
+  background: radial-gradient(circle farthest-side, #883682 18.99px, #fff 19.99px, #fff 22.5px, #883682 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton0 .overlayDiv5 {
+  background: radial-gradient(circle farthest-side, #883682 23.99px, #fff 24.99px, #fff 22.5px, #fff 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+/* factor button 1 */
+#moduleButton1 .overlayDiv1 {
+  background: radial-gradient(circle farthest-side, #1f74c9 3.99px, #fff 4.99px, #fff 22.5px, #1f74c9 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton1 .overlayDiv2 {
+  background: radial-gradient(circle farthest-side, #1f74c9 8.99px, #fff 9.99px, #fff 22.5px, #1f74c9 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton1 .overlayDiv3 {
+  background: radial-gradient(circle farthest-side, #1f74c9 13.99px, #fff 14.99px, #fff 22.5px, #1f74c9 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton1 .overlayDiv4 {
+  background: radial-gradient(circle farthest-side, #1f74c9 18.99px, #fff 19.99px, #fff 22.5px, #1f74c9 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton1 .overlayDiv5 {
+  background: radial-gradient(circle farthest-side, #1f74c9 23.99px, #fff 24.99px, #fff 22.5px, #1f74c9 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+/* factor button 2 */
+#moduleButton2 .overlayDiv1 {
+  background: radial-gradient(circle farthest-side, #fdc732 3.99px, #fff 4.99px, #fff 22.5px, #fdc732 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton2 .overlayDiv2 {
+  background: radial-gradient(circle farthest-side, #fdc732 8.99px, #fff 9.99px, #fff 22.5px, #fdc732 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton2 .overlayDiv3 {
+  background: radial-gradient(circle farthest-side, #fdc732 13.99px, #fff 14.99px, #fff 22.5px, #fdc732 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton2 .overlayDiv4 {
+  background: radial-gradient(circle farthest-side, #fdc732 18.99px, #fff 19.99px, #fff 22.5px, #fdc732 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton2 .overlayDiv5 {
+  background: radial-gradient(circle farthest-side, #fdc732 23.99px, #fff 24.99px, #fff 22.5px, #fdc732 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+/* factor button 3 */
+#moduleButton3 .overlayDiv1 {
+  background: radial-gradient(circle farthest-side, #e2282f 3.99px, #fff 4.99px, #fff 22.5px, #e2282f 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton3 .overlayDiv2 {
+  background: radial-gradient(circle farthest-side, #e2282f 8.99px, #fff 9.99px, #fff 22.5px, #e2282f 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton3 .overlayDiv3 {
+  background: radial-gradient(circle farthest-side, #e2282f 13.99px, #fff 14.99px, #fff 22.5px, #e2282f 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton3 .overlayDiv4 {
+  background: radial-gradient(circle farthest-side, #e2282f 18.99px, #fff 19.99px, #fff 22.5px, #e2282f 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton3 .overlayDiv5 {
+  background: radial-gradient(circle farthest-side, #e2282f 23.99px, #fff 24.99px, #fff 22.5px, #e2282f 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+/* factor button 4 */
+#moduleButton4 .overlayDiv1 {
+  background: radial-gradient(circle farthest-side, #4fbd55 3.99px, #fff 4.99px, #fff 22.5px, #4fbd55 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton4 .overlayDiv2 {
+  background: radial-gradient(circle farthest-side, #4fbd55 8.99px, #fff 9.99px, #fff 22.5px, #4fbd55 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton4 .overlayDiv3 {
+  background: radial-gradient(circle farthest-side, #4fbd55 13.99px, #fff 14.99px, #fff 22.5px, #4fbd55 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton4 .overlayDiv4 {
+  background: radial-gradient(circle farthest-side, #4fbd55 18.99px, #fff 19.99px, #fff 22.5px, #4fbd55 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton4 .overlayDiv5 {
+  background: radial-gradient(circle farthest-side, #4fbd55 23.99px, #fff 24.99px, #fff 22.5px, #4fbd55 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+/* factor button 5 */
+#moduleButton5 .overlayDiv1 {
+  background: radial-gradient(circle farthest-side, #d10b49 3.99px, #fff 4.99px, #fff 22.5px, #d10b49 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton5 .overlayDiv2 {
+  background: radial-gradient(circle farthest-side, #d10b49 8.99px, #fff 9.99px, #fff 22.5px, #d10b49 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton5 .overlayDiv3 {
+  background: radial-gradient(circle farthest-side, #d10b49 13.99px, #fff 14.99px, #fff 22.5px, #d10b49 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton5 .overlayDiv4 {
+  background: radial-gradient(circle farthest-side, #d10b49 18.99px, #fff 19.99px, #fff 22.5px, #d10b49 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+#moduleButton5 .overlayDiv5 {
+  background: radial-gradient(circle farthest-side, #d10b49 23.99px, #fff 24.99px, #fff 22.5px, #d10b49 23.75px, #fff 25px) repeat scroll 0 0 transparent;
+  width: 100%;
+  height: 100%; }
+
+@media (min-width: 768px) {
+  .container {
+    width: 100%; } }
+@media (min-width: 992px) {
+  .container {
+    width: 970px; } }
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px; } }
+/*@import "_style_992.scss";*/
+
+/*# sourceMappingURL=style.css.map */

@@ -74,55 +74,55 @@ var DoughNutModule = (function () {
         data: [
                 {
                     value: 10,
-                    color: "#ca97af",
+                    color: "#ca97af"
                 },
                 {
 
                     value: 0,
-                    color: "#883682",
+                    color: "#883682"
                 },
                 {
                     value: 10,
-                    color: "#76A3A8",
+                    color: "#76A3A8"
                 },
                 {
                     value: 0,
-                    color: "#1F74C9",
+                    color: "#1F74C9"
                 },
                 {
                     value: 10,
-                    color: "#FFE680",
+                    color: "#FFE680"
                 },
                 {
                     value: 0,
-                    color: "#FDC732",
+                    color: "#FDC732"
                 },
                 {
                     value: 10,
-                    color: "#F5BF93",
+                    color: "#F5BF93"
 
                 },
                 {
                     value: 0,
-                    color: "#E2282F",
+                    color: "#E2282F"
                 },
                  {
                      value: 10,
-                     color: "#D8E8AE",
+                     color: "#D8E8AE"
                  },
                  {
                      value: 0,
-                     color: "#4FBD55",
+                     color: "#4FBD55"
                  }
-//                 ,
-//                 {
-//                     value: 10,
-//                     color: "#d10b49",
-//                 },
-//                 {
-//                     value: 0,
-//                     color: "#acdcaa",
-//                 }
+                 ,
+                 {
+                     value: 10,
+                     color: "#d10b49"
+                 },
+                 {
+                     value: 0,
+                     color: "#acdcaa"
+                 }
         ]
     }
 });
@@ -200,7 +200,9 @@ var UIModule = (function () {
             }
             for (var i = 0; i < numberOfSliders; i++){
             	// create a chart for each sliderColumn
-            	doughnutArray[i] = new DoughNutModule();
+                doughnutArray[i] = new DoughNutModule();
+                var jsonItems = document.getElementById('jsonInput').value;
+     
             	var ordinalPosition = this.getOrdinalPosition(i+1);
             	doughnutArray[i].setDoughnutID(i, ordinalPosition);
             	doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, doughnutArray[i].data, sliderLabels[i], ordinalPosition);

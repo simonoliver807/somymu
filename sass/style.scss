@@ -109,7 +109,6 @@ footer {
 }
 // the navigation bar for the labels
 .sliderNav {
-	background: $w;
 	height: 45px;
 		.zeroPaddingRight {
 			padding-right: 0;
@@ -142,7 +141,7 @@ footer {
 .sliderNavButton {
 	color: #1597a7;
 		button {
-			background: #fff;
+			background: 0;
 
 		}
 }
@@ -435,7 +434,7 @@ footer {
 .buttonColumn {
 	height : 160px
 }
-#highLightOverlay {
+.highLightOverlay {
 	position: absolute;
 	z-index: 998;
 }
