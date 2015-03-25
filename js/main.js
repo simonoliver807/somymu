@@ -1,8 +1,15 @@
 ﻿"use strict";
 
-function l(output){
-	
+function l(output){	
 	console.log('the output is '+ output);
+}
+function removeClass(id,className){
+	var allClassNames = document.getElementById(id).className;
+	return allClassNames.replace(' ' + className,'');
+}
+function addClass(id,className){
+	var allClassNames = document.getElementById(id).className;
+	return allClassNames + ' ' +  className;
 }
 
 var modules = new UIModule();
@@ -307,8 +314,7 @@ function addHighLight(id) {
             if (showHide === -1) {
                 document.getElementById('tabTap').className = classNames + ' selectBackground';
                 $('.buttonColumn').addClass('selectBackground');
-                var labelClassNames = document.getElementById('labelsFirstCol').className;
-                document.getElementById('labelsFirstCol').className = labelClassNames + ' selectBackground';
+                document.getElementById('labelsFirstCol').className = addClass('labelsFirstCol', 'selectBackground');
                 $('.overlayDiv').addClass('bc');
                 var tapTabWidth = $('.buttonColumn').outerWidth();
                 var offsetPos = $('#labelsFirstCol').offset();
@@ -317,7 +323,7 @@ function addHighLight(id) {
             else {
                 $('#tabTap').removeClass('selectBackground');
                 $('.buttonColumn').removeClass('selectBackground');
-                document.getElementById('labelsFirstCol').className = labelClassNames + 'col-sm-3 col-md-3';
+                document.getElementById('labelsFirstCol').className = removeClass('labelsFirstCol','selectBackground');
                 $('.overlayDiv').removeClass('bc');
                 updateOverlay(0, 0, 0, 0, '');
             }
@@ -327,16 +333,19 @@ function addHighLight(id) {
             var showHide = classNames.indexOf('selectBackground');
             if (showHide === -1) {
                 document.getElementById('tabSlide').className = classNames + ' selectBackground';
-                var labelClassNames = document.getElementById('labelsFirstCol').className;
-                document.getElementById('labelsSecondCol').className = labelClassNames + ' selectBackground';
+                document.getElementById('labelsSecondCol').className = addClass('labelsSecondCol', 'selectBackground');
+                document.getElementById('button1').className = addClass('button1', 'backgroundCBC');
+                document.getElementById('button2').className = addClass('button2', 'backgroundCBC');
+                $('.sliderRow').addClass('selectBackground');
                 var tapSlideWidth = $('.sliderRow').outerWidth();
                 var offsetPos = $('#labelsSecondCol').offset();
                 updateOverlay(offsetPos.left, offsetPos.top, tapTabWidth, screen.height, 'tabTap');
             }
             else {
-                $('#tabslide').removeClass('selectBackground');
-                var labelClassNames = document.getElementById('labelsFirstCol').className;
-                document.getElementById('labelsSecondCol').className = labelClassNames + ' selectBackground';
+                $('#tabSlide').removeClass('selectBackground');
+                document.getElementById('labelsSecondCol').className = removeClass('labelsSecondCol','selectBackground');
+                document.getElementById('button1').className = removeClass('button1', 'backgroundCBC');
+                document.getElementById('button2').className = removeClass('button2', 'backgroundCBC');
                 updateOverlay(0, 0, 0, 0, '');
             }
             break;

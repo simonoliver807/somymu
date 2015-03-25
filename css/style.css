@@ -36,6 +36,9 @@ footer {
 #labelsFirstCol {
   height: 100%; }
 
+.backgroundCBC {
+  background: #73c1ca !important; }
+
 .selectBackground {
   background: #73c1ca !important;
   color: #fff; }
@@ -386,7 +389,8 @@ footer {
   height: 160px; }
 
 #highLightOverlay {
-  position: absolute; }
+  position: absolute;
+  z-index: 998; }
 
 /* factor button 0 */
 #moduleButton0 .overlayDiv1 {

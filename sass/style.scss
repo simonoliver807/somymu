@@ -62,6 +62,7 @@ footer {
 	position: relative;
 	z-index: 9999;
 }
+// single or double css lines updates 
 .resetContainer {
 	padding: 0;	
 	position: fixed;
@@ -72,6 +73,9 @@ footer {
 }
 #labelsFirstCol {
 	height: 100%;
+}
+.backgroundCBC {
+	background: $cbc !important;	
 }
 .selectBackground {
 	background: $cbc !important;
@@ -433,6 +437,7 @@ footer {
 }
 #highLightOverlay {
 	position: absolute;
+	z-index: 998;
 }
 @import "_style_buttons.scss";
 @media (min-width: 768px){
