@@ -42,7 +42,7 @@ var SliderModule = (function () {
             if (sliderValue !== '') {
                 this.sliderValue = sliderValue - 1;
                 //  update the tooltip
-                var position = $('#' + this.sliderID).offset();
+                var position = $('#sliderID' + this.sliderID).offset();
                 position.left = position.left - 2;
                 position.top = position.top - 35;
                 $('.tooltip').css({ left: position.left, top: position.top });
@@ -70,60 +70,7 @@ var DoughNutModule = (function () {
             this.chartStatus = true;
             this.ordialPosition = ordinalPosition;
             this.totalScore = 0;
-        },
-        data: [
-                {
-                    value: 10,
-                    color: "#ca97af"
-                },
-                {
-
-                    value: 0,
-                    color: "#883682"
-                },
-                {
-                    value: 10,
-                    color: "#76A3A8"
-                },
-                {
-                    value: 0,
-                    color: "#1F74C9"
-                },
-                {
-                    value: 10,
-                    color: "#FFE680"
-                },
-                {
-                    value: 0,
-                    color: "#FDC732"
-                },
-                {
-                    value: 10,
-                    color: "#F5BF93"
-
-                },
-                {
-                    value: 0,
-                    color: "#E2282F"
-                },
-                 {
-                     value: 10,
-                     color: "#D8E8AE"
-                 },
-                 {
-                     value: 0,
-                     color: "#4FBD55"
-                 }
-                 ,
-                 {
-                     value: 10,
-                     color: "#d10b49"
-                 },
-                 {
-                     value: 0,
-                     color: "#acdcaa"
-                 }
-        ]
+        }
     }
 });
 var UIModule = (function () {
@@ -131,6 +78,7 @@ var UIModule = (function () {
     var buttonArray = [];
     var doughnutArray = [];
     var numberOfButtons;
+    var numberOfDoughnuts
     var currentSlider;
     var sliderWidth;
     var templateModule;
@@ -145,12 +93,14 @@ var UIModule = (function () {
                 document.getElementsByTagName("body")[0].className = 'cms-bootstrap ie9';
                 this.ie9 = 'ie9';
             };
+            var self = this;
             // set up screen size
-             this.windowWidth = window.outerWidth;
+            this.windowWidth = window.outerWidth;
             //this.windowWidth = 900;
             var templateModule = new TemplateModule();
           
             this.numberOfButtons = numberOfButtons;
+            this.numberOfDoughnuts = 2;
             this.currentSlider = 0;
             this.windowResizeBool = false;
             ///////////////////////////////////////////////////////////////////////////////////////
@@ -171,7 +121,8 @@ var UIModule = (function () {
 
             //lets create an array of buttons and a array of doughnuts to start
             var sliderLabels = ['Arsenal', 'Chelsea', 'Liverpool', 'Portsmouth', 'Man United', 'Man City', 'Leeds', 'Bournemouth'];
-            var buttonLabels = ['Manager', 'Goal Keeper & Defence', 'Midfield', 'league Position & Recent Form', 'Attack'];
+            var chartLabels = ['Yes','No']
+            var buttonLabels = ['Self-determination', 'Economy', 'Immigration', 'Stiff Upper Lip', 'Relationship with USA'];
 
 
             // add a label for each slider
@@ -181,31 +132,30 @@ var UIModule = (function () {
             for (var i = 0; i < numberOfButtons; i++) {
                 buttonArray[i] = new ButtonModule();
                 buttonArray[i].setButtonID(i);
-                templateModule.createButton(i, buttonLabels[i]);
+                templateModule.createLabel(i, buttonLabels[i]);
                 sliderArray[i] = new SliderModule();
                 sliderArray[i].setSliderID(i);
                 templateModule.createSlider(i,sliderLabels[i], this.windowWidth);
             }
-            for (var i = 0; i < numberOfButtons; i++){
+            var chartData = document.getElementById('jsonInput').value;
+            chartData = JSON.parse(chartData);
+            for (var i = 0; i < this.numberOfDoughnuts; i++){
             	// create a chart for each sliderColumn
                 doughnutArray[i] = new DoughNutModule();
-                var jsonItems = document.getElementById('jsonInput').value;
-     
             	var ordinalPosition = this.getOrdinalPosition(i+1);
             	doughnutArray[i].setDoughnutID(i, ordinalPosition);
-            	doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, doughnutArray[i].data, sliderLabels[i], ordinalPosition);
-    		}
+            	doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, chartData, chartLabels[i], ordinalPosition);
+            }
+            // bind click events to all the buttons
+            $('.ui-slider-handle').on('click', function () {
+
+                self.setButtonValue(this.id);
+            });
             	// resize all the charts
-            $('canvas').css({width:'95%',height:'95%'});
-            // update the handle style and the height of the button colmuns
-            var e = document.getElementsByClassName('ui-slider-handle');
-            for (var i = 0; i < e.length; i++) {
-            	if(this.windowWidth < 1024){
-            		e[i].className = e[i].className + ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle';
-            	}
-            	else {
-            		e[i].className = e[i].className + ' fa fa-minus-square fa-2x handleStyle';
-            	}
+            $('canvas').css({ width: '95%', height: '95%' });
+            // update the handle style 
+            for (var i = 0; i < this.numberOfButtons; i++) {
+                document.getElementById('sliderID'+i).className = addClass('sliderID' + i, ' overlaydiv overlayDiv1 handleStyle');
             }
             // don't need to do this for iphone
             if(this.windowWidth > 992){
@@ -221,50 +171,37 @@ var UIModule = (function () {
             this.updateChartPositions();
            
         },
-        setButtonValue: function (buttonID) {
-            var button = buttonArray[buttonID];
+        setButtonValue: function (sliderID) {
+            var sliderNumber = sliderID.match(/[0-9]+/g)[0];
+            var button = buttonArray[sliderNumber];
             button.setButtonValue();
-            var buttonValue = buttonArray[buttonID].buttonValue;
+            var buttonValue = buttonArray[sliderNumber].buttonValue;
             // update the total value for the slider
-            for (var i = 0; i < this.numberOfSliders; i++) {
-                sliderArray[buttonID][i].setValues('', buttonValue);
+            sliderArray[sliderNumber].setValues('', buttonValue);
+            if (buttonArray[sliderNumber].buttonValue === 1) {
+                $('#' + sliderID).removeClass('overlayDiv' + 5);
             }
-            if (buttonArray[buttonID].buttonValue === 1) {
-                $('#moduleButton' + buttonID).children().removeClass('overlayDiv' + 5);
-            }
-            else { $('#moduleButton' + buttonID).children().removeClass('overlayDiv' + (buttonArray[buttonID].buttonValue - 1)); }
-            $('#moduleButton' + buttonID).children().addClass('overlayDiv' + buttonArray[buttonID].buttonValue);
-
-
-            // var buttonSize = ['0.5em', '0.75em', '1em', '1.2em', '2em'];
-            // var fontSize = buttonSize[buttonValue - 1];
-            //$('.buttonInner' + buttonID).animate({
-            //    fontSize: fontSize
-            //   }, 30, function() {
-            //    // Animation complete.
-            //});
-            //$('.buttonInner' + buttonID).css({ 'font-size': fontSize });
-
-
+            else { $('#' + sliderID).removeClass('overlayDiv' + (buttonArray[sliderNumber].buttonValue - 1)); }
+            $('#' + sliderID).addClass('overlayDiv' + buttonArray[sliderNumber].buttonValue);
             // this update the total value
-            this.updateButtonValue(buttonID);
+            this.updateButtonValue(sliderID);
 
         },
         setSliderValue: function (sliderValue, sliderID) {
             // update the slider module values each time the slider moves
-            sliderArray[sliderID[0]][sliderID[1]].setValues(sliderValue, buttonArray[sliderID[0]].buttonValue);
+            sliderArray[sliderID[0]].setValues(sliderValue, buttonArray[sliderID[0]].buttonValue);
            
-            this.updateTotal(sliderID[[1]]);
-            var chartObject = doughnutArray[sliderID[1]].doughnutObject;
-            var segment1 =  (parseInt(sliderID[0]) * 2 ); 
-            var segment2  = segment1 + 1;
+            this.updateTotal(sliderID[[0]]);
+           // var chartObject = doughnutArray[sliderID[0]].doughnutObject;
+            //var segment1 =  (parseInt(sliderID[0]) * 2 ); 
+            //var segment2  = segment1 + 1;
             
-            var sliderValue = sliderArray[sliderID[0]][sliderID[1]].totalValue / 10;
-            var buttonValue = (buttonArray[sliderID[0]].buttonValue * 10) - sliderValue;
+            //var sliderValue = sliderArray[sliderID[0]][sliderID[1]].totalValue / 10;
+            //var buttonValue = (buttonArray[sliderID[0]].buttonValue * 10) - sliderValue;
             
-            chartObject.segments[segment1].value = buttonValue;
-            chartObject.segments[segment2].value = sliderValue;
-            chartObject.update();
+            //chartObject.segments[segment1].value = buttonValue;
+            //chartObject.segments[segment2].value = sliderValue;
+            //chartObject.update();
 
         },
         updateButtonValue: function (buttonNumber) {
@@ -282,27 +219,26 @@ var UIModule = (function () {
             }
         	this.updateChartPositions();
         },
-        updateTotal: function (labelNumber) {
+        updateTotal: function (sliderNumber) {
         	// then update the total value
-            var sliderTotal = 0;
+            var sliderTotal = sliderArray[sliderNumber].totalValue;;
             var weightTotal = 0;
             var verticleNumber = 0; 
             for (var rowNumber = 0; rowNumber < this.numberOfButtons; rowNumber++) {
             	if(!buttonArray[rowNumber].disabledBool){
-            		sliderTotal = sliderTotal + sliderArray[rowNumber][labelNumber].totalValue;
                 	weightTotal += buttonArray[rowNumber].buttonValue;
             	}
             }
             var chartTotalHTML = Math.round(100 * (sliderTotal / (weightTotal * 100)));
-            doughnutArray[labelNumber].totalScore  = chartTotalHTML;
+            doughnutArray[sliderNumber].totalScore  = chartTotalHTML;
             if(chartTotalHTML < 10){
-            	 document.getElementById('sliderTotal' + labelNumber).style.left = "67px";
+            	 document.getElementById('sliderTotal' + sliderNumber).style.left = "67px";
             }
             else {
-            	document.getElementById('sliderTotal' + labelNumber).style.left = "66px";
+            	document.getElementById('sliderTotal' + sliderNumber).style.left = "66px";
             }
-            document.getElementById('sliderTotal' + labelNumber).innerHTML = chartTotalHTML;
-            document.getElementById('sliderTotalSmall' + labelNumber).innerHTML = chartTotalHTML;
+            document.getElementById('sliderTotal' + sliderNumber).innerHTML = chartTotalHTML;
+            document.getElementById('sliderTotalSmall' + sliderNumber).innerHTML = chartTotalHTML;
         },
         removeChartSegment: function (id) {
         	var deleteSegment = buttonArray[id].buttonUpdateID * 2;

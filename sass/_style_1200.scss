@@ -2,289 +2,31 @@
     body {
         background-color: #fff;
     }
-}
- ul {
-    padding: 0;
-}
-/* main page */
-.selector {
-	border:1px solid black;
-    width:1px;
-}
-.col-md-8 {
-    width: 66%;
-    float:left;
-}
-.col-md-2 {
-    width: 16%;
-    float:left;
-}
-.resetContainer {
-	padding: 0;	
-	position: fixed;
-	 z-index: 9999;
-}
-#game-content {
-	padding-top: 240px;
-}
-.navbar { border: 0; }
-
-.navbar-inverse {
-    background-color: #2797ba;
-    border-color: #fff;
-}
-.fixedHeader {
-	position: fixed;
-	width: 100%;
-	z-index: 998;
-}
-.whiteHeader {
-	background: $w;
-}
-.blueHeader {
-	background: #1597a7;
-		.zeroPaddingLeft {
-			padding-left: 0;
-		}
-}
-#questiontext1 {
-    color: #000;
-	display: none;
-    margin-top: 75px;
-    min-height: 75px;
-}
-// the navigation bar for the labels
-.sliderNav {
-	background: $w;
-	height: 45px;
-		.zeroPaddingRight {
-			padding-right: 0;
-		}
-}
-.sliderNavContainer {
-	display: inline-block;
-    overflow: hidden;
-    width: 518px;
-}
-.sliderNavWrapper {
-	height: 100%;
-	margin: 0;
-	position: relative;
-	right: 0px;
-	transition: right 1s ease-in-out;	
-}
-.sliderLabelContainer {
-	display: inline-block;
-	font-size: 8pt;
-	list-style: none;
-	text-align: center;
-	width: 105px;
-}	
-.navButtonContainer {
-	display: inline-block;
-	list-style: none;
-	width: 24px;
-}
-.sliderNavButton {
-	color: #1597a7;
-		button {
-			background: #fff;
-
-		}
-}
-// charts
-.chartKey {
-	width: 100%;
-
-}
-.chartKeyText {
-	font-family: "Open Sans" ;
-	font-size: 7pt;
-	line-height:12px;	
-	padding-left: 5px;
-}
-.chartKeyRow {
- /* empty */
-}
-.heightFiller10 {
-	height: 10px;
-    width: 100%;
-}
-.heightFiller5 {
-	height: 5px;
-	width: 100%;
-}
-.chartKeyDiv1{
-	background: $color1;
-	width: $ckdw;
-	height: $ckdh;
-}
-.chartKeyDiv2{
-	background: $color2;
-	width: $ckdw;
-	height: $ckdh;
-}
-.chartKeyDiv3{
-		background: $color3;
-	width: $ckdw;
-	height: $ckdh;
-}
-.chartKeyDiv4{
-		background: $color4;
-	width: $ckdw;
-	height: $ckdh;
-}
-.chartKeyDiv5{
-		background: $color5;
-	width: $ckdw;
-	height: $ckdh;
-}
-.postionWidth {
-	width:47px;
-}
-/*.chartContainer { 
-	position: relative;
-	canvasContainer {
-		position: absolute; top: 0; left: 0;
-    	transition: all 1s ease-out;
+	ul {
+		padding: 0;
 	}
-	canvasContainer:nth-child(1) { transform: translate3d(0, 0%, 0); }		
-	canvasContainer:nth-child(2) { transform: translate3d(0, 0%, 0); }
-	canvasContainer:nth-child(3) { transform: translate3d(0, 0%, 0); }
-} */
-
-
-/* fillers */
-.fillerDiv25 {
-    height: 25%;
-}
-
-/* tooltip */
-	.tooltip {
-		z-index:997;
+	.container {
+  		width: 1170px;
 	}
-     .tooltip-inner {
-        background-color: #000;
-        border-radius: 0;
-        color: #fff;
-        font-size: 12px;
-        margin: 0 6px 0 0;
-        max-width: 320px;
-        padding: 11%;
-        text-align: center;
-        text-decoration: none;
-        width: 100%;
-    }
-    .tooltip.top .tooltip-arrow {
-        border-top-color: #000;
-        border-width: 12px 12px 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -12px;
-    }
-canvas {
-	
-}
-.canvasBackground {
-	display: block;	
-}
-
-/* button styling*/
-.moduleButtonLabel {
-    font-weight: 600;
-}
-.scrollButtonLeft {
-	color: $scrollButton;
-	position: absolute;	
-	left: 36%;
-	top: 50%;
-	font-size: 32px;
-}
-.scrollButtonRight {
-	color: $scrollButton;
-	position: absolute;	
-	left: 62%;
-	top: 50%;
-}
-/* slider scale */
-.maxMin {
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    height: 100%;
-    margin: 0 auto;
-    width: 100%;
-}
-.sliderScale {
-    border-left: 1px solid black;
-    height: 100%;
-    margin: 0 auto;
-    width: 1px;
-}
-.scaleMiddle {
-    border-top: 1px solid black;
-    bottom: 50%;
-    height: 1px;
-    left: 27%;
-    position: relative;
-    width: 50%;
-}
-/* the slider styling*/
-.sliderWrapper {
-	@include transition(right, 1s, ease-in-out);	
-	position: relative;
-	height: 100%;
-	right: 0px;
-}
-.sliderRow { 
-    display: inline-block;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    padding-top: 5px;
-    height: 160px;
-
-}
-.labelRow {
-    overflow: hidden;
-    height: 20px;
-}
-.sliderSpacer {
-    display: inline-block;
-}
-.sliderContainer {
-   display: inline-block;
-    height: 160px;
-    list-style: outside none none;
-    margin: 0 auto; 
-	padding: 0 20px;
-	width: 105px;	
+	.col-md-2 {
+		width: 16%;
 	}
-.sliderLabel {
-	padding-left: 0px;	
+	.col-md-3 {
+		width: 15%;
+	}
+	.col-md-4 {
+		padding: 0;
+		width: 23%;
+	}
+	.col-md-8 {
+		width: 75%;
+	}
+	.col-md-9 {
+		width: 63%;
+		float:left;
+	}
+	.custom-col-md-3 {
+		width: 25%;
+	}
 }
-.sliderLabelMobile {
-	display: none;	
-}
-/* remove default style from slider elements */
-.slider {
-    background: url(''); 
-	border: 0;
-	height: 106px;
-/*    width:100%;*/
-	position: relative;
-	margin: 14.5px auto 0 auto;
-	width: 12px;
-}
-.sliderTotal {
-      color: $b;
-    cursor: default;
-    font-size: 20px;
-    font-weight: 600;
-    left: 72px;
-    position: absolute;
-    top: 47%;
-	-webkit-transform: translate(-50%, -50%);
-	 -moz-transform: translate(-50%, -50%);
-	 transform: translate(-50%, -50%);
-    z-index: 995;
-  }
 

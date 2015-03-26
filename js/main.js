@@ -36,9 +36,7 @@ $( document ).bind( 'mobileinit', function(){
 window.onresize = changeSlider;
 function changeSlider() {
 
-    document.getElementById('screenSize').innerHTML = screen.width;
-
-
+    document.getElementById('screenSize').innerHTML = $(window).width();
 
     var classNames = document.getElementById('tabTap').className;
     var showHide = classNames.indexOf('selectBackground');
@@ -50,8 +48,8 @@ function changeSlider() {
     if (showHide !== -1) {
         addHighLight('tabSlide');
     }
-	var screenWidth = window.outerWidth;
-	if(screenWidth <= 992 && !modules.windowResizeBool){
+    var windowWidth = $(window).width();
+	if(windowWidth <= 992 && !modules.windowResizeBool){
 		var orientation = $( ".slider" ).slider( "option", "orientation" );
 		$('.slider').slider( "option", "orientation", "horizontal" );
 		$('.handleStyle').addClass("fa-rotate-90 fa-lg");
@@ -66,7 +64,7 @@ function changeSlider() {
 		}
 		modules.windowResizeBool = true;
 	}
-	if(screenWidth > 992){
+	if(windowWidth > 992){
 		if(modules.windowResizeBool){
 			var orientation = $( ".slider" ).slider( "option", "orientation" );
 			$('.slider').slider( "option", "orientation", "vertical" );
@@ -343,9 +341,12 @@ function addHighLight(id) {
                 var leftMinusPadding = offsetPos.left + getCSSint($('#labelsFirstCol').css('padding-left'));
                 var topAdjsut = offsetPos.top - getCSSint($('#labelsFirstCol').css('height'));
                 var gameHeight = $('#game-content').height() + getCSSint($('#labelsFirstCol').css('height'));
+
+
                 document.getElementById('sliderNav').style.background = '0';
-                document.getElementById('button1').style.background = '0';
-                document.getElementById('button2').style.background = '0';
+
+
+
                 updateOverlay('highLightOverlay1', leftMinusPadding, topAdjsut, tapTabWidth, gameHeight, 'tabTap', false);
                 updateOverlay('highLightOverlay2', leftMinusPadding, topAdjsut, tapTabWidth, gameHeight, 'tabTap', true);
             }
@@ -373,19 +374,21 @@ function addHighLight(id) {
                 var offsetPosTop = $('#game-content').offset().top;
                 var widthMinusPadding = tapTabWidth - getCSSint($('#labelsSecondCol').css('padding-left'));
                 var leftMinusPadding = offsetPosLeft + getCSSint($('#labelsSecondCol').css('padding-left'));
-                var topAdjsut = offsetPosTop- getCSSint($('#labelsSecondCol').css('height'));
-                var gameHeight = $('#game-content').height() + getCSSint($('#labelsFirstCol').css('height'));
+                var gamePadding = $('#game-content').css('padding-top');
+                var gameHeight = $('#game-content').height() + parseInt(gamePadding.match(/[0-9]+/g)[0]);
                 document.getElementById('sliderNav').style.background = '0';
                 document.getElementById('button1').style.background = '0';
                 document.getElementById('button2').style.background = '0';
-                updateOverlay('highLightOverlay1', leftMinusPadding, topAdjsut, widthMinusPadding, gameHeight, 'tabSlide', false);
-                updateOverlay('highLightOverlay2', leftMinusPadding, topAdjsut, widthMinusPadding, gameHeight, 'tabSlide', true);
+                document.getElementById('sliderNavWrapper').className = addClass('sliderNavWrapper','selectedCBC');
+                updateOverlay('highLightOverlay1', leftMinusPadding, offsetPosTop, widthMinusPadding, gameHeight, 'tabSlide', false);
+                updateOverlay('highLightOverlay2', leftMinusPadding, offsetPosTop, widthMinusPadding, gameHeight, 'tabSlide', true);
             }
             else {
                 $('#tabSlide').removeClass('selectBackground');
                 document.getElementById('sliderNav').style.background = '#fff';
                 document.getElementById('button1').style.background = '#fff';
                 document.getElementById('button2').style.background = '#fff';
+                document.getElementById('sliderNavWrapper').className = removeClass('sliderNavWrapper', 'selectedCBC');
                 updateOverlay('highLightOverlay1', 0, 0, 0, 0, '', false);
                 updateOverlay('highLightOverlay2', 0, 0, 0, 0, '', false);
             }

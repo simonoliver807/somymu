@@ -3,11 +3,11 @@
 var TemplateModule = (function () {
 	var firstSlider;
     return {
-        createButton: function (buttonID, buttonLabel) {
+        createLabel: function (buttonID, buttonLabel) {
     		this.firstSlider = true;
             $('#modules').append(
             		 '<div class="row moduleRow' + buttonID + ' smallModule">' +
-                     '<div class="col-sm-4 col-md-4 buttonColumn">' +
+                     '<div class="col-sm-4 col-md-4 col-ld-4 buttonColumn">' +
                                  //'<div class= "row"><div class="col-sm--5 col-md-5"><i class="fa fa-minus fa-lg greyOutClick" id="greyOut' + buttonID + '"></i></div><div class="col-sm-7 col-md-7"></div></div>' +
                                  //'<div class="row factorOverlay factorOverlay'+buttonID+'">'+
                                  //	'<div class="col-sm-12 col-md-12">' +
@@ -25,15 +25,13 @@ var TemplateModule = (function () {
 		                         //            '</div>' +
 		                         //         '</div>' +
 	                        
-
+                            '<div class="buttonLabel">' + buttonLabel + '</div>' +
 
                      '</div>' +
-                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 sliderRow"><ul class="sliderWrapper" id="sliderColumns' + buttonID + '"><li style="width:30px;display:inline-block;list-style:none;height:5px;"></li></ul>' +
+                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 sliderRow"><ul class="sliderWrapper" id="sliderColumns' + buttonID + '"></ul>' +
                      '</div>' +
                   '</div>');
 
-         //   var moduleButton = document.getElementById('moduleButton' + buttonID);
-         //   moduleButton.onclick = function () { setButtonValue(this.id); };
         },
         createSlider: function (sliderID) {
 	        $('#sliderColumns' + sliderID).append('<li class="sliderContainer" id="sliderStyle'+sliderID+'">' +
@@ -55,17 +53,26 @@ var TemplateModule = (function () {
 	                	updateChartPosition(ui, this.id);
 	                }
 	            });
-            $('#slider'+sliderID).append('<div class="maxMin"><div class="sliderScale"></div><div class="scaleMiddle"></div></div>');
-            $('#slider' + sliderID).find('span').attr('id', sliderID);
+	        $('#slider' + sliderID).append('<div class="scaleContainer">'+
+                                               //'<div class="maxMin"></div>' +
+                                               '<div class="maxMin"><div class="centerLine"></div></div>' +
+
+                                    
+
+                                                            
+                                                            
+                                            '</div>');
+	        var namedSlider = 'sliderID' + sliderID;
+	        $('#slider' + sliderID).find('span').attr('id', namedSlider);
         },
         createDoughnut: function (doughnutID, data, sliderLabel, ordinalPosition) {
         	var liClass = "";
         	if(this.firstSlider) { liClass = "first";}
             $('.results').append('<li class="' + liClass +'" id="canvasContainer' + doughnutID + '" totalScore="' + doughnutID + '">' +
 				            		'<div id="chartHeader'+doughnutID+'" class="result-header factor">'+
-							            '<div id="ordianlPosition' + doughnutID + '" class="col-xs-2 col-sm-2 col-md-2 position">' + ordinalPosition + '</div>' +
-							            '<div class="col-xs-8 col-sm-8 col-md-8 position">' + sliderLabel + '</div>' +
-							            '<div class="col-xs-2 col-sm-8 col-md-2 postionWidth">' +
+							            '<div id="ordianlPosition' + doughnutID + '" class="col-sm-2 col-md-2 col-lg-8 position">' + ordinalPosition + '</div>' +
+							            '<div class="col-sm-8 col-md-8 col-lg-8 position">' + sliderLabel + '</div>' +
+							            '<div class="col-sm-8 col-md-2 col-lg-2 postionWidth">' +
 							            	'<span id="sliderTotalSmall' + doughnutID + '" class="badge"></span>'+
 							            '</div>'+
 							        '</div>'+                   
@@ -74,16 +81,16 @@ var TemplateModule = (function () {
             this.firstSlider = false;
             $('#canvasContainer' + doughnutID).append('<div id="canvas' + doughnutID + '" class="canvasBackground">' +
             											'<div class="row">'+
-            												'<div class="col-xs-4 col-sm-4 col-md-4 chartWidth-sm">' +
+            												'<div class="col-sm-4 col-md-4 col-lg-4 chartWidth-sm">' +
 	            												'<div style="width:102px;height:102px; position: relative;">'+
 	                                                            	'<div class="sliderTotal" id="sliderTotal' + doughnutID + '"></div>' +
                                                                     '<div class="heightFiller10"></div>'+
 	                                                            	'<canvas id=chart' + doughnutID + ' width="600" height="400"></canvas>' +
 	                                                            '</div>'+
 	                                                        '</div>'+
-	            											'<div class="col-xs-8 col-sm-8 col-md-8">' +
+	            											'<div class="col-sm-8 col-md-8 col-lg-8">' +
 	                                                        	'<div class="row" style="height: 10%">'+
-	                                                        		'<div class="col-xs-12 col-sm-12 col-md-12">' +
+	                                                        		'<div class="col-sm-12 col-md-12 col-lg-12">' +
             																'<table class="chartKey">' +
                                                                                 '<tr class="heightFiller10"><td></td><td></td><td></td></tr>' +
                                                                                 '<tr class="chartKeyRow"><td><div class="chartKeyDiv1"></div></td><td></td><td class="chartKeyText">Manager</td></tr>' +

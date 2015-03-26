@@ -261,8 +261,11 @@ footer {
 }
 
 /* button styling*/
-.moduleButtonLabel {
-    font-weight: 600;
+.buttonLabel {
+	display: table-cell;
+	font-size: 18px;
+	font-weight: 600;
+	vertical-align: middle;
 }
 .scrollButtonLeft {
 	color: $scrollButton;
@@ -278,11 +281,23 @@ footer {
 	top: 50%;
 }
 /* slider scale */
+.scaleContainer {
+	display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}
 .maxMin {
-    border-bottom: 1px solid black;
-    border-top: 1px solid black;
-    height: 100%;
-    margin: 0 auto;
+	border-left: 1px solid;
+    border-right: 1px solid;
+    display: table-cell;
+    height: 10px;
+   /* position: absolute; */
+    vertical-align: middle;
+    width: 509px;
+}
+.centerLine {
+	border-top: 1px solid;
+    height: 1px;
     width: 100%;
 }
 .sliderScale {
@@ -327,7 +342,7 @@ footer {
     list-style: outside none none;
     margin: 0 auto; 
 	padding: 0 20px;
-	width: 105px;	
+	width: 100%;	
 	}
 .sliderLabel {
 	padding-left: 0px;	
@@ -337,13 +352,13 @@ footer {
 }
 /* remove default style from slider elements */
 .slider {
-    background: url(''); 
-	border: 0;
-	height: 106px;
-/*    width:100%;*/
-	position: relative;
-	margin: 14.5px auto 0 auto;
-	width: 12px;
+    background: url("") repeat scroll 0 0 transparent;
+    border: 0 none;
+    display: table;
+    height: 20px;
+    margin: 80px auto 0;
+    position: relative;
+    width: 100%;
 }
 .sliderTotal {
       color: $b;
@@ -358,34 +373,12 @@ footer {
 	 transform: translate(-50%, -50%);
     z-index: 995;
   }
-@media screen and (min-width: 993px) {
-	/* style the slider handles per column */
-	#sliderStyle0 .handleStyle {
-	    color: #883682;
-	}
-	#sliderStyle1 .handleStyle {
-	    color: #1f74c9;
-	}
-	#sliderStyle2 .handleStyle {
-	    color: #fdc732;
-	}
-	#sliderStyle3 .handleStyle {
-	    color: #e2282f;
-	}
-	#sliderStyle4 .handleStyle {
-	   color: #4fbd55;
-	}
-	#sliderStyle5 .handleStyle {
-	    color: #883682;
-	}
-}
 .slider .handleStyle {
     background: #fff;
     border: 0 none;
-    height: 25px;
     left: -6px;
 	position: absolute;
-    width: 22px;
+
 }
 .slider .handleStyle:hover {
     background: #fff;
@@ -415,17 +408,9 @@ footer {
 	}
 }
 
-  /*      #moduleButton0{
-            color: $color1;
-            .buttonInner0{
-                font-size: 0.5em;
-            }
-        }
-    .fa-plus {
-    	cursor: default;
-    } */
 
 .buttonColumn {
+	display: table;
 	height : 160px
 }
 .highLightOverlay {

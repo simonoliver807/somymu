@@ -109,10 +109,15 @@ footer {
 }
 // the navigation bar for the labels
 .sliderNav {
-	height: 45px;
+	height: 30px;
+	background: $w;
 		.zeroPaddingRight {
 			padding-right: 0;
+			background-clip: content-box;
 		}
+}
+.selectedCBC {
+	background: $cbc;
 }
 .sliderNavContainer {
 	display: inline-block;
@@ -213,28 +218,28 @@ footer {
 }
 
 /* bs tooltip */
-	.tooltip {
-		z-index:997;
-	}
-     .tooltip-inner {
-        background-color: #000;
-        $color6dius: 0;
-        color: #fff;
-        font-size: 12px;
-        margin: 0 6px 0 0;
-        max-width: 320px;
-        padding: 11%;
-        text-align: center;
-        text-decoration: none;
-        width: 100%;
-    }
-    .tooltip.top .tooltip-arrow {
-        border-top-color: #000;
-        border-width: 12px 12px 0;
-        bottom: 0;
-        left: 50%;
-        margin-left: -12px;
-    }
+.tooltip {
+	z-index:997;
+}
+	.tooltip-inner {
+	background-color: #000;
+	$color6dius: 0;
+	color: #fff;
+	font-size: 12px;
+	margin: 0 6px 0 0;
+	max-width: 320px;
+	padding: 11%;
+	text-align: center;
+	text-decoration: none;
+	width: 100%;
+}
+.tooltip.top .tooltip-arrow {
+	border-top-color: #000;
+	border-width: 12px 12px 0;
+	bottom: 0;
+	left: 50%;
+	margin-left: -12px;
+}
 /* bs dropdown */
 .dropdown-menu {
 	border: 1px solid #2797ba;
@@ -364,26 +369,24 @@ footer {
 	 transform: translate(-50%, -50%);
     z-index: 995;
   }
-@media screen and (min-width: 993px) {
-	/* style the slider handles per column */
-	#sliderStyle0 .handleStyle {
-	    color: #883682;
-	}
-	#sliderStyle1 .handleStyle {
-	    color: #1f74c9;
-	}
-	#sliderStyle2 .handleStyle {
-	    color: #fdc732;
-	}
-	#sliderStyle3 .handleStyle {
-	    color: #e2282f;
-	}
-	#sliderStyle4 .handleStyle {
-	   color: #4fbd55;
-	}
-	#sliderStyle5 .handleStyle {
-	    color: #883682;
-	}
+/* style the slider handles per column */
+#sliderStyle0 .handleStyle {
+	color: #883682;
+}
+#sliderStyle1 .handleStyle {
+	color: #1f74c9;
+}
+#sliderStyle2 .handleStyle {
+	color: #fdc732;
+}
+#sliderStyle3 .handleStyle {
+	color: #e2282f;
+}
+#sliderStyle4 .handleStyle {
+	color: #4fbd55;
+}
+#sliderStyle5 .handleStyle {
+	color: #883682;
 }
 .slider .handleStyle {
     background: #fff;
@@ -438,21 +441,11 @@ footer {
 	position: absolute;
 	z-index: 998;
 }
-@import "_style_buttons.scss";
-@media (min-width: 768px){
-	.container {
-  		width: 100%;
-	}
-}
-@media (min-width: 992px){
-	.container {
-  		width: 970px;
-	}
-}
 @media (min-width: 1200px){
 	.container {
   		width: 1170px;
 	}
 }
+@import "_style_buttons.scss";
 @import "_style_1200.scss";
 @import "_style_992.scss";

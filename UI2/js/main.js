@@ -19,10 +19,12 @@ function getCSSint(el) {
 var modules = new UIModule();
 modules.init(5);
 
-
-var setButtonValue = function (id) { var buttonID = id.match(/[0-9]+/g); modules.setButtonValue(buttonID); };
-var setSliderValue = function (ui, id) { var sliderID = id.match(/[0-9]+/g); modules.setSliderValue(ui.value, sliderID); };
-var updateChartPosition = function(ui, id) { modules.updateChartPositions(id);};
+var setSliderValue = function (ui, id) {
+    //var sliderID = id.match(/[0-9]+/g); modules.setSliderValue(ui.value, sliderID);
+};
+var updateChartPosition = function (ui, id) {
+    //modules.updateChartPositions(id);
+};
 
 $( document ).bind( 'mobileinit', function(){
 	  $.mobile.loader.prototype.options.text = "";
@@ -99,21 +101,19 @@ function changeSlider() {
 //tooltip events show on hover
 $('.sliderContainer').hover(function (event) {
     event.stopPropagation();
-    var sliderID = this.children[1].id.match(/[0-9]+/g);
+    var sliderID = this.children[0].id.match(/[0-9]+/g);
 
     var sliderArray = modules.getSliderArray();
     for (var i = 0; i < sliderArray.length; i++) {
-        for (var j = 0; j < sliderArray[i].length; j++) {
-            if (sliderArray[i][j].tooltipBool) {
-                if (sliderArray[i][j].sliderID != sliderID[0] + '_' + sliderID[1]) {
-                    $('#' + sliderArray[i][j].sliderID).tooltip('hide');
-                    sliderArray[i][j].tooltipBool = false;
-                }
+        if (sliderArray[i].tooltipBool) {
+            if (sliderArray[i].sliderID != 'sliderID' + sliderID[0]) {
+                $('#' + sliderArray[i].sliderID).tooltip('hide');
+                sliderArray[i].tooltipBool = false;
             }
         }
     }
-    if (!sliderArray[sliderID[0]][sliderID[1]].tooltipBool) {
-        $('#' + sliderID[0] + '_' + sliderID[1]).tooltip({
+    if (!sliderArray[sliderID[0]].tooltipBool) {
+        $('#sliderID' + sliderID[0]).tooltip({
             container: 'body',
             html: true,
             trigger: 'manual',
@@ -121,7 +121,7 @@ $('.sliderContainer').hover(function (event) {
                 //   here will be custom template
                 var id = $(this).parent().attr('id');
                 id = id.match(/[0-9]+/g);
-                var sliderValue = sliderArray[id[0]][id[1]].setSliderValue;
+                var sliderValue = sliderArray[id[0]].setSliderValue;
                 return '<div>'+sliderValue+'</div>';
             }
         }).tooltip('show');
@@ -132,7 +132,7 @@ $('.sliderContainer').hover(function (event) {
             $('.tooltip').css({ left: position.left, top: position.top });
         }
         //$('.tooltip-inner').text(sliderArray[sliderID[0]][sliderID[1]].sliderValue);
-        sliderArray[sliderID[0]][sliderID[1]].tooltipBool = true;
+        sliderArray[sliderID[0]].tooltipBool = true;
     }
 });
 //tooltip events hide when leave the slider row
