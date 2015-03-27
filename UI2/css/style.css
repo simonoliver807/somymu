@@ -167,7 +167,7 @@ footer {
   z-index: 997; }
 
 .tooltip-inner {
-  background-color: #000;
+  background-color: #1597a7;
   color: #fff;
   font-size: 12px;
   margin: 0 6px 0 0;
@@ -178,7 +178,7 @@ footer {
   width: 100%; }
 
 .tooltip.top .tooltip-arrow {
-  border-top-color: #000;
+  border-top-color: #1597a7;
   border-width: 12px 12px 0;
   bottom: 0;
   left: 50%;
@@ -249,14 +249,24 @@ footer {
   height: 10px;
   /* position: absolute; */
   vertical-align: middle;
-  width: 509px; }
+  width: 549px; }
 
 .middleScale {
   width: 1px;
   height: 20px;
   background: #000;
   position: absolute;
-  margin-left: 45%; }
+  margin-left: 50%; }
+
+.scaleNo {
+  position: absolute;
+  right: 97.5%;
+  top: -15px; }
+
+.scaleYes {
+  position: absolute;
+  right: 0;
+  top: -15px; }
 
 .centerLine {
   border-top: 1px solid;
@@ -371,11 +381,29 @@ footer {
 
 /* UI 2 */
 .factorGreen {
-  background: green;
+  background: #4fbd55;
   text-align: center; }
 
+.greenArrowDown {
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #4fbd55;
+  height: 0;
+  left: 43%;
+  position: absolute;
+  width: 0; }
+
 .factorYellow {
-  background: yellow; }
+  background: #fdc732; }
+
+.yellowArrowDown {
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #fdc732;
+  height: 0;
+  left: 43%;
+  position: absolute;
+  width: 0; }
 
 /* factor button 0 */
 #slider0 .overlayDiv1 {

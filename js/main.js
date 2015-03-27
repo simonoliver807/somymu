@@ -70,12 +70,11 @@ function changeSlider() {
 			$('.slider').slider( "option", "orientation", "vertical" );
 			$('.handleStyle').removeClass("fa-rotate-90 fa-lg");
 			$('.handleStyle').addClass("fa-2x");
-
-			 // set up the width of the slider container
-		    //var rowWidth = modules.sliderRowWidth;
-
+		    // add and remove the transition class
+			$('.sliderWrapper').removeClass('setTransition');
+			setTimeout(function () { $('.sliderWrapper').addClass('setTransition'); }, 500);
 	        // devide the set width of a slider row by the number of sliders giving the width per slider
-			var containerWidth = (this.sliderWidth * this.numberOfSliders) + 30;
+			var containerWidth = (modules.sliderWidth * modules.numberOfSliders) + 30;
 	        $('.sliderWrapper').css('width', containerWidth);
 	        $('.sliderNavWrapper').css('width', containerWidth);
 		    // collapse the navbar;
@@ -114,13 +113,13 @@ $('.sliderContainer').hover(function (event) {
         $('#' + sliderID[0] + '_' + sliderID[1]).tooltip({
             container: 'body',
             html: true,
+            placement: 'right',
             trigger: 'manual',
             title: function () {
                 //   here will be custom template
                 var id = $(this).parent().attr('id');
                 id = id.match(/[0-9]+/g);
-                var sliderValue = sliderArray[id[0]][id[1]].setSliderValue;
-                return '<div>'+sliderValue+'</div>';
+                return '<div class="tooltipValue">' + sliderArray[id[0]][id[1]].sliderValue  +'</div>';
             }
         }).tooltip('show');
         if (modules.ie9) {
@@ -339,21 +338,14 @@ function addHighLight(id) {
                 var tapTabWidth = document.getElementById('labelsFirstCol').getBoundingClientRect().width;
                 var offsetPos = $('#modules').offset();
                 var leftMinusPadding = offsetPos.left + getCSSint($('#labelsFirstCol').css('padding-left'));
-                var topAdjsut = offsetPos.top - getCSSint($('#labelsFirstCol').css('height'));
-                var gameHeight = $('#game-content').height() + getCSSint($('#labelsFirstCol').css('height'));
-
-
                 document.getElementById('sliderNav').style.background = '0';
-
-
-
-                updateOverlay('highLightOverlay1', leftMinusPadding, topAdjsut, tapTabWidth, gameHeight, 'tabTap', false);
-                updateOverlay('highLightOverlay2', leftMinusPadding, topAdjsut, tapTabWidth, gameHeight, 'tabTap', true);
+                updateOverlay('highLightOverlay1', leftMinusPadding, tapTabWidth, 'tabTap', false);
+                updateOverlay('highLightOverlay2', leftMinusPadding, tapTabWidth, 'tabTap', true);
             }
             else {
                 $('#tabTap').removeClass('selectBackground');
                 $('.buttonColumn').removeClass('selectBackground');
-                document.getElementById('labelsFirstCol').className = removeClass('labelsFirstCol','selectBackground');
+                document.getElementById('labelsFirstCol').className = removeClass('labelsFirstCol', 'selectBackground');
                 $('.overlayDiv').removeClass('bc');
                 updateOverlay('highLightOverlay1', 0, 0, 0, 0, '', false);
                 updateOverlay('highLightOverlay2', 0, 0, 0, 0, '', false);
@@ -368,23 +360,22 @@ function addHighLight(id) {
                 if (showHide !== -1) {
                     addHighLight('tabTap');
                 }
+                $('.slider').addClass('bc');
                 document.getElementById('tabSlide').className = classNames + ' selectBackground';
                 var tapTabWidth = document.getElementById('labelsSecondCol').getBoundingClientRect().width;
                 var offsetPosLeft = $('#sliderRow0').offset().left;
-                var offsetPosTop = $('#game-content').offset().top;
                 var widthMinusPadding = tapTabWidth - getCSSint($('#labelsSecondCol').css('padding-left'));
                 var leftMinusPadding = offsetPosLeft + getCSSint($('#labelsSecondCol').css('padding-left'));
-                var gamePadding = $('#game-content').css('padding-top');
-                var gameHeight = $('#game-content').height() + parseInt(gamePadding.match(/[0-9]+/g)[0]);
                 document.getElementById('sliderNav').style.background = '0';
                 document.getElementById('button1').style.background = '0';
                 document.getElementById('button2').style.background = '0';
-                document.getElementById('sliderNavWrapper').className = addClass('sliderNavWrapper','selectedCBC');
-                updateOverlay('highLightOverlay1', leftMinusPadding, offsetPosTop, widthMinusPadding, gameHeight, 'tabSlide', false);
-                updateOverlay('highLightOverlay2', leftMinusPadding, offsetPosTop, widthMinusPadding, gameHeight, 'tabSlide', true);
+                document.getElementById('sliderNavWrapper').className = addClass('sliderNavWrapper', 'selectedCBC');
+                updateOverlay('highLightOverlay1', leftMinusPadding, widthMinusPadding, 'tabSlide', false);
+                updateOverlay('highLightOverlay2', leftMinusPadding, widthMinusPadding, 'tabSlide', true);
             }
             else {
                 $('#tabSlide').removeClass('selectBackground');
+                $('.slider').removeClass('bc');
                 document.getElementById('sliderNav').style.background = '#fff';
                 document.getElementById('button1').style.background = '#fff';
                 document.getElementById('button2').style.background = '#fff';
@@ -398,7 +389,11 @@ function addHighLight(id) {
             break;
     }
 }
-function updateOverlay(id, posLeft, posTop, el_width, el_height, attrVal, withBG) {
+function updateOverlay(id, posLeft, el_width, attrVal, withBG) {
+    // calculate the height and top of the highlight which the same for all 3
+    var posTop = $('#game-content').offset().top;
+    var gamePadding = $('#game-content').css('padding-top');
+    var el_height = $('#game-content').height() + parseInt(gamePadding.match(/[0-9]+/g)[0]);
     document.getElementById(id).style.left = posLeft + 'px';
     document.getElementById(id).style.top = posTop + 'px';
     document.getElementById(id).style.width = el_width + 'px';

@@ -20,7 +20,7 @@ var modules = new UIModule();
 modules.init(5);
 
 var setSliderValue = function (ui, id) {
-    //var sliderID = id.match(/[0-9]+/g); modules.setSliderValue(ui.value, sliderID);
+    var sliderID = id.match(/[0-9]+/g); modules.setSliderValue(ui.value, sliderID);
 };
 var updateChartPosition = function (ui, id) {
     //modules.updateChartPositions(id);
@@ -35,69 +35,69 @@ $( document ).bind( 'mobileinit', function(){
 	});
 
 //window resize event so we change the slider for vertical to horizontal
-window.onresize = changeSlider;
-function changeSlider() {
+//window.onresize = changeSlider;
+//function changeSlider() {
 
-    document.getElementById('screenSize').innerHTML = screen.width;
+//    document.getElementById('screenSize').innerHTML = screen.width;
 
 
 
-    var classNames = document.getElementById('tabTap').className;
-    var showHide = classNames.indexOf('selectBackground');
-    if (showHide !== -1) {
-        addHighLight('tabTap');
-    }
-    var classNames = document.getElementById('tabSlide').className;
-    var showHide = classNames.indexOf('selectBackground');
-    if (showHide !== -1) {
-        addHighLight('tabSlide');
-    }
-	var screenWidth = window.outerWidth;
-	if(screenWidth <= 992 && !modules.windowResizeBool){
-		var orientation = $( ".slider" ).slider( "option", "orientation" );
-		$('.slider').slider( "option", "orientation", "horizontal" );
-		$('.handleStyle').addClass("fa-rotate-90 fa-lg");
-		$('.handleStyle').removeClass("fa-2x");
-		// update the grey outs
-		var buttonArray = modules.getButtonArray();
-		for(var i = 0; i < buttonArray.length; i++){
-			if(buttonArray[i].disabledBool){
-				setGreyOut(false, i);
-				setGreyOut(true, i);
-			}
-		}
-		modules.windowResizeBool = true;
-	}
-	if(screenWidth > 992){
-		if(modules.windowResizeBool){
-			var orientation = $( ".slider" ).slider( "option", "orientation" );
-			$('.slider').slider( "option", "orientation", "vertical" );
-			$('.handleStyle').removeClass("fa-rotate-90 fa-lg");
-			$('.handleStyle').addClass("fa-2x");
+//    var classNames = document.getElementById('tabTap').className;
+//    var showHide = classNames.indexOf('selectBackground');
+//    if (showHide !== -1) {
+//        addHighLight('tabTap');
+//    }
+//    var classNames = document.getElementById('tabSlide').className;
+//    var showHide = classNames.indexOf('selectBackground');
+//    if (showHide !== -1) {
+//        addHighLight('tabSlide');
+//    }
+//	var screenWidth = window.outerWidth;
+//	if(screenWidth <= 992 && !modules.windowResizeBool){
+//		var orientation = $( ".slider" ).slider( "option", "orientation" );
+//		$('.slider').slider( "option", "orientation", "horizontal" );
+//		$('.handleStyle').addClass("fa-rotate-90 fa-lg");
+//		$('.handleStyle').removeClass("fa-2x");
+//		// update the grey outs
+//		var buttonArray = modules.getButtonArray();
+//		for(var i = 0; i < buttonArray.length; i++){
+//			if(buttonArray[i].disabledBool){
+//				setGreyOut(false, i);
+//				setGreyOut(true, i);
+//			}
+//		}
+//		modules.windowResizeBool = true;
+//	}
+//	if(screenWidth > 992){
+//		if(modules.windowResizeBool){
+//			var orientation = $( ".slider" ).slider( "option", "orientation" );
+//			$('.slider').slider( "option", "orientation", "vertical" );
+//			$('.handleStyle').removeClass("fa-rotate-90 fa-lg");
+//			$('.handleStyle').addClass("fa-2x");
 
-			 // set up the width of the slider container
-		    //var rowWidth = modules.sliderRowWidth;
+//			 // set up the width of the slider container
+//		    //var rowWidth = modules.sliderRowWidth;
 
-	        // devide the set width of a slider row by the number of sliders giving the width per slider
-			var containerWidth = (this.sliderWidth * this.numberOfSliders) + 30;
-	        $('.sliderWrapper').css('width', containerWidth);
-	        $('.sliderNavWrapper').css('width', containerWidth);
-		    // collapse the navbar;
-	        document.getElementById('navbarCollapse').className = "";
-	        document.getElementById('navbarCollapse').className = "navbar-collapse collapse";
-	        modules.windowResizeBool = false;
-		}
-		// update the grey outs
-		var buttonArray = modules.getButtonArray();
-		for(var i = 0; i < buttonArray.length; i++){
-			if(buttonArray[i].disabledBool){
-				setGreyOut(false, i);
-				setGreyOut(true, i);
-			}
-		}
-		window.scrollTo(0, 0);
-	}	
-}
+//	        // devide the set width of a slider row by the number of sliders giving the width per slider
+//			var containerWidth = (this.sliderWidth * this.numberOfSliders) + 30;
+//	        $('.sliderWrapper').css('width', containerWidth);
+//	        $('.sliderNavWrapper').css('width', containerWidth);
+//		    // collapse the navbar;
+//	        document.getElementById('navbarCollapse').className = "";
+//	        document.getElementById('navbarCollapse').className = "navbar-collapse collapse";
+//	        modules.windowResizeBool = false;
+//		}
+//		// update the grey outs
+//		var buttonArray = modules.getButtonArray();
+//		for(var i = 0; i < buttonArray.length; i++){
+//			if(buttonArray[i].disabledBool){
+//				setGreyOut(false, i);
+//				setGreyOut(true, i);
+//			}
+//		}
+//		window.scrollTo(0, 0);
+//	}	
+//}
 //tooltip events show on hover
 $('.sliderContainer').hover(function (event) {
     event.stopPropagation();
@@ -107,7 +107,7 @@ $('.sliderContainer').hover(function (event) {
     for (var i = 0; i < sliderArray.length; i++) {
         if (sliderArray[i].tooltipBool) {
             if (sliderArray[i].sliderID != 'sliderID' + sliderID[0]) {
-                $('#' + sliderArray[i].sliderID).tooltip('hide');
+                $('#sliderID' + sliderArray[i].sliderID).tooltip('hide');
                 sliderArray[i].tooltipBool = false;
             }
         }

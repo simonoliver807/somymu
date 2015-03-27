@@ -25,7 +25,7 @@ $lgrey: #f4f4f6;
 
 // padding
 $intHeadPad: 10%;
-$headerDBlue: #2797ba;
+$hb: #1597a7;
 
 // font size
 $headerNumberFont: 255%;
@@ -86,7 +86,7 @@ footer {
 	background: $w;
 }
 .blueHeader {
-	background: #1597a7;
+	background: $hb;
 		.zeroPaddingLeft {
 			padding-left: 0;
 		}
@@ -211,7 +211,7 @@ footer {
 		z-index:997;
 	}
      .tooltip-inner {
-        background-color: #000;
+        background-color: $hb;
         $color6dius: 0;
         color: #fff;
         font-size: 12px;
@@ -223,7 +223,7 @@ footer {
         width: 100%;
     }
     .tooltip.top .tooltip-arrow {
-        border-top-color: #000;
+        border-top-color: $hb;
         border-width: 12px 12px 0;
         bottom: 0;
         left: 50%;
@@ -293,14 +293,24 @@ footer {
     height: 10px;
    /* position: absolute; */
     vertical-align: middle;
-    width: 509px;
+    width: 549px;
 }
 .middleScale {
   width: 1px;
   height: 20px;
   background: $b;
   position: absolute;
-  margin-left: 45%;
+  margin-left: 50%;
+}
+.scaleNo {
+	position: absolute;
+    right: 97.5%;
+    top: -15px;
+}
+.scaleYes {
+	position: absolute;
+    right: 0;
+    top: -15px;
 }
 .centerLine {
 	border-top: 1px solid;
@@ -420,13 +430,32 @@ footer {
 
 /* UI 2 */
 .factorGreen {
-	background: green;
+	background: #4fbd55;
 	text-align: center;
 }
-.factorYellow {
-	background: yellow;
-}
+.greenArrowDown {
+	border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #4fbd55;
+    height: 0;
+    left: 43%;
+    position: absolute;
+    width: 0;
 
+}
+.factorYellow {
+	background: #fdc732;
+}
+.yellowArrowDown {
+	border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #fdc732;
+    height: 0;
+    left: 43%;
+    position: absolute;
+    width: 0;
+
+}
 @import "_style_buttons.scss";
 @media (min-width: 768px){
 	.container {

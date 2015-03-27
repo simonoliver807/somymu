@@ -50,8 +50,6 @@ var SliderModule = (function () {
                 else if(this.sliderValue < 100){this.setSliderValue = '0' + this.sliderValue;}
                 else { this.setSliderValue = 100;}
                 $('.tooltip-inner').text(this.setSliderValue);
-                // update the width of the slider background
-                document.getElementById('sliderBackground' + this.sliderID).style.width = this.sliderValue + '%';
             }
             this.totalValue = buttonValue * this.sliderValue;
         }

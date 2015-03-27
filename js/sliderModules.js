@@ -36,22 +36,15 @@ var SliderModule = (function () {
             this.disabledBool = 	false;
             this.tooltipBool = 		false;
             this.overscrollStatus = false;
-            this.setSliderValue	   = '000';
         },
         setValues: function (sliderValue, buttonValue) {
             if (sliderValue !== '') {
                 this.sliderValue = sliderValue - 1;
                 //  update the tooltip
                 var position = $('#' + this.sliderID).offset();
-                position.left = position.left - 2;
-                position.top = position.top - 35;
-                $('.tooltip').css({ left: position.left, top: position.top });
-                if(this.sliderValue < 10){this.setSliderValue = '00'+this.sliderValue;}
-                else if(this.sliderValue < 100){this.setSliderValue = '0' + this.sliderValue;}
-                else { this.setSliderValue = 100;}
-                $('.tooltip-inner').text(this.setSliderValue);
-                // update the width of the slider background
-                document.getElementById('sliderBackground' + this.sliderID).style.width = this.sliderValue + '%';
+                position.top = position.top;
+                $('.tooltip').css({ top: position.top });
+                $('.tooltipValue').text(this.sliderValue);
             }
             this.totalValue = buttonValue * this.sliderValue;
         }
@@ -168,6 +161,15 @@ var UIModule = (function () {
             		e[i].className = e[i].className + ' fa fa-minus-square fa-2x handleStyle';
             	}
             }
+
+
+            // TODO bind click events to all the buttons
+          //  $('.ui-slider-handle').on('click', function () {
+          //      self.setButtonValue(this.id);
+            //  });
+
+
+
             // don't need to do this for iphone
             if(this.windowWidth > 992){
                 // set up the width of the slider container

@@ -35,7 +35,7 @@ var TemplateModule = (function () {
         },
         createSlider: function (sliderID) {
 	        $('#sliderColumns' + sliderID).append('<div class="sliderContainer" id="sliderStyle'+sliderID+'">' +
-	                '<div id="slider' + sliderID + '" class="slider"><div class="middleScale"></div></div>' +
+	                '<div id="slider' + sliderID + '" class="slider"><div class="middleScale"></div><div class="scaleYes">Yes</div><div class="scaleNo">No</div></div>' +
 	        '</div>');
 	            $('#slider' + sliderID).slider({
 	                max: 101,
