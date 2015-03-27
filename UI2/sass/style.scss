@@ -295,6 +295,13 @@ footer {
     vertical-align: middle;
     width: 509px;
 }
+.middleScale {
+  width: 1px;
+  height: 20px;
+  background: $b;
+  position: absolute;
+  margin-left: 45%;
+}
 .centerLine {
 	border-top: 1px solid;
     height: 1px;
@@ -316,16 +323,11 @@ footer {
 }
 /* the slider styling*/
 .sliderWrapper {
-	@include transition(right, 1s, ease-in-out);	
-	position: relative;
+	display: table;
 	height: 100%;
-	right: 0px;
+	width: 100%;
 }
 .sliderRow { 
-    display: inline-block;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    padding-top: 5px;
     height: 160px;
 
 }
@@ -337,11 +339,9 @@ footer {
     display: inline-block;
 }
 .sliderContainer {
-   display: inline-block;
-    height: 160px;
-    list-style: outside none none;
-    margin: 0 auto; 
-	padding: 0 20px;
+	display: table-cell;
+	height: 100%;
+	vertical-align: middle;
 	width: 100%;	
 	}
 .sliderLabel {
@@ -356,7 +356,6 @@ footer {
     border: 0 none;
     display: table;
     height: 20px;
-    margin: 80px auto 0;
     position: relative;
     width: 100%;
 }

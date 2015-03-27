@@ -28,15 +28,15 @@ var TemplateModule = (function () {
                             '<div class="buttonLabel">' + buttonLabel + '</div>' +
 
                      '</div>' +
-                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 sliderRow"><ul class="sliderWrapper" id="sliderColumns' + buttonID + '"></ul>' +
+                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 sliderRow"><div class="sliderWrapper" id="sliderColumns' + buttonID + '"></div>' +
                      '</div>' +
                   '</div>');
 
         },
         createSlider: function (sliderID) {
-	        $('#sliderColumns' + sliderID).append('<li class="sliderContainer" id="sliderStyle'+sliderID+'">' +
-	                '<div id="slider' + sliderID + '" class="slider"><div id="sliderBackground' + sliderID + '" class="sliderBackground' + sliderID + '"></div></div>' +
-	        '</li>');
+	        $('#sliderColumns' + sliderID).append('<div class="sliderContainer" id="sliderStyle'+sliderID+'">' +
+	                '<div id="slider' + sliderID + '" class="slider"><div class="middleScale"></div></div>' +
+	        '</div>');
 	            $('#slider' + sliderID).slider({
 	                max: 101,
 	                min: 1,
@@ -54,14 +54,8 @@ var TemplateModule = (function () {
 	                }
 	            });
 	        $('#slider' + sliderID).append('<div class="scaleContainer">'+
-                                               //'<div class="maxMin"></div>' +
                                                '<div class="maxMin"><div class="centerLine"></div></div>' +
-
-                                    
-
-                                                            
-                                                            
-                                            '</div>');
+                                           '</div>');
 	        var namedSlider = 'sliderID' + sliderID;
 	        $('#slider' + sliderID).find('span').attr('id', namedSlider);
         },
