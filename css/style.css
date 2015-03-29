@@ -122,6 +122,15 @@ footer {
   line-height: 12px;
   padding-left: 5px; }
 
+.goldBadge {
+  background-color: #b19369; }
+
+.silverBadge {
+  background-color: #4c4f4c; }
+
+.bronzeBadge {
+  background-color: #965a38; }
+
 .chartKeyRow {
   /* empty */ }
 
@@ -742,9 +751,11 @@ footer {
   .col-md-8 {
     width: 75%; }
 
+  .custom-col-md-8 {
+    width: 66%; }
+
   .col-md-9 {
-    width: 63%;
-    float: none; }
+    width: 63%; }
 
   .custom-col-md-3 {
     width: 25%; } }
@@ -769,6 +780,7 @@ footer {
 
   .col-sm-7 {
     padding: 0;
+    float: none;
     width: 100%; }
 
   .col-sm-9 {

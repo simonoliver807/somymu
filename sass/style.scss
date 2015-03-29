@@ -162,6 +162,15 @@ footer {
 	line-height:12px;	
 	padding-left: 5px;
 }
+.goldBadge {
+	background-color: #b19369;
+}
+.silverBadge {
+	background-color: #4c4f4c;
+}
+.bronzeBadge {
+	background-color: #965a38;
+}
 .chartKeyRow {
  /* empty */
 }
@@ -453,3 +462,4 @@ footer {
 @import "_style_buttons.scss";
 @import "_style_1200.scss";
 @import "_style_992.scss";
+@import "_style_768.scss";

@@ -265,39 +265,39 @@ function turnOffGrey(id){
 	modules.addChartSegment(id);
 	modules.updateButtonValue(id);
 }
-$('.collapse').on('hidden.bs.collapse', function () {
-	  // do something…
-	var chartArray = modules.getChartArray();
-	var totalArray = [];
-	for(var i = 0; i < modules.numberOfSliders; i++){
-		totalArray[i] = document.getElementById('canvasContainer'+i).getAttribute('totalscore')+'_'+i;
-	}
-	//totalArray.sort(function(a.match(/[0-9]+/g),b.match(/[0-9]+/g)){return a-b;});
-	totalArray.sort(function(a,b){
-									var x = a.match(/[0-9]+/g);
-									x = parseInt(x[0]);
-									var y = b.match(/[0-9]+/g);
-									y = parseInt(y[0]);
-									 if (x < y) {
-									        return 1;
-									    }
-									    if (x > y) {
-									        return -1;
-									    }
-									    return 0;
-									});
-	for(var i = 0; i < totalArray.length; i++){
-		var thisIndex = totalArray[i].match(/[0-9]+/g)[1];
-		var ordinalPosition = modules.getOrdinalPosition(i+1);
-		$('#ordianlPosition' + thisIndex).text( ordinalPosition );
-		
-	}
-	var maxIndex = totalArray[0].match(/[0-9]+/g)[1];
-	$('#collapse'+maxIndex).collapse('show');
-    	chartArray[maxIndex].chartStatus = true;
-    	document.getElementById('caretToggle' + maxIndex).className = "fa fa-caret-down fa-lg";
-    	document.getElementById('sliderTotal' + maxIndex).style.visibility = "visible";
-});
+//$('.collapse').on('hidden.bs.collapse', function () {
+//	  // do something…
+//	var chartArray = modules.getChartArray();
+//	var totalArray = [];
+//	for(var i = 0; i < modules.numberOfSliders; i++){
+//		totalArray[i] = document.getElementById('canvasContainer'+i).getAttribute('totalscore')+'_'+i;
+//	}
+//	//totalArray.sort(function(a.match(/[0-9]+/g),b.match(/[0-9]+/g)){return a-b;});
+//	totalArray.sort(function(a,b){
+//									var x = a.match(/[0-9]+/g);
+//									x = parseInt(x[0]);
+//									var y = b.match(/[0-9]+/g);
+//									y = parseInt(y[0]);
+//									 if (x < y) {
+//									        return 1;
+//									    }
+//									    if (x > y) {
+//									        return -1;
+//									    }
+//									    return 0;
+//									});
+//	for(var i = 0; i < totalArray.length; i++){
+//		var thisIndex = totalArray[i].match(/[0-9]+/g)[1];
+//		var ordinalPosition = modules.getOrdinalPosition(i+1);
+//		$('#ordianlPosition' + thisIndex).text( ordinalPosition );
+//		
+//	}
+//	var maxIndex = totalArray[0].match(/[0-9]+/g)[1];
+//	$('#collapse'+maxIndex).collapse('show');
+//    	chartArray[maxIndex].chartStatus = true;
+//    	document.getElementById('caretToggle' + maxIndex).className = "fa fa-caret-down fa-lg";
+//    	document.getElementById('sliderTotal' + maxIndex).style.visibility = "visible";
+//});
 
 function updateSliderPostion(direction, buttonID){
 	var currentPos = $('.sliderWrapper').css('right');

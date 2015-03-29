@@ -42,9 +42,9 @@ var SliderModule = (function () {
                 this.sliderValue = sliderValue - 1;
                 //  update the tooltip
                 var position = $('#' + this.sliderID).offset();
-                position.top = position.top;
-                $('.tooltip').css({ top: position.top });
+                $('.tooltip').css({ top: position.top});
                 $('.tooltipValue').text(this.sliderValue);
+                document.getElementById('sliderBackground' + this.sliderID).style.width = this.sliderValue + '%';
             }
             this.totalValue = buttonValue * this.sliderValue;
         }
@@ -64,7 +64,7 @@ var DoughNutModule = (function () {
             this.ordialPosition = ordinalPosition;
             this.totalScore = 0;
         }
-    }
+    };
 });
 var UIModule = (function () {
     var sliderArray = [];
@@ -305,11 +305,22 @@ var UIModule = (function () {
         		var thisID = this.id;
         		thisID = thisID.match(/[0-9]+/g);
         		$('#ordianlPosition'+thisID[0]).text(op);
-        		if(count == 1){
-        			$('#canvas'+thisID[0]).css('display','block');
-        		}
-        		else {
-        			$('#canvas'+thisID[0]).css('display','none');
+        		document.getElementById('sliderTotalSmall' + thisID[0]).className = 'badge';
+        		switch(count) {
+	        	    case 1:
+	         			$('#canvas'+thisID[0]).css('display','block');
+        				document.getElementById('sliderTotalSmall' + thisID[0]).className = addClass('sliderTotalSmall' + thisID[0], 'goldBadge');
+	        	        break;
+	        	    case 2:
+	        	    	$('#canvas'+thisID[0]).css('display','none');
+	        			document.getElementById('sliderTotalSmall' + thisID[0]).className = addClass('sliderTotalSmall' + thisID[0], 'silverBadge');
+	        	        break;
+	        	    case 3:
+	        	    	$('#canvas'+thisID[0]).css('display','none');
+	        			document.getElementById('sliderTotalSmall' + thisID[0]).className = addClass('sliderTotalSmall' + thisID[0], 'bronzeBadge');
+	        	        break;
+	        	    default:
+	        	    	$('#canvas'+thisID[0]).css('display','none');
         		}
         		count = count + 1;
 
