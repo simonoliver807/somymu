@@ -170,16 +170,11 @@ footer {
 .postionWidth {
   width: 47px; }
 
-/*.chartContainer { 
-	position: relative;
-	canvasContainer {
-		position: absolute; top: 0; left: 0;
-    	transition: all 1s ease-out;
-	}
-	canvasContainer:nth-child(1) { transform: translate3d(0, 0%, 0); }		
-	canvasContainer:nth-child(2) { transform: translate3d(0, 0%, 0); }
-	canvasContainer:nth-child(3) { transform: translate3d(0, 0%, 0); }
-} */
+.chartContainer {
+  width: 102px;
+  height: 102px;
+  position: relative; }
+
 /* fillers */
 .fillerDiv25 {
   height: 25%; }
@@ -328,9 +323,9 @@ footer {
   cursor: default;
   font-size: 20px;
   font-weight: 600;
-  left: 72px;
+  left: 50px;
   position: absolute;
-  top: 47%;
+  top: 57%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -758,7 +753,10 @@ footer {
     width: 63%; }
 
   .custom-col-md-3 {
-    width: 25%; } }
+    width: 25%; }
+
+  .leftPadding15 {
+    padding-left: 25px; } }
 @media (max-width: 992px) {
   body {
     background: #fff; }
@@ -799,7 +797,7 @@ footer {
     margin: 0; }
 
   .chartWidth-sm {
-    width: 34%; }
+    width: 25%; }
 
   #game-content {
     padding: 0; }

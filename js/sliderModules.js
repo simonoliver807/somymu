@@ -56,13 +56,15 @@ var DoughNutModule = (function () {
     var chartStatus;
     var ordinalPosition;
     var totalScore;
+    var data;
     return {
-        setDoughnutID: function (doughnutID, ordinalPosition) {
+        setDoughnutID: function (doughnutID, ordinalPosition, data) {
             this.doughnutID = doughnutID;
             this.doughnutObject = {};
             this.chartStatus = true;
             this.ordialPosition = ordinalPosition;
             this.totalScore = 0;
+            this.data = data;
         }
     };
 });
@@ -143,10 +145,8 @@ var UIModule = (function () {
             for (var i = 0; i < numberOfSliders; i++){
             	// create a chart for each sliderColumn
                 doughnutArray[i] = new DoughNutModule();
-                var jsonItems = document.getElementById('jsonInput').value;
-     
             	var ordinalPosition = this.getOrdinalPosition(i+1);
-            	doughnutArray[i].setDoughnutID(i, ordinalPosition);
+            	doughnutArray[i].setDoughnutID(i, ordinalPosition, chartData);
             	doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, chartData, sliderLabels[i], ordinalPosition);
     		}
             	// resize all the charts
@@ -259,10 +259,10 @@ var UIModule = (function () {
             var chartTotalHTML = Math.round(100 * (sliderTotal / (weightTotal * 100)));
             doughnutArray[labelNumber].totalScore  = chartTotalHTML;
             if(chartTotalHTML < 10){
-            	 document.getElementById('sliderTotal' + labelNumber).style.left = "67px";
+            	 //document.getElementById('sliderTotal' + labelNumber).style.left = "67px";
             }
             else {
-            	document.getElementById('sliderTotal' + labelNumber).style.left = "66px";
+            	//document.getElementById('sliderTotal' + labelNumber).style.left = "66px";
             }
             document.getElementById('sliderTotal' + labelNumber).innerHTML = chartTotalHTML;
             document.getElementById('sliderTotalSmall' + labelNumber).innerHTML = chartTotalHTML;

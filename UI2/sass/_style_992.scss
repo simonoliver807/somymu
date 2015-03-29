@@ -2,7 +2,7 @@
 @media (max-width: 992px) {
 
 	body {
-		background: green;
+		background: $w;
 	}
 
 	.col-sm-3 {
@@ -37,7 +37,7 @@
 		margin: 0;	
 	}
 	.chartWidth-sm {
-		width: 34%;
+		width: 25%;
 	}
 	#game-content {
 		padding: 0;
@@ -203,13 +203,14 @@
 		display: table;
 		width: 100%;
 		margin: 0;
-		.buttonColumn {
-			display: table-footer-group;
-		}
-		.labelColumn {
-			display: table-header-group;
-			text-align: center;
-		}
+	}
+	.buttonColumn {
+		display: table-footer-group;
+		height: 100%;
+	}
+	.labelColumn {
+		display: table-header-group;
+		text-align: center;
 	}
 	.factorOverlay {
 		width: 100%;

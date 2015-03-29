@@ -208,15 +208,6 @@ function setGreyOut(hideShow, id) {
 // grey out the sliders, button and chart
 $('.greyOutClick').click(function () {
 	var id = this.id.match(/[0-9]+/g);
-//	var greyOutWidth = $('.moduleRow'+id ).outerWidth();
-//	var greyOutHeight = $('.moduleRow'+id ).outerHeight();
-//	var rowOffset = $('.moduleRow'+id ).offset();
-//	var buttonArray = modules.getButtonArray();
-//	var buttonUpdateID = 0;
-//	document.getElementById('greyOut'+id).setAttribute('class','fa fa-plus fa-lg greyOutClick');
-//	$('body').append('<div class="greyOut" id="greyOutOverlay'+id+'" style="width:'+greyOutWidth+'px;height:'+greyOutHeight+'px;top:'+rowOffset.top+'px;left:'+rowOffset.left+'px;">'+
-//					 '<div class="greyOutPlus" id="greyOutPlus'+id+'" onclick="turnOffGrey(this.id)"></div>'+
-//					 '</div>');
 	var buttonArray = modules.getButtonArray();
 	var buttonUpdateID = 0;
 	setGreyOut(true, id);

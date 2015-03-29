@@ -95,50 +95,50 @@ var TemplateModule = (function () {
 						
                   				 '</li>');
             this.firstSlider = false;
-//            $('#canvasContainer' + doughnutID).append('<div id="canvas' + doughnutID + '" class="canvasBackground">' +
-//            											'<div class="row">'+
-//            												'<div class="col-sm-4 col-md-4 col-lg-4 chartWidth-sm">' +
-//	            												'<div style="width:102px;height:102px; position: relative;">'+
-//	                                                            	'<div class="sliderTotal" id="sliderTotal' + doughnutID + '"></div>' +
-//                                                                    '<div class="heightFiller10"></div>'+
-//	                                                            	'<canvas id=chart' + doughnutID + ' width="600" height="400"></canvas>' +
-//	                                                            '</div>'+
-//	                                                        '</div>'+
-//	            											'<div class="col-sm-8 col-md-8 col-lg-8">' +
-//	                                                        	'<div class="row" style="height: 10%">'+
-//	                                                        		'<div class="col-sm-12 col-md-12 col-lg-12">' +
-//            																'<table class="chartKey">' +
-//                                                                                '<tr class="heightFiller10"><td></td><td></td><td></td></tr>' +
-//                                                                                '<tr class="chartKeyRow"><td><div class="chartKeyDiv1"></div></td><td></td><td class="chartKeyText">Manager</td></tr>' +
-//                                                                                '<tr class="heightFiller5"><td></td><td></td><td></td></tr>' +
-//            															        '<tr class="chartKeyRow"><td><div class="chartKeyDiv2"></div></td><td></td><td class="chartKeyText">Goal Keeper</td></tr>' +
-//                                                                                '<tr class="heightFiller5"><td></td><td></td><td></td></tr>' +
-//                                                                                '<tr class="chartKeyRow"><td><div class="chartKeyDiv3"></div></td><td></td><td class="chartKeyText">Midfield</td></tr>' +
-//                                                                                '<tr class="heightFiller5"><td></td><td></td><td></td></tr>' +
-//                                                                                '<tr class="chartKeyRow"><td><div class="chartKeyDiv4"></div></td><td></td><td class="chartKeyText">League Position & Recent Form</td></tr>' +
-//                                                                                '<tr class="heightFiller5"><td></td><td></td><td></td></tr>' +
-//                                                                                '<tr class="chartKeyRow"><td><div class="chartKeyDiv5"></div></td><td></td><td class="chartKeyText">Attack</td></tr>' +
-//            																'</table>'+                                
-//                                            						'</div>'+
-//	                                                        		'</div>'+
-//	                                                        	'</div>'+
-//	                                                        '</div>'+
-//	            										'</div>'+
-//                                                       '</div>');
-//            document.getElementById('sliderTotal' + doughnutID).innerHTML = '0';
-//            document.getElementById('sliderTotalSmall' + doughnutID).innerHTML = '0';
-//            var ctx = document.getElementById('chart'+doughnutID).getContext("2d");
-//            return new Chart(ctx).Doughnut(data, {
-//            segmentShowStroke: false,
-//            animationEasing: "easeOutQuart",
-//            animateScale: true,
-//            animateRotate: false,
-//            animationSteps: 10,
-//            responsive: false,
-//            maintainAspectRatio: true,
-//            percentageInnerCutout : 40,
-//            showTooltips: false
-//                });
+            $('#canvasContainer' + doughnutID).append('<div id="canvas' + doughnutID + '" class="canvasBackground">' +
+            											'<div class="row">'+
+            												'<div class="col-sm-4 col-md-4 col-lg-4 chartWidth-sm">' +
+	            												'<div class="chartContainer">'+
+	                                                            	'<div class="sliderTotal" id="sliderTotal' + doughnutID + '"></div>' +
+                                                                    '<div class="heightFiller10"></div>'+
+	                                                            	'<canvas id=chart' + doughnutID + ' width="600" height="400"></canvas>' +
+	                                                            '</div>'+
+	                                                        '</div>'+
+	            											'<div class="col-sm-8 col-md-8 col-lg-8">' +
+	                                                        	'<div class="row" style="height: 10%">'+
+	                                                        		'<div class="col-sm-12 col-md-12 col-lg-12 leftPadding15">' +
+            																'<table class="chartKey">' +
+                                                                                '<tr class="heightFiller10"><td></td><td></td><td></td></tr>' +
+                                                                                '<tr class="chartKeyRow"><td><div class="chartKeyDiv1"></div></td><td></td><td class="chartKeyText">Manager</td></tr>' +
+                                                                                '<tr class="heightFiller5"><td></td><td></td><td></td></tr>' +
+            															        '<tr class="chartKeyRow"><td><div class="chartKeyDiv2"></div></td><td></td><td class="chartKeyText">Goal Keeper</td></tr>' +
+                                                                                '<tr class="heightFiller5"><td></td><td></td><td></td></tr>' +
+                                                                                '<tr class="chartKeyRow"><td><div class="chartKeyDiv3"></div></td><td></td><td class="chartKeyText">Midfield</td></tr>' +
+                                                                                '<tr class="heightFiller5"><td></td><td></td><td></td></tr>' +
+                                                                                '<tr class="chartKeyRow"><td><div class="chartKeyDiv4"></div></td><td></td><td class="chartKeyText">League Position & Recent Form</td></tr>' +
+                                                                                '<tr class="heightFiller5"><td></td><td></td><td></td></tr>' +
+                                                                                '<tr class="chartKeyRow"><td><div class="chartKeyDiv5"></div></td><td></td><td class="chartKeyText">Attack</td></tr>' +
+            																'</table>'+                                
+                                            						'</div>'+
+	                                                        		'</div>'+
+	                                                        	'</div>'+
+	                                                        '</div>'+
+	            										'</div>'+
+                                                       '</div>');
+            document.getElementById('sliderTotal' + doughnutID).innerHTML = '0';
+            document.getElementById('sliderTotalSmall' + doughnutID).innerHTML = '0';
+            var ctx = document.getElementById('chart'+doughnutID).getContext("2d");
+            return new Chart(ctx).Doughnut(data, {
+            segmentShowStroke: false,
+            animationEasing: "easeOutQuart",
+            animateScale: true,
+            animateRotate: false,
+            animationSteps: 10,
+            responsive: false,
+            maintainAspectRatio: true,
+            percentageInnerCutout : 40,
+            showTooltips: false
+                });
         }
     };
 });

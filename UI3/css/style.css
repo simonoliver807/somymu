@@ -162,16 +162,11 @@ footer {
 .postionWidth {
   width: 47px; }
 
-/*.chartContainer { 
-	position: relative;
-	canvasContainer {
-		position: absolute; top: 0; left: 0;
-    	transition: all 1s ease-out;
-	}
-	canvasContainer:nth-child(1) { transform: translate3d(0, 0%, 0); }		
-	canvasContainer:nth-child(2) { transform: translate3d(0, 0%, 0); }
-	canvasContainer:nth-child(3) { transform: translate3d(0, 0%, 0); }
-} */
+.chartContainer {
+  width: 102px;
+  height: 102px;
+  position: relative; }
+
 /* fillers */
 .fillerDiv25 {
   height: 25%; }
@@ -748,12 +743,17 @@ footer {
   .col-md-8 {
     width: 75%; }
 
+  .custom-col-md-8 {
+    width: 66%; }
+
   .col-md-9 {
-    width: 63%;
-    float: none; }
+    width: 63%; }
 
   .custom-col-md-3 {
-    width: 25%; } }
+    width: 25%; }
+
+  .leftPadding15 {
+    padding-left: 25px; } }
 @media (max-width: 992px) {
   body {
     background: #fff; }
@@ -775,6 +775,7 @@ footer {
 
   .col-sm-7 {
     padding: 0;
+    float: none;
     width: 100%; }
 
   .col-sm-9 {
