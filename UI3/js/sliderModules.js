@@ -81,13 +81,22 @@ var UIModule = (function () {
     var windowResizeBool;
 
     return {
-        init: function (numberOfscorers, numberOfButtons) {
+        init: function (numberOfscorers, numberOfButtons, uiType) {
+            if (uiType == 'ui1') {
+
+            }
+            else if (uiType == 'ui2') {
+                this.scorers(numberOfscorers, numberOfButtons)
+            }
+           
+        },
+        scorers: function (numberOfscorers, numberOfButtons) {
             if (document.getElementsByTagName("body")[0].getAttribute("browser") == 'ie9') {
                 document.getElementsByTagName("body")[0].className = 'cms-bootstrap ie9';
                 this.ie9 = 'ie9';
             };
             // set up screen size
-             this.windowWidth = window.outerWidth;
+            this.windowWidth = window.outerWidth;
             //this.windowWidth = 900;
             var templateModule = new TemplateModule();
             var self = this;
@@ -100,9 +109,9 @@ var UIModule = (function () {
             ///////////////////////////////////////////////////////////////////////////////////////
             this.scorerWidth = 110;
             //this.scorerRowWidth = 525;
-            
-            
-            
+
+
+
             //$.getJSON("js/doughnutData.json", function (data) {
             //    for (i = 0; i < data.length; i++) {
             //        doughnutArray[i] = new DoughNutModule;
@@ -140,31 +149,31 @@ var UIModule = (function () {
             }
             var chartData = document.getElementById('jsonInput').value;
             chartData = JSON.parse(chartData);
-            for (var i = 0; i < numberOfscorers; i++){
-            	// create a chart for each scorerColumn
+            for (var i = 0; i < numberOfscorers; i++) {
+                // create a chart for each scorerColumn
                 doughnutArray[i] = new DoughNutModule();
                 var jsonItems = document.getElementById('jsonInput').value;
-     
-            	var ordinalPosition = this.getOrdinalPosition(i+1);
-            	doughnutArray[i].setDoughnutID(i, ordinalPosition);
-            	doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, chartData, scorerLabels[i], ordinalPosition);
+
+                var ordinalPosition = this.getOrdinalPosition(i + 1);
+                doughnutArray[i].setDoughnutID(i, ordinalPosition);
+                doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, chartData, scorerLabels[i], ordinalPosition);
             }
             // bind click events to all the buttons
             $('.scorer').on('click', function () {
                 self.setScorerValue(this.id);
             });
             // resize all the charts
-            $('canvas').css({width:'95%',height:'95%'});
+            $('canvas').css({ width: '95%', height: '95%' });
             // don't need to do this for iphone
-            if(this.windowWidth > 992){
+            if (this.windowWidth > 992) {
                 // multiply the number of scorers by the width of the scorers to give the scorer container width
                 var containerWidth = (this.scorerWidth * this.numberOfscorers) + 30;
                 $('.scorerWrapper').css('width', containerWidth);
-                $('.sliderNavWrapper').css('width', containerWidth);    
+                $('.sliderNavWrapper').css('width', containerWidth);
             }
             // update the chart positions so only the css is updated
             this.updateChartPositions();
-           
+
         },
         setButtonValue: function (buttonID) {
             var button = buttonArray[buttonID];

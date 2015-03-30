@@ -31,7 +31,6 @@ $( document ).bind( 'mobileinit', function(){
 	  $.mobile.loader.prototype.options.html = "";
 	  $.mobile.hidePageLoadingMsg();
 	});
-
 //window resize event so we change the slider for vertical to horizontal
 window.onresize = changeSlider;
 function changeSlider() {
@@ -110,24 +109,40 @@ $('.sliderContainer').hover(function (event) {
         }
     }
     if (!sliderArray[sliderID[0]][sliderID[1]].tooltipBool) {
-        $('#' + sliderID[0] + '_' + sliderID[1]).tooltip({
-            container: 'body',
-            html: true,
-            placement: 'right',
-            trigger: 'manual',
-            title: function () {
-                //   here will be custom template
-                var id = $(this).parent().attr('id');
-                id = id.match(/[0-9]+/g);
-                return '<div class="tooltipValue">' + sliderArray[id[0]][id[1]].sliderValue  +'</div>';
-            }
-        }).tooltip('show');
-        if (modules.ie9) {
-            var position = $('#' + sliderID[0] + '_' + sliderID[1]).offset();
-            position.left = position.left + 4;
-            position.top = position.top - 44;
-            $('.tooltip').css({ left: position.left, top: position.top });
+        if (modules.windowResizeBool) {
+            $('#' + sliderID[0] + '_' + sliderID[1]).tooltip({
+                container: 'body',
+                html: true,
+                placement: 'top',
+                trigger: 'manual',
+                title: function () {
+                    //   here will be custom template
+                    var id = $(this).parent().attr('id');
+                    id = id.match(/[0-9]+/g);
+                    return '<div class="tooltipValue">' + sliderArray[id[0]][id[1]].sliderValue + '</div>';
+                }
+            }).tooltip('show');
         }
+        else {
+            $('#' + sliderID[0] + '_' + sliderID[1]).tooltip({
+                container: 'body',
+                html: true,
+                placement: 'right',
+                trigger: 'manual',
+                title: function () {
+                    //   here will be custom template
+                    var id = $(this).parent().attr('id');
+                    id = id.match(/[0-9]+/g);
+                    return '<div class="tooltipValue">' + sliderArray[id[0]][id[1]].sliderValue + '</div>';
+                }
+            }).tooltip('show');
+        }
+        //if (modules.ie9) {
+        //    var position = $('#' + sliderID[0] + '_' + sliderID[1]).offset();
+        //    position.left = position.left + 4;
+        //    position.top = position.top - 44;
+        //    $('.tooltip').css({ left: position.left, top: position.top });
+        //}
         //$('.tooltip-inner').text(sliderArray[sliderID[0]][sliderID[1]].sliderValue);
         sliderArray[sliderID[0]][sliderID[1]].tooltipBool = true;
     }
@@ -207,29 +222,32 @@ function setGreyOut(hideShow, id) {
 }
 // grey out the sliders, button and chart
 $('.greyOutClick').click(function () {
-	var id = this.id.match(/[0-9]+/g);
-	var buttonArray = modules.getButtonArray();
-	var buttonUpdateID = 0;
-	setGreyOut(true, id);
-	// set the disabled bool for sliders to true
-	var sliderArray = modules.getSliderArray();
-	for(var i = 0; i < sliderArray.length; i++){
-		sliderArray[id][i].disabledBool = true;
-	}
-	// remove the segemnts disabled
-	modules.removeChartSegment(id);
-	//modules.numberNotDisable -= 1;
-	
-	// update the temp id's for the button so they match the new amount of segments
-	buttonArray[id].disabledBool = true;
-	for(var i = 0; i < modules.numberOfButtons; i++){
-		if(!buttonArray[i].disabledBool){
-			buttonArray[i].buttonUpdateID = buttonUpdateID;
-			buttonUpdateID += 1;
-		}
-		else { buttonArray[i].buttonUpdateID = null;}
-	}
-	modules.updateButtonValue(id);
+    if (modules.numberOfGreyOuts > 1) {
+        var id = this.id.match(/[0-9]+/g);
+        var buttonArray = modules.getButtonArray();
+        var buttonUpdateID = 0;
+        setGreyOut(true, id);
+        // set the disabled bool for sliders to true
+        var sliderArray = modules.getSliderArray();
+        for (var i = 0; i < modules.numberOfSliders; i++) {
+            sliderArray[id][i].disabledBool = true;
+        }
+        // remove the segemnts disabled
+        modules.removeChartSegment(id);
+        //modules.numberNotDisable -= 1;
+
+        // update the temp id's for the button so they match the new amount of segments
+        buttonArray[id].disabledBool = true;
+        for (var i = 0; i < modules.numberOfButtons; i++) {
+            if (!buttonArray[i].disabledBool) {
+                buttonArray[i].buttonUpdateID = buttonUpdateID;
+                buttonUpdateID += 1;
+            }
+            else { buttonArray[i].buttonUpdateID = null; }
+        }
+        modules.updateButtonValue(id);
+        modules.numberOfGreyOuts -=1;
+    }
 	
 });
 function turnOffGrey(id){
@@ -250,46 +268,13 @@ function turnOffGrey(id){
 	}
 	// set the disabled bool for sliders to true
 	var sliderArray = modules.getSliderArray();
-	for(var i = 0; i < sliderArray.length; i++){
+	for(var i = 0; i < modules.numberOfSliders; i++){
 		sliderArray[id][i].disabledBool = false;
 	}
 	modules.addChartSegment(id);
 	modules.updateButtonValue(id);
+	modules.numberOfGreyOuts += 1;
 }
-//$('.collapse').on('hidden.bs.collapse', function () {
-//	  // do something…
-//	var chartArray = modules.getChartArray();
-//	var totalArray = [];
-//	for(var i = 0; i < modules.numberOfSliders; i++){
-//		totalArray[i] = document.getElementById('canvasContainer'+i).getAttribute('totalscore')+'_'+i;
-//	}
-//	//totalArray.sort(function(a.match(/[0-9]+/g),b.match(/[0-9]+/g)){return a-b;});
-//	totalArray.sort(function(a,b){
-//									var x = a.match(/[0-9]+/g);
-//									x = parseInt(x[0]);
-//									var y = b.match(/[0-9]+/g);
-//									y = parseInt(y[0]);
-//									 if (x < y) {
-//									        return 1;
-//									    }
-//									    if (x > y) {
-//									        return -1;
-//									    }
-//									    return 0;
-//									});
-//	for(var i = 0; i < totalArray.length; i++){
-//		var thisIndex = totalArray[i].match(/[0-9]+/g)[1];
-//		var ordinalPosition = modules.getOrdinalPosition(i+1);
-//		$('#ordianlPosition' + thisIndex).text( ordinalPosition );
-//		
-//	}
-//	var maxIndex = totalArray[0].match(/[0-9]+/g)[1];
-//	$('#collapse'+maxIndex).collapse('show');
-//    	chartArray[maxIndex].chartStatus = true;
-//    	document.getElementById('caretToggle' + maxIndex).className = "fa fa-caret-down fa-lg";
-//    	document.getElementById('sliderTotal' + maxIndex).style.visibility = "visible";
-//});
-
 function updateSliderPostion(direction, buttonID){
 	var currentPos = $('.sliderWrapper').css('right');
 	currentPos = currentPos.match(/[0-9]+/g);
@@ -314,15 +299,18 @@ $('.tab').click(function (event) {
     addHighLight(id);
 });
 function addHighLight(id) {
+    var tabList = ['tabTap', 'tabSlide', 'tabDecide'];
     switch (id) {
         case "tabTap":
             var classNames = document.getElementById('tabTap').className;
             var showHide = classNames.indexOf('selectBackground');
             if (showHide === -1) {
-                classNames = document.getElementById('tabSlide').className;
-                showHide = classNames.indexOf('selectBackground');
-                if (showHide !== -1) {
-                    addHighLight('tabSlide');
+                for (var i = 0; i < tabList.length; i++) {
+                    var classNamesTabs = document.getElementById(tabList[i]).className;
+                    showHide = classNamesTabs.indexOf('selectBackground');
+                    if (showHide !== -1) {
+                        addHighLight(tabList[i]);
+                    }
                 }
                 document.getElementById('tabTap').className = classNames + ' selectBackground';
                 $('.overlayDiv').addClass('bc');
@@ -346,10 +334,12 @@ function addHighLight(id) {
             var classNames = document.getElementById('tabSlide').className;
             var showHide = classNames.indexOf('selectBackground');
             if (showHide === -1) {
-                classNames = document.getElementById('tabTap').className;
-                showHide = classNames.indexOf('selectBackground');
-                if (showHide !== -1) {
-                    addHighLight('tabTap');
+                for (var i = 0; i < tabList.length; i++) {
+                    var classNamesTabs = document.getElementById(tabList[i]).className;
+                    showHide = classNamesTabs.indexOf('selectBackground');
+                    if (showHide !== -1) {
+                        addHighLight(tabList[i]);
+                    }
                 }
                 $('.slider').addClass('bc');
                 document.getElementById('tabSlide').className = classNames + ' selectBackground';
@@ -360,6 +350,7 @@ function addHighLight(id) {
                 document.getElementById('sliderNav').style.background = '0';
                 document.getElementById('button1').style.background = '0';
                 document.getElementById('button2').style.background = '0';
+                document.getElementById('labelsBackground').className = '';
                 document.getElementById('sliderNavWrapper').className = addClass('sliderNavWrapper', 'selectedCBC');
                 updateOverlay('highLightOverlay1', leftMinusPadding, widthMinusPadding, 'tabSlide', false);
                 updateOverlay('highLightOverlay2', leftMinusPadding, widthMinusPadding, 'tabSlide', true);
@@ -367,16 +358,37 @@ function addHighLight(id) {
             else {
                 $('#tabSlide').removeClass('selectBackground');
                 $('.slider').removeClass('bc');
-                document.getElementById('sliderNav').style.background = '#fff';
                 document.getElementById('button1').style.background = '#fff';
                 document.getElementById('button2').style.background = '#fff';
+                document.getElementById('labelsBackground').className = 'labelsBackground';
                 document.getElementById('sliderNavWrapper').className = removeClass('sliderNavWrapper', 'selectedCBC');
                 updateOverlay('highLightOverlay1', 0, 0, 0, 0, '', false);
                 updateOverlay('highLightOverlay2', 0, 0, 0, 0, '', false);
             }
             break;
         case "tabDecide":
-
+            var classNames = document.getElementById('tabDecide').className;
+            var showHide = classNames.indexOf('selectBackground');
+            if (showHide === -1) {
+                for (var i = 0; i < tabList.length; i++) {
+                    var classNamesTabs = document.getElementById(tabList[i]).className;
+                    showHide = classNamesTabs.indexOf('selectBackground');
+                    if (showHide !== -1) {
+                        addHighLight(tabList[i]);
+                    }
+                }
+                document.getElementById('tabDecide').className = classNames + ' selectBackground';
+                document.getElementById('results').className = addClass('results', 'selectedCBC');
+                $('.result-header').addClass('selectedCBC');
+                $('#results li').css('background', 'none');
+            }
+            else {
+                $('#tabDecide').removeClass('selectBackground');
+                removeClass('results', 'selecetedCBC');
+                document.getElementById('results').className = removeClass('results', 'selectedCBC');
+                $('.result-header').removeClass('selectedCBC');
+                $('#results li').css('background', 'none');
+            }
             break;
     }
 }
@@ -401,3 +413,7 @@ document.getElementById('highLightOverlay1').addEventListener('click',
         var attrVal = document.getElementById('highLightOverlay1').getAttribute('highLightOverlay1');
         addHighLight(attrVal);
     });
+document.getElementById('results').addEventListener('click',
+    function () {
+        addHighLight('tabDecide');
+ });

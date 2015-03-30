@@ -42,7 +42,14 @@ var SliderModule = (function () {
                 this.sliderValue = sliderValue - 1;
                 //  update the tooltip
                 var position = $('#' + this.sliderID).offset();
-                $('.tooltip').css({ top: position.top});
+                if (modules.windowResizeBool) {
+                    // update horizontal
+                    $('.tooltip').css({ left: position.left + 'px' });
+                }
+                else {
+                    //update vertically
+                    $('.tooltip').css({ top: position.top + 'px'});
+                }   
                 $('.tooltipValue').text(this.sliderValue);
                 document.getElementById('sliderBackground' + this.sliderID).style.width = this.sliderValue + '%';
             }
@@ -81,6 +88,7 @@ var UIModule = (function () {
     var ie9 = false;
     var windowWidth;
     var windowResizeBool;
+    var numberOfGreyOuts;
 
     return {
         init: function (numberOfSliders, numberOfButtons) {
@@ -89,7 +97,8 @@ var UIModule = (function () {
                 this.ie9 = 'ie9';
             };
             // set up screen size
-             this.windowWidth = window.outerWidth;
+            //this.windowWidth = window.outerWidth;
+            this.windowWidth = $(window).width();
             //this.windowWidth = 900;
             var templateModule = new TemplateModule();
             
@@ -97,21 +106,17 @@ var UIModule = (function () {
             this.numberOfButtons = numberOfButtons;
             this.currentSlider = 0;
             this.windowResizeBool = false;
+            this.numberOfGreyOuts = numberOfButtons;
             ///////////////////////////////////////////////////////////////////////////////////////
             // have hard code the width of the sider row and the slider container maybe get from hidden input on index page
             ///////////////////////////////////////////////////////////////////////////////////////
             this.sliderWidth = 110;
             //this.sliderRowWidth = 525;
             
-            
-            
-            //$.getJSON("js/doughnutData.json", function (data) {
-            //    for (i = 0; i < data.length; i++) {
-            //        doughnutArray[i] = new DoughNutModule;
-            //        doughnutArray[i].setDoughnutID(i);
-            //        doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, data);
-            //    }
-            //});
+           
+            if ($(window).width() < 992) {
+                this.windowResizeBool = true;
+            }
 
             //lets create an array of buttons and a array of doughnuts to start
             var sliderLabels = ['Arsenal', 'Chelsea', 'Liverpool', 'Portsmouth', 'Man United', 'Man City', 'Leeds', 'Bournemouth'];
@@ -219,9 +224,9 @@ var UIModule = (function () {
            
             this.updateTotal(sliderID[[1]]);
             var chartObject = doughnutArray[sliderID[1]].doughnutObject;
-            var segment1 =  (parseInt(sliderID[0]) * 2 ); 
+            var segmentAdjust = buttonArray[sliderID[0]].buttonUpdateID;
+            var segment1 =  (parseInt(segmentAdjust) * 2 ); 
             var segment2  = segment1 + 1;
-            
             var sliderValue = sliderArray[sliderID[0]][sliderID[1]].totalValue / 10;
             var buttonValue = (buttonArray[sliderID[0]].buttonValue * 10) - sliderValue;
             
@@ -231,17 +236,28 @@ var UIModule = (function () {
 
         },
         updateButtonValue: function (buttonNumber) {
-        	var updateDoughnut = false;
-            for (var sliderNumber = 0; sliderNumber < this.numberOfSliders; sliderNumber++) {
-                var chartObject = doughnutArray[sliderNumber].doughnutObject;
-                var sliderValue = sliderArray[buttonNumber][sliderNumber].totalValue / 10;
-                var buttonValue = (buttonArray[buttonNumber].buttonValue * 10) - sliderValue;             
-	        	var segment1 =  (parseInt(buttonNumber) * 2 ); 
-	            var segment2  = segment1 + 1;
-	            chartObject.segments[segment1].value = buttonValue;
-	            chartObject.segments[segment2].value = sliderValue;
-	            chartObject.update();
-	            this.updateTotal(sliderNumber); 
+            var updateDoughnut = false;
+            if (buttonArray[buttonNumber].buttonUpdateID !== null) {
+                var segmentAdjust = buttonArray[buttonNumber].buttonUpdateID;
+                var segment1 = (parseInt(segmentAdjust) * 2);
+                var segment2 = segment1 + 1;
+                for (var sliderNumber = 0; sliderNumber < this.numberOfSliders; sliderNumber++) {
+                    var chartObject = doughnutArray[sliderNumber].doughnutObject;
+                    var sliderValue = sliderArray[buttonNumber][sliderNumber].totalValue / 10;
+                    var buttonValue = (buttonArray[buttonNumber].buttonValue * 10) - sliderValue;
+                    chartObject.segments[segment1].value = buttonValue;
+                    chartObject.segments[segment2].value = sliderValue;
+                    chartObject.update();
+                    this.updateTotal(sliderNumber);
+                }
+            }
+            else {
+                for (var sliderNumber = 0; sliderNumber < this.numberOfSliders; sliderNumber++) {
+                    var chartObject = doughnutArray[sliderNumber].doughnutObject;
+                    var sliderValue = 0;
+                    var buttonValue = 0;
+                    this.updateTotal(sliderNumber);
+                }
             }
         	this.updateChartPositions();
         },

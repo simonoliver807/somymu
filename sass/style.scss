@@ -53,6 +53,10 @@ a:hover {
     width: 66%;
     float:left;
 }
+.custom-col-md-3 {
+	padding-left: 0; 
+	width: 25%;
+}
 .col-md-2 {
     width: 16%;
     float:left;
@@ -68,10 +72,17 @@ footer {
 	 z-index: 9999;
 }
 #game-content {
-	padding-top: 240px;
+	padding-top: 195px;
 }
 #labelsFirstCol {
 	height: 100%;
+}
+.labelsBackground {
+  width: 97%;
+  height: 100%;
+  background: $w;
+  position: absolute;
+  z-index: -100;
 }
 .backgroundCBC {
 	background: $cbc !important;	
@@ -97,11 +108,17 @@ footer {
 .whiteHeader {
 	background: $w;
 }
+.tabShare {
+	background: $cbc !important;
+}
 .blueHeader {
 	background: #1597a7;
 		.zeroPaddingLeft {
 			padding-left: 0;
 		}
+}
+.moduleHeader {
+	height: 35px;
 }
 #questiontext1 {
     color: #000;
@@ -112,14 +129,14 @@ footer {
 // the navigation bar for the labels
 .sliderNav {
 	height: 30px;
-	background: $w;
+	background: none;
 		.zeroPaddingRight {
 			padding-right: 0;
 			background-clip: content-box;
 		}
 }
 .selectedCBC {
-	background: $cbc;
+	background: $cbc !important;
 }
 .sliderNavContainer {
 	display: inline-block;
@@ -238,6 +255,10 @@ footer {
  .tooltip.right .tooltip-arrow {
     left: 1px;
 	border-right-color: $hb;
+}
+.tooltip.top .tooltip-arrow {
+    bottom: 1px;
+	border-top-color: $hb;
 }
 .tooltipValue {
 	text-align: center;
@@ -358,7 +379,7 @@ footer {
 	width: 12px;
 }
 .sliderTotal {
-      color: $b;
+    color: $b;
     cursor: default;
     font-size: 20px;
     font-weight: 600;

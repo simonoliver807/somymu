@@ -41,6 +41,7 @@
 	}
 	.chartWidth-sm {
 		width:25%;
+		float: left;
 	}
 	#game-content {
 		padding: 0;
@@ -201,6 +202,9 @@
 	  height: 14%;
   	  width: 100%;
   	  margin: 15px 0 0 0;
+	}
+	.sliderTotal {
+		left: 49px;
 	}
 	.centerText {
 		text-align: center;

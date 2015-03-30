@@ -6,32 +6,47 @@
 		padding: 0;
 	}
 	.container {
-  		width: 1170px;
+  		width: 100%;
 	}
 	.col-md-2 {
 		width: 16%;
 	}
 	.col-md-3 {
-		width: 15%;
-	}
-	.col-md-4 {
-		padding: 0;
 		width: 23%;
 	}
+	.custom-col-md-3 {
+
+		width: 25%;
+	} 
+	.col-md-4 {
+		padding: 0;
+		width: 31%;
+	}
 	.col-md-8 {
-		width: 75%;
+		width: 69%;
 	}
 	.custom-col-md-8 {
 		width: 66%;
 	}
 	.col-md-9 {
-		width: 63%;
-	} 
-	.custom-col-md-3 {
-		width: 25%;
-	} 
+		//width: 63%;
+		width: 726px;
+	}
 	.leftPadding15 {
 		padding-left: 25px;
+	}
+	.sliderNavContainer {
+	  display: inline-block;
+	  overflow: hidden;
+	  width: 420px;
+	}
+	.sliderRow {
+		  display: inline-block;
+		  overflow-y: hidden;
+		  overflow-x: hidden;
+		  padding-top: 5px;
+		  height: 160px;
+		  width: 65%;
 	}
 }
 

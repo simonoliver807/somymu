@@ -96,13 +96,10 @@
                                     ...
                                 </ul>
                             </div>
-
-
                         </div>
 				        <div class="col-sm-6 col-md-6 col-lg-6">
                              <div class="dropdown">
-                                <button id="tabSlide" class="tab" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        
+                                <button id="tabSlide" class="tab" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">    
                                      2 <span>Slide</span>
                                 </button>
                                 <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -111,10 +108,21 @@
                             </div>
                         </div>
 				        <div class="col-sm-3 col-md-3 col-lg-3 zeroPaddingLeft">
-
-                            <div id="tabDecide" class="tab">
-						        3 <span>Decide</span>
-					        </div>
+                             <div style="float:left;">
+                                 <div class="dropdown">
+                                     <button id="tabDecide" class="tab" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">      
+                                         3 <span>Decide</span>
+                                     </button>
+                                     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                        ...
+                                     </ul>
+                                  </div>
+                              </div>
+                            <div style="float:left;">
+                              <button id="tabShare" class="tab tabShare" type="button">
+                                   <span>Now Share</span>
+                              </button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -128,6 +136,7 @@
                     <div id="sliderNav" class="row sliderNav">
                         <div id="labelsFirstCol" class="col-sm-3 col-md-3 col-lg-3"></div>
                         <div id="labelsSecondCol" class="col-sm-6 col-md-6 col-lg-6 zeroPaddingRight">
+                            <div id="labelsBackground" class="labelsBackground"></div>
                             <div class="navButtonContainer">
                                 <div class="sliderNavButton">
 	                                <button class=" fa fa-chevron-left fa-2x" onClick="updateSliderPostion('left',this.id)" id="button2"></button>
@@ -162,10 +171,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-9 col-md-9 col-lg-9" id="modules">
-					
+					        <div class="row moduleHeader"></div>
                         </div>
 				        <div class="col-sm-3 custom-col-md-3 col-lg-3">
-                            <ul class="results">
+                            <ul id="results" class="results">
 
 					        </ul>
                         </div>
@@ -213,7 +222,6 @@
     <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tinysort/2.1.1/tinysort.js"></script>
     <script src="Chart.min.js"></script>
-    
     <script type="text/javascript" src="js/niceScroll.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>  

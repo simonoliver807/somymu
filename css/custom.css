@@ -144,6 +144,7 @@ height:160px;
 .results .first .result-header
 {
 background-color:#1597a7;
+border-bottom: 1px solid white;
 height:45px;
 color:#fff;
 }

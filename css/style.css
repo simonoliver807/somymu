@@ -16,6 +16,10 @@ a:hover {
   width: 66%;
   float: left; }
 
+.custom-col-md-3 {
+  padding-left: 0;
+  width: 25%; }
+
 .col-md-2 {
   width: 16%;
   float: left; }
@@ -30,10 +34,17 @@ footer {
   z-index: 9999; }
 
 #game-content {
-  padding-top: 240px; }
+  padding-top: 195px; }
 
 #labelsFirstCol {
   height: 100%; }
+
+.labelsBackground {
+  width: 97%;
+  height: 100%;
+  background: #fff;
+  position: absolute;
+  z-index: -100; }
 
 .backgroundCBC {
   background: #73c1ca !important; }
@@ -64,10 +75,16 @@ footer {
 .whiteHeader {
   background: #fff; }
 
+.tabShare {
+  background: #73c1ca !important; }
+
 .blueHeader {
   background: #1597a7; }
   .blueHeader .zeroPaddingLeft {
     padding-left: 0; }
+
+.moduleHeader {
+  height: 35px; }
 
 #questiontext1 {
   color: #000;
@@ -77,13 +94,13 @@ footer {
 
 .sliderNav {
   height: 30px;
-  background: #fff; }
+  background: none; }
   .sliderNav .zeroPaddingRight {
     padding-right: 0;
     background-clip: content-box; }
 
 .selectedCBC {
-  background: #73c1ca; }
+  background: #73c1ca !important; }
 
 .sliderNavContainer {
   display: inline-block;
@@ -199,6 +216,10 @@ footer {
 .tooltip.right .tooltip-arrow {
   left: 1px;
   border-right-color: #1597a7; }
+
+.tooltip.top .tooltip-arrow {
+  bottom: 1px;
+  border-top-color: #1597a7; }
 
 .tooltipValue {
   text-align: center; }
@@ -731,32 +752,45 @@ footer {
     padding: 0; }
 
   .container {
-    width: 1170px; }
+    width: 100%; }
 
   .col-md-2 {
     width: 16%; }
 
   .col-md-3 {
-    width: 15%; }
+    width: 23%; }
+
+  .custom-col-md-3 {
+    width: 25%; }
 
   .col-md-4 {
     padding: 0;
-    width: 23%; }
+    width: 31%; }
 
   .col-md-8 {
-    width: 75%; }
+    width: 69%; }
 
   .custom-col-md-8 {
     width: 66%; }
 
   .col-md-9 {
-    width: 63%; }
-
-  .custom-col-md-3 {
-    width: 25%; }
+    width: 726px; }
 
   .leftPadding15 {
-    padding-left: 25px; } }
+    padding-left: 25px; }
+
+  .sliderNavContainer {
+    display: inline-block;
+    overflow: hidden;
+    width: 420px; }
+
+  .sliderRow {
+    display: inline-block;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    padding-top: 5px;
+    height: 160px;
+    width: 65%; } }
 @media (max-width: 992px) {
   body {
     background: #fff; }
@@ -797,7 +831,8 @@ footer {
     margin: 0; }
 
   .chartWidth-sm {
-    width: 25%; }
+    width: 25%;
+    float: left; }
 
   #game-content {
     padding: 0; }
@@ -977,6 +1012,9 @@ footer {
     height: 14%;
     width: 100%;
     margin: 15px 0 0 0; }
+
+  .sliderTotal {
+    left: 49px; }
 
   .centerText {
     text-align: center; }
