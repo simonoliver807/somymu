@@ -28,7 +28,7 @@ var TemplateModule = (function () {
 
 
                      '</div>' +
-                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 sliderRow"><ul class="sliderWrapper setTransition" id="sliderColumns' + buttonID + '"><li style="width:30px;display:inline-block;list-style:none;height:5px;"></li></ul>' +
+                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 sliderRow"><ul class="elementWrapper setTransition" id="elementColumns' + buttonID + '"><li style="width:30px;display:inline-block;list-style:none;height:5px;"></li></ul>' +
                      '</div>' +
                   '</div>');
 
@@ -36,7 +36,7 @@ var TemplateModule = (function () {
             moduleButton.onclick = function () { setButtonValue(this.id); };
         },
         createSlider: function (sliderID, slider, label, windowWidth) {
-	        $('#sliderColumns' + slider).append('<li class="sliderContainer" id="sliderStyle'+slider+'">' +
+	        $('#elementColumns' + slider).append('<li class="sliderContainer" id="sliderStyle'+slider+'">' +
 	        		'<div class="sliderLabelMobile">' + label + '</div>'+
 	                '<div id="slider' + sliderID + '" class="slider"><div id="sliderBackground' + sliderID + '" class="sliderBackground' + slider + '"></div></div>' +
 	        '</li>');
@@ -80,6 +80,13 @@ var TemplateModule = (function () {
 	        }
             $('#slider'+sliderID).append('<div class="maxMin"><div class="sliderScale"></div><div class="scaleMiddle"></div></div>');
             $('#slider' + sliderID).find('span').attr('id', sliderID);
+        },
+        createScorer: function (scorerID, scorer, label, windowWidth) {
+            $('#elementColumns' + scorer).append('<li class="scorerContainer" id="scorerStyle' + scorer + '">' +
+	               // '<div id="scorer' + scorerID + '" class="scorer"><div id="scorerBackground' + scorerID + '" class="scorerBackground' + scorer + '"></div></div>' +
+                     '<div id="scorer' + scorerID + '" class="scorer"><div id="scorerValue' + scorerID + '" class="scorerValue"></div></div>' +
+            '</li>');
+
         },
         createDoughnut: function (doughnutID, data, sliderLabel, ordinalPosition) {
         	var liClass = "";

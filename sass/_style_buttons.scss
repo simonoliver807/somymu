@@ -433,3 +433,70 @@
 		}
 	}
 }
+
+
+
+// scorer buttons
+/* style the scorer buttons per column */
+#scorerStyle0 .scorer {
+    background:radial-gradient(circle farthest-side, $color1 24px, #fff 4.99px, #fff 22.5px, $color1 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#scorerStyle0 {
+ .bc {
+	 &.scorer {
+		background:radial-gradient(circle farthest-side, $color1 24px, $cbc 4.99px, $cbc 22.5px, $color1 23.75px, $cbc 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		}
+	}
+}
+#scorerStyle1 .scorer {
+	background:radial-gradient(circle farthest-side, $color2 24px, #fff 9.99px, #fff 22.5px, $color2 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#scorerStyle1{
+ .bc {
+	 &.scorer {
+		background:radial-gradient(circle farthest-side, $color2 24px, $cbc 4.99px, $cbc 22.5px, $color2 23.75px, $cbc 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		}
+	}
+}
+#scorerStyle2 .scorer {
+	background:radial-gradient(circle farthest-side, $color3 24px, #fff 9.99px, #fff 22.5px, $color3 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#scorerStyle2{
+ .bc {
+	 &.scorer {
+		background:radial-gradient(circle farthest-side, $color3 24px, $cbc 4.99px, $cbc 22.5px, $color3 23.75px, $cbc 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		}
+	}
+}
+#scorerStyle3 .scorer {
+	background:radial-gradient(circle farthest-side, $color4 24px, #fff 9.99px, #fff 22.5px, $color4 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#scorerStyle3{
+ .bc {
+	 &.scorer {
+		background:radial-gradient(circle farthest-side, $color4 24px, $cbc 4.99px, $cbc 22.5px, $color4 23.75px, $cbc 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		}
+	}
+}
+#scorerStyle4 .scorer {
+	background:radial-gradient(circle farthest-side, $color5 24px, #fff 9.99px, #fff 22.5px, $color5 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#scorerStyle4{
+ .bc {
+	 &.scorer {
+		background:radial-gradient(circle farthest-side, $color5 24px, $cbc 4.99px, $cbc 22.5px, $color5 23.75px, $cbc 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		}
+	}
+}
+#scorerStyle5 .scorer {
+	background:radial-gradient(circle farthest-side, $color6 24px, #fff 9.99px, #fff 22.5px, $color6 23.75px, #fff 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+}
+#scorerStyle5{
+ .bc {
+	 &.scorer {
+		background:radial-gradient(circle farthest-side, $color6 24px, $cbc 4.99px, $cbc 22.5px, $color6 23.75px, $cbc 25px) repeat scroll 0 0 rgba(0, 0, 0, 0);
+		}
+	}
+}
+
+

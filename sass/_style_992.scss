@@ -166,7 +166,7 @@
     	z-index: 1;
 	}
 	
-	.sliderWrapper {
+	.elementWrapper {
 		position: relative;
 		height: 100%;
 		padding: 15px 0 0 0;
@@ -175,6 +175,8 @@
 		-webkit-transition-property: none;
 		-o-transition-property: none;
 		transition-property: none;
+	}
+	.elementWrapperWidth {
 		width: 100% !important;
 	}
 	.maxMin {

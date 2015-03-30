@@ -13,19 +13,17 @@ var TemplateModule = (function () {
                                  	'<div class="col-sm-12 col-md-12 col-lg-12">' +
                                     '</div>'+
   	                              '</div>'+
-		                                 '<div class="row factorWrapper">' +
-		                                     '<div class="col-sm-5 col-md-5 col-lg-5 buttonColumn">' +
-		                                         '<div class="moduleButtonContainer">' +
-		                                             '<div id="moduleButton' + buttonID + '" class="factorIcon"><div class="overlayDiv overlayDiv1"></div></div>' +
-		                                         '</div>' +
+		                            '<div class="row factorWrapper">' +
+		                                '<div class="col-sm-5 col-md-5 col-lg-5 buttonColumn">' +
+		                                    '<div class="moduleButtonContainer">' +
+		                                        '<div id="moduleButton' + buttonID + '" class="factorIcon"><div class="overlayDiv overlayDiv1"></div></div>' +
+		                                    '</div>' +
 		
-		                                     '</div>' +
-		                                     '<div class="col-sm-7 col-md-7 col-lg-7 labelColumn">' +
-		                                         '<span id="moduleButtonLabel' + buttonID + '" class="moduleButtonLabel">' + buttonLabel + '</span>' +
-		                                     '</div>' +
-		                                  '</div>' +
-	                        
-
+		                                '</div>' +
+		                                '<div class="col-sm-7 col-md-7 col-lg-7 labelColumn">' +
+		                                    '<span id="moduleButtonLabel' + buttonID + '" class="moduleButtonLabel">' + buttonLabel + '</span>' +
+		                                '</div>' +
+		                            '</div>' +
 
                      '</div>' +
                      '<div id="scorerRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 scorerRow"><ul class="scorerWrapper setTransition" id="scorerColumns' + buttonID + '"><li style="width:30px;display:inline-block;list-style:none;height:5px;"></li></ul>' +

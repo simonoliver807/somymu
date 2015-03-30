@@ -334,7 +334,7 @@ footer {
     width: 50%;
 }
 /* the slider styling*/
-.sliderWrapper {	
+.elementWrapper {	
 	position: relative;
 	height: 100%;
 	right: 0px;
@@ -458,12 +458,7 @@ footer {
 
 .buttonColumn {
 	height : 100px;
-	-webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+	@inlcude no-select;
 }
 .highLightOverlay {
 	position: absolute;
@@ -475,6 +470,7 @@ footer {
 	}
 }
 @import "_style_buttons.scss";
+@import "_style_scorer.scss";
 @import "_style_1200.scss";
 @import "_style_992.scss";
 @import "_style_768.scss";

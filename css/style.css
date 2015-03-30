@@ -296,7 +296,7 @@ footer {
   width: 50%; }
 
 /* the slider styling*/
-.sliderWrapper {
+.elementWrapper {
   position: relative;
   height: 100%;
   right: 0px; }
@@ -418,12 +418,7 @@ footer {
   } */
 .buttonColumn {
   height: 100px;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none; }
+  @inlcude no-select; }
 
 .highLightOverlay {
   position: absolute;
@@ -744,6 +739,107 @@ footer {
   width: 100%;
   height: 100%; }
 
+/* style the scorer buttons per column */
+#scorerStyle0 .scorer {
+  background: radial-gradient(circle farthest-side, #883682 24px, #fff 4.99px, #fff 22.5px, #883682 23.75px, #fff 25px) repeat scroll 0 0 transparent; }
+
+#scorerStyle0 .bc.scorer {
+  background: radial-gradient(circle farthest-side, #883682 24px, #73c1ca 4.99px, #73c1ca 22.5px, #883682 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent; }
+
+#scorerStyle1 .scorer {
+  background: radial-gradient(circle farthest-side, #1f74c9 24px, #fff 9.99px, #fff 22.5px, #1f74c9 23.75px, #fff 25px) repeat scroll 0 0 transparent; }
+
+#scorerStyle1 .bc.scorer {
+  background: radial-gradient(circle farthest-side, #1f74c9 24px, #73c1ca 4.99px, #73c1ca 22.5px, #1f74c9 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent; }
+
+#scorerStyle2 .scorer {
+  background: radial-gradient(circle farthest-side, #fdc732 24px, #fff 9.99px, #fff 22.5px, #fdc732 23.75px, #fff 25px) repeat scroll 0 0 transparent; }
+
+#scorerStyle2 .bc.scorer {
+  background: radial-gradient(circle farthest-side, #fdc732 24px, #73c1ca 4.99px, #73c1ca 22.5px, #fdc732 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent; }
+
+#scorerStyle3 .scorer {
+  background: radial-gradient(circle farthest-side, #e2282f 24px, #fff 9.99px, #fff 22.5px, #e2282f 23.75px, #fff 25px) repeat scroll 0 0 transparent; }
+
+#scorerStyle3 .bc.scorer {
+  background: radial-gradient(circle farthest-side, #e2282f 24px, #73c1ca 4.99px, #73c1ca 22.5px, #e2282f 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent; }
+
+#scorerStyle4 .scorer {
+  background: radial-gradient(circle farthest-side, #4fbd55 24px, #fff 9.99px, #fff 22.5px, #4fbd55 23.75px, #fff 25px) repeat scroll 0 0 transparent; }
+
+#scorerStyle4 .bc.scorer {
+  background: radial-gradient(circle farthest-side, #4fbd55 24px, #73c1ca 4.99px, #73c1ca 22.5px, #4fbd55 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent; }
+
+#scorerStyle5 .scorer {
+  background: radial-gradient(circle farthest-side, #d10b49 24px, #fff 9.99px, #fff 22.5px, #d10b49 23.75px, #fff 25px) repeat scroll 0 0 transparent; }
+
+#scorerStyle5 .bc.scorer {
+  background: radial-gradient(circle farthest-side, #d10b49 24px, #73c1ca 4.99px, #73c1ca 22.5px, #d10b49 23.75px, #73c1ca 25px) repeat scroll 0 0 transparent; }
+
+.postionWidth {
+  width: 47px; }
+
+/* fillers */
+.fillerDiv25 {
+  height: 25%; }
+
+/* button styling*/
+.moduleButtonLabel {
+  font-weight: 600; }
+
+.scorer {
+  color: #fff;
+  display: table;
+  font-size: 18px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  height: 100%;
+  width: 100%; }
+
+/* the slider styling*/
+.elementWrapper {
+  position: relative;
+  height: 100%;
+  right: 0px; }
+
+.scorerRow {
+  display: inline-block;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  padding-top: 5px;
+  height: 100px; }
+
+.scorerContainer {
+  display: inline-block;
+  height: 100px;
+  list-style: outside none none;
+  margin: 0 auto;
+  padding: 0 20px;
+  width: 105px; }
+
+.buttonColumn {
+  height: 100px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.scorerValue {
+  margin: 0 auto;
+  width: 25%;
+  text-align: center;
+  display: table-cell;
+  vertical-align: middle; }
+
+.overflowXadd {
+  overflow-x: scroll !important; }
+
 @media (max-width: 1200px) {
   body {
     background-color: #fff; }
@@ -973,7 +1069,7 @@ footer {
     width: 30px;
     z-index: 1; }
 
-  .sliderWrapper {
+  .elementWrapper {
     position: relative;
     height: 100%;
     padding: 15px 0 0 0;
@@ -981,7 +1077,9 @@ footer {
     -moz-transition-property: none;
     -webkit-transition-property: none;
     -o-transition-property: none;
-    transition-property: none;
+    transition-property: none; }
+
+  .elementWrapperWidth {
     width: 100% !important; }
 
   .maxMin {

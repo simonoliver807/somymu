@@ -17,7 +17,7 @@ function getCSSint(el) {
 }
 
 var modules = new UIModule();
-modules.init(15, 6);
+modules.init(15, 6, 'ui1');
 
 
 var setButtonValue = function (id) { var buttonID = id.match(/[0-9]+/g); modules.setButtonValue(buttonID); };
@@ -48,11 +48,17 @@ function changeSlider() {
         addHighLight('tabSlide');
     }
     var windowWidth = $(window).width();
-	if(windowWidth <= 992 && !modules.windowResizeBool){
-		var orientation = $( ".slider" ).slider( "option", "orientation" );
-		$('.slider').slider( "option", "orientation", "horizontal" );
-		$('.handleStyle').addClass("fa-rotate-90 fa-lg");
-		$('.handleStyle').removeClass("fa-2x");
+    if (windowWidth <= 992 && !modules.windowResizeBool) {
+        if (modules.numberOfSliders) {
+            var orientation = $(".slider").slider("option", "orientation");
+            $('.slider').slider("option", "orientation", "horizontal");
+            $('.handleStyle').addClass("fa-rotate-90 fa-lg");
+            $('.handleStyle').removeClass("fa-2x");
+            $('.elementWrapper').addClass('elementWrapperWidth');
+        }
+        else {
+            $('.sliderRow').addClass('overflowXadd');
+        }
 		// update the grey outs
 		var buttonArray = modules.getButtonArray();
 		for(var i = 0; i < buttonArray.length; i++){
@@ -64,17 +70,23 @@ function changeSlider() {
 		modules.windowResizeBool = true;
 	}
 	if(windowWidth > 992){
-		if(modules.windowResizeBool){
-			var orientation = $( ".slider" ).slider( "option", "orientation" );
-			$('.slider').slider( "option", "orientation", "vertical" );
-			$('.handleStyle').removeClass("fa-rotate-90 fa-lg");
-			$('.handleStyle').addClass("fa-2x");
+	    if (modules.windowResizeBool) {
+	        if (modules.numberOfSliders) {
+	            var orientation = $(".slider").slider("option", "orientation");
+	            $('.slider').slider("option", "orientation", "vertical");
+	            $('.handleStyle').removeClass("fa-rotate-90 fa-lg");
+	            $('.handleStyle').addClass("fa-2x");
+	            $('.elementWrapper').removeClass('elementWrapperWidth');
+	        }
+	        else {
+	            $('.sliderRow').removeClass('overflowXadd');
+	        }
 		    // add and remove the transition class
-			$('.sliderWrapper').removeClass('setTransition');
-			setTimeout(function () { $('.sliderWrapper').addClass('setTransition'); }, 500);
+			$('.elementWrapper').removeClass('setTransition');
+			setTimeout(function () { $('.elementWrapper').addClass('setTransition'); }, 500);
 	        // devide the set width of a slider row by the number of sliders giving the width per slider
-			var containerWidth = (modules.sliderWidth * modules.numberOfSliders) + 30;
-	        $('.sliderWrapper').css('width', containerWidth);
+			var containerWidth = (modules.elementWidth * modules.numberOfSliders) + 30;
+	        $('.elementWrapper').css('width', containerWidth);
 	        $('.sliderNavWrapper').css('width', containerWidth);
 		    // collapse the navbar;
 	        document.getElementById('navbarCollapse').className = "";
@@ -276,23 +288,29 @@ function turnOffGrey(id){
 	modules.numberOfGreyOuts += 1;
 }
 function updateSliderPostion(direction, buttonID){
-	var currentPos = $('.sliderWrapper').css('right');
+	var currentPos = $('.elementWrapper').css('right');
 	currentPos = currentPos.match(/[0-9]+/g);
-	if(direction == 'right' && (modules.currentSlider + 5) < modules.numberOfSliders){
+	if (modules.numberOfSliders) {
+	    var numberOfElements = modules.numberOfSliders;
+	}
+	else {
+	    var numberOfElements = modules.numberOfscorers;
+	}
+	if (direction == 'right' && (modules.currentElement + 5) < numberOfElements) {
 		document.getElementById(buttonID).disabled = true;
-		var newPos =  parseInt(currentPos[0]) + modules.sliderWidth + 'px';
-		modules.currentSlider += 1;
+		var newPos =  parseInt(currentPos[0]) + modules.elementWidth + 'px';
+		modules.currentElement += 1;
 		setTimeout(function(){ document.getElementById(buttonID).disabled = false; }, 1000);
 
 	}
-	else if(direction == 'left' && modules.currentSlider > 0) {
+	else if(direction == 'left' && modules.currentElement > 0) {
 		document.getElementById(buttonID).disabled = true;
-		var newPos =  parseInt(currentPos[0]) - modules.sliderWidth + 'px';
-		modules.currentSlider -= 1;
+		var newPos =  parseInt(currentPos[0]) - modules.elementWidth + 'px';
+		modules.currentElement -= 1;
 		setTimeout(function(){ document.getElementById(buttonID).disabled = false; }, 1000);
 	}
 	$('.sliderNavWrapper').css({ right: newPos });
-	$('.sliderWrapper').css({ right: newPos });
+	$('.elementWrapper').css({ right: newPos });
 }
 $('.tab').click(function (event) {
     var id = event.currentTarget.id;
