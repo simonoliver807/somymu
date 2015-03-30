@@ -14,13 +14,13 @@ var TemplateModule = (function () {
                                     '</div>'+
   	                              '</div>'+
 		                                 '<div class="row factorWrapper">' +
-		                                     '<div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 buttonColumn">' +
+		                                     '<div class="buttonColumn">' +
 		                                         '<div class="moduleButtonContainer">' +
 		                                             '<div id="moduleButton' + buttonID + '" class="factorIcon"><div class="overlayDiv overlayDiv1"></div></div>' +
 		                                         '</div>' +
 		
 		                                     '</div>' +
-		                                     '<div class="col-sm-7 col-md-7 col-lg-7 labelColumn">' +
+		                                     '<div class="labelColumn">' +
 		                                         '<span id="moduleButtonLabel' + buttonID + '" class="moduleButtonLabel">' + buttonLabel + '</span>' +
 		                                     '</div>' +
 		                                  '</div>' +
@@ -28,7 +28,7 @@ var TemplateModule = (function () {
 
 
                      '</div>' +
-                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 sliderRow"><ul class="elementWrapper setTransition" id="elementColumns' + buttonID + '"><li style="width:30px;display:inline-block;list-style:none;height:5px;"></li></ul>' +
+                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 sliderRow"><ul class="elementWrapper setTransition" id="elementColumns' + buttonID + '"><li class="sliderRowFiller"></li></ul>' +
                      '</div>' +
                   '</div>');
 
@@ -83,9 +83,11 @@ var TemplateModule = (function () {
         },
         createScorer: function (scorerID, scorer, label, windowWidth) {
             $('#elementColumns' + scorer).append('<li class="scorerContainer" id="scorerStyle' + scorer + '">' +
-	               // '<div id="scorer' + scorerID + '" class="scorer"><div id="scorerBackground' + scorerID + '" class="scorerBackground' + scorer + '"></div></div>' +
-                     '<div id="scorer' + scorerID + '" class="scorer"><div id="scorerValue' + scorerID + '" class="scorerValue"></div></div>' +
-            '</li>');
+									                     '<div id="scorer' + scorerID + '" class="scorer">'+
+									                     	'<div class="scorerLabelContainer"><div class="scorerLabelText">' + label +'</div></div>'+
+									                     	'<div id="scorerValue' + scorerID + '" class="scorerValue"></div>'+
+									                     '</div>' +
+										          '</li>');
 
         },
         createDoughnut: function (doughnutID, data, sliderLabel, ordinalPosition) {

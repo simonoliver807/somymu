@@ -258,7 +258,8 @@ footer {
 
 /* button styling*/
 .moduleButtonLabel {
-  font-weight: 600; }
+  font-weight: 600;
+  font-size: 17px; }
 
 .scrollButtonLeft {
   color: #e9eaed;
@@ -307,6 +308,12 @@ footer {
   overflow-x: hidden;
   padding-top: 5px;
   height: 160px; }
+
+.sliderRowFiller {
+  width: 30px;
+  display: inline-block;
+  list-style: none;
+  height: 5px; }
 
 .labelRow {
   overflow: hidden;
@@ -407,18 +414,23 @@ footer {
     height: 15%;
     width: 10%; }
 
-/*      #moduleButton0{
-          color: $color1;
-          .buttonInner0{
-              font-size: 0.5em;
-          }
-      }
-  .fa-plus {
-  	cursor: default;
-  } */
+.factorWrapper {
+  display: table;
+  height: 100%;
+  width: 100%; }
+
 .buttonColumn {
   height: 100px;
-  @inlcude no-select; }
+  @inlcude no-select;
+  width: 30%;
+  margin: 0;
+  display: table-cell;
+  vertical-align: middle; }
+
+.labelColumn {
+  display: table-cell;
+  vertical-align: middle;
+  width: 70%; }
 
 .highLightOverlay {
   position: absolute;
@@ -798,7 +810,11 @@ footer {
   -ms-user-select: none;
   user-select: none;
   height: 100%;
+  position: relative;
   width: 100%; }
+
+.scorerLabelText {
+  display: none; }
 
 /* the slider styling*/
 .elementWrapper {
@@ -832,7 +848,7 @@ footer {
 
 .scorerValue {
   margin: 0 auto;
-  width: 25%;
+  width: 100%;
   text-align: center;
   display: table-cell;
   vertical-align: middle; }
@@ -960,9 +976,12 @@ footer {
     border-radius: 1em; }
 
   .sliderRow {
-    width: 100%;
+    height: 100%;
     padding: 0 0 0 0;
-    height: 100%; }
+    width: 100%; }
+
+  .sliderRowFiller {
+    width: 10px; }
 
   .sliderBackground0 {
     border: medium none;
@@ -1070,7 +1089,7 @@ footer {
     z-index: 1; }
 
   .elementWrapper {
-    position: relative;
+    position: static;
     height: 100%;
     padding: 15px 0 0 0;
     right: 0px !important;
@@ -1153,6 +1172,19 @@ footer {
     background-color: rgba(153, 255, 153, 0.6); }
 
   .factorOverlay5 {
-    background-color: rgba(255, 255, 204, 0.6); } }
+    background-color: rgba(255, 255, 204, 0.6); }
+
+  .scorerLabelContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: table; }
+
+  .scorerLabelText {
+    color: #000;
+    cursor: default;
+    display: table-cell;
+    font-size: 8pt;
+    text-align: center; } }
 
 /*# sourceMappingURL=style.css.map */

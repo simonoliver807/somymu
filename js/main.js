@@ -17,7 +17,7 @@ function getCSSint(el) {
 }
 
 var modules = new UIModule();
-modules.init(15, 6, 'ui1');
+modules.init(15, 6, 'ui2');
 
 
 var setButtonValue = function (id) { var buttonID = id.match(/[0-9]+/g); modules.setButtonValue(buttonID); };

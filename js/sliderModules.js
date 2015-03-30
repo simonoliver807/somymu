@@ -119,6 +119,8 @@ var UIModule = (function () {
     var windowWidth;
     var windowResizeBool;
     var numberOfGreyOuts;
+    var elementLabels;
+    var buttonLabels;
 
     return {
         init: function (numberOfElements, numberOfButtons, uiType) {
@@ -132,13 +134,14 @@ var UIModule = (function () {
             this.windowWidth = $(window).width();
             this.windowResizeBool = false;
             this.numberOfGreyOuts = numberOfButtons;
+            this.elementLabels = ['Arsenal', 'Chelsea', 'Liverpool', 'Portsmouth', 'Man United', 'Man City', 'Leeds', 'Bournemouth'];
+            this.buttonLabels = ['Manager', 'Goal Keeper & Defence', 'Midfield', 'league Position & Recent Form', 'Attack'];
             if (uiType == 'ui1') {
                 this.sliders(numberOfElements, numberOfButtons)
             }
             else if (uiType == 'ui2') {
                 this.scorers(numberOfElements, numberOfButtons)
-            }
-           
+            }   
         },
         sliders: function (numberOfSliders, numberOfButtons) {
             this.numberOfSliders = numberOfSliders;
@@ -152,7 +155,7 @@ var UIModule = (function () {
 
             //lets create an array of buttons and a array of doughnuts to start
             var sliderLabels = ['Arsenal', 'Chelsea', 'Liverpool', 'Portsmouth', 'Man United', 'Man City', 'Leeds', 'Bournemouth'];
-            var buttonLabels = ['Manager', 'Goal Keeper & Defence', 'Midfield', 'league Position & Recent Form', 'Attack'];
+   
 
 
             // add a label for each slider
@@ -164,7 +167,7 @@ var UIModule = (function () {
             for (var i = 0; i < numberOfButtons; i++) {
                 buttonArray[i] = new ButtonModule();
                 buttonArray[i].setButtonID(i);
-                templateModule.createButton(i, buttonLabels[i]);
+                templateModule.createButton(i, this.buttonLabels[i]);
             }
             for (var sliderColumn = 0; sliderColumn < numberOfButtons; sliderColumn++) {
                 // for each column of sliders, one for each button, create a column
@@ -228,23 +231,14 @@ var UIModule = (function () {
             var templateModule = new TemplateModule();
             var self = this;
             this.numberOfscorers = numberOfscorers;
-            this.numberOfButtons = numberOfButtons;
-            //this.scorerRowWidth = 525;
-            //lets create an array of buttons and a array of doughnuts to start
-            var scorerLabels = ['Arsenal', 'Chelsea', 'Liverpool', 'Portsmouth', 'Man United', 'Man City', 'Leeds', 'Bournemouth'];
-            var buttonLabels = ['Manager', 'Goal Keeper & Defence', 'Midfield', 'league Position & Recent Form', 'Attack'];
-
-
             // add a label for each scorer
             for (var i = 0; i < this.numberOfscorers; i++) {
-                $('#sliderNavWrapper').append('<li class="sliderLabelContainer">' + scorerLabels[i] + '</li>');
+                $('#sliderNavWrapper').append('<li class="sliderLabelContainer">' + this.elementLabels[i] + '</li>');
             }
-
-
             for (var i = 0; i < numberOfButtons; i++) {
                 buttonArray[i] = new ButtonModule();
                 buttonArray[i].setButtonID(i);
-                templateModule.createButton(i, buttonLabels[i]);
+                templateModule.createButton(i, this.buttonLabels[i]);
             }
             for (var scorerColumn = 0; scorerColumn < numberOfButtons; scorerColumn++) {
                 // for each column of scorers, one for each button, create a column
@@ -253,7 +247,7 @@ var UIModule = (function () {
                     scorerColumnArray[i] = new scorerModule();
                     var scorerID = scorerColumn + '_' + i;
                     scorerColumnArray[i].setscorerID(scorerID);
-                    templateModule.createScorer(scorerID, scorerColumn, scorerLabels[i], this.windowWidth);
+                    templateModule.createScorer(scorerID, scorerColumn, this.elementLabels[i], this.windowWidth);
                 }
                 scorerArray.push(scorerColumnArray);
             }
@@ -266,7 +260,7 @@ var UIModule = (function () {
 
                 var ordinalPosition = this.getOrdinalPosition(i + 1);
                 doughnutArray[i].setDoughnutID(i, ordinalPosition);
-                doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, chartData, scorerLabels[i], ordinalPosition);
+                doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, chartData, this.elementLabels[i], ordinalPosition);
             }
             // bind click events to all the buttons
             $('.scorer').on('click', function () {
@@ -275,12 +269,11 @@ var UIModule = (function () {
             // resize all the charts
             $('canvas').css({ width: '95%', height: '95%' });
             // don't need to do this for iphone
-            if (this.windowWidth > 992) {
                 // multiply the number of scorers by the width of the scorers to give the scorer container width
                 var containerWidth = (this.elementWidth * this.numberOfscorers) + 30;
                 $('.elementWrapper').css('width', containerWidth);
                 $('.sliderNavWrapper').css('width', containerWidth);
-            }
+            
             // update the chart positions so only the css is updated
             this.updateChartPositions();
 

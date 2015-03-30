@@ -70,9 +70,12 @@
 	    @include border-radius(1em);
 	}
 	.sliderRow {
-		width: 100%;
-		padding: 0 0 0 0;
 		height: 100%;
+		padding: 0 0 0 0;
+		width: 100%;
+	}
+	.sliderRowFiller {
+		width:10px;
 	}
 	.sliderBackground0 {
 		border: medium none;
@@ -167,7 +170,7 @@
 	}
 	
 	.elementWrapper {
-		position: relative;
+		position: static;
 		height: 100%;
 		padding: 15px 0 0 0;
 		right: 0px !important;
@@ -248,5 +251,20 @@
 	}
 		.factorOverlay5 {
 		background-color: rgba(255, 255, 204, 0.6);
+	}
+	
+	// 992 scorer style 
+	.scorerLabelContainer {
+		position:absolute;
+	    width:100%;
+	    height:100%;
+	    display:table;
+	}
+	.scorerLabelText {
+		color: $b;
+		cursor: default;
+		display:table-cell;
+		font-size: 8pt;
+	    text-align:center;	
 	}
 }
