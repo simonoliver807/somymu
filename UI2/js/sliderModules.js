@@ -190,16 +190,16 @@ var UIModule = (function () {
             sliderArray[sliderID[0]].setValues(sliderValue, buttonArray[sliderID[0]].buttonValue);
            
             this.updateTotal(sliderID[[0]]);
-           // var chartObject = doughnutArray[sliderID[0]].doughnutObject;
-            //var segment1 =  (parseInt(sliderID[0]) * 2 ); 
-            //var segment2  = segment1 + 1;
+            var chartObject = doughnutArray[sliderID[0]].doughnutObject;
+            var segment1 =  (parseInt(sliderID[0]) * 2 ); 
+            var segment2  = segment1 + 1;
             
-            //var sliderValue = sliderArray[sliderID[0]][sliderID[1]].totalValue / 10;
-            //var buttonValue = (buttonArray[sliderID[0]].buttonValue * 10) - sliderValue;
+            var sliderValue = sliderArray[sliderID[0]][sliderID[1]].totalValue / 10;
+            var buttonValue = (buttonArray[sliderID[0]].buttonValue * 10) - sliderValue;
             
-            //chartObject.segments[segment1].value = buttonValue;
-            //chartObject.segments[segment2].value = sliderValue;
-            //chartObject.update();
+            chartObject.segments[segment1].value = buttonValue;
+            chartObject.segments[segment2].value = sliderValue;
+            chartObject.update();
 
         },
         updateButtonValue: function (buttonNumber) {

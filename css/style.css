@@ -18,7 +18,10 @@ a:hover {
 
 .custom-col-md-3 {
   padding-left: 0;
-  width: 25%; }
+  width: 24.25%; }
+
+.custom-col-md-8 {
+  width: 60%; }
 
 .col-md-2 {
   width: 16%;
@@ -76,7 +79,13 @@ footer {
   background: #fff; }
 
 .tabShare {
-  background: #73c1ca !important; }
+  background: #73c1ca !important;
+  color: #fff !important;
+  text-align: center; }
+
+#tabDecide {
+  border-right: 1px solid white;
+  width: 100%; }
 
 .blueHeader {
   background: #1597a7; }
@@ -102,6 +111,10 @@ footer {
 .selectedCBC {
   background: #73c1ca !important; }
 
+.selectedCBC45 {
+  background: #73c1ca !important;
+  height: 45px; }
+
 .sliderNavContainer {
   display: inline-block;
   overflow: hidden;
@@ -115,7 +128,7 @@ footer {
 
 .sliderLabelContainer {
   display: inline-block;
-  font-size: 8pt;
+  font-size: 9pt;
   list-style: none;
   text-align: center;
   width: 105px; }
@@ -135,7 +148,7 @@ footer {
 
 .chartKeyText {
   font-family: "Open Sans";
-  font-size: 7pt;
+  font-size: 8pt;
   line-height: 12px;
   padding-left: 5px; }
 
@@ -149,7 +162,11 @@ footer {
   background-color: #965a38; }
 
 .chartKeyRow {
-  /* empty */ }
+  height: 17px; }
+
+.heightFiller20 {
+  height: 20px;
+  width: 100%; }
 
 .heightFiller10 {
   height: 10px;
@@ -191,6 +208,23 @@ footer {
   width: 102px;
   height: 102px;
   position: relative; }
+
+.defaultChartHeader {
+  height: 45px;
+  background-color: #edf1f1;
+  border-bottom: 1px solid #fff; }
+
+.chartHeaderNoBackground {
+  height: 45px;
+  border-bottom: 1px solid #fff; }
+
+.chartWidth-lg {
+  padding-right: 0;
+  width: 39.333%; }
+
+.firstNoBackground {
+  background-color: none;
+  height: 205px; }
 
 /* fillers */
 .fillerDiv25 {
@@ -351,9 +385,9 @@ footer {
   cursor: default;
   font-size: 20px;
   font-weight: 600;
-  left: 50px;
+  left: 52px;
   position: absolute;
-  top: 57%;
+  top: 50%;
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -414,6 +448,9 @@ footer {
     height: 15%;
     width: 10%; }
 
+.greyOutClick {
+  cursor: default; }
+
 .factorWrapper {
   display: table;
   height: 100%;
@@ -435,6 +472,36 @@ footer {
 .highLightOverlay {
   position: absolute;
   z-index: 998; }
+
+.elementRow {
+  display: inline-block;
+  height: 160px;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  padding: 5px 0 0 0; }
+
+.scorerRowFiller {
+  width: 43px;
+  display: inline-block;
+  list-style: none;
+  height: 5px; }
+
+.scorerOverlayLeft {
+  background: #fff;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  width: 30px;
+  z-index: 99; }
+
+.scorerOverlayRight {
+  background: #fff;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 30px;
+  z-index: 99; }
 
 @media (min-width: 1200px) {
   .container {
@@ -891,6 +958,9 @@ footer {
   .leftPadding15 {
     padding-left: 25px; }
 
+  .moduleButtonLabel {
+    font-size: 15px; }
+
   .sliderNavContainer {
     display: inline-block;
     overflow: hidden;
@@ -1174,11 +1244,18 @@ footer {
   .factorOverlay5 {
     background-color: rgba(255, 255, 204, 0.6); }
 
+  .elementRow {
+    overflow-x: scroll;
+    width: 100%; }
+
   .scorerLabelContainer {
     position: absolute;
     width: 100%;
     height: 100%;
     display: table; }
+
+  .scorerRowFiller {
+    width: 10px; }
 
   .scorerLabelText {
     color: #000;

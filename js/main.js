@@ -17,7 +17,7 @@ function getCSSint(el) {
 }
 
 var modules = new UIModule();
-modules.init(15, 6, 'ui2');
+modules.init(15, 6, 'ui1');
 
 
 var setButtonValue = function (id) { var buttonID = id.match(/[0-9]+/g); modules.setButtonValue(buttonID); };
@@ -49,15 +49,12 @@ function changeSlider() {
     }
     var windowWidth = $(window).width();
     if (windowWidth <= 992 && !modules.windowResizeBool) {
-        if (modules.numberOfSliders) {
+        if (modules.uiType == 'ui1') {
             var orientation = $(".slider").slider("option", "orientation");
             $('.slider').slider("option", "orientation", "horizontal");
             $('.handleStyle').addClass("fa-rotate-90 fa-lg");
             $('.handleStyle').removeClass("fa-2x");
             $('.elementWrapper').addClass('elementWrapperWidth');
-        }
-        else {
-            $('.sliderRow').addClass('overflowXadd');
         }
 		// update the grey outs
 		var buttonArray = modules.getButtonArray();
@@ -71,21 +68,18 @@ function changeSlider() {
 	}
 	if(windowWidth > 992){
 	    if (modules.windowResizeBool) {
-	        if (modules.numberOfSliders) {
+	        if (modules.uiType == 'ui1') {
 	            var orientation = $(".slider").slider("option", "orientation");
 	            $('.slider').slider("option", "orientation", "vertical");
 	            $('.handleStyle').removeClass("fa-rotate-90 fa-lg");
 	            $('.handleStyle').addClass("fa-2x");
 	            $('.elementWrapper').removeClass('elementWrapperWidth');
 	        }
-	        else {
-	            $('.sliderRow').removeClass('overflowXadd');
-	        }
 		    // add and remove the transition class
 			$('.elementWrapper').removeClass('setTransition');
 			setTimeout(function () { $('.elementWrapper').addClass('setTransition'); }, 500);
 	        // devide the set width of a slider row by the number of sliders giving the width per slider
-			var containerWidth = (modules.elementWidth * modules.numberOfSliders) + 30;
+			var containerWidth = (modules.elementWidth * modules.numberOfElements) + 30;
 	        $('.elementWrapper').css('width', containerWidth);
 	        $('.sliderNavWrapper').css('width', containerWidth);
 		    // collapse the navbar;
@@ -109,18 +103,18 @@ $('.sliderContainer').hover(function (event) {
     event.stopPropagation();
     var sliderID = this.children[1].id.match(/[0-9]+/g);
 
-    var sliderArray = modules.getSliderArray();
-    for (var i = 0; i < sliderArray.length; i++) {
-        for (var j = 0; j < sliderArray[i].length; j++) {
-            if (sliderArray[i][j].tooltipBool) {
-                if (sliderArray[i][j].sliderID != sliderID[0] + '_' + sliderID[1]) {
-                    $('#' + sliderArray[i][j].sliderID).tooltip('hide');
-                    sliderArray[i][j].tooltipBool = false;
+    var elementArray = modules.getElementArray();
+    for (var i = 0; i < elementArray.length; i++) {
+        for (var j = 0; j < elementArray[i].length; j++) {
+            if (elementArray[i][j].tooltipBool) {
+                if (elementArray[i][j].sliderID != sliderID[0] + '_' + sliderID[1]) {
+                    $('#' + elementArray[i][j].sliderID).tooltip('hide');
+                    elementArray[i][j].tooltipBool = false;
                 }
             }
         }
     }
-    if (!sliderArray[sliderID[0]][sliderID[1]].tooltipBool) {
+    if (!elementArray[sliderID[0]][sliderID[1]].tooltipBool) {
         if (modules.windowResizeBool) {
             $('#' + sliderID[0] + '_' + sliderID[1]).tooltip({
                 container: 'body',
@@ -131,7 +125,7 @@ $('.sliderContainer').hover(function (event) {
                     //   here will be custom template
                     var id = $(this).parent().attr('id');
                     id = id.match(/[0-9]+/g);
-                    return '<div class="tooltipValue">' + sliderArray[id[0]][id[1]].sliderValue + '</div>';
+                    return '<div class="tooltipValue">' + elementArray[id[0]][id[1]].sliderValue + '</div>';
                 }
             }).tooltip('show');
         }
@@ -145,7 +139,7 @@ $('.sliderContainer').hover(function (event) {
                     //   here will be custom template
                     var id = $(this).parent().attr('id');
                     id = id.match(/[0-9]+/g);
-                    return '<div class="tooltipValue">' + sliderArray[id[0]][id[1]].sliderValue + '</div>';
+                    return '<div class="tooltipValue">' + elementArray[id[0]][id[1]].sliderValue + '</div>';
                 }
             }).tooltip('show');
         }
@@ -155,17 +149,17 @@ $('.sliderContainer').hover(function (event) {
         //    position.top = position.top - 44;
         //    $('.tooltip').css({ left: position.left, top: position.top });
         //}
-        //$('.tooltip-inner').text(sliderArray[sliderID[0]][sliderID[1]].sliderValue);
-        sliderArray[sliderID[0]][sliderID[1]].tooltipBool = true;
+        //$('.tooltip-inner').text(elementArray[sliderID[0]][sliderID[1]].sliderValue);
+        elementArray[sliderID[0]][sliderID[1]].tooltipBool = true;
     }
 });
 //tooltip events hide when leave the slider row
 $('#modules').mouseleave(function () {
-    var sliderArray = modules.getSliderArray();
-    for (var i = 0; i < sliderArray.length; i++) {
-        for (var j = 0; j < sliderArray[i].length; j++) {
-            if (sliderArray[i][j].tooltipBool) {
-                sliderArray[i][j].tooltipBool = false;
+    var elementArray = modules.getElementArray();
+    for (var i = 0; i < elementArray.length; i++) {
+        for (var j = 0; j < elementArray[i].length; j++) {
+            if (elementArray[i][j].tooltipBool) {
+                elementArray[i][j].tooltipBool = false;
             }
         }
     }
@@ -173,11 +167,11 @@ $('#modules').mouseleave(function () {
 });
 // tooltip hide when over the button columns
 $('.buttonColumn').mouseover(function () {
-    var sliderArray = modules.getSliderArray();
-    for (var i = 0; i < sliderArray.length; i++) {
-        for (var j = 0; j < sliderArray[i].length; j++) {
-            if (sliderArray[i][j].tooltipBool) {
-                sliderArray[i][j].tooltipBool = false;
+    var elementArray = modules.getElementArray();
+    for (var i = 0; i < elementArray.length; i++) {
+        for (var j = 0; j < elementArray[i].length; j++) {
+            if (elementArray[i][j].tooltipBool) {
+                elementArray[i][j].tooltipBool = false;
             }
         }
     }
@@ -186,11 +180,11 @@ $('.buttonColumn').mouseover(function () {
 // hide the tool tip at the top
 document.getElementById('fixedHeader').addEventListener('mouseover',
     function () {
-        var sliderArray = modules.getSliderArray();
-        for (var i = 0; i < sliderArray.length; i++) {
-            for (var j = 0; j < sliderArray[i].length; j++) {
-                if (sliderArray[i][j].tooltipBool) {
-                    sliderArray[i][j].tooltipBool = false;
+        var elementArray = modules.getElementArray();
+        for (var i = 0; i < elementArray.length; i++) {
+            for (var j = 0; j < elementArray[i].length; j++) {
+                if (elementArray[i][j].tooltipBool) {
+                    elementArray[i][j].tooltipBool = false;
                 }
             }
         }
@@ -240,9 +234,9 @@ $('.greyOutClick').click(function () {
         var buttonUpdateID = 0;
         setGreyOut(true, id);
         // set the disabled bool for sliders to true
-        var sliderArray = modules.getSliderArray();
+        var elementArray = modules.getElementArray();
         for (var i = 0; i < modules.numberOfSliders; i++) {
-            sliderArray[id][i].disabledBool = true;
+            elementArray[id][i].disabledBool = true;
         }
         // remove the segemnts disabled
         modules.removeChartSegment(id);
@@ -279,9 +273,9 @@ function turnOffGrey(id){
 		else { buttonArray[i].buttonUpdateID = null;}	
 	}
 	// set the disabled bool for sliders to true
-	var sliderArray = modules.getSliderArray();
+	var elementArray = modules.getElementArray();
 	for(var i = 0; i < modules.numberOfSliders; i++){
-		sliderArray[id][i].disabledBool = false;
+		elementArray[id][i].disabledBool = false;
 	}
 	modules.addChartSegment(id);
 	modules.updateButtonValue(id);
@@ -290,13 +284,7 @@ function turnOffGrey(id){
 function updateSliderPostion(direction, buttonID){
 	var currentPos = $('.elementWrapper').css('right');
 	currentPos = currentPos.match(/[0-9]+/g);
-	if (modules.numberOfSliders) {
-	    var numberOfElements = modules.numberOfSliders;
-	}
-	else {
-	    var numberOfElements = modules.numberOfscorers;
-	}
-	if (direction == 'right' && (modules.currentElement + 5) < numberOfElements) {
+	if (direction == 'right' && (modules.currentElement + 5) < modules.numberOfElements) {
 		document.getElementById(buttonID).disabled = true;
 		var newPos =  parseInt(currentPos[0]) + modules.elementWidth + 'px';
 		modules.currentElement += 1;
@@ -397,15 +385,33 @@ function addHighLight(id) {
                 }
                 document.getElementById('tabDecide').className = classNames + ' selectBackground';
                 document.getElementById('results').className = addClass('results', 'selectedCBC');
-                $('.result-header').addClass('selectedCBC');
-                $('#results li').css('background', 'none');
+                $('.result-header').addClass('selectedCBC45');
+                var firstBool = true;
+                $('.results').children('li').each(function () {
+                    if (firstBool) {
+                        this.className = 'firstNoBackground';
+                        firstBool = false;
+                    }
+                    else {
+                        this.className = 'chartHeaderNoBackground';
+                    }
+                });
             }
             else {
                 $('#tabDecide').removeClass('selectBackground');
                 removeClass('results', 'selecetedCBC');
                 document.getElementById('results').className = removeClass('results', 'selectedCBC');
-                $('.result-header').removeClass('selectedCBC');
-                $('#results li').css('background', 'none');
+                $('.result-header').removeClass('selectedCBC45');
+                var firstBool = true;
+                $('.results').children('li').each(function () {
+                    if (firstBool) {
+                        this.className = 'first';
+                        firstBool = false;
+                    }
+                    else {
+                        this.className = 'defaultChartHeader';
+                    }
+                });
             }
             break;
     }
