@@ -11,17 +11,32 @@ function addClass(id,className){
 	var allClassNames = document.getElementById(id).className;
 	return allClassNames + ' ' +  className;
 }
+function updateClassNames(getClassEl, theClassNames) {
+    var e = document.getElementsByClassName(getClassEl);
+    for (var i = 0; i < e.length; i++) {
+        e[i].className = e[i].className + theClassNames;
+    }
+}
 function getCSSint(el) {
     var strVal = el.replace('px', '');
     return parseInt(strVal);
 }
 
 var modules = new UIModule();
-modules.init(15, 6, 'ui1');
+//modules.init('', 6, 'ui3');
+modules.init(10, 6, 'ui2');
 
 
 var setButtonValue = function (id) { var buttonID = id.match(/[0-9]+/g); modules.setButtonValue(buttonID); };
-var setSliderValue = function (ui, id) { var sliderID = id.match(/[0-9]+/g); modules.setSliderValue(ui.value, sliderID); };
+var setSliderValue = function (ui, id) {
+    var sliderID = id.match(/[0-9]+/g);
+    if (modules.uiType == 'ui1') {
+        modules.setSliderValue(ui.value, sliderID);
+    }
+    else {
+        modules.setSliderYNValue(ui.value, sliderID);
+    }
+};
 var updateChartPosition = function(ui, id) { modules.updateChartPositions(id);};
 
 $( document ).bind( 'mobileinit', function(){

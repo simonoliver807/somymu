@@ -21,71 +21,6 @@ var ButtonModule = (function () {
         }
     };
 });
-//var SliderModule = (function () {
-//	var sliderValue;
-//    var totalValue;
-//    var sliderID;
-//    var disabledBool;
-//    var tooltipBool;
-//    var setSliderValue;
-//    return {
-//        setSliderID: function (sliderID) {
-//    		this.sliderValue = 		0;
-//    	 	this.totalValue = 		0;
-//            this.sliderID = 		sliderID;
-//            this.disabledBool = 	false;
-//            this.tooltipBool = 		false;
-//            this.overscrollStatus = false;
-//        },
-//        setValues: function (sliderValue, buttonValue) {
-//            if (sliderValue !== '') {
-//                this.sliderValue = sliderValue - 1;
-//                //  update the tooltip
-//                var position = $('#' + this.sliderID).offset();
-//                if (modules.windowResizeBool) {
-//                    // update horizontal
-//                    $('.tooltip').css({ left: position.left + 'px' });
-//                }
-//                else {
-//                    //update vertically
-//                    $('.tooltip').css({ top: position.top + 'px'});
-//                }   
-//                $('.tooltipValue').text(this.sliderValue);
-//                document.getElementById('sliderBackground' + this.sliderID).style.width = this.sliderValue + '%';
-//            }
-//            this.totalValue = buttonValue * this.sliderValue;
-//        }
-//    };
-//});
-//var scorerModule = (function () {
-//    var scorerValue;
-//    var totalValue;
-//    var scorerID;
-//    var disabledBool;
-//    var tooltipBool;
-//    var setscorerValue;
-//    return {
-//        setscorerID: function (scorerID) {
-//            this.scorerValue = 0;
-//            this.totalValue = 0;
-//            this.scorerID = scorerID;
-//            this.disabledBool = false;
-//            this.tooltipBool = false;
-//            this.overscrollStatus = false;
-//            this.setScorerValue = 0;
-//        },
-//        setValues: function (scorerValue, buttonValue) {
-//            if (scorerValue !== '') {
-//                this.setScorerValue += 1
-//                if (this.setScorerValue == 6) {
-//                    this.setScorerValue = 0;
-//                }
-//                this.scorerValue = this.setScorerValue * 20;
-//            }
-//            this.totalValue = buttonValue * this.scorerValue;
-//        }
-//    };
-//});
 var DoughNutModule = (function () {
     var doughnutID;
     var doughnutObject;
@@ -129,6 +64,7 @@ var UIModule = (function () {
                 document.getElementsByTagName("body")[0].className = 'cms-bootstrap ie9';
                 this.ie9 = 'ie9';
             };
+            var self = this;
             this.currentElement = 0;
             this.elementWidth = 110;
             // set up screen size
@@ -159,18 +95,12 @@ var UIModule = (function () {
             if ($(window).width() < 992) {
                 this.windowResizeBool = true;
             }
-
             //lets create an array of buttons and a array of doughnuts to start
             var sliderLabels = ['Arsenal', 'Chelsea', 'Liverpool', 'Portsmouth', 'Man United', 'Man City', 'Leeds', 'Bournemouth'];
-   
-
-
             // add a label for each slider
             for (var i = 0; i < this.numberOfElements; i++) {
                 $('#sliderNavWrapper').append('<li class="sliderLabelContainer">' + sliderLabels[i] + '</li>');
             }
-
-
             for (var i = 0; i < this.numberOfButtons; i++) {
                 buttonArray[i] = new ButtonModule();
                 buttonArray[i].setButtonID(i);
@@ -197,24 +127,16 @@ var UIModule = (function () {
             // resize all the charts
             $('canvas').css({ width: '100%', height: '100%' });
             // update the handle style and the height of the button colmuns
-            var e = document.getElementsByClassName('ui-slider-handle');
-            for (var i = 0; i < e.length; i++) {
-                if (this.windowWidth < 1024) {
-                    e[i].className = e[i].className + ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle';
-                }
-                else {
-                    e[i].className = e[i].className + ' fa fa-minus-square fa-2x handleStyle';
-                }
+            if (this.windowWidth < 1024) {
+                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle')
             }
-
-
+            else {
+                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-2x handleStyle')
+            }
             // TODO bind click events to all the buttons
             //  $('.ui-slider-handle').on('click', function () {
             //      self.setButtonValue(this.id);
             //  });
-
-
-
             // don't need to do this for iphone
             if (this.windowWidth > 992) {
                 // set up the width of the slider container
@@ -229,12 +151,7 @@ var UIModule = (function () {
             this.updateChartPositions();
         },
         scorer: function () {
-            if (document.getElementsByTagName("body")[0].getAttribute("browser") == 'ie9') {
-                document.getElementsByTagName("body")[0].className = 'cms-bootstrap ie9';
-                this.ie9 = 'ie9';
-            };
-            var templateModule = new TemplateModuleUI2();
-            var self = this;
+            var templateModule = new TemplateModule();
             // add a label for each scorer
             for (var i = 0; i < this.numberOfElements; i++) {
                 $('#sliderNavWrapper').append('<li class="sliderLabelContainer">' + this.elementLabels[i] + '</li>');
@@ -248,7 +165,7 @@ var UIModule = (function () {
                 // for each column of scorers, one for each button, create a column
                 var scorerColumnArray = [];
                 for (var i = 0; i < this.numberOfElements; i++) {
-                    scorerColumnArray[i] = new scorerModule();
+                    scorerColumnArray[i] = new ScorerModule();
                     var scorerID = scorerColumn + '_' + i;
                     scorerColumnArray[i].setscorerID(scorerID);
                     templateModule.createScorer(scorerID, scorerColumn, this.elementLabels[i], this.windowWidth);
@@ -258,8 +175,6 @@ var UIModule = (function () {
             for (var i = 0; i < this.numberOfElements; i++) {
                 // create a chart for each scorerColumn
                 doughnutArray[i] = new DoughNutModule();
-                var jsonItems = document.getElementById('jsonInput').value;
-
                 var ordinalPosition = this.getOrdinalPosition(i + 1);
                 doughnutArray[i].setDoughnutID(i, ordinalPosition, this.chartData);
                 doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, this.chartData, this.elementLabels[i], ordinalPosition);
@@ -285,36 +200,34 @@ var UIModule = (function () {
             //lets create an array of buttons and a array of doughnuts to start
             var chartLabels = ['Yes', 'No']
             var buttonLabels = ['Self-determination', 'Economy', 'Immigration', 'Stiff Upper Lip', 'Relationship with USA'];
-
-
+            var templateModule = new TemplateModule();
             // add a label for each slider
-            for (var i = 0; i < this.numberOfSliders; i++) {
+            for (var i = 0; i < this.numberOfbuttons; i++) {
                 $('#sliderNavWrapper').append('<li class="sliderLabelContainer">' + sliderLabels[i] + '</li>');
             }
-            for (var i = 0; i < numberOfButtons; i++) {
+            for (var i = 0; i < this.numberOfButtons; i++) {
                 buttonArray[i] = new ButtonModule();
                 buttonArray[i].setButtonID(i);
-                templateModule.createLabel(i, buttonLabels[i]);
-                sliderArray[i] = new SliderModule();
-                sliderArray[i].setSliderID(i);
-                templateModule.createSlider(i, sliderLabels[i], this.windowWidth);
+                templateModule.createButton(i, buttonLabels[i]);
+                elementArray[i] = new SliderModuleYN();
+                elementArray[i].setSliderID(i);
+                templateModule.createSliderYN(i);
             }
-            var chartData = document.getElementById('jsonInput').value;
-            chartData = JSON.parse(chartData);
-            for (var i = 0; i < this.numberOfDoughnuts; i++) {
+            for (var i = 0; i < 2; i++) {
                 // create a chart for each sliderColumn
                 doughnutArray[i] = new DoughNutModule();
                 var ordinalPosition = this.getOrdinalPosition(i + 1);
-                doughnutArray[i].setDoughnutID(i, ordinalPosition);
-                doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, chartData, chartLabels[i], ordinalPosition);
+                doughnutArray[i].setDoughnutID(i, ordinalPosition, this.chartData);
+                doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, this.chartData, chartLabels[i], ordinalPosition);
             }
             // bind click events to all the buttons
-            $('.ui-slider-handle').on('click', function () {
+            //$('.ui-slider-handle').on('click', function () {
 
-                self.setButtonValue(this.id);
-            });
+            //    self.setButtonValue(this.id);
+            //});
+            updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-2x fa-rotate-90 handleStyle')
             // resize all the charts
-            $('canvas').css({ width: '95%', height: '95%' });
+            $('canvas').css({ width: '100%', height: '100%' });
             // update the handle style 
             for (var i = 0; i < this.numberOfButtons; i++) {
                 document.getElementById('sliderID' + i).className = addClass('sliderID' + i, ' overlaydiv overlayDiv1 handleStyle');
@@ -458,7 +371,7 @@ var UIModule = (function () {
         	    this.className = "";
         	});
         	var count = 1;
-        	self = this;
+        	var self = this;
         	$('.results').children('li').each(function () {
         		var op = self.getOrdinalPosition(count);
         		var thisID = this.id;
@@ -551,6 +464,44 @@ var UIModule = (function () {
             }
             document.getElementById('sliderTotal' + labelNumber).innerHTML = chartTotalHTML;
             document.getElementById('sliderTotalSmall' + labelNumber).innerHTML = chartTotalHTML;
+        },
+        setSliderYNValue: function (sliderValue, sliderID) {
+            // update the slider module values each time the slider moves
+            elementArray[sliderID[0]].setValues(sliderValue, buttonArray[sliderID[0]].buttonValue);
+           
+            this.updateTotalYN(sliderID[[0]]);
+            var chartObject = doughnutArray[sliderID[0]].doughnutObject;
+            var segment1 =  (parseInt(sliderID[0]) * 2 ); 
+            var segment2  = segment1 + 1;
+            
+            var sliderValue = elementArray[sliderID[0]].totalValue / 10;
+            var buttonValue = (buttonArray[sliderID[0]].buttonValue * 10) - sliderValue;
+            
+            chartObject.segments[segment1].value = buttonValue;
+            chartObject.segments[segment2].value = sliderValue;
+            chartObject.update();
+
+        },
+        updateTotalYN: function (sliderNumber) {
+            // then update the total value
+            var sliderTotal = elementArray[sliderNumber].totalValue;
+            var weightTotal = 0;
+            var verticleNumber = 0; 
+            for (var rowNumber = 0; rowNumber < this.numberOfButtons; rowNumber++) {
+                if(!buttonArray[rowNumber].disabledBool){
+                    weightTotal += buttonArray[rowNumber].buttonValue;
+                }
+            }
+            var chartTotalHTML = Math.round(100 * (sliderTotal / (weightTotal * 100)));
+            doughnutArray[sliderNumber].totalScore  = chartTotalHTML;
+            if(chartTotalHTML < 10){
+                document.getElementById('sliderTotal' + sliderNumber).style.left = "67px";
+            }
+            else {
+                document.getElementById('sliderTotal' + sliderNumber).style.left = "66px";
+            }
+            document.getElementById('sliderTotal' + sliderNumber).innerHTML = chartTotalHTML;
+            document.getElementById('sliderTotalSmall' + sliderNumber).innerHTML = chartTotalHTML;
         }
     }
 });

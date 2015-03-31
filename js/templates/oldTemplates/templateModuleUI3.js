@@ -7,34 +7,28 @@ var TemplateModuleUI3 = (function () {
             this.firstSlider = true;
             $('#modules').append(
             		 '<div class="row moduleRow' + buttonID + ' smallModule">' +
-                     '<div class="col-sm-4 col-md-4 col-ld-4">' +
-                                 //'<div class= "row"><div class="col-sm--5 col-md-5"><i class="fa fa-minus fa-lg greyOutClick" id="greyOut' + buttonID + '"></i></div><div class="col-sm-7 col-md-7"></div></div>' +
-                                 //'<div class="row factorOverlay factorOverlay'+buttonID+'">'+
-                                 //	'<div class="col-sm-12 col-md-12">' +
-                                 //   '</div>'+
-  	                             // '</div>'+
-		                         //        '<div class="row factorWrapper">' +
-		                         //            '<div class="col-sm-5 col-md-5 buttonColumn">' +
-		                         //                '<div class="moduleButtonContainer">' +
-		                         //                    '<div id="moduleButton' + buttonID + '" class="factorIcon"><div class="overlayDiv overlayDiv1"></div></div>' +
-		                         //                '</div>' +
-
-		                         //            '</div>' +
-		                         //            '<div class="col-sm-7 col-md-7 labelColumn">' +
-		                         //                '<span id="moduleButtonLabel' + buttonID + '" class="moduleButtonLabel">' + buttonLabel + '</span>' +
-		                         //            '</div>' +
-		                         //         '</div>' +
-
-                            '<div class="buttonLabel">' + buttonLabel + '</div>' +
-
-                     '</div>' +
-                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 sliderRow"><div class="sliderWrapper" id="sliderColumns' + buttonID + '"></div>' +
-                     '</div>' +
-                  '</div>');
-
+                        '<div class="col-sm-4 col-md-4 col-ld-4">' +
+                            '<div class= "row"><div class="col-sm--5 col-md-5 col-lg-5"><i class="fa fa-minus fa-lg greyOutClick" id="greyOut' + buttonID + '"></i></div><div class="col-sm-7 col-md-7"></div></div>' +
+                                '<div class="row factorOverlay factorOverlay' + buttonID + '">' +
+                                    '<div class="col-sm-12 col-md-12 col-lg-12"></div>' +
+  	                            '</div>' +
+		                        '<div class="row factorWrapper">' +
+		                            '<div class="buttonColumn">' +
+		                                '<div class="moduleButtonContainer">' +
+		                                    '<div id="moduleButton' + buttonID + '" class="factorIcon"><div class="overlayDiv overlayDiv1"></div></div>' +
+		                                '</div>' +
+		                            '</div>' +
+		                            '<div class="labelColumn">' +
+		                                '<span id="moduleButtonLabel' + buttonID + '" class="moduleButtonLabel">' + buttonLabel + '</span>' +
+		                            '</div>' +
+		                        '</div>' +
+                            '</div>' +
+                            '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 sliderRow"><div class="elementWrapperYN" id="sliderColumns' + buttonID + '"></div>' +
+                        '</div>' +
+                    '</div>');
         },
         createSlider: function (sliderID) {
-            $('#sliderColumns' + sliderID).append('<div class="sliderContainer" id="sliderStyle' + sliderID + '">' +
+            $('#sliderColumns' + sliderID).append('<div class="sliderContainerYN" id="sliderStyle' + sliderID + '">' +
 	                '<div id="slider' + sliderID + '" class="slider"><div class="middleScale"></div><div class="scaleYes">Yes</div><div class="scaleNo">No</div></div>' +
 	        '</div>');
             $('#slider' + sliderID).slider({
@@ -54,9 +48,10 @@ var TemplateModuleUI3 = (function () {
                 }
             });
             $('#slider' + sliderID).append('<div class="scaleContainer">' +
-                                               '<div class="maxMin"><div class="centerLine"></div></div>' +
+                                               '<div class="maxMinYN"><div class="centerLine"></div></div>' +
                                            '</div>');
             var namedSlider = 'sliderID' + sliderID;
+            document.getElementById('slider' + sliderID).className = addClass('slider' + sliderID, 'sliderYN');
             $('#slider' + sliderID).find('span').attr('id', namedSlider);
         },
         createDoughnut: function (doughnutID, data, sliderLabel, ordinalPosition) {

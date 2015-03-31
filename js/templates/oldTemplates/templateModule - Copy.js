@@ -7,7 +7,7 @@ var TemplateModule = (function () {
     		this.firstSlider = true;
             $('#modules').append(
             		 '<div class="row moduleRow' + buttonID + ' smallModule">' +
-                     '<div class="col-sm-4 col-md-4 custom-col-md-4 col-lg-4 custom-col-lg-4">' +
+                     '<div class="col-sm-4 col-md-4 col-lg-4">' +
                                  '<div class= "row"><div class="col-sm--5 col-md-5 col-lg-5"><i class="fa fa-minus fa-lg greyOutClick" id="greyOut' + buttonID + '"></i></div><div class="col-sm-7 col-md-7"></div></div>' +
                                  '<div class="row factorOverlay factorOverlay'+buttonID+'">'+
                                  	'<div class="col-sm-12 col-md-12 col-lg-12">' +
@@ -80,42 +80,6 @@ var TemplateModule = (function () {
 	        }
             $('#slider'+sliderID).append('<div class="maxMin"><div class="sliderScale"></div><div class="scaleMiddle"></div></div>');
             $('#slider' + sliderID).find('span').attr('id', sliderID);
-        },
-        createScorer: function (scorerID, scorer, label, windowWidth) {
-            $('#elementColumns' + scorer).append('<li class="scorerContainer" id="scorerStyle' + scorer + '">' +
-									                     '<div id="scorer' + scorerID + '" class="scorer">' +
-									                     	'<div class="scorerLabelContainer"><div class="scorerLabelText">' + label + '</div></div>' +
-									                     	'<div id="scorerValue' + scorerID + '" class="scorerValue"></div>' +
-									                     '</div>' +
-										          '</li>');
-
-        },
-        createSliderYN: function (sliderID) {
-            $('#elementColumns' + sliderID).append('<div class="sliderContainerYN" id="sliderStyle' + sliderID + '">' +
-	                '<div id="slider' + sliderID + '" class="slider"><div class="middleScale"></div><div class="scaleYes">Yes</div><div class="scaleNo">No</div></div>' +
-	        '</div>');
-            $('#slider' + sliderID).slider({
-                max: 101,
-                min: 1,
-                value: 0,
-                animate: 'fast',
-                orientation: "horizontal",
-                slide: function (event, ui) {
-                    setSliderValue(ui, this.id);
-                },
-                change: function (event, ui) {
-                    setSliderValue(ui, this.id);
-                },
-                stop: function (event, ui) {
-                    updateChartPosition(ui, this.id);
-                }
-            });
-            $('#slider' + sliderID).append('<div class="scaleContainer">' +
-                                               '<div class="maxMinYN"><div class="centerLine"></div></div>' +
-                                           '</div>');
-            var namedSlider = 'sliderID' + sliderID;
-            document.getElementById('slider' + sliderID).className = addClass('slider' + sliderID, 'sliderYN');
-            $('#slider' + sliderID).find('span').attr('id', namedSlider);
         },
         createDoughnut: function (doughnutID, data, sliderLabel, ordinalPosition) {
         	var liClass = "";

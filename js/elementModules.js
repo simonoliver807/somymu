@@ -19,7 +19,7 @@ var SliderModule = (function () {
                 this.sliderValue = sliderValue - 1;
                 //  update the tooltip
                 var position = $('#' + this.sliderID).offset();
-                if (modules.windowResizeBool) {
+                if (modules.windowresizebool) {
                     // update horizontal
                     $('.tooltip').css({ left: position.left + 'px' });
                 }
@@ -27,14 +27,50 @@ var SliderModule = (function () {
                     //update vertically
                     $('.tooltip').css({ top: position.top + 'px' });
                 }
-                $('.tooltipValue').text(this.sliderValue);
+                $('.tooltipvalue').text(this.slidervalue);
                 document.getElementById('sliderBackground' + this.sliderID).style.width = this.sliderValue + '%';
             }
             this.totalValue = buttonValue * this.sliderValue;
         }
     };
 });
-var scorerModule = (function () {
+var SliderModuleYN = (function () {
+    var sliderValue;
+    var totalValue;
+    var sliderID;
+    var disabledBool;
+    var tooltipBool;
+    var setSliderValue;
+    return {
+        setSliderID: function (sliderID) {
+            this.sliderValue = 0;
+            this.totalValue = 0;
+            this.sliderID = sliderID;
+            this.disabledBool = false;
+            this.tooltipBool = false;
+            this.overscrollStatus = false;
+        },
+        setValues: function (sliderValue, buttonValue) {
+            if (sliderValue !== '') {
+                this.sliderValue = sliderValue - 1;
+                //  update the tooltip
+                var position = $('#' + this.sliderID).offset();
+                //if (modules.windowResizeBool) {
+                //    // update horizontal
+                //    $('.tooltip').css({ left: position.left + 'px' });
+                //}
+                //else {
+                //    //update vertically
+                //    $('.tooltip').css({ top: position.top + 'px' });
+                //}
+                //$('.tooltipValue').text(this.sliderValue);
+                //document.getElementById('sliderBackground' + this.sliderID).style.width = this.sliderValue + '%';
+            }
+            this.totalValue = buttonValue * this.sliderValue;
+        }
+    };
+});
+var ScorerModule = (function () {
     var scorerValue;
     var totalValue;
     var scorerID;
