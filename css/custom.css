@@ -129,21 +129,6 @@ text-transform:uppercase;
 }
 
 
-.results .first
-{
-
-background-color:#fff;
-height: 205px;
-}
-
-.results .first .result-header
-{
-background-color:#1597a7;
-border-bottom: 1px solid white;
-height:45px;
-color:#fff;
-}
-
 .result-header div
 {
 line-height:45px;

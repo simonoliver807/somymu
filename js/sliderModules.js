@@ -199,7 +199,7 @@ var UIModule = (function () {
         yesNoSlider: function() {
 
             //lets create an array of buttons and a array of doughnuts to start
-            var chartLabels = ['Yes', 'No']
+            var chartLabels = ['No', 'Yes']
             var buttonLabels = ['Self-determination', 'Economy', 'Immigration', 'Stiff Upper Lip', 'Relationship with USA'];
             var templateModule = new TemplateModule();
             // add a label for each slider
@@ -247,6 +247,10 @@ var UIModule = (function () {
                 $('.sliderWrapper').css('width', containerWidth);
                 $('.sliderNavWrapper').css('width', containerWidth);
             }
+            $('.sliderRow').on('mouseover', function (event) {
+                event.stopPropagation();
+                tooltipActivate('', this.id);
+            });
             // update the chart positions so only the css is updated
             this.updateChartPositions();
         },
@@ -379,12 +383,16 @@ var UIModule = (function () {
         		document.getElementById('sliderTotalSmall' + thisID[0]).className = 'badge';
         		switch(count) {
 	        	    case 1:
-	         			$('#canvas'+thisID[0]).css('display','block');
+	        	        if (self.uiType !== 'ui3') {
+	        	            $('#canvas' + thisID[0]).css('display', 'block');
+	        	        }
 	         			document.getElementById('sliderTotalSmall' + thisID[0]).className = addClass('sliderTotalSmall' + thisID[0], 'goldBadge');
 	         			this.className = 'first';
 	        	        break;
-	        	    case 2:
-	        	    	$('#canvas'+thisID[0]).css('display','none');
+        		    case 2:
+        		        if (self.uiType !== 'ui3') {
+        		            $('#canvas' + thisID[0]).css('display', 'none');
+        		        }
 	        	    	document.getElementById('sliderTotalSmall' + thisID[0]).className = addClass('sliderTotalSmall' + thisID[0], 'silverBadge');
 	        	    	this.className = 'defaultChartHeader';
 	        	        break;
@@ -459,11 +467,18 @@ var UIModule = (function () {
             document.getElementById('sliderTotalSmall' + labelNumber).innerHTML = chartTotalHTML;
         },
         setSliderYNValue: function (sliderValue, sliderID) {
+            var chartNumber;
             // update the slider module values each time the slider moves
             elementArray[sliderID[0]].setValues(sliderValue, buttonArray[sliderID[0]].buttonValue);
            
             this.updateTotalYN(sliderID[[0]]);
-            var chartObject = doughnutArray[sliderID[0]].doughnutObject;
+            if (elementArray[sliderID[0]].sliderValue < 0) {
+                chartNumber = 0;
+            }
+            else if (elementArray[sliderID[0]].sliderValue > 0) {
+                chartNumber = 1;
+            }
+            var chartObject = doughnutArray[chartNumber].doughnutObject;
             var segment1 =  (parseInt(sliderID[0]) * 2 ); 
             var segment2  = segment1 + 1;
             
@@ -479,16 +494,23 @@ var UIModule = (function () {
             // then update the total value
             var sliderTotal = elementArray[sliderNumber].totalValue;
             var weightTotal = 0;
-            var verticleNumber = 0; 
+            var verticleNumber = 0;
+            var chartNumber;
             for (var rowNumber = 0; rowNumber < this.numberOfButtons; rowNumber++) {
                 if(!buttonArray[rowNumber].disabledBool){
                     weightTotal += buttonArray[rowNumber].buttonValue;
                 }
             }
             var chartTotalHTML = Math.round(100 * (sliderTotal / (weightTotal * 100)));
-            doughnutArray[sliderNumber].totalScore  = chartTotalHTML;
-            document.getElementById('sliderTotal' + sliderNumber).innerHTML = chartTotalHTML;
-            document.getElementById('sliderTotalSmall' + sliderNumber).innerHTML = chartTotalHTML;
+            if (elementArray[sliderNumber].sliderValue < 0) {
+                chartNumber = 0;
+            }
+            else if (elementArray[sliderNumber].sliderValue > 0) {
+                chartNumber = 1;
+            }
+            doughnutArray[chartNumber].totalScore  = chartTotalHTML;
+            document.getElementById('sliderTotal' + chartNumber).innerHTML = chartTotalHTML;
+            document.getElementById('sliderTotalSmall' + chartNumber).innerHTML = chartTotalHTML;
         }
     }
 });

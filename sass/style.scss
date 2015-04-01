@@ -388,6 +388,21 @@ footer {
 	height: 100%;
 	right: 0px;
 }
+
+.results {
+	.first {
+		background-color:#fff;
+		height: 205px;
+			.result-header {
+				background-color:#1597a7;
+				border-bottom: 1px solid white;
+				height:45px;
+				color:#fff;
+			}
+	}
+}
+
+
 .sliderRow { 
     display: inline-block;
     overflow-y: hidden;
@@ -438,10 +453,10 @@ footer {
     cursor: default;
     font-size: 20px;
     font-weight: 600;
-    left: 3%;
+    left: 2%;
     position: absolute;
 	text-align: center;
-    top: 42%;
+    top: 41%;
 	width: 100px;
     z-index: 995;
   }
@@ -584,6 +599,18 @@ footer {
 	  position: absolute;
 	  margin-left: 50%;
 	}
+	.results {
+		.defaultChartHeader {
+			background-color:#fff;
+			height: 205px;
+				.result-header {
+					background-color:$chg;
+					border-bottom: 1px solid white;
+					height:45px;
+					color:#fff;
+				}
+		}
+	}
 	.scaleContainer {
 		display: table-cell;
 		vertical-align: middle;
@@ -595,6 +622,9 @@ footer {
 		vertical-align: middle;
 		width: 100%;
 	} 
+	.sliderNav {
+		display: none;
+	}
 	.sliderRowFiller {
 		display: none;
 	}

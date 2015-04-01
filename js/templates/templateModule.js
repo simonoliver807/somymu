@@ -93,13 +93,13 @@ var TemplateModule = (function () {
         createSliderYN: function (sliderID) {
             $('#elementColumns' + sliderID).append('<div class="sliderContainerYN" id="sliderStyle' + sliderID + '">' +
 	                '<div id="slider' + sliderID + '" class="slider">'+ 
-                       // '<div id="sliderBackground' + sliderID + '" class="sliderBackground' + sliderID + '"></div>' +
-                       // '<div class="middleScale"></div><div class="scaleYes">Yes</div><div class="scaleNo">No</div>' +
+                        '<div id="sliderBackground' + sliderID + '" class="sliderBackground' + sliderID + '"></div>' +
+                        '<div class="middleScale"></div><div class="scaleYes">Yes</div><div class="scaleNo">No</div>' +
                     '</div>' +
 	        '</div>');
             $('#slider' + sliderID).slider({
                 max: 101,
-                min: 1,
+                min: -100,
                 value: 0,
                 animate: 'fast',
                 orientation: "horizontal",

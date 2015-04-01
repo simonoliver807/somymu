@@ -24,7 +24,7 @@ function getCSSint(el) {
 
 var modules = new UIModule();
 modules.init('', 6, 'ui3');
-// modules.init(10, 6, 'ui1');
+//modules.init(10, 6, 'ui1');
 
 
 var setButtonValue = function (id) { var buttonID = id.match(/[0-9]+/g); modules.setButtonValue(buttonID); };
@@ -90,6 +90,7 @@ function changeSlider() {
 				setGreyOut(true, i);
 			}
 		}
+		$('.elementWrapper').removeClass('setTransition');
 		document.getElementById('tabDecide').disabled = true;
 		document.getElementById('tabSlide').disabled = true;
 		document.getElementById('tabTap').disabled = true;
@@ -110,8 +111,9 @@ function changeSlider() {
 	            $('.elementWrapper').removeClass('elementWrapperWidth');
 	        }
 	        // add and remove the transition class
-	        $('.elementWrapper').removeClass('setTransition');
-	        setTimeout(function () { $('.elementWrapper').addClass('setTransition'); }, 500);
+	        setTimeout(function () {
+	            $('.elementWrapper').addClass('setTransition');
+	        }, 500);
 	        if(modules.uiType !== 'ui3'){
 	            // devide the set width of a slider row by the number of sliders giving the width per slider
 			    var containerWidth = (modules.elementWidth * modules.numberOfElements) + 30;
@@ -137,119 +139,119 @@ function changeSlider() {
 		window.scrollTo(0, 0);
 	}	
 }
-//tooltip events show on hover
-$('.sliderContainer').hover(function (event) {
-    event.stopPropagation();
-    var sliderID = this.children[1].id.match(/[0-9]+/g);
+////tooltip events show on hover
+//$('.sliderContainer').hover(function (event) {
+//    event.stopPropagation();
+//    var sliderID = this.children[1].id.match(/[0-9]+/g);
 
-    var elementArray = modules.getElementArray();
-    for (var i = 0; i < elementArray.length; i++) {
-        for (var j = 0; j < elementArray[i].length; j++) {
-            if (elementArray[i][j].tooltipBool) {
-                if (elementArray[i][j].sliderID != sliderID[0] + '_' + sliderID[1]) {
-                    $('#' + elementArray[i][j].sliderID).tooltip('hide');
-                    elementArray[i][j].tooltipBool = false;
-                }
-            }
-        }
-    }
-    if (!elementArray[sliderID[0]][sliderID[1]].tooltipBool) {
-        if (modules.windowResizeBool) {
-            $('#' + sliderID[0] + '_' + sliderID[1]).tooltip({
-                container: 'body',
-                html: true,
-                placement: 'top',
-                trigger: 'manual',
-                title: function () {
-                    //   here will be custom template
-                    var id = $(this).parent().attr('id');
-                    id = id.match(/[0-9]+/g);
-                    return '<div class="tooltipValue">' + elementArray[id[0]][id[1]].sliderValue + '</div>';
-                }
-            }).tooltip('show');
-        }
-        else {
-            $('#' + sliderID[0] + '_' + sliderID[1]).tooltip({
-                container: 'body',
-                html: true,
-                placement: 'right',
-                trigger: 'manual',
-                title: function () {
-                    //   here will be custom template
-                    var id = $(this).parent().attr('id');
-                    id = id.match(/[0-9]+/g);
-                    return '<div class="tooltipValue">' + elementArray[id[0]][id[1]].sliderValue + '</div>';
-                }
-            }).tooltip('show');
-        }
-        //if (modules.ie9) {
-        //    var position = $('#' + sliderID[0] + '_' + sliderID[1]).offset();
-        //    position.left = position.left + 4;
-        //    position.top = position.top - 44;
-        //    $('.tooltip').css({ left: position.left, top: position.top });
-        //}
-        //$('.tooltip-inner').text(elementArray[sliderID[0]][sliderID[1]].sliderValue);
-        elementArray[sliderID[0]][sliderID[1]].tooltipBool = true;
-    }
-});
-//tooltip events hide when leave the slider row
-$('#modules').mouseleave(function () {
-    var elementArray = modules.getElementArray();
-    for (var i = 0; i < elementArray.length; i++) {
-        for (var j = 0; j < elementArray[i].length; j++) {
-            if (elementArray[i][j].tooltipBool) {
-                elementArray[i][j].tooltipBool = false;
-            }
-        }
-    }
-    $('.tooltip').tooltip('hide');
-});
-// tooltip hide when over the button columns
-$('.buttonColumn').mouseover(function () {
-    var elementArray = modules.getElementArray();
-    for (var i = 0; i < elementArray.length; i++) {
-        for (var j = 0; j < elementArray[i].length; j++) {
-            if (elementArray[i][j].tooltipBool) {
-                elementArray[i][j].tooltipBool = false;
-            }
-        }
-    }
-    $('.tooltip').tooltip('hide');
-});
-// hide the tool tip at the top
-document.getElementById('fixedHeader').addEventListener('mouseover',
-    function () {
-        var elementArray = modules.getElementArray();
-        for (var i = 0; i < elementArray.length; i++) {
-            for (var j = 0; j < elementArray[i].length; j++) {
-                if (elementArray[i][j].tooltipBool) {
-                    elementArray[i][j].tooltipBool = false;
-                }
-            }
-        }
-        $('.tooltip').tooltip('hide');
-    }, false);
-$('.leftRightButton').on('mouseOver', function() { 
-	$('.tooltip').tooltip('hide'); });
-$('.chartHeader').click(function () {
-    var chartArray = modules.getChartArray();
-    var id = this.id.match(/[0-9]+/g);
-    var sliderTotalID = 'sliderTotal' + id;
-    var collapseID = 'collapse' + id;
-    if (chartArray[id].chartStatus) {
-        document.getElementById(sliderTotalID).style.visibility = "hidden";
-        chartArray[id].chartStatus = false;
-        $('#' + collapseID).collapse('hide');
-        document.getElementById('caretToggle' + id).className = "fa fa-caret-up fa-lg";
-    }
-    else {
-        $('#' + collapseID).collapse('show');
-        chartArray[id].chartStatus = true;
-        document.getElementById('caretToggle' + id).className = "fa fa-caret-down fa-lg";
-        document.getElementById(sliderTotalID).style.visibility = "visible";
-    }
+//    var elementArray = modules.getElementArray();
+//    for (var i = 0; i < elementArray.length; i++) {
+//        for (var j = 0; j < elementArray[i].length; j++) {
+//            if (elementArray[i][j].tooltipBool) {
+//                if (elementArray[i][j].sliderID != sliderID[0] + '_' + sliderID[1]) {
+//                    $('#' + elementArray[i][j].sliderID).tooltip('hide');
+//                    elementArray[i][j].tooltipBool = false;
+//                }
+//            }
+//        }
+//    }
+//    if (!elementArray[sliderID[0]][sliderID[1]].tooltipBool) {
+//        if (modules.windowResizeBool) {
+//            $('#' + sliderID[0] + '_' + sliderID[1]).tooltip({
+//                container: 'body',
+//                html: true,
+//                placement: 'top',
+//                trigger: 'manual',
+//                title: function () {
+//                    //   here will be custom template
+//                    var id = $(this).parent().attr('id');
+//                    id = id.match(/[0-9]+/g);
+//                    return '<div class="tooltipValue">' + elementArray[id[0]][id[1]].sliderValue + '</div>';
+//                }
+//            }).tooltip('show');
+//        }
+//        else {
+//            $('#' + sliderID[0] + '_' + sliderID[1]).tooltip({
+//                container: 'body',
+//                html: true,
+//                placement: 'right',
+//                trigger: 'manual',
+//                title: function () {
+//                    //   here will be custom template
+//                    var id = $(this).parent().attr('id');
+//                    id = id.match(/[0-9]+/g);
+//                    return '<div class="tooltipValue">' + elementArray[id[0]][id[1]].sliderValue + '</div>';
+//                }
+//            }).tooltip('show');
+//        }
+//        //if (modules.ie9) {
+//        //    var position = $('#' + sliderID[0] + '_' + sliderID[1]).offset();
+//        //    position.left = position.left + 4;
+//        //    position.top = position.top - 44;
+//        //    $('.tooltip').css({ left: position.left, top: position.top });
+//        //}
+//        //$('.tooltip-inner').text(elementArray[sliderID[0]][sliderID[1]].sliderValue);
+//        elementArray[sliderID[0]][sliderID[1]].tooltipBool = true;
+//    }
+//});
+////tooltip events hide when leave the slider row
+//$('#modules').mouseleave(function () {
+//    var elementArray = modules.getElementArray();
+//    for (var i = 0; i < elementArray.length; i++) {
+//        for (var j = 0; j < elementArray[i].length; j++) {
+//            if (elementArray[i][j].tooltipBool) {
+//                elementArray[i][j].tooltipBool = false;
+//            }
+//        }
+//    }
+//    $('.tooltip').tooltip('hide');
+//});
+//// tooltip hide when over the button columns
+//$('.buttonColumn').mouseover(function () {
+//    var elementArray = modules.getElementArray();
+//    for (var i = 0; i < elementArray.length; i++) {
+//        for (var j = 0; j < elementArray[i].length; j++) {
+//            if (elementArray[i][j].tooltipBool) {
+//                elementArray[i][j].tooltipBool = false;
+//            }
+//        }
+//    }
+//    $('.tooltip').tooltip('hide');
+//});
+//// hide the tool tip at the top
+//document.getElementById('fixedHeader').addEventListener('mouseover',
+//    function () {
+//        var elementArray = modules.getElementArray();
+//        for (var i = 0; i < elementArray.length; i++) {
+//            for (var j = 0; j < elementArray[i].length; j++) {
+//                if (elementArray[i][j].tooltipBool) {
+//                    elementArray[i][j].tooltipBool = false;
+//                }
+//            }
+//        }
+//        $('.tooltip').tooltip('hide');
+//    }, false);
+//$('.leftRightButton').on('mouseOver', function() { 
+//	$('.tooltip').tooltip('hide'); });
+// todo add the carets $('.chartHeader').click(function () {
+//    var chartArray = modules.getChartArray();
+//    var id = this.id.match(/[0-9]+/g);
+//    var sliderTotalID = 'sliderTotal' + id;
+//    var collapseID = 'collapse' + id;
+//    if (chartArray[id].chartStatus) {
+//        document.getElementById(sliderTotalID).style.visibility = "hidden";
+//        chartArray[id].chartStatus = false;
+//        $('#' + collapseID).collapse('hide');
+//        document.getElementById('caretToggle' + id).className = "fa fa-caret-up fa-lg";
+//    }
+//    else {
+//        $('#' + collapseID).collapse('show');
+//        chartArray[id].chartStatus = true;
+//        document.getElementById('caretToggle' + id).className = "fa fa-caret-down fa-lg";
+//        document.getElementById(sliderTotalID).style.visibility = "visible";
+//    }
 
-});
+//});
 function setGreyOut(hideShow, id) {
 	if(hideShow){
 		var greyOutWidth = $('.moduleRow'+id ).outerWidth();
