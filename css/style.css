@@ -243,7 +243,8 @@ footer {
 
 /* bs tooltip */
 .tooltip {
-  z-index: 997; }
+  z-index: 997;
+  cursor: default; }
 
 .tooltip-inner {
   background-color: #1597a7;

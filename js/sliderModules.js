@@ -65,6 +65,7 @@ var UIModule = (function () {
                 this.ie9 = 'ie9';
             };
             var self = this;
+            var toolTip = new TooltipModulesto;
             this.currentElement = 0;
             this.elementWidth = 110;
             // set up screen size
@@ -78,21 +79,45 @@ var UIModule = (function () {
             this.numberOfElements = numberOfElements;
             this.numberOfButtons = numberOfButtons;
             this.uiType = uiType;
-            if (this.windowWidth < 992) {
-                this.windowResizeBool = true;
-            }
             if (this.uiType == 'ui1') {
                 document.getElementById('game-content').className = 'ui1';
-                this.slider()
+                this.slider();
             }
             else if (this.uiType == 'ui2') {
                 document.getElementById('game-content').className = 'ui2';
-                this.scorer()
+                this.scorer();
             }
             else if (this.uiType = 'ui3') {
                 document.getElementById('game-content').className = 'ui3';
-                this.yesNoSlider()
+                this.yesNoSlider();
             }
+            // bind events
+          //tooltip events hide when leave the slider row
+            $('#modules').mouseleave(function () {
+                toolTip.disableTooltip();
+            });
+            // tooltip hide when over the button columns
+            $('.buttonColumn').mouseover(function () {
+                toolTip.disableTooltip();
+            });
+            // hide the tool tip at the top
+            document.getElementById('fixedHeader').addEventListener('mouseover',
+                function () {
+                   toolTip.disableTooltip();
+                }, false);
+            $('.leftRightButton').on('mouseOver', function () {
+            	event.stopPropagation();
+                $('.tooltip').tooltip('hide');
+            });
+            $('.sliderRow').on('mouseover', function (event) {
+                event.stopPropagation();
+                toolTip.tooltipActivate('', this.id);
+            });
+            $('.sliderContainer').hover(function (event) {
+                event.stopPropagation();
+                toolTip.tooltipActivate(this, '');
+            });
+            var toolTip = new TooltipModulesto;
         },
         slider: function () {
             //this.sliderRowWidth = 525;
@@ -127,23 +152,13 @@ var UIModule = (function () {
                 doughnutArray[i].doughnutObject = templateModule.createDoughnut(i, this.chartData, sliderLabels[i], ordinalPosition);
             }
             // resize all the charts
-            $('canvas').css({ width: '100%', height: '100%' });
-            // update the handle style and the height of the button colmuns
+            $('canvas').css({ width: '100%', height: '100%' });           
             if (this.windowWidth < 992) {
-                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle')
+            	updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle');
+                this.windowResizeBool = true;
             }
             else {
-                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-2x handleStyle')
-            }
-            // TODO bind click events to all the buttons
-            //  $('.ui-slider-handle').on('click', function () {
-            //      self.setButtonValue(this.id);
-            //  });
-            // don't need to do this for iphone
-            if (this.windowWidth > 992) {
-                // set up the width of the slider container
-                //var rowWidth = this.sliderRowWidth;
-
+            	updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-2x handleStyle');
                 // multiply the number of sliders by the width of the sliders to give the slider container width
                 var containerWidth = (this.elementWidth * this.numberOfElements) + 30;
                 $('.elementWrapper').css('width', containerWidth);
@@ -197,11 +212,11 @@ var UIModule = (function () {
 
         },
         yesNoSlider: function() {
-
             //lets create an array of buttons and a array of doughnuts to start
             var chartLabels = ['No', 'Yes']
             var buttonLabels = ['Self-determination', 'Economy', 'Immigration', 'Stiff Upper Lip', 'Relationship with USA'];
             var templateModule = new TemplateModule();
+            this.windowResizeBool = true;
             // add a label for each slider
             for (var i = 0; i < this.numberOfbuttons; i++) {
                 $('#sliderNavWrapper').append('<li class="sliderLabelContainer">' + sliderLabels[i] + '</li>');
@@ -247,10 +262,6 @@ var UIModule = (function () {
                 $('.sliderWrapper').css('width', containerWidth);
                 $('.sliderNavWrapper').css('width', containerWidth);
             }
-            $('.sliderRow').on('mouseover', function (event) {
-                event.stopPropagation();
-                tooltipActivate('', this.id);
-            });
             // update the chart positions so only the css is updated
             this.updateChartPositions();
         },
@@ -470,14 +481,13 @@ var UIModule = (function () {
             var chartNumber;
             // update the slider module values each time the slider moves
             elementArray[sliderID[0]].setValues(sliderValue, buttonArray[sliderID[0]].buttonValue);
-           
-            this.updateTotalYN(sliderID[[0]]);
-            if (elementArray[sliderID[0]].sliderValue < 0) {
+            if (!elementArray[sliderID[0]].isNegetiveBool) {
                 chartNumber = 0;
             }
-            else if (elementArray[sliderID[0]].sliderValue > 0) {
+            else if (elementArray[sliderID[0]].isNegetiveBool) {
                 chartNumber = 1;
             }
+            this.updateTotalYN(sliderID[[0]], chartNumber);
             var chartObject = doughnutArray[chartNumber].doughnutObject;
             var segment1 =  (parseInt(sliderID[0]) * 2 ); 
             var segment2  = segment1 + 1;
@@ -490,7 +500,7 @@ var UIModule = (function () {
             chartObject.update();
 
         },
-        updateTotalYN: function (sliderNumber) {
+        updateTotalYN: function (sliderNumber, chartNumber) {
             // then update the total value
             var sliderTotal = elementArray[sliderNumber].totalValue;
             var weightTotal = 0;
@@ -502,12 +512,6 @@ var UIModule = (function () {
                 }
             }
             var chartTotalHTML = Math.round(100 * (sliderTotal / (weightTotal * 100)));
-            if (elementArray[sliderNumber].sliderValue < 0) {
-                chartNumber = 0;
-            }
-            else if (elementArray[sliderNumber].sliderValue > 0) {
-                chartNumber = 1;
-            }
             doughnutArray[chartNumber].totalScore  = chartTotalHTML;
             document.getElementById('sliderTotal' + chartNumber).innerHTML = chartTotalHTML;
             document.getElementById('sliderTotalSmall' + chartNumber).innerHTML = chartTotalHTML;

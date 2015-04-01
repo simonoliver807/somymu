@@ -99,7 +99,7 @@ var TemplateModule = (function () {
 	        '</div>');
             $('#slider' + sliderID).slider({
                 max: 101,
-                min: -100,
+                min: -99,
                 value: 0,
                 animate: 'fast',
                 orientation: "horizontal",

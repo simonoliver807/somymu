@@ -4,7 +4,7 @@ var SliderModule = (function () {
     var sliderID;
     var disabledBool;
     var tooltipBool;
-    var setSliderValue;
+   // var setSliderValue;
     return {
         setSliderID: function (sliderID) {
             this.sliderValue = 0;
@@ -12,7 +12,7 @@ var SliderModule = (function () {
             this.sliderID = sliderID;
             this.disabledBool = false;
             this.tooltipBool = false;
-            this.overscrollStatus = false;
+           // this.overscrollStatus = false;
         },
         setValues: function (sliderValue, buttonValue) {
             if (sliderValue !== '') {
@@ -40,7 +40,9 @@ var SliderModuleYN = (function () {
     var sliderID;
     var disabledBool;
     var tooltipBool;
-    var setSliderValue;
+    var isNegetiveBool;
+   // var setSliderValue;
+    
     return {
         setSliderID: function (sliderID) {
             this.sliderValue = 0;
@@ -48,15 +50,23 @@ var SliderModuleYN = (function () {
             this.sliderID = sliderID;
             this.disabledBool = false;
             this.tooltipBool = false;
-            this.overscrollStatus = false;
+            this.isNegetiveBool = false;
+           // this.overscrollStatus = false;
         },
         setValues: function (sliderValue, buttonValue) {
             if (sliderValue !== '') {
+            	if(sliderValue < 0){
+            		this.isNegetiveBool = true;
+            	}
+            	else {
+            		this.isNegetiveBool = false;
+            	}
                 this.sliderValue = sliderValue - 1;
+                this.sliderValue = Math.abs(this.sliderValue);
                 //  update the tooltip
                 var position = $('#sliderID' + this.sliderID).offset();
                 $('.tooltip').css({ left: position.left + 'px' });
-                $('.tooltipValue').text(this.sliderValue);
+                $('.tooltipValue').text(Math.abs(this.sliderValue));
                 document.getElementById('sliderBackground' + this.sliderID).style.width = this.sliderValue + '%';
             }
             this.totalValue = buttonValue * this.sliderValue;
@@ -69,7 +79,7 @@ var ScorerModule = (function () {
     var scorerID;
     var disabledBool;
     var tooltipBool;
-    var setscorerValue;
+    //var setscorerValue;
     return {
         setscorerID: function (scorerID) {
             this.scorerValue = 0;
