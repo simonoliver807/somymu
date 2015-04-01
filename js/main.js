@@ -23,8 +23,8 @@ function getCSSint(el) {
 }
 
 var modules = new UIModule();
-//modules.init('', 6, 'ui3');
-modules.init(10, 6, 'ui2');
+modules.init('', 6, 'ui3');
+// modules.init(10, 6, 'ui1');
 
 
 var setButtonValue = function (id) { var buttonID = id.match(/[0-9]+/g); modules.setButtonValue(buttonID); };
@@ -51,6 +51,7 @@ window.onresize = changeSlider;
 function changeSlider() {
 
     document.getElementById('screenSize').innerHTML = $(window).width();
+    l($(window).width())
 
     var classNames = document.getElementById('tabTap').className;
     var showHide = classNames.indexOf('selectBackground');
@@ -62,12 +63,22 @@ function changeSlider() {
     if (showHide !== -1) {
         addHighLight('tabSlide');
     }
+    var classNames = document.getElementById('tabDecide').className;
+    var showHide = classNames.indexOf('selectBackground');
+    if (showHide !== -1) {
+        addHighLight('tabDecide');
+    }
     var windowWidth = $(window).width();
     if (windowWidth <= 992 && !modules.windowResizeBool) {
         if (modules.uiType == 'ui1') {
             var orientation = $(".slider").slider("option", "orientation");
             $('.slider').slider("option", "orientation", "horizontal");
             $('.handleStyle').addClass("fa-rotate-90 fa-lg");
+            $('.handleStyle').removeClass("fa-2x");
+            $('.elementWrapper').addClass('elementWrapperWidth');
+        }
+        if (modules.uiType == 'ui3') {
+            $('.handleStyle').addClass("fa-lg");
             $('.handleStyle').removeClass("fa-2x");
             $('.elementWrapper').addClass('elementWrapperWidth');
         }
@@ -79,6 +90,9 @@ function changeSlider() {
 				setGreyOut(true, i);
 			}
 		}
+		document.getElementById('tabDecide').disabled = true;
+		document.getElementById('tabSlide').disabled = true;
+		document.getElementById('tabTap').disabled = true;
 		modules.windowResizeBool = true;
 	}
 	if(windowWidth > 992){
@@ -90,18 +104,25 @@ function changeSlider() {
 	            $('.handleStyle').addClass("fa-2x");
 	            $('.elementWrapper').removeClass('elementWrapperWidth');
 	        }
-		    // add and remove the transition class
-			$('.elementWrapper').removeClass('setTransition');
-			setTimeout(function () { $('.elementWrapper').addClass('setTransition'); }, 500);
-	        // devide the set width of a slider row by the number of sliders giving the width per slider
-			var containerWidth = (modules.elementWidth * modules.numberOfElements) + 30;
-	        $('.elementWrapper').css('width', containerWidth);
-	        $('.sliderNavWrapper').css('width', containerWidth);
+	        if (modules.uiType == 'ui3') {
+	            $('.handleStyle').removeClass("fa-lg");
+	            $('.handleStyle').addClass("fa-2x");
+	            $('.elementWrapper').removeClass('elementWrapperWidth');
+	        }
+	        // add and remove the transition class
+	        $('.elementWrapper').removeClass('setTransition');
+	        setTimeout(function () { $('.elementWrapper').addClass('setTransition'); }, 500);
+	        if(modules.uiType !== 'ui3'){
+	            // devide the set width of a slider row by the number of sliders giving the width per slider
+			    var containerWidth = (modules.elementWidth * modules.numberOfElements) + 30;
+	            $('.elementWrapper').css('width', containerWidth);
+	            $('.sliderNavWrapper').css('width', containerWidth);
+	        }
 		    // collapse the navbar;
 	        document.getElementById('navbarCollapse').className = "";
 	        document.getElementById('navbarCollapse').className = "navbar-collapse collapse";
 	        modules.windowResizeBool = false;
-		}
+	    }
 		// update the grey outs
 		var buttonArray = modules.getButtonArray();
 		for(var i = 0; i < buttonArray.length; i++){
@@ -110,6 +131,9 @@ function changeSlider() {
 				setGreyOut(true, i);
 			}
 		}
+		document.getElementById('tabDecide').disabled = false;
+		document.getElementById('tabSlide').disabled = false;
+		document.getElementById('tabTap').disabled = false;
 		window.scrollTo(0, 0);
 	}	
 }
@@ -365,16 +389,15 @@ function addHighLight(id) {
                 $('.slider').addClass('bc');
                 document.getElementById('tabSlide').className = classNames + ' selectBackground';
                 var tapTabWidth = document.getElementById('labelsSecondCol').getBoundingClientRect().width;
-                var offsetPosLeft = $('#sliderRow0').offset().left;
+                var offsetPosLeft = $('#tabSlide').offset().left;
                 var widthMinusPadding = tapTabWidth - getCSSint($('#labelsSecondCol').css('padding-left'));
-                var leftMinusPadding = offsetPosLeft + getCSSint($('#labelsSecondCol').css('padding-left'));
                 document.getElementById('sliderNav').style.background = '0';
                 document.getElementById('button1').style.background = '0';
                 document.getElementById('button2').style.background = '0';
                 document.getElementById('labelsBackground').className = '';
                 document.getElementById('sliderNavWrapper').className = addClass('sliderNavWrapper', 'selectedCBC');
-                updateOverlay('highLightOverlay1', leftMinusPadding, widthMinusPadding, 'tabSlide', false);
-                updateOverlay('highLightOverlay2', leftMinusPadding, widthMinusPadding, 'tabSlide', true);
+                updateOverlay('highLightOverlay1', offsetPosLeft, widthMinusPadding, 'tabSlide', false);
+                updateOverlay('highLightOverlay2', offsetPosLeft, widthMinusPadding, 'tabSlide', true);
             }
             else {
                 $('#tabSlide').removeClass('selectBackground');
@@ -411,6 +434,9 @@ function addHighLight(id) {
                         this.className = 'chartHeaderNoBackground';
                     }
                 });
+                var tapDecideWidth = document.getElementById('results').getBoundingClientRect().width;
+                var offsetPos = $('#results').offset();
+                updateOverlay('highLightOverlay1', offsetPos.left, tapDecideWidth, 'tabDecide', false);
             }
             else {
                 $('#tabDecide').removeClass('selectBackground');
@@ -451,8 +477,4 @@ document.getElementById('highLightOverlay1').addEventListener('click',
     function () {
         var attrVal = document.getElementById('highLightOverlay1').getAttribute('highLightOverlay1');
         addHighLight(attrVal);
-    });
-document.getElementById('results').addEventListener('click',
-    function () {
-        addHighLight('tabDecide');
- });
+});

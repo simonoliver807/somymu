@@ -78,23 +78,25 @@ var UIModule = (function () {
             this.numberOfElements = numberOfElements;
             this.numberOfButtons = numberOfButtons;
             this.uiType = uiType;
+            if (this.windowWidth < 992) {
+                this.windowResizeBool = true;
+            }
             if (this.uiType == 'ui1') {
+                document.getElementById('game-content').className = 'ui1';
                 this.slider()
             }
             else if (this.uiType == 'ui2') {
+                document.getElementById('game-content').className = 'ui2';
                 this.scorer()
             }
             else if (this.uiType = 'ui3') {
+                document.getElementById('game-content').className = 'ui3';
                 this.yesNoSlider()
             }
         },
         slider: function () {
             //this.sliderRowWidth = 525;
             var templateModule = new TemplateModule();
-
-            if ($(window).width() < 992) {
-                this.windowResizeBool = true;
-            }
             //lets create an array of buttons and a array of doughnuts to start
             var sliderLabels = ['Arsenal', 'Chelsea', 'Liverpool', 'Portsmouth', 'Man United', 'Man City', 'Leeds', 'Bournemouth'];
             // add a label for each slider
@@ -127,7 +129,7 @@ var UIModule = (function () {
             // resize all the charts
             $('canvas').css({ width: '100%', height: '100%' });
             // update the handle style and the height of the button colmuns
-            if (this.windowWidth < 1024) {
+            if (this.windowWidth < 992) {
                 updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle')
             }
             else {
@@ -151,6 +153,7 @@ var UIModule = (function () {
             this.updateChartPositions();
         },
         scorer: function () {
+            var self = this;
             var templateModule = new TemplateModule();
             // add a label for each scorer
             for (var i = 0; i < this.numberOfElements; i++) {
@@ -181,16 +184,14 @@ var UIModule = (function () {
             }
             // bind click events to all the buttons
             $('.scorer').on('click', function () {
-                self.setScorerValue(this.id);
+               self.setScorerValue(this.id);
             });
             // resize all the charts
             $('canvas').css({ width: '100%', height: '100%' });
-            // don't need to do this for iphone
-                // multiply the number of scorers by the width of the scorers to give the scorer container width
-                var containerWidth = (this.elementWidth * this.numberOfElements) + 30;
-                $('.elementWrapper').css('width', containerWidth);
-                $('.sliderNavWrapper').css('width', containerWidth);
-            
+            // multiply the number of scorers by the width of the scorers to give the scorer container width
+            var containerWidth = (this.elementWidth * this.numberOfElements) + 30;
+            $('.elementWrapper').css('width', containerWidth);
+            $('.sliderNavWrapper').css('width', containerWidth);
             // update the chart positions so only the css is updated
             this.updateChartPositions();
 
@@ -225,18 +226,22 @@ var UIModule = (function () {
 
             //    self.setButtonValue(this.id);
             //});
-            updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-2x fa-rotate-90 handleStyle')
+
             // resize all the charts
             $('canvas').css({ width: '100%', height: '100%' });
             // update the handle style 
             for (var i = 0; i < this.numberOfButtons; i++) {
                 document.getElementById('sliderID' + i).className = addClass('sliderID' + i, ' overlaydiv overlayDiv1 handleStyle');
             }
+            // update the handle style and the height of the button colmuns
+            if (this.windowWidth < 992) {
+                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle')
+            }
+            else {
+                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-2x fa-rotate-90 handleStyle')
+            }
             // don't need to do this for iphone
             if (this.windowWidth > 992) {
-                // set up the width of the slider container
-                //var rowWidth = this.sliderRowWidth;
-
                 // multiply the number of sliders by the width of the sliders to give the slider container width
                 var containerWidth = (this.sliderWidth * this.numberOfSliders) + 30;
                 $('.sliderWrapper').css('width', containerWidth);
@@ -330,12 +335,6 @@ var UIModule = (function () {
             }
             var chartTotalHTML = Math.round(100 * (sliderTotal / (weightTotal * 100)));
             doughnutArray[labelNumber].totalScore  = chartTotalHTML;
-            if(chartTotalHTML < 10){
-            	 //document.getElementById('sliderTotal' + labelNumber).style.left = "67px";
-            }
-            else {
-            	//document.getElementById('sliderTotal' + labelNumber).style.left = "66px";
-            }
             document.getElementById('sliderTotal' + labelNumber).innerHTML = chartTotalHTML;
             document.getElementById('sliderTotalSmall' + labelNumber).innerHTML = chartTotalHTML;
         },
@@ -456,12 +455,6 @@ var UIModule = (function () {
             }
             var chartTotalHTML = Math.round(100 * (scorerTotal / (weightTotal * 100)));
             doughnutArray[labelNumber].totalScore = chartTotalHTML;
-            if (chartTotalHTML < 10) {
-                document.getElementById('sliderTotal' + labelNumber).style.left = "67px";
-            }
-            else {
-                document.getElementById('sliderTotal' + labelNumber).style.left = "66px";
-            }
             document.getElementById('sliderTotal' + labelNumber).innerHTML = chartTotalHTML;
             document.getElementById('sliderTotalSmall' + labelNumber).innerHTML = chartTotalHTML;
         },
@@ -494,12 +487,6 @@ var UIModule = (function () {
             }
             var chartTotalHTML = Math.round(100 * (sliderTotal / (weightTotal * 100)));
             doughnutArray[sliderNumber].totalScore  = chartTotalHTML;
-            if(chartTotalHTML < 10){
-                document.getElementById('sliderTotal' + sliderNumber).style.left = "67px";
-            }
-            else {
-                document.getElementById('sliderTotal' + sliderNumber).style.left = "66px";
-            }
             document.getElementById('sliderTotal' + sliderNumber).innerHTML = chartTotalHTML;
             document.getElementById('sliderTotalSmall' + sliderNumber).innerHTML = chartTotalHTML;
         }

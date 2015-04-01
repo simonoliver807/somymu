@@ -19,7 +19,7 @@ var SliderModule = (function () {
                 this.sliderValue = sliderValue - 1;
                 //  update the tooltip
                 var position = $('#' + this.sliderID).offset();
-                if (modules.windowresizebool) {
+                if (modules.windowResizeBool) {
                     // update horizontal
                     $('.tooltip').css({ left: position.left + 'px' });
                 }
@@ -27,7 +27,7 @@ var SliderModule = (function () {
                     //update vertically
                     $('.tooltip').css({ top: position.top + 'px' });
                 }
-                $('.tooltipvalue').text(this.slidervalue);
+                $('.tooltipValue').text(this.sliderValue);
                 document.getElementById('sliderBackground' + this.sliderID).style.width = this.sliderValue + '%';
             }
             this.totalValue = buttonValue * this.sliderValue;
@@ -54,17 +54,10 @@ var SliderModuleYN = (function () {
             if (sliderValue !== '') {
                 this.sliderValue = sliderValue - 1;
                 //  update the tooltip
-                var position = $('#' + this.sliderID).offset();
-                //if (modules.windowResizeBool) {
-                //    // update horizontal
-                //    $('.tooltip').css({ left: position.left + 'px' });
-                //}
-                //else {
-                //    //update vertically
-                //    $('.tooltip').css({ top: position.top + 'px' });
-                //}
-                //$('.tooltipValue').text(this.sliderValue);
-                //document.getElementById('sliderBackground' + this.sliderID).style.width = this.sliderValue + '%';
+                var position = $('#sliderID' + this.sliderID).offset();
+                $('.tooltip').css({ left: position.left + 'px' });
+                $('.tooltipValue').text(this.sliderValue);
+                document.getElementById('sliderBackground' + this.sliderID).style.width = this.sliderValue + '%';
             }
             this.totalValue = buttonValue * this.sliderValue;
         }

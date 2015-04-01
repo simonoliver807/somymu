@@ -92,7 +92,10 @@ var TemplateModule = (function () {
         },
         createSliderYN: function (sliderID) {
             $('#elementColumns' + sliderID).append('<div class="sliderContainerYN" id="sliderStyle' + sliderID + '">' +
-	                '<div id="slider' + sliderID + '" class="slider"><div class="middleScale"></div><div class="scaleYes">Yes</div><div class="scaleNo">No</div></div>' +
+	                '<div id="slider' + sliderID + '" class="slider">'+ 
+                       // '<div id="sliderBackground' + sliderID + '" class="sliderBackground' + sliderID + '"></div>' +
+                       // '<div class="middleScale"></div><div class="scaleYes">Yes</div><div class="scaleNo">No</div>' +
+                    '</div>' +
 	        '</div>');
             $('#slider' + sliderID).slider({
                 max: 101,
@@ -114,7 +117,7 @@ var TemplateModule = (function () {
                                                '<div class="maxMinYN"><div class="centerLine"></div></div>' +
                                            '</div>');
             var namedSlider = 'sliderID' + sliderID;
-            document.getElementById('slider' + sliderID).className = addClass('slider' + sliderID, 'sliderYN');
+            //document.getElementById('slider' + sliderID).className = addClass('slider' + sliderID, 'sliderYN');
             $('#slider' + sliderID).find('span').attr('id', namedSlider);
         },
         createDoughnut: function (doughnutID, data, sliderLabel, ordinalPosition) {
@@ -135,13 +138,13 @@ var TemplateModule = (function () {
             $('#canvasContainer' + doughnutID).append('<div id="canvas' + doughnutID + '" class="canvasBackground">' +
                                                         '<div class="heightFiller20"></div>'+
             											'<div class="row">'+
-            												'<div class="col-sm-4 col-md-4 col-lg-4 chartWidth-sm chartWidth-lg">' +
+            												'<div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 chartWidth-sm chartWidth-lg">' +
 	            												'<div class="chartContainer">'+
 	                                                            	'<div class="sliderTotal" id="sliderTotal' + doughnutID + '"></div>' +
 	                                                            	'<canvas id=chart' + doughnutID + ' width="400" height="400"></canvas>' +
 	                                                            '</div>'+
 	                                                        '</div>'+
-	            											'<div class="col-sm-8 col-md-8 custom-col-md-8 col-lg-8">' +
+	            											'<div class="col-sm-8 chart-key-col">' +
 	                                                        	'<div class="row">'+
 	                                                        		'<div class="col-sm-12 col-md-12 col-lg-12 leftPadding15">' +
             																'<table class="chartKey">' +

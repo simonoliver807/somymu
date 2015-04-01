@@ -53,7 +53,7 @@ a:hover {
 	border:1px solid black;
     width:1px;
 }
-.col-md-8 {
+.col-lg-8 {
     width: 63%;
     float:left;
 }
@@ -63,11 +63,10 @@ a:hover {
 }
 .custom-col-md-4 {
 	padding: 0 0 0 20px;
-	width: 37%;
 }
-.custom-col-md-8 {
+/*.custom-col-md-8 {
 	width: 60%;
-}
+}*/
 .col-md-2 {
     width: 16%;
     float:left;
@@ -195,10 +194,16 @@ footer {
 
 }
 .chartKeyText {
+	cursor: default;
 	font-family: "Open Sans" ;
 	font-size: 8pt;
 	line-height:12px;	
 	padding-left: 5px;
+}
+.chart-key-col {
+	float: left;
+	width: 60%;
+	padding-right: 0px;
 }
 .goldBadge {
 	background-color: #b19369;
@@ -253,9 +258,10 @@ footer {
 	width:47px;
 }
 .chartContainer {
-	width:102px;
 	height:102px; 
+	margin: 0 auto;
 	position: relative;	
+	width:102px;
 }
 .defaultChartHeader{
 	height:45px;
@@ -267,8 +273,9 @@ footer {
 	border-bottom:1px solid #fff;
 }
 .chartWidth-lg {
-	padding-right: 0;
-    width: 39.333%;
+  padding-right: 0px;
+  width: 39.333%;
+  padding-left: 20px;
 }
 .firstNoBackground {
   background-color: none;
@@ -426,17 +433,16 @@ footer {
 	margin: 14.5px auto 0 auto;
 	width: 12px;
 }
-.sliderTotal {
+  .sliderTotal {
     color: $b;
     cursor: default;
     font-size: 20px;
     font-weight: 600;
-    left: 52px;
+    left: 3%;
     position: absolute;
-    top: 50%;
-	-webkit-transform: translate(-50%, -50%);
-	 -moz-transform: translate(-50%, -50%);
-	 transform: translate(-50%, -50%);
+	text-align: center;
+    top: 42%;
+	width: 100px;
     z-index: 995;
   }
 /* style the slider handles per column */
@@ -553,55 +559,64 @@ footer {
 
 // UI 3 style 
 /* slider scale */
-.centerLine {
-	border-top: 1px solid;
-    height: 1px;
-    width: 100%;
+.ui3 {
+	.centerLine {
+		border-top: 1px solid;
+		height: 1px;
+		width: 100%;
+	}
+	.elementWrapper {
+		display: table;
+	}
+	.maxMinYN {
+		border-left: 1px solid;
+		border-right: 1px solid;
+		display: table-cell;
+		height: 10px;
+	   /* position: absolute; */
+		vertical-align: middle;
+		width: 549px;
+	}
+	.middleScale {
+	  width: 2px;
+	  height: 20px;
+	  background: $b;
+	  position: absolute;
+	  margin-left: 50%;
+	}
+	.scaleContainer {
+		display: table-cell;
+		vertical-align: middle;
+		width: 99%;
+	}
+	.sliderContainerYN {
+		display: table-cell;
+		height: 100%;
+		vertical-align: middle;
+		width: 100%;
+	} 
+	.sliderRowFiller {
+		display: none;
+	}
+	.slider {
+		display: table;
+		font-weight: 600;
+		font-size: 15px;
+		height: 20px;
+		margin: 0;
+		width: 99%;
+				.scaleNo {
+					position: absolute;
+					right: 97.5%;
+					top: -35px;
+				}
+				.scaleYes {
+					position: absolute;
+					right: 0;
+					top: -35px;
+				}
+	}
 }
-.elementWrapperYN {
-	display: table;
-	height: 100%;
-	margin: 0 auto;
-	width: 95%;
-}
-.maxMinYN {
-	border-left: 1px solid;
-    border-right: 1px solid;
-    display: table-cell;
-    height: 10px;
-   /* position: absolute; */
-    vertical-align: middle;
-    width: 549px;
-}
-.middleScale {
-  width: 1px;
-  height: 20px;
-  background: $b;
-  position: absolute;
-  margin-left: 50%;
-}
-.scaleContainerYN {
-	display: table-cell;
-    vertical-align: middle;
-    width: 100%;
-}
-.scaleNo {
-	position: absolute;
-    right: 97.5%;
-    top: -15px;
-}
-.scaleYes {
-	position: absolute;
-    right: 0;
-    top: -15px;
-}
-.sliderYN {
-    display: table;
-    height: 20px;
-    width: 100%;
-}
-
-
 @media (min-width: 1200px){
 	.container {
   		width: 1170px;
@@ -612,3 +627,9 @@ footer {
 @import "_style_1200.scss";
 @import "_style_992.scss";
 @import "_style_768.scss";
+
+@media (max-width: 320px){
+	.col-xs-4 {
+	  width: 33.33333333%;
+	}
+}

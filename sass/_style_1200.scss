@@ -5,6 +5,9 @@
 	ul {
 		padding: 0;
 	}
+	.chart-col-8{
+		width: 60%;
+	}
 	.container {
   		width: 100%;
 	}
@@ -23,10 +26,10 @@
 		width: 37%;
 	}
 	.col-md-8 {
-		width: 69%;
+		width: 60%;
 	}
 	.custom-col-md-8 {
-		width: 66%;
+		width: 66.6666%;
 	}
 	.col-md-9 {
 		//width: 63%;
@@ -48,9 +51,12 @@
 		  display: inline-block;
 		  overflow-y: hidden;
 		  overflow-x: hidden;
-		  padding-top: 5px;
+		  padding: 0;
 		  height: 160px;
-		  width: 65%;
+		  width: 60%;
+	}
+	.sliderRowFiller {
+		width: 0px;
 	}
 }
 
