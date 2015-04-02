@@ -67,7 +67,19 @@ var SliderModuleYN = (function () {
                 var position = $('#sliderID' + this.sliderID).offset();
                 $('.tooltip').css({ left: position.left + 'px' });
                 $('.tooltipValue').text(Math.abs(this.sliderValue));
-                document.getElementById('sliderBackground' + this.sliderID).style.width = this.sliderValue + '%';
+                var setSliderBackground = this.sliderValue / 2; 
+                if (this.isNegetiveBool) {
+                    document.getElementById('sliderBackground1' + this.sliderID).style.width = (50 - setSliderBackground) + '%';
+                    document.getElementById('sliderBackground2' + this.sliderID).style.width = setSliderBackground + '%';
+                    document.getElementById('sliderBackground3' + this.sliderID).style.width = '0%';
+                    document.getElementById('sliderBackground4' + this.sliderID).style.width = '50%';
+                }
+                else {
+                    document.getElementById('sliderBackground1' + this.sliderID).style.width = '50%';
+                    document.getElementById('sliderBackground2' + this.sliderID).style.width = '0%';
+                    document.getElementById('sliderBackground3' + this.sliderID).style.width = setSliderBackground + '%';
+                    document.getElementById('sliderBackground4' + this.sliderID).style.width = (50 - setSliderBackground) + '%';
+                } 
             }
             this.totalValue = buttonValue * this.sliderValue;
         }

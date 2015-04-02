@@ -8,7 +8,7 @@ var TemplateModule = (function () {
             $('#modules').append(
             		 '<div class="row moduleRow' + buttonID + ' smallModule">' +
                      '<div class="col-sm-4 col-md-4 custom-col-md-4 col-lg-4 custom-col-lg-4">' +
-                                 '<div class= "row"><div class="col-sm--5 col-md-5 col-lg-5"><i class="fa fa-minus fa-lg greyOutClick" id="greyOut' + buttonID + '"></i></div><div class="col-sm-7 col-md-7"></div></div>' +
+                                 '<div class= "row"><div class="col-sm-5 col-md-5 col-lg-5"><i class="fa fa-minus fa-lg greyOutClick" id="greyOut' + buttonID + '"></i></div><div class="col-sm-7 col-md-7"></div></div>' +
                                  '<div class="row factorOverlay factorOverlay'+buttonID+'">'+
                                  	'<div class="col-sm-12 col-md-12 col-lg-12">' +
                                     '</div>'+
@@ -92,8 +92,11 @@ var TemplateModule = (function () {
         },
         createSliderYN: function (sliderID) {
             $('#elementColumns' + sliderID).append('<div class="sliderContainerYN" id="sliderStyle' + sliderID + '">' +
-	                '<div id="slider' + sliderID + '" class="slider">'+ 
-                        '<div id="sliderBackground' + sliderID + '" class="sliderBackground' + sliderID + '"></div>' +
+	                '<div id="slider' + sliderID + '" class="sliderUI3" >'+ 
+                        '<div id="sliderBackground1' + sliderID + '" class="sliderBackgroundMiddle"></div>'+
+                        '<div id="sliderBackground2' + sliderID + '" class="sliderBackground' + sliderID + '"></div>'+
+                        '<div id="sliderBackground3' + sliderID + '" class="sliderBackground' + sliderID + '"></div>' +
+                        '<div id="sliderBackground4' + sliderID + '" class="sliderBackgroundMiddle"></div>' +
                         '<div class="middleScale"></div><div class="scaleYes">Yes</div><div class="scaleNo">No</div>' +
                     '</div>' +
 	        '</div>');
@@ -181,3 +184,23 @@ var TemplateModule = (function () {
         }
     };
 });
+
+
+/*.slider {
+        display: inline-block;
+        font-weight: 600;
+        font-size: 15px;
+        height: 10px;
+        margin: 0 2% 0 20px;
+        width: 95%;
+                .scaleNo {
+                    position: absolute;
+                    right: 97.5%;
+                    top: -29px;
+                }
+                .scaleYes {
+                    position: absolute;
+                    right: 0;
+                    top: -29px;
+                }
+    }*/

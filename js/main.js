@@ -24,10 +24,18 @@ function getCSSint(el) {
 
 var modules = new UIModule();
 modules.init('', 6, 'ui3');
-//modules.init(10, 6, 'ui1');
+//modules.init(8, 6, 'ui1');
 
 
-var setButtonValue = function (id) { var buttonID = id.match(/[0-9]+/g); modules.setButtonValue(buttonID); };
+var setButtonValue = function (id) {
+    var buttonID = id.match(/[0-9]+/g);
+    if (modules.uiType == 'ui1') {
+        modules.setButtonValue(buttonID);
+    }
+    else {
+        modules.setButtonValueYN(buttonID);
+    }
+};
 var setSliderValue = function (ui, id) {
     var sliderID = id.match(/[0-9]+/g);
     if (modules.uiType == 'ui1') {
@@ -76,6 +84,7 @@ function changeSlider() {
             $('.handleStyle').addClass("fa-rotate-90 fa-lg");
             $('.handleStyle').removeClass("fa-2x");
             $('.elementWrapper').addClass('elementWrapperWidth');
+       
         }
         if (modules.uiType == 'ui3') {
             $('.handleStyle').addClass("fa-lg");
@@ -104,6 +113,7 @@ function changeSlider() {
 	            $('.handleStyle').removeClass("fa-rotate-90 fa-lg");
 	            $('.handleStyle').addClass("fa-2x");
 	            $('.elementWrapper').removeClass('elementWrapperWidth');
+                
 	        }
 	        if (modules.uiType == 'ui3') {
 	            $('.handleStyle').removeClass("fa-lg");
@@ -179,7 +189,12 @@ $('.greyOutClick').click(function () {
             }
             else { buttonArray[i].buttonUpdateID = null; }
         }
-        modules.updateButtonValue(id);
+        if (modules.uiType == 'ui3') {
+            modules.updateButtonValueYN(id);
+        }
+        else {
+            modules.updateButtonValue(id);
+        }
         modules.numberOfGreyOuts -=1;
     }
 	
@@ -206,7 +221,12 @@ function turnOffGrey(id){
 		elementArray[id][i].disabledBool = false;
 	}
 	modules.addChartSegment(id);
-	modules.updateButtonValue(id);
+	if (modules.uiType == 'ui3') {
+	    modules.updateButtonValueYN(id);
+	}
+	else {
+	    modules.updateButtonValue(id);
+	}
 	modules.numberOfGreyOuts += 1;
 }
 function updateSliderPostion(direction, buttonID){

@@ -11,6 +11,9 @@
 		padding: 0;
 		width: 100%;
 	}
+	.custom-col-md-4 {
+		height: 110px;
+	}
 	.col-sm-4 {
 		padding: 0;
 		width: 100%;
@@ -49,6 +52,9 @@
 	#game-content {
 		padding: 0;
 	}
+	.greyOutClick {
+		margin-left: 20px;
+	}
 	#questiontext1 {
 		display: block;
 	}
@@ -83,6 +89,7 @@
 	}
 	.sliderBackground0 {
 		border: medium none;
+		float: left;
     	height: 10px;
     	width: 0%;
     	padding-right: 7px;
@@ -119,6 +126,14 @@
     	width: 0%;
     	padding-right: 7px;
   		background: $color5;
+  		@include border-radius(1em);
+	}
+	.sliderBackground5 {
+		border: medium none;
+    	height: 10px;
+    	width: 0%;
+    	padding-right: 7px;
+  		background: $color1;
   		@include border-radius(1em);
 	}
 	.sliderContainer {
@@ -258,25 +273,31 @@
 	}
 	
 	// 992 UI2 scorer style 
-	.elementRow {
-		overflow-x: scroll;
-		width: 100%;
-	}
-	.scorerLabelContainer {
-		position:absolute;
-	    width:100%;
-	    height:100%;
-	    display:table;
-	}
-	.scorerRowFiller {
-		width: 10px
-	}
-	.scorerLabelText {
-		color: $b;
-		cursor: default;
-		display:table-cell;
-		font-size: 8pt;
-	    text-align:center;	
+	.ui2 {
+		.elementRow {
+			overflow-x: scroll;
+			width: 100%;
+		}
+		.scorerLabelContainer {
+			position:absolute;
+			width:100%;
+			height:100%;
+			display:table;
+		}
+		.scorerRowFiller {
+			width: 10px
+		}
+		.scorerLabelText {
+			color: $b;
+			cursor: default;
+			display:table-cell;
+			font-size: 8pt;
+			text-align:center;	
+		}
+		.sliderRow {
+			padding-top: 5px;
+		}
+
 	}
 
 	// UI 3 style 
@@ -296,6 +317,97 @@
 		.middleScale {
 		  display: none;
 		}
+		.sliderUI3 {
+			display: inline-block;
+			font-weight: 600;
+			font-size: 15px;
+			height: 10px;
+			margin: 0 2% 0 20px;
+			width: 95%;
+			background: url("images/ui-bg_highlight-soft_100_eeeeee_1x100.png") repeat-x scroll 50% top #eeeeee;
+			border: 1px solid #dddddd;
+					.handleStyle {
+						background: #fff;
+						border: 0 none;
+						height: 15px;
+						left: -6px;
+						margin-top: 1px;
+						position: absolute;
+						width: 15px;
+					}
+					.handleStyle:hover {
+						background: #fff;
+						border:0;
+					}
+					.scaleNo {
+						position: absolute;
+						right: 97.5%;
+						top: -29px;
+					}
+					.scaleYes {
+						position: absolute;
+						right: 0;
+						top: -29px;
+					}
+		}
+		.sliderBackground0 {
+			border: medium none;
+			float: left;
+    		height: 10px;
+    		width: 0%;
+    		padding-right: 0;
+  			background: $color1;
+  			@include border-radius(1em);
+		}	
+		.sliderBackground1 {
+			border: medium none;
+			float: left;
+    		height: 10px;
+    		width: 0%;
+    		padding-right: 0;
+  			background: $color2;
+  			@include border-radius(1em);
+		}
+		.sliderBackground2 {
+			border: medium none;
+			float: left;
+    		height: 10px;
+    		width: 0%;
+    		padding-right: 0;
+  			background: $color3;
+  			@include border-radius(1em);
+		}
+		.sliderBackground3 {
+			border: medium none;
+			float: left;
+    		height: 10px;
+    		width: 0%;
+    		padding-right: 0;
+  			background: $color4;
+  			@include border-radius(1em);
+		}
+		.sliderBackground4 {
+			border: medium none;
+			float: left;
+    		height: 10px;
+    		width: 0%;
+    		padding-right: 0;
+  			background: $color5;
+  			@include border-radius(1em);
+		}.sliderBackground5 {
+			border: medium none;
+			float: left;
+    		height: 10px;
+    		width: 0%;
+    		padding-right: 0;
+  			background: $color1;
+  			@include border-radius(1em);
+		}
+		.sliderBackgroundMiddle {
+			height: 100%;
+			width: 50%;
+			float: left;
+		}
 		.scaleContainer {
 			display: block;
 			width: 100%;
@@ -310,23 +422,6 @@
 		.sliderRowFiller {
 			display: none;
 		}
-		.slider {
-			display: inline-block;
-			font-weight: 600;
-			font-size: 15px;
-			height: 10px;
-			margin: 0 2% 0 20px;
-			width: 95%;
-					.scaleNo {
-						position: absolute;
-						right: 97.5%;
-						top: -29px;
-					}
-					.scaleYes {
-						position: absolute;
-						right: 0;
-						top: --29px;
-					}
-		}
+		
 	}
 }
