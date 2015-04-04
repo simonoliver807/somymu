@@ -11,7 +11,7 @@ $color6: 		#d10b49;
 $scrollButton: 	#e9eaed;
 
 
-// click background color
+// click background color blue and chart header blue
 $cbc:			#73c1ca;
 $chb:			#1597a7;
 
@@ -38,11 +38,6 @@ $hb: #1597a7;
 $headerNumberFont: 255%;
 
 
-@media screen and (max-width: 992px) {
-    body {
-        background-color: $w;
-    }
-}
  ul {
     padding: 0;
 }
@@ -125,6 +120,21 @@ footer {
 	color: $w !important;
 	text-align: center;
 }
+.shareDropDown {
+	background: $cbc;
+	display: none;
+	height: 100px; 
+	position: relative;
+	width: 268px;	
+}
+#shareHideBorder {
+	position: absolute;
+    top:-1px;
+    left:1px;
+    width:51.5%;
+    height: 1px;
+    background-color: $cbc;
+}
 #tabDecide {
 	border-right: 1px solid white;	
 	width: 100%;
@@ -152,6 +162,9 @@ footer {
 			padding-right: 0;
 			background-clip: content-box;
 		}
+}
+.sliderNavButtonUI2 {
+	display: none;
 }
 .selectedCBC {
 	background: $cbc !important;
@@ -404,7 +417,9 @@ footer {
 			}
 	}
 }
-
+.resultsDisplayNone {
+	display: none;	
+}
 
 .sliderRow { 
     display: inline-block;
@@ -583,6 +598,9 @@ footer {
 		border-top: 1px solid;
 		height: 1px;
 		width: 100%;
+	}
+	.chartHeaderNoBackground {
+		height: 205px;
 	}
 	.elementWrapper {
 		display: table;

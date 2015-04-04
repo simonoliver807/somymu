@@ -80,7 +80,7 @@
 	}
 	.sliderRow {
 		height: 100%;
-		overflow-x: scroll;
+		overflow: hidden;
 		padding: 0 0 0 0;
 		width: 100%;
 	}
@@ -187,17 +187,6 @@
     	width: 30px;
     	z-index: 1;
 	}
-	
-	.elementWrapper {
-		position: static;
-		height: 100%;
-		padding: 15px 0 0 0;
-		right: 0px !important;
-		-moz-transition-property: none;
-		-webkit-transition-property: none;
-		-o-transition-property: none;
-		transition-property: none;
-	}
 	.elementWrapperWidth {
 		width: 100% !important;
 	}
@@ -272,11 +261,34 @@
 		background-color: rgba(255, 255, 204, 0.6);
 	}
 	
+	// UI1 slider style 
+	.ui1 {
+		.elementWrapper {
+			position: static;
+			height: 100%;
+			padding: 15px 0 0 0;
+			right: 0px !important;
+			-moz-transition-property: none;
+			-webkit-transition-property: none;
+			-o-transition-property: none;
+			transition-property: none;
+		}
+	}
+	
 	// 992 UI2 scorer style 
 	.ui2 {
 		.elementRow {
 			overflow-x: scroll;
 			width: 100%;
+		}
+		.elementWrapper {
+			position: static;
+			height: 100%;
+			padding: 15px 0 0 0;
+			-moz-transition-property: none;
+			-webkit-transition-property: none;
+			-o-transition-property: none;
+			transition-property: none;
 		}
 		.scorerLabelContainer {
 			position:absolute;
@@ -293,6 +305,10 @@
 			display:table-cell;
 			font-size: 8pt;
 			text-align:center;	
+		}
+		.sliderNavButtonUI2 {
+			display: block;
+			width: 25px;
 		}
 		.sliderRow {
 			padding-top: 5px;

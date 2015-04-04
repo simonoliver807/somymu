@@ -53,6 +53,7 @@ var UIModule = (function () {
     var ie9 = false;
     var windowWidth;
     var windowResizeBool;
+    var bodyRemoveHighLight;
     var numberOfGreyOuts;
     var elementLabels;
     var buttonLabels;
@@ -72,6 +73,7 @@ var UIModule = (function () {
             // set up screen size
             this.windowWidth = $(window).width();
             this.windowResizeBool = false;
+            this.bodyRemoveHighLight = false;
             this.numberOfGreyOuts = numberOfButtons;
             this.elementLabels = ['Arsenal', 'Chelsea', 'Liverpool', 'Portsmouth', 'Man United', 'Man City', 'Leeds', 'Bournemouth'];
             this.buttonLabels = ['Manager', 'Goal Keeper & Defence', 'Midfield', 'league Position & Recent Form', 'Attack'];

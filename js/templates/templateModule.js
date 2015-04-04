@@ -24,11 +24,16 @@ var TemplateModule = (function () {
 		                                         '<span id="moduleButtonLabel' + buttonID + '" class="moduleButtonLabel">' + buttonLabel + '</span>' +
 		                                     '</div>' +
 		                                  '</div>' +
-	                        
-
-
                      '</div>' +
-                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 sliderRow"><ul class="elementWrapper setTransition" id="elementColumns' + buttonID + '"><li class="sliderRowFiller"></li></ul>' +
+                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 sliderRow">'+
+                     	'<div class="sliderNavButtonUI2">'+
+                     		'<button class="sliderNavFunction fa fa-chevron-left fa-2x" id="sliderNavLeftUI2"></button>'+
+                     	'</div>'+
+                     		'<ul class="elementWrapper setTransition" id="elementColumns' + buttonID + '"><li class="sliderRowFiller"></li></ul>'+
+                     	'<div class="sliderNavButtonUI2">'+
+                     		'<button class="sliderNavFunction fa fa-chevron-right fa-2x" id="sliderNavRightUI2"></button>'+
+                     	'</div>'+
+                    // <ul class="elementWrapper setTransition" id="elementColumns' + buttonID + '"><li class="sliderRowFiller"></li></ul>' +
                      '</div>' +
                   '</div>');
 
