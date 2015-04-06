@@ -26,12 +26,12 @@ var TemplateModule = (function () {
 		                                  '</div>' +
                      '</div>' +
                      '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 sliderRow">'+
-                     	'<div class="sliderNavButtonUI2">'+
-                     		'<button class="sliderNavFunction fa fa-chevron-left fa-2x" id="sliderNavLeftUI2"></button>'+
+                     	'<div class="sliderNavButtonUI2 sliderNavLeftUI2">'+
+                     		'<button class="sliderNavFunction fa fa-chevron-left fa-3x" id="sliderNavLeftUI2"></button>'+
                      	'</div>'+
                      		'<ul class="elementWrapper setTransition" id="elementColumns' + buttonID + '"><li class="sliderRowFiller"></li></ul>'+
-                     	'<div class="sliderNavButtonUI2">'+
-                     		'<button class="sliderNavFunction fa fa-chevron-right fa-2x" id="sliderNavRightUI2"></button>'+
+                     	'<div class="sliderNavButtonUI2 sliderNavRightUI2">'+
+                     		'<button class="sliderNavFunction fa fa-chevron-right fa-3x" id="sliderNavRightUI2"></button>'+
                      	'</div>'+
                     // <ul class="elementWrapper setTransition" id="elementColumns' + buttonID + '"><li class="sliderRowFiller"></li></ul>' +
                      '</div>' +
@@ -115,7 +115,7 @@ var TemplateModule = (function () {
                     setSliderValue(ui, this.id);
                 },
                 change: function (event, ui) {
-                    setSliderValue(ui, this.id);
+                   // setSliderValue(ui, this.id);
                 },
                 stop: function (event, ui) {
                     updateChartPosition(ui, this.id);
@@ -127,6 +127,12 @@ var TemplateModule = (function () {
             var namedSlider = 'sliderID' + sliderID;
             //document.getElementById('slider' + sliderID).className = addClass('slider' + sliderID, 'sliderYN');
             $('#slider' + sliderID).find('span').attr('id', namedSlider);
+            $('#' + namedSlider).append('<div id="tooltip'+ sliderID +'" class="tooltip fade top in">'+
+						            		'<div class="tooltip-arrow" style="left: 50%;"></div>'+
+						            		'<div class="tooltip-inner">'+
+						            		'<div class="tooltipValue">0</div>'+
+						            		'</div>'+
+						            		'</div>')
         },
         createDoughnut: function (doughnutID, data, sliderLabel, ordinalPosition) {
         	var liClass = "";

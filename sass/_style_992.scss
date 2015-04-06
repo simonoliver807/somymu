@@ -282,13 +282,9 @@
 			width: 100%;
 		}
 		.elementWrapper {
-			position: static;
+			/*position: relative;*/
 			height: 100%;
 			padding: 15px 0 0 0;
-			-moz-transition-property: none;
-			-webkit-transition-property: none;
-			-o-transition-property: none;
-			transition-property: none;
 		}
 		.scorerLabelContainer {
 			position:absolute;
@@ -308,7 +304,25 @@
 		}
 		.sliderNavButtonUI2 {
 			display: block;
-			width: 25px;
+			height: 100%;
+			position: absolute;
+			top: 0px;
+			width: 35px;
+			z-index: 1000;
+		}
+		.sliderNavLeftUI2 {
+			
+		}
+		.sliderNavRightUI2 {
+			right: 0px;
+		}
+		.sliderNavFunction {
+			height: 50%;
+		    position: absolute;
+		    top: 25%;
+		    width: 100%;
+		}
+		#sliderNavLeftUI2 {
 		}
 		.sliderRow {
 			padding-top: 5px;

@@ -20,7 +20,7 @@ var TooltipModulesto = (function() {
 		            }
 		        }
 		    }
-		    $('.tooltip').tooltip('hide');
+		    $('.tooltip').css('display','none');
 		},
 		tooltipActivate: function(el, id) {
 		    var sliderElement;
@@ -49,48 +49,53 @@ var TooltipModulesto = (function() {
 		        for (var i = 0; i < elementArray.length; i++) {
 		            if (elementArray[i].tooltipBool) {
 		                if (elementArray[i].sliderID != sliderID[0]) {
-		                    $('#sliderID' + elementArray[i].sliderID).tooltip('hide');
+		                	document.getElementById('tooltip' + elementArray[i].sliderID).style.display = 'none';
 		                    elementArray[i].tooltipBool = false;
 		                }
 		            }
 		        }
 		        sliderElement = elementArray[sliderID[0]];
-		        sliderID = 'sliderID' + sliderID[0];
+		      //  sliderID = 'sliderID' + sliderID[0];
 		    }
-
-
-
+		    var tooltipID = 'tooltip' + sliderID[0];
 		    if (!sliderElement.tooltipBool) {
-		        if (modules.windowResizeBool) {
-		            $('#' + sliderID).tooltip({
-		                container: 'body',
-		                html: true,
-		                placement: 'top',
-		                trigger: 'manual',
-		                title: function () {
-		                    //   here will be custom template
-		                    var id = $(this).parent().attr('id');
-		                    id = id.match(/[0-9]+/g);
-		                    return '<div class="tooltipValue">' + sliderElement.sliderValue + '</div>';
-		                }
-		            }).tooltip('show');
-		         }
-		        else {
-		            $('#' + sliderID).tooltip({
-		                container: 'body',
-		                html: true,
-		                placement: 'right',
-		                trigger: 'manual',
-		                title: function () {
-		                    //   here will be custom template
-		                    var id = $(this).parent().attr('id');
-		                    id = id.match(/[0-9]+/g);
-		                    return '<div class="tooltipValue">' + sliderElement.sliderValue + '</div>';
-		                }
-		            }).tooltip('show');
-		        }
-		        sliderElement.tooltipBool = true;
+		    	
+		    	
+		    	document.getElementById(tooltipID).style.display = 'block';
 		    }
+		   
+//
+//		    if (!sliderElement.tooltipBool) {
+//		        if (modules.windowResizeBool) {
+//		            $('#' + sliderID).tooltip({
+//		                container: 'body',
+//		                html: true,
+//		                placement: 'top',
+//		                trigger: 'manual',
+//		                title: function () {
+//		                    //   here will be custom template
+//		                    var id = $(this).parent().attr('id');
+//		                    id = id.match(/[0-9]+/g);
+//		                    return '<div class="tooltipValue">' + sliderElement.sliderValue + '</div>';
+//		                }
+//		            }).tooltip('show');
+//		         }
+//		        else {
+//		            $('#' + sliderID).tooltip({
+//		                container: 'body',
+//		                html: true,
+//		                placement: 'right',
+//		                trigger: 'manual',
+//		                title: function () {
+//		                    //   here will be custom template
+//		                    var id = $(this).parent().attr('id');
+//		                    id = id.match(/[0-9]+/g);
+//		                    return '<div class="tooltipValue">' + sliderElement.sliderValue + '</div>';
+//		                }
+//		            }).tooltip('show');
+//		        }
+//		        sliderElement.tooltipBool = true;
+//		    }
 		}
 
 		

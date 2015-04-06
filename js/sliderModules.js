@@ -48,12 +48,12 @@ var UIModule = (function () {
     var numberOfCharts;
     var currentElement;
     var elementWidth;
-    var templateModule;
     var id;
     var ie9 = false;
     var windowWidth;
     var windowResizeBool;
-    var bodyRemoveHighLight;
+    // var bodyRemoveHighLight;
+    var highLight;
     var numberOfGreyOuts;
     var elementLabels;
     var buttonLabels;
@@ -68,6 +68,7 @@ var UIModule = (function () {
             };
             var self = this;
             var toolTip = new TooltipModulesto;
+            this.highLight = new HighLight;
             this.currentElement = 0;
             this.elementWidth = 110;
             // set up screen size
@@ -220,7 +221,7 @@ var UIModule = (function () {
         },
         sliderYN: function() {
             //lets create an array of buttons and a array of doughnuts to start
-            var chartLabels = ['No', 'Yes']
+            var chartLabels = ['No', 'Yes'];
             var buttonLabels = ['Self-determination', 'Economy', 'Immigration', 'Stiff Upper Lip', 'Relationship with USA'];
             var templateModule = new TemplateModule();
             this.windowResizeBool = true;
@@ -258,18 +259,18 @@ var UIModule = (function () {
             }
             // update the handle style and the height of the button colmuns
             if (this.windowWidth < 992) {
-                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle')
+                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle');
             }
             else {
-                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-2x fa-rotate-90 handleStyle')
+                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-2x fa-rotate-90 handleStyle');
             }
             // don't need to do this for iphone
-            if (this.windowWidth > 992) {
-                // multiply the number of sliders by the width of the sliders to give the slider container width
-                var containerWidth = (this.sliderWidth * this.numberOfSliders) + 30;
-                $('.sliderWrapper').css('width', containerWidth);
-                $('.sliderNavWrapper').css('width', containerWidth);
-            }
+//            if (this.windowWidth > 992) {
+//                // multiply the number of sliders by the width of the sliders to give the slider container width
+//                var containerWidth = (this.sliderWidth * this.numberOfSliders) + 30;
+//                $('.sliderWrapper').css('width', containerWidth);
+//                $('.sliderNavWrapper').css('width', containerWidth);
+//            }
             // update the chart positions so only the css is updated
             this.updateChartPositions();
         },
@@ -485,17 +486,15 @@ var UIModule = (function () {
             else if (elementArray[sliderID[0]].isNegetiveBool) {
                 chartNumber = 0;
             }
-            this.updateTotalYN(sliderID[[0]], chartNumber);
             var chartObject = doughnutArray[chartNumber].doughnutObject;
             var segment1 =  (parseInt(sliderID[0]) * 2 ); 
             var segment2  = segment1 + 1;
-            
             var sliderValue = elementArray[sliderID[0]].totalValue / 10;
             var buttonValue = (buttonArray[sliderID[0]].buttonValue * 10) - sliderValue;
-            
             chartObject.segments[segment1].value = buttonValue;
             chartObject.segments[segment2].value = sliderValue;
             chartObject.update();
+            this.updateTotalYN(sliderID[[0]], chartNumber);
 
         },
         setButtonValueYN: function (buttonID) {
@@ -516,13 +515,33 @@ var UIModule = (function () {
         },
         updateButtonValueYN: function (buttonNumber) {
             var updateDoughnut = false;
+            var sliderNumber = buttonNumber;
+            var sliderValue;
+            var chartNumber;
+            if (!elementArray[sliderNumber].isNegetiveBool) {
+                chartNumber = 1;
+            }
+            else if (elementArray[sliderNumber].isNegetiveBool) {
+                chartNumber = 0;
+            }
             if (buttonArray[buttonNumber].buttonUpdateID !== null) {
                 var segmentAdjust = buttonArray[buttonNumber].buttonUpdateID;
                 var segment1 = (parseInt(segmentAdjust) * 2);
                 var segment2 = segment1 + 1;
                 for (var chartNumber = 0; chartNumber < this.numberOfCharts; chartNumber++) {
                     var chartObject = doughnutArray[chartNumber].doughnutObject;
-                    var sliderValue = elementArray[buttonNumber].totalValue / 10;
+                    if(elementArray[sliderNumber].isNegetiveBool && chartNumber == 0){
+                    	sliderValue = elementArray[sliderNumber].totalValue / 10;
+                    }
+                    else {
+                    	sliderValue = 0;
+                    }
+                    if(!elementArray[sliderNumber].isNegetiveBool && chartNumber == 1){
+                    	sliderValue = 0;
+                    }
+                    else {
+                    	sliderValue = elementArray[sliderNumber].totalValue / 10;
+                    }
                     var buttonValue = (buttonArray[buttonNumber].buttonValue * 10) - sliderValue;
                     chartObject.segments[segment1].value = buttonValue;
                     chartObject.segments[segment2].value = sliderValue;
@@ -531,11 +550,11 @@ var UIModule = (function () {
                 }
             }
             else {
-                for (var sliderNumber = 0; sliderNumber < this.numberOfElements; sliderNumber++) {
-                    var chartObject = doughnutArray[sliderNumber].doughnutObject;
-                    var sliderValue = 0;
-                    var buttonValue = 0;
-                    this.updateTotal(sliderNumber);
+                for (var chartNumber = 0; chartNumber < this.numberOfCharts; chartNumber++) {
+                    //var chartObject = doughnutArray[sliderNumber].doughnutObject;
+                    //var sliderValue = 0;
+                    //var buttonValue = 0;
+                    this.updateTotalYN(sliderNumber, chartNumber);
                 }
             }
             this.updateChartPositions();
@@ -556,5 +575,5 @@ var UIModule = (function () {
             document.getElementById('sliderTotal' + chartNumber).innerHTML = chartTotalHTML;
             document.getElementById('sliderTotalSmall' + chartNumber).innerHTML = chartTotalHTML;
         }
-    }
+    };
 });

@@ -58,11 +58,11 @@ footer {
   color: #fff; }
 
 .setTransition {
-  -webkit-transition: right 1s ease-in-out;
-  -moz-transition: right 1s ease-in-out;
-  -ms-transition: right 1s ease-in-out;
-  -o-transition: right 1s ease-in-out;
-  transition: right 1s ease-in-out; }
+  -webkit-transition: right 1s linear;
+  -moz-transition: right 1s linear;
+  -ms-transition: right 1s linear;
+  -o-transition: right 1s linear;
+  transition: right 1s linear; }
 
 .navbar {
   border: 0; }
@@ -86,6 +86,7 @@ footer {
 
 .shareDropDown {
   background: #73c1ca;
+  border-top: 1px solid #73c1ca;
   display: none;
   height: 100px;
   position: relative;
@@ -259,6 +260,7 @@ footer {
 
 /* bs tooltip */
 .tooltip {
+  display: none;
   z-index: 997;
   cursor: default; }
 
@@ -1380,13 +1382,9 @@ footer {
     overflow-x: scroll;
     width: 100%; }
   .ui2 .elementWrapper {
-    position: static;
+    /*position: relative;*/
     height: 100%;
-    padding: 15px 0 0 0;
-    -moz-transition-property: none;
-    -webkit-transition-property: none;
-    -o-transition-property: none;
-    transition-property: none; }
+    padding: 15px 0 0 0; }
   .ui2 .scorerLabelContainer {
     position: absolute;
     width: 100%;
@@ -1402,7 +1400,18 @@ footer {
     text-align: center; }
   .ui2 .sliderNavButtonUI2 {
     display: block;
-    width: 25px; }
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    width: 35px;
+    z-index: 1000; }
+  .ui2 .sliderNavRightUI2 {
+    right: 0px; }
+  .ui2 .sliderNavFunction {
+    height: 50%;
+    position: absolute;
+    top: 25%;
+    width: 100%; }
   .ui2 .sliderRow {
     padding-top: 5px; }
 
