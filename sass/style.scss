@@ -306,33 +306,52 @@ footer {
 .tooltip1 {
 	display: none;
 	cursor: default;
-	left: -25px;
 	position: relative;
-	top: -19px;
-	transform: rotate(270deg);
+		&.right {
+			left: 30px;
+			top: -27px;
+			.tooltip1-inner{
+				padding: 25%;
+				width: 37px;
+			}
+		}
+		&.top {
+			left: -35px;
+			top: -15px;
+			transform: rotate(270deg);
+			.tooltip1-inner{
+				padding: 21%;
+				width:39px;
+			}
+		}
 }
-	.tooltip1-inner {
+.tooltip1-inner {
 	background-color: $hb;
 	@include border-radius(0);
 	font-size: 12px;
 	margin: 0 6px 0 0;
 	max-width: 320px;
-	padding: 25%;
 	text-align: center;
-	width: 27px;
 }
- .tooltip.right .tooltip-arrow {
-    left: 1px;
-	border-right-color: $hb;
+ .tooltip1.right .tooltip1-arrow {
+	left: -4px;
+	height: 0;
+	border-style: solid;
+	border-width: 2.5px 5px 2.5px 0;
+	border-color: transparent $hb transparent;
+	position: absolute;
+	top: 11px;
+	width: 0;
 }
 .tooltip1.top .tooltip1-arrow {
-      width: 0;
-height: 0;
-border-style: solid;
-border-width: 5px 5px 0 5px;
-border-color: $hb transparent transparent transparent;
-position: absolute;
-  top: 21px;
+    border-color: $hb transparent transparent;
+    border-style: solid;
+    border-width: 5px 5px 0;
+    height: 0;
+    left: 15px;
+    position: absolute;
+    top: 25px;
+    width: 0;
 }
 .tooltipValue {
 	color: $w;
@@ -490,23 +509,35 @@ position: absolute;
     z-index: 995;
   }
 /* style the slider handles per column */
-#sliderStyle0 .handleStyle {
-	color: #883682;
+.sliderStyle0 {
+	 .handleStyle {
+		color: $color1;
+	}
 }
-#sliderStyle1 .handleStyle {
-	color: #1f74c9;
+.sliderStyle1 {
+	 .handleStyle {
+		color: $color2;
+	}
 }
-#sliderStyle2 .handleStyle {
-	color: #fdc732;
+.sliderStyle2 {
+	 .handleStyle {
+		color: $color3;
+	}
 }
-#sliderStyle3 .handleStyle {
-	color: #e2282f;
+.sliderStyle3 {
+	 .handleStyle {
+		color: $color4;
+	}
 }
-#sliderStyle4 .handleStyle {
-	color: #4fbd55;
+.sliderStyle4 {
+	 .handleStyle {
+		color: $color5;
+	}
 }
-#sliderStyle5 .handleStyle {
-	color: #883682;
+.sliderStyle5 {
+	 .handleStyle {
+		color: $color6;
+	}
 }
 .slider .handleStyle {
     background: #fff;

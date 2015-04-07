@@ -41,7 +41,7 @@ var TemplateModule = (function () {
             moduleButton.onclick = function () { setButtonValue(this.id); };
         },
         createSlider: function (sliderID, slider, label, windowWidth) {
-	        $('#elementColumns' + slider).append('<li class="sliderContainer" id="sliderStyle'+slider+'">' +
+	        $('#elementColumns' + slider).append('<li class="sliderContainer sliderStyle' + slider +'" id="sliderStyle' + sliderID + '">' +
 	        		'<div class="sliderLabelMobile">' + label + '</div>'+
 	                '<div id="slider' + sliderID + '" class="slider"><div id="sliderBackground' + sliderID + '" class="sliderBackground' + slider + '"></div></div>' +
 	        '</li>');
@@ -87,7 +87,7 @@ var TemplateModule = (function () {
             $('#slider' + sliderID).find('span').attr('id', sliderID);
             if (modules.uiType != 'ui2') {
                 $('#' + sliderID).append('<div id="tooltip' + sliderID + '" class="tooltip1">' +
-                                               '<div class="tooltip1-arrow" style="left: 50%;"></div>' +
+                                               '<div class="tooltip1-arrow"></div>' +
                                                '<div class="tooltip1-inner">' +
                                                '<div id="tooltipValue' + sliderID + '" class="tooltipValue">0</div>' +
                                                '</div>' +

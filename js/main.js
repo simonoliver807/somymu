@@ -11,10 +11,16 @@ function addClass(id,className){
 	var allClassNames = document.getElementById(id).className;
 	return allClassNames + ' ' +  className;
 }
-function updateClassNames(getClassEl, theClassNames) {
+function updateClassNamesAdd(getClassEl, theClassNames) {
     var e = document.getElementsByClassName(getClassEl);
     for (var i = 0; i < e.length; i++) {
         e[i].className = e[i].className + theClassNames;
+    }
+}
+function updateClassNamesRemove(getClassEl, theClassNames) {
+    var e = document.getElementsByClassName(getClassEl);
+    for (var i = 0; i < e.length; i++) {
+        e[i].className = e[i].className.replace(' ' + theClassNames, '');
     }
 }
 function getCSSint(el) {
@@ -23,8 +29,8 @@ function getCSSint(el) {
 }
 
 var modules = new UIModule();
-//modules.init('', 6, 'ui3');
-modules.init(15, 3, 'ui1');
+modules.init('', 6, 'ui3');
+//modules.init(5, 2, 'ui1');
 
 
 var setButtonValue = function (id) {
@@ -84,6 +90,8 @@ function changeSlider() {
             $('.handleStyle').addClass("fa-rotate-90 fa-lg");
             $('.handleStyle').removeClass("fa-2x");
             $('.elementWrapper').addClass('elementWrapperWidth');
+            updateClassNamesRemove('tooltip1', 'right');
+            updateClassNamesAdd('tooltip1', ' top');
        
         }
         if (modules.uiType == 'ui3') {
@@ -113,6 +121,8 @@ function changeSlider() {
 	            $('.handleStyle').removeClass("fa-rotate-90 fa-lg");
 	            $('.handleStyle').addClass("fa-2x");
 	            $('.elementWrapper').removeClass('elementWrapperWidth');
+	            updateClassNamesRemove('tooltip1', 'top');
+	            updateClassNamesAdd('tooltip1', ' right');
                 
 	        }
 	        if (modules.uiType == 'ui3') {

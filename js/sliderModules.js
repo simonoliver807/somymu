@@ -121,10 +121,10 @@ var UIModule = (function () {
             //    event.stopPropagation();
             //    toolTip.tooltipActivate('', this.id);
             //});
-            //$('.sliderContainer').on('mouseover', function (event) {
-            //    event.stopPropagation();
-            //    toolTip.tooltipActivate('', this.id);
-            //});
+            $('.sliderContainer').on('mouseover', function (event) {
+                event.stopPropagation();
+                toolTip.tooltipActivate('', this.id);
+            });
             //$('.sliderContainer').hover(function (event) {
             //    event.stopPropagation();
             //    toolTip.tooltipActivate(this, this.id);
@@ -169,12 +169,13 @@ var UIModule = (function () {
             // resize all the charts
             $('canvas').css({ width: '100%', height: '100%' });           
             if (this.windowWidth < 992) {
-                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle');
+                updateClassNamesAdd('ui-slider-handle', ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle');
+                updateClassNamesAdd('tooltip1', ' top');
                 this.windowResizeBool = true;
             }
             else {
-                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-2x handleStyle');
-             
+                updateClassNamesAdd('ui-slider-handle', ' fa fa-minus-square fa-2x handleStyle');
+                updateClassNamesAdd('tooltip1', ' right');
                 // multiply the number of sliders by the width of the sliders to give the slider container width
                 var containerWidth = (this.elementWidth * this.numberOfElements) + 30;
                 $('.elementWrapper').css('width', containerWidth);
@@ -267,10 +268,10 @@ var UIModule = (function () {
             }
             // update the handle style and the height of the button colmuns
             if (this.windowWidth < 992) {
-                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle');
+                updateClassNamesAdd('ui-slider-handle', ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle');
             }
             else {
-                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-2x fa-rotate-90 handleStyle');
+                updateClassNamesAdd('ui-slider-handle', ' fa fa-minus-square fa-2x fa-rotate-90 handleStyle');
             }
             // don't need to do this for iphone
             //            if (this.windowWidth > 992) {
@@ -367,17 +368,6 @@ var UIModule = (function () {
         addChartSegment: function (id) {
             id = parseInt(id) * 2;
             var idPlus1 = id + 1;
-            //for(var i = 0; i < doughnutArray.length; i ++){
-            //    var data = doughnutArray[i].data; 
-            //    doughnutArray[i].doughnutObject.addData({
-            //        value: 1,
-            //        color: data[id].color
-            //    }, String(id));
-            //    doughnutArray[i].doughnutObject.addData({
-            //        value: 0,
-            //        color: data[idPlus1].color
-            //    }, idPlus1);
-            //}
             for(var i = 0; i < doughnutArray.length; i ++){
                 var data = doughnutArray[i].data; 
                 doughnutArray[i].doughnutObject.addData({
@@ -407,6 +397,9 @@ var UIModule = (function () {
                     }
                 }
                 dObj.doughnutObject.update();
+            }
+            for (var abutton = 0; abutton < this.numberOfButtons; abutton++) {
+                this.updateButtonValue(abutton);
             }
            
         },
