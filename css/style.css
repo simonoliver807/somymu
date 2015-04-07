@@ -259,12 +259,15 @@ footer {
   height: 25%; }
 
 /* bs tooltip */
-.tooltip {
+.tooltip1 {
   display: none;
-  z-index: 997;
-  cursor: default; }
+  cursor: default;
+  left: -25px;
+  position: relative;
+  top: -19px;
+  transform: rotate(270deg); }
 
-.tooltip-inner {
+.tooltip1-inner {
   background-color: #1597a7;
   -webkit-border-radius: 0;
   -moz-border-radius: 0;
@@ -273,7 +276,7 @@ footer {
   font-size: 12px;
   margin: 0 6px 0 0;
   max-width: 320px;
-  padding: 10%;
+  padding: 25%;
   text-align: center;
   width: 27px; }
 
@@ -281,11 +284,17 @@ footer {
   left: 1px;
   border-right-color: #1597a7; }
 
-.tooltip.top .tooltip-arrow {
-  bottom: 1px;
-  border-top-color: #1597a7; }
+.tooltip1.top .tooltip1-arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 5px 5px 0 5px;
+  border-color: #1597a7 transparent transparent transparent;
+  position: absolute;
+  top: 21px; }
 
 .tooltipValue {
+  color: #fff;
   text-align: center; }
 
 /* bs dropdown */
@@ -1399,6 +1408,7 @@ footer {
     font-size: 8pt;
     text-align: center; }
   .ui2 .sliderNavButtonUI2 {
+    background: #fff;
     display: block;
     height: 100%;
     position: absolute;
@@ -1408,6 +1418,8 @@ footer {
   .ui2 .sliderNavRightUI2 {
     right: 0px; }
   .ui2 .sliderNavFunction {
+    background: #fff;
+    color: #73c1ca;
     height: 50%;
     position: absolute;
     top: 25%;
@@ -1421,7 +1433,8 @@ footer {
     height: 1px;
     width: 100%; }
   .ui3 .elementWrapper {
-    display: block; }
+    display: block;
+    margin-top: 25px; }
   .ui3 .maxMinYN {
     display: none; }
   .ui3 .middleScale {
@@ -1530,10 +1543,14 @@ footer {
   .ui3 .sliderContainerYN {
     display: block; }
   .ui3 .sliderRow {
+    height: 70px;
     overflow-x: hidden;
-    margin: 20px 0; }
+    margin: 0; }
   .ui3 .sliderRowFiller {
-    display: none; } }
+    display: none; }
+  .ui3 .tooltip1 {
+    left: -26px;
+    top: -12px; } }
 @media (max-width: 320px) {
   .col-xs-4 {
     width: 33.33333333%; } }

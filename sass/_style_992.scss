@@ -303,6 +303,7 @@
 			text-align:center;	
 		}
 		.sliderNavButtonUI2 {
+			background: $w;
 			display: block;
 			height: 100%;
 			position: absolute;
@@ -317,6 +318,8 @@
 			right: 0px;
 		}
 		.sliderNavFunction {
+			background: $w;
+			color: $cbc;
 			height: 50%;
 		    position: absolute;
 		    top: 25%;
@@ -340,6 +343,7 @@
 		}
 		.elementWrapper {
 			display: block;
+			margin-top: 25px;
 		}
 		.maxMinYN {
 			display: none;
@@ -446,11 +450,16 @@
 			display: block;
 		} 
 		.sliderRow {
+			height: 70px;
 			overflow-x: hidden;
-			margin: 20px 0;
+			margin: 0;
 		}
 		.sliderRowFiller {
 			display: none;
+		}
+		.tooltip1 {
+			left: -26px;
+			top: -12px;
 		}
 		
 	}

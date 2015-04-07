@@ -303,18 +303,21 @@ footer {
 }
 
 /* bs tooltip */
-.tooltip {
+.tooltip1 {
 	display: none;
-	z-index:997;
 	cursor: default;
+	left: -25px;
+	position: relative;
+	top: -19px;
+	transform: rotate(270deg);
 }
-	.tooltip-inner {
+	.tooltip1-inner {
 	background-color: $hb;
 	@include border-radius(0);
 	font-size: 12px;
 	margin: 0 6px 0 0;
 	max-width: 320px;
-	padding: 10%;
+	padding: 25%;
 	text-align: center;
 	width: 27px;
 }
@@ -322,11 +325,17 @@ footer {
     left: 1px;
 	border-right-color: $hb;
 }
-.tooltip.top .tooltip-arrow {
-    bottom: 1px;
-	border-top-color: $hb;
+.tooltip1.top .tooltip1-arrow {
+      width: 0;
+height: 0;
+border-style: solid;
+border-width: 5px 5px 0 5px;
+border-color: $hb transparent transparent transparent;
+position: absolute;
+  top: 21px;
 }
 .tooltipValue {
+	color: $w;
 	text-align: center;
 }
 /* bs dropdown */

@@ -85,6 +85,14 @@ var TemplateModule = (function () {
 	        }
             $('#slider'+sliderID).append('<div class="maxMin"><div class="sliderScale"></div><div class="scaleMiddle"></div></div>');
             $('#slider' + sliderID).find('span').attr('id', sliderID);
+            if (modules.uiType != 'ui2') {
+                $('#' + sliderID).append('<div id="tooltip' + sliderID + '" class="tooltip1">' +
+                                               '<div class="tooltip1-arrow" style="left: 50%;"></div>' +
+                                               '<div class="tooltip1-inner">' +
+                                               '<div id="tooltipValue' + sliderID + '" class="tooltipValue">0</div>' +
+                                               '</div>' +
+                                               '</div>');
+            }
         },
         createScorer: function (scorerID, scorer, label, windowWidth) {
             $('#elementColumns' + scorer).append('<li class="scorerContainer" id="scorerStyle' + scorer + '">' +
@@ -115,7 +123,7 @@ var TemplateModule = (function () {
                     setSliderValue(ui, this.id);
                 },
                 change: function (event, ui) {
-                   // setSliderValue(ui, this.id);
+                    setSliderValue(ui, this.id);
                 },
                 stop: function (event, ui) {
                     updateChartPosition(ui, this.id);
@@ -127,12 +135,12 @@ var TemplateModule = (function () {
             var namedSlider = 'sliderID' + sliderID;
             //document.getElementById('slider' + sliderID).className = addClass('slider' + sliderID, 'sliderYN');
             $('#slider' + sliderID).find('span').attr('id', namedSlider);
-            $('#' + namedSlider).append('<div id="tooltip'+ sliderID +'" class="tooltip fade top in">'+
-						            		'<div class="tooltip-arrow" style="left: 50%;"></div>'+
-						            		'<div class="tooltip-inner">'+
-						            		'<div class="tooltipValue">0</div>'+
-						            		'</div>'+
-						            		'</div>')
+            $('#' + namedSlider).append('<div id="tooltip' + sliderID + '" class="tooltip1 top">' +
+						            		'<div class="tooltip1-arrow" style="left: 50%;"></div>' +
+						            		'<div class="tooltip1-inner">' +
+						            		'<div id="tooltipValue' + sliderID + '" class="tooltipValue">0</div>' +
+						            		'</div>' +
+						            		'</div>');
         },
         createDoughnut: function (doughnutID, data, sliderLabel, ordinalPosition) {
         	var liClass = "";

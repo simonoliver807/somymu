@@ -23,8 +23,8 @@ function getCSSint(el) {
 }
 
 var modules = new UIModule();
-modules.init('', 6, 'ui3');
-//modules.init(15, 6, 'ui1');
+//modules.init('', 6, 'ui3');
+modules.init(15, 3, 'ui1');
 
 
 var setButtonValue = function (id) {

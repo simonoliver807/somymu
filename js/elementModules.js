@@ -19,15 +19,7 @@ var SliderModule = (function () {
                 this.sliderValue = sliderValue - 1;
                 //  update the tooltip
                 var position = $('#' + this.sliderID).offset();
-                if (modules.windowResizeBool) {
-                    // update horizontal
-                    $('.tooltip').css({ left: position.left + 'px' });
-                }
-                else {
-                    //update vertically
-                    $('.tooltip').css({ top: position.top + 'px' });
-                }
-                $('.tooltipValue').text(this.sliderValue);
+                $('#tooltipValue'+this.sliderID).text(this.sliderValue);
                 document.getElementById('sliderBackground' + this.sliderID).style.width = this.sliderValue + '%';
             }
             this.totalValue = buttonValue * this.sliderValue;
@@ -64,9 +56,7 @@ var SliderModuleYN = (function () {
                 this.sliderValue = sliderValue - 1;
                 this.sliderValue = Math.abs(this.sliderValue);
                 //  update the tooltip
-                var position = $('#sliderID' + this.sliderID).offset();
-              //  $('.tooltip').css({ left: position.left + 'px' });
-              //  $('.tooltipValue').text(Math.abs(this.sliderValue));
+                $('#tooltipValue' + this.sliderID).text(Math.abs(this.sliderValue));
                 var setSliderBackground = this.sliderValue / 2; 
                 if (this.isNegetiveBool) {
                     document.getElementById('sliderBackground1' + this.sliderID).style.width = (50 - setSliderBackground) + '%';

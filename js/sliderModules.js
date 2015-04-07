@@ -107,24 +107,32 @@ var UIModule = (function () {
             // hide the tool tip at the top
             document.getElementById('fixedHeader').addEventListener('mouseover',
                 function () {
-                   toolTip.disableTooltip();
+                    toolTip.disableTooltip();
                 }, false);
             $('footer').mouseover(function (event) {
                 event.stopPropagation();
                 toolTip.disableTooltip();
             });
             $('.leftRightButton').on('mouseOver', function (event) {
-            	event.stopPropagation();
-            	toolTip.disableTooltip();
-            });
-            $('.sliderRow').on('mouseover', function (event) {
                 event.stopPropagation();
-                toolTip.tooltipActivate('', this.id);
+                toolTip.disableTooltip();
             });
-            $('.sliderContainer').hover(function (event) {
-                event.stopPropagation();
-                toolTip.tooltipActivate(this, '');
-            });
+            //$('.sliderRow').on('mouseover', function (event) {
+            //    event.stopPropagation();
+            //    toolTip.tooltipActivate('', this.id);
+            //});
+            //$('.sliderContainer').on('mouseover', function (event) {
+            //    event.stopPropagation();
+            //    toolTip.tooltipActivate('', this.id);
+            //});
+            //$('.sliderContainer').hover(function (event) {
+            //    event.stopPropagation();
+            //    toolTip.tooltipActivate(this, this.id);
+            //});
+            //$('.sliderRow').hover(function (event) {
+            //    event.stopPropagation();
+            //    toolTip.tooltipActivate(this, this.id);
+            //});
         },
         slider: function () {
             //this.sliderRowWidth = 525;
@@ -161,7 +169,7 @@ var UIModule = (function () {
             // resize all the charts
             $('canvas').css({ width: '100%', height: '100%' });           
             if (this.windowWidth < 992) {
-            	updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle');
+                updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-lg fa-rotate-90 handleStyle');
                 this.windowResizeBool = true;
             }
             else {
@@ -207,7 +215,7 @@ var UIModule = (function () {
             }
             // bind click events to all the buttons
             $('.scorer').on('click', function () {
-               self.setScorerValue(this.id);
+                self.setScorerValue(this.id);
             });
             // resize all the charts
             $('canvas').css({ width: '100%', height: '100%' });
@@ -265,12 +273,12 @@ var UIModule = (function () {
                 updateClassNames('ui-slider-handle', ' fa fa-minus-square fa-2x fa-rotate-90 handleStyle');
             }
             // don't need to do this for iphone
-//            if (this.windowWidth > 992) {
-//                // multiply the number of sliders by the width of the sliders to give the slider container width
-//                var containerWidth = (this.sliderWidth * this.numberOfSliders) + 30;
-//                $('.sliderWrapper').css('width', containerWidth);
-//                $('.sliderNavWrapper').css('width', containerWidth);
-//            }
+            //            if (this.windowWidth > 992) {
+            //                // multiply the number of sliders by the width of the sliders to give the slider container width
+            //                var containerWidth = (this.sliderWidth * this.numberOfSliders) + 30;
+            //                $('.sliderWrapper').css('width', containerWidth);
+            //                $('.sliderNavWrapper').css('width', containerWidth);
+            //            }
             // update the chart positions so only the css is updated
             this.updateChartPositions();
         },
@@ -331,18 +339,18 @@ var UIModule = (function () {
                     this.updateTotal(sliderNumber);
                 }
             }
-        	this.updateChartPositions();
+            this.updateChartPositions();
         },
         updateTotal: function (labelNumber) {
-        	// then update the total value
+            // then update the total value
             var sliderTotal = 0;
             var weightTotal = 0;
             var verticleNumber = 0; 
             for (var rowNumber = 0; rowNumber < this.numberOfButtons; rowNumber++) {
-            	if(!buttonArray[rowNumber].disabledBool){
-            		sliderTotal = sliderTotal + elementArray[rowNumber][labelNumber].totalValue;
-                	weightTotal += buttonArray[rowNumber].buttonValue;
-            	}
+                if(!buttonArray[rowNumber].disabledBool){
+                    sliderTotal = sliderTotal + elementArray[rowNumber][labelNumber].totalValue;
+                    weightTotal += buttonArray[rowNumber].buttonValue;
+                }
             }
             var chartTotalHTML = Math.round(100 * (sliderTotal / (weightTotal * 100)));
             doughnutArray[labelNumber].totalScore  = chartTotalHTML;
@@ -350,79 +358,110 @@ var UIModule = (function () {
             document.getElementById('sliderTotalSmall' + labelNumber).innerHTML = chartTotalHTML;
         },
         removeChartSegment: function (id) {
-        	var deleteSegment = buttonArray[id].buttonUpdateID * 2;
-        	for(var i = 0; i < doughnutArray.length; i ++){
-        		doughnutArray[i].doughnutObject.removeData(deleteSegment);
-        		doughnutArray[i].doughnutObject.removeData(deleteSegment);
-        	}
+            var deleteSegment = buttonArray[id].buttonUpdateID * 2;
+            for(var i = 0; i < doughnutArray.length; i ++){
+                doughnutArray[i].doughnutObject.removeData(deleteSegment);
+                doughnutArray[i].doughnutObject.removeData(deleteSegment);
+            }
         },
         addChartSegment: function (id) {
-        	id = parseInt(id) * 2;
-        	var idPlus1 = id + 1;
-        	for(var i = 0; i < doughnutArray.length; i ++){
-        		var data = doughnutArray[i].data; 
-        		doughnutArray[i].doughnutObject.addData({
-            		value: 1,
+            id = parseInt(id) * 2;
+            var idPlus1 = id + 1;
+            //for(var i = 0; i < doughnutArray.length; i ++){
+            //    var data = doughnutArray[i].data; 
+            //    doughnutArray[i].doughnutObject.addData({
+            //        value: 1,
+            //        color: data[id].color
+            //    }, String(id));
+            //    doughnutArray[i].doughnutObject.addData({
+            //        value: 0,
+            //        color: data[idPlus1].color
+            //    }, idPlus1);
+            //}
+            for(var i = 0; i < doughnutArray.length; i ++){
+                var data = doughnutArray[i].data; 
+                doughnutArray[i].doughnutObject.addData({
+                    value: 1,
                     color: data[id].color
-            	}, String(id));
-        		doughnutArray[i].doughnutObject.addData({
-            		value: 0,
+                }, String(id));
+                doughnutArray[i].doughnutObject.addData({
+                    value: 0,
                     color: data[idPlus1].color
-            	}, idPlus1);
-        	}
+                }, idPlus1);
+            }
+            for (var i = 0; i < doughnutArray.length; i++) {
+                var dObj = doughnutArray[i];
+                var segementToUpdate = 0;
+                var segmentPlus1 = 1;
+                for (var segment = 0; segment < this.numberOfButtons; segment++) {
+                    var segment1 = segment * 2;
+                    var segment2 = segment1 + 1;
+                    var buttonNumber = segment;
+                    if (!buttonArray[buttonNumber].disabledBool) {
+                        dObj.doughnutObject.segments[segementToUpdate].fillColor = dObj.data[segment1].color;
+                        dObj.doughnutObject.segments[segementToUpdate].highlightColor = dObj.data[segment1].color;
+                        dObj.doughnutObject.segments[segmentPlus1].fillColor = dObj.data[segment2].color;
+                        dObj.doughnutObject.segments[segmentPlus1].highlightColor = dObj.data[segment2].color;
+                        segementToUpdate += 2;
+                        segmentPlus1 = segementToUpdate + 1;
+                    }
+                }
+                dObj.doughnutObject.update();
+            }
+           
         },
         updateChartPositions: function () {
             if (this.uiType == 'ui3') {
                 numberOfCharts = this.numberOfCharts;
             }
             else { numberOfCharts = this.numberOfElements; }
-        	for(var i = 0; i < numberOfCharts; i++){
-        		document.getElementById('canvasContainer'+i).setAttribute('totalScore', doughnutArray[i].totalScore);	
-        	}
-        	tinysort('ul.results>li',{attr:'totalScore',order:'desc'}); 
-        	$('.results').children('li').each(function () {
-        	    this.className = "";
-        	});
-        	var count = 1;
-        	var self = this;
-        	$('.results').children('li').each(function () {
-        		var op = self.getOrdinalPosition(count);
-        		var thisID = this.id;
-        		thisID = thisID.match(/[0-9]+/g);
-        		$('#ordianlPosition'+thisID[0]).text(op);
-        		document.getElementById('sliderTotalSmall' + thisID[0]).className = 'badge';
-        		switch(count) {
-	        	    case 1:
-	        	        if (self.uiType !== 'ui3') {
-	        	            $('#canvas' + thisID[0]).css('display', 'block');
-	        	        }
-	         			document.getElementById('sliderTotalSmall' + thisID[0]).className = addClass('sliderTotalSmall' + thisID[0], 'goldBadge');
-	         			this.className = 'first';
-	        	        break;
-        		    case 2:
-        		        if (self.uiType !== 'ui3') {
-        		            $('#canvas' + thisID[0]).css('display', 'none');
-        		        }
-	        	    	document.getElementById('sliderTotalSmall' + thisID[0]).className = addClass('sliderTotalSmall' + thisID[0], 'silverBadge');
-	        	    	this.className = 'defaultChartHeader';
-	        	        break;
-	        	    case 3:
-	        	    	$('#canvas'+thisID[0]).css('display','none');
-	        	    	document.getElementById('sliderTotalSmall' + thisID[0]).className = addClass('sliderTotalSmall' + thisID[0], 'bronzeBadge');
-	        	    	this.className = 'defaultChartHeader';
-	        	        break;
-	        	    default:
-	        	        $('#canvas' + thisID[0]).css('display', 'none');
-	        	        this.className = 'defaultChartHeader';
-        		}
-        		count = count + 1;
+            for(var i = 0; i < numberOfCharts; i++){
+                document.getElementById('canvasContainer'+i).setAttribute('totalScore', doughnutArray[i].totalScore);	
+            }
+            tinysort('ul.results>li',{attr:'totalScore',order:'desc'}); 
+            $('.results').children('li').each(function () {
+                this.className = "";
+            });
+            var count = 1;
+            var self = this;
+            $('.results').children('li').each(function () {
+                var op = self.getOrdinalPosition(count);
+                var thisID = this.id;
+                thisID = thisID.match(/[0-9]+/g);
+                $('#ordianlPosition'+thisID[0]).text(op);
+                document.getElementById('sliderTotalSmall' + thisID[0]).className = 'badge';
+                switch(count) {
+                    case 1:
+                        if (self.uiType !== 'ui3') {
+                            $('#canvas' + thisID[0]).css('display', 'block');
+                        }
+                        document.getElementById('sliderTotalSmall' + thisID[0]).className = addClass('sliderTotalSmall' + thisID[0], 'goldBadge');
+                        this.className = 'first';
+                        break;
+                    case 2:
+                        if (self.uiType !== 'ui3') {
+                            $('#canvas' + thisID[0]).css('display', 'none');
+                        }
+                        document.getElementById('sliderTotalSmall' + thisID[0]).className = addClass('sliderTotalSmall' + thisID[0], 'silverBadge');
+                        this.className = 'defaultChartHeader';
+                        break;
+                    case 3:
+                        $('#canvas'+thisID[0]).css('display','none');
+                        document.getElementById('sliderTotalSmall' + thisID[0]).className = addClass('sliderTotalSmall' + thisID[0], 'bronzeBadge');
+                        this.className = 'defaultChartHeader';
+                        break;
+                    default:
+                        $('#canvas' + thisID[0]).css('display', 'none');
+                        this.className = 'defaultChartHeader';
+                }
+                count = count + 1;
 
-        	});
+            });
         },
         getOrdinalPosition: function (n) {
-        	var s=["th","st","nd","rd"],
+            var s=["th","st","nd","rd"],
             v=n%100;
-        	return n+(s[(v-20)%10]||s[v]||s[0]);
+            return n+(s[(v-20)%10]||s[v]||s[0]);
         },
         getElementArray: function () {
             return elementArray;
@@ -478,23 +517,33 @@ var UIModule = (function () {
         },
         setSliderYNValue: function (sliderValue, sliderID) {
             var chartNumber;
+            var otherChartNumber;
             // update the slider module values each time the slider moves
-            elementArray[sliderID[0]].setValues(sliderValue, buttonArray[sliderID[0]].buttonValue);
-            if (!elementArray[sliderID[0]].isNegetiveBool) {
+            elementArray[sliderID].setValues(sliderValue, buttonArray[sliderID].buttonValue);
+            if (!elementArray[sliderID].isNegetiveBool) {
                 chartNumber = 1;
+                otherChartNumber = 0;
             }
-            else if (elementArray[sliderID[0]].isNegetiveBool) {
+            else if (elementArray[sliderID].isNegetiveBool) {
                 chartNumber = 0;
+                otherChartNumber = 1;
             }
             var chartObject = doughnutArray[chartNumber].doughnutObject;
-            var segment1 =  (parseInt(sliderID[0]) * 2 ); 
-            var segment2  = segment1 + 1;
-            var sliderValue = elementArray[sliderID[0]].totalValue / 10;
-            var buttonValue = (buttonArray[sliderID[0]].buttonValue * 10) - sliderValue;
+            var segmentAdjust = buttonArray[sliderID[0]].buttonUpdateID;
+            var segment1 = (parseInt(segmentAdjust) * 2);
+            var segment2 = segment1 + 1;
+            var sliderValue = elementArray[sliderID].totalValue / 10;
+            var buttonValue = (buttonArray[sliderID].buttonValue * 10) - sliderValue;
             chartObject.segments[segment1].value = buttonValue;
             chartObject.segments[segment2].value = sliderValue;
             chartObject.update();
-            this.updateTotalYN(sliderID[[0]], chartNumber);
+            var otherChartObject = doughnutArray[otherChartNumber].doughnutObject;
+            var otherSliderValue = 0;
+            var otherButtonValue = (buttonArray[sliderID].buttonValue * 10) - otherSliderValue;
+            otherChartObject.segments[segment1].value = otherButtonValue;
+            otherChartObject.segments[segment2].value = otherSliderValue;
+            otherChartObject.update();
+            this.updateTotalYN();
 
         },
         setButtonValueYN: function (buttonID) {
@@ -518,62 +567,71 @@ var UIModule = (function () {
             var sliderNumber = buttonNumber;
             var sliderValue;
             var chartNumber;
-            if (!elementArray[sliderNumber].isNegetiveBool) {
-                chartNumber = 1;
-            }
-            else if (elementArray[sliderNumber].isNegetiveBool) {
-                chartNumber = 0;
-            }
-            if (buttonArray[buttonNumber].buttonUpdateID !== null) {
-                var segmentAdjust = buttonArray[buttonNumber].buttonUpdateID;
-                var segment1 = (parseInt(segmentAdjust) * 2);
-                var segment2 = segment1 + 1;
-                for (var chartNumber = 0; chartNumber < this.numberOfCharts; chartNumber++) {
+            for (var chartNumber = 0; chartNumber < this.numberOfCharts; chartNumber++) {
+                sliderValue = 0;
+                if (buttonArray[buttonNumber].buttonUpdateID !== null) {
+                    var segmentAdjust = buttonArray[buttonNumber].buttonUpdateID;
+                    var segment1 = (parseInt(segmentAdjust) * 2);
+                    var segment2 = segment1 + 1;
                     var chartObject = doughnutArray[chartNumber].doughnutObject;
-                    if(elementArray[sliderNumber].isNegetiveBool && chartNumber == 0){
-                    	sliderValue = elementArray[sliderNumber].totalValue / 10;
+
+                    if (elementArray[sliderNumber].isNegetiveBool && chartNumber == 0) {
+                        sliderValue = elementArray[sliderNumber].totalValue / 10;
                     }
-                    else {
-                    	sliderValue = 0;
+                    if (!elementArray[sliderNumber].isNegetiveBool && chartNumber == 1) {
+                        sliderValue = elementArray[sliderNumber].totalValue / 10;
                     }
-                    if(!elementArray[sliderNumber].isNegetiveBool && chartNumber == 1){
-                    	sliderValue = 0;
-                    }
-                    else {
-                    	sliderValue = elementArray[sliderNumber].totalValue / 10;
-                    }
+
+
                     var buttonValue = (buttonArray[buttonNumber].buttonValue * 10) - sliderValue;
                     chartObject.segments[segment1].value = buttonValue;
                     chartObject.segments[segment2].value = sliderValue;
                     chartObject.update();
-                    this.updateTotalYN(buttonNumber, chartNumber);
+                    this.updateTotalYN();
+                    // }
                 }
-            }
-            else {
-                for (var chartNumber = 0; chartNumber < this.numberOfCharts; chartNumber++) {
-                    //var chartObject = doughnutArray[sliderNumber].doughnutObject;
-                    //var sliderValue = 0;
-                    //var buttonValue = 0;
-                    this.updateTotalYN(sliderNumber, chartNumber);
+                else {
+                    this.updateTotalYN();
                 }
-            }
             this.updateChartPositions();
+        }
         },
-        updateTotalYN: function (sliderNumber, chartNumber) {
+        updateTotalYN: function () {
             // then update the total value
-            var sliderTotal = elementArray[sliderNumber].totalValue;
+            var sliderTotal = 0;
             var weightTotal = 0;
             var verticleNumber = 0;
             var chartNumber;
-            for (var rowNumber = 0; rowNumber < this.numberOfButtons; rowNumber++) {
-                if(!buttonArray[rowNumber].disabledBool){
-                    weightTotal += buttonArray[rowNumber].buttonValue;
+            //if (elementArray[sliderNumber].isNegetiveBool && chartNumber == 0) {
+            //    sliderTotal = elementArray[sliderNumber].totalValue;
+            //}
+            //else {
+            //    sliderTotal = 0;
+            //}
+            //if (!elementArray[sliderNumber].isNegetiveBool && chartNumber == 1) {
+            //    sliderTotal = elementArray[sliderNumber].totalValue;
+            //}
+
+            
+            for (var chartNumber = 0; chartNumber < this.numberOfCharts; chartNumber ++) {
+                sliderTotal = 0;
+                weightTotal = 0;
+                for (var rowNumber = 0; rowNumber < this.numberOfButtons; rowNumber++) {
+                    if (!buttonArray[rowNumber].disabledBool) {
+                        if(elementArray[rowNumber].isNegetiveBool && chartNumber == 0) {
+                            sliderTotal = sliderTotal + elementArray[rowNumber].totalValue;
+                        }
+                        if(!elementArray[rowNumber].isNegetiveBool && chartNumber == 1) {
+                            sliderTotal = sliderTotal + elementArray[rowNumber].totalValue;
+                        }
+                        weightTotal += buttonArray[rowNumber].buttonValue;
+                    }
                 }
+                var chartTotalHTML = Math.round(100 * (sliderTotal / (weightTotal * 100)));
+                doughnutArray[chartNumber].totalScore = chartTotalHTML;
+                document.getElementById('sliderTotal' + chartNumber).innerHTML = chartTotalHTML;
+                document.getElementById('sliderTotalSmall' + chartNumber).innerHTML = chartTotalHTML;
             }
-            var chartTotalHTML = Math.round(100 * (sliderTotal / (weightTotal * 100)));
-            doughnutArray[chartNumber].totalScore  = chartTotalHTML;
-            document.getElementById('sliderTotal' + chartNumber).innerHTML = chartTotalHTML;
-            document.getElementById('sliderTotalSmall' + chartNumber).innerHTML = chartTotalHTML;
         }
     };
 });
