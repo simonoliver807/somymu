@@ -20,16 +20,10 @@ var TooltipModulesto = (function() {
 		            }
 		        }
 		    }
-		    $('.tooltip1').css('display','none');
+		   $('.tooltip1').css('display','none');
 		},
 		tooltipActivate: function(el, id) {
-		    var sliderElement;
-		    //if (id == '') {
-		    //    var sliderID = el.children[1].id.match(/[0-9]+/g);
-		    //}
-		    //else {
-		    //    var sliderID = id.match(/[0-9]+/g);
-		    //}
+		    var sliderElement
 		    if (modules.uiType == 'ui3') { var sliderID = id.match(/[0-9]+/g); }
 		    else {
 		        var id = document.getElementById(id).children[1].id;
@@ -42,7 +36,7 @@ var TooltipModulesto = (function() {
 		            for (var j = 0; j < elementArray[i].length; j++) {
 		                if (elementArray[i][j].tooltipBool) {
 		                    if (elementArray[i][j].sliderID != sliderID[0] + '_' + sliderID[1]) {
-		                        document.getElementById('tooltip' + [i] + '_' + [j]).style.display = 'none';
+		                      //  document.getElementById('tooltip' + [i] + '_' + [j]).style.display = 'none';
 		                        elementArray[i][j].tooltipBool = false;
 		                    }
 		                }
@@ -61,7 +55,14 @@ var TooltipModulesto = (function() {
 		        sliderElement = elementArray[sliderID[0]];
 		      //  sliderID = 'sliderID' + sliderID[0];
 		    }
-		    if (modules.uiType == 'ui3') { var tooltipID = 'tooltip' + sliderID[0]; }
+		    if (modules.uiType == 'ui3') {
+		        var tooltipID = 'tooltip' + sliderID;
+		        if (!elementArray[sliderID].tooltipBool) {
+		            document.getElementById(tooltipID).style.display = 'block';
+		            elementArray[sliderID].tooltipBool = true;
+		            l(elementArray[sliderID]);
+		        }
+		    }
 		    else {
 		        var tooltipID = 'tooltip' + sliderID[0] + '_' + sliderID[1];
 

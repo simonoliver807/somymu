@@ -94,10 +94,10 @@ var ScorerModule = (function () {
         },
         setValues: function (scorerValue, buttonValue) {
             if (scorerValue !== '') {
-                this.setScorerValue += 1
-                if (this.setScorerValue == 6) {
-                    this.setScorerValue = 0;
-                }
+                //this.setScorerValue += 1
+                //if (this.setScorerValue == 6) {
+                //    this.setScorerValue = 0;
+                //}
                 this.scorerValue = this.setScorerValue * 20;
             }
             this.totalValue = buttonValue * this.scorerValue;

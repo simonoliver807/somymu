@@ -25,11 +25,11 @@ var TemplateModule = (function () {
 		                                     '</div>' +
 		                                  '</div>' +
                      '</div>' +
-                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 sliderRow">'+
+                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 custom-col-8-sliderRow sliderRow">'+
                      	'<div class="sliderNavButtonUI2 sliderNavLeftUI2">'+
                      		'<button class="sliderNavFunction fa fa-chevron-left fa-3x" id="sliderNavLeftUI2"></button>'+
                      	'</div>'+
-                     		'<ul class="elementWrapper setTransition" id="elementColumns' + buttonID + '"><li class="sliderRowFiller"></li></ul>'+
+                     		'<div class="elementContainer"><ul class="elementWrapper setTransition" id="elementColumns' + buttonID + '"><li class="sliderRowFiller"></li></ul></div>'+
                      	'<div class="sliderNavButtonUI2 sliderNavRightUI2">'+
                      		'<button class="sliderNavFunction fa fa-chevron-right fa-3x" id="sliderNavRightUI2"></button>'+
                      	'</div>'+
@@ -86,12 +86,13 @@ var TemplateModule = (function () {
             $('#slider'+sliderID).append('<div class="maxMin"><div class="sliderScale"></div><div class="scaleMiddle"></div></div>');
             $('#slider' + sliderID).find('span').attr('id', sliderID);
             if (modules.uiType != 'ui2') {
-                $('#' + sliderID).append('<div id="tooltip' + sliderID + '" class="tooltip1">' +
-                                               '<div class="tooltip1-arrow"></div>' +
-                                               '<div class="tooltip1-inner">' +
-                                               '<div id="tooltipValue' + sliderID + '" class="tooltipValue">0</div>' +
-                                               '</div>' +
-                                               '</div>');
+                $('#' + sliderID).append('<div class="handleBackground"></div>'+
+                                         '<div id="tooltip' + sliderID + '" class="tooltip1">' +
+                                             '<div class="tooltip1-arrow"></div>' +
+                                             '<div class="tooltip1-inner">' +
+                                                 '<div id="tooltipValue' + sliderID + '" class="tooltipValue">0</div>' +
+                                             '</div>' +
+                                         '</div>');
             }
         },
         createScorer: function (scorerID, scorer, label, windowWidth) {
@@ -105,7 +106,7 @@ var TemplateModule = (function () {
         },
         createSliderYN: function (sliderID) {
             $('#elementColumns' + sliderID).append('<div class="sliderContainerYN" id="sliderStyle' + sliderID + '">' +
-	                '<div id="slider' + sliderID + '" class="sliderUI3" >'+ 
+	                '<div id="slider' + sliderID + '" class="sliderUI3 sliderStyle'+ sliderID + '" >'+ 
                         '<div id="sliderBackground1' + sliderID + '" class="sliderBackgroundMiddle"></div>'+
                         '<div id="sliderBackground2' + sliderID + '" class="sliderBackground' + sliderID + '"></div>'+
                         '<div id="sliderBackground3' + sliderID + '" class="sliderBackground' + sliderID + '"></div>' +
@@ -135,12 +136,13 @@ var TemplateModule = (function () {
             var namedSlider = 'sliderID' + sliderID;
             //document.getElementById('slider' + sliderID).className = addClass('slider' + sliderID, 'sliderYN');
             $('#slider' + sliderID).find('span').attr('id', namedSlider);
-            $('#' + namedSlider).append('<div id="tooltip' + sliderID + '" class="tooltip1 top">' +
-						            		'<div class="tooltip1-arrow" style="left: 50%;"></div>' +
+            $('#' + namedSlider).append('<div class="handleBackground"></div>'+
+                                        '<div id="tooltip' + sliderID + '" class="tooltip1 top">' +
+						            		'<div class="tooltip1-arrow"></div>' +
 						            		'<div class="tooltip1-inner">' +
-						            		'<div id="tooltipValue' + sliderID + '" class="tooltipValue">0</div>' +
+						            		    '<div id="tooltipValue' + sliderID + '" class="tooltipValue">0</div>' +
 						            		'</div>' +
-						            		'</div>');
+						            	'</div>');
         },
         createDoughnut: function (doughnutID, data, sliderLabel, ordinalPosition) {
         	var liClass = "";
@@ -150,7 +152,7 @@ var TemplateModule = (function () {
 				            		'<div id="chartHeader'+doughnutID+'" class="result-header factor">'+
 							            '<div id="ordianlPosition' + doughnutID + '" class="col-sm-2 col-md-2 col-lg-2 position">' + ordinalPosition + '</div>' +
 							            '<div class="col-sm-8 col-md-8 col-lg-8 custom-col-md-8 position">' + sliderLabel + '</div>' +
-							            '<div class="col-sm-2 col-md-2 col-lg-2 postionWidth">' +
+							            '<div class="col-sm-2 col-md-2 col-lg-2 positionWidth">' +
 							            	'<span id="sliderTotalSmall' + doughnutID + '" class="badge">1</span>'+
 							            '</div>'+
 							        '</div>'+                   

@@ -28,9 +28,11 @@ function getCSSint(el) {
     return parseInt(strVal);
 }
 
+
+
 var modules = new UIModule();
-modules.init('', 6, 'ui3');
-//modules.init(5, 2, 'ui1');
+//modules.init('', 6, 'ui3');
+modules.init(15, 6, 'ui2');
 
 
 var setButtonValue = function (id) {
@@ -66,22 +68,7 @@ function changeSlider() {
 
     document.getElementById('screenSize').innerHTML = $(window).width();
     l($(window).width())
-
-    var classNames = document.getElementById('tabTap').className;
-    var showHide = classNames.indexOf('selectBackground');
-    if (showHide !== -1) {
-        addHighLight('tabTap');
-    }
-    var classNames = document.getElementById('tabSlide').className;
-    var showHide = classNames.indexOf('selectBackground');
-    if (showHide !== -1) {
-        addHighLight('tabSlide');
-    }
-    var classNames = document.getElementById('tabDecide').className;
-    var showHide = classNames.indexOf('selectBackground');
-    if (showHide !== -1) {
-        addHighLight('tabDecide');
-    }
+    $('body').trigger('click');
     var windowWidth = $(window).width();
     if (windowWidth <= 992 && !modules.windowResizeBool) {
         if (modules.uiType == 'ui1') {
@@ -152,6 +139,10 @@ function changeSlider() {
 				setGreyOut(false, i);
 				setGreyOut(true, i);
 			}
+		}
+		if (windowWidth <= 1200) {
+		    var setWidthEl = $('#chartHeader0').outerWidth();
+            $
 		}
 		document.getElementById('tabDecide').disabled = false;
 		document.getElementById('tabSlide').disabled = false;

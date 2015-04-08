@@ -57,6 +57,7 @@ var UIModule = (function () {
     var numberOfGreyOuts;
     var elementLabels;
     var buttonLabels;
+    var scorerValues;
     var chartData;
     var uiType;
 
@@ -70,7 +71,7 @@ var UIModule = (function () {
             var toolTip = new TooltipModulesto;
             this.highLight = new HighLight;
             this.currentElement = 0;
-            this.elementWidth = 110;
+            this.elementWidth = 105;
             // set up screen size
             this.windowWidth = $(window).width();
             this.windowResizeBool = false;
@@ -78,6 +79,8 @@ var UIModule = (function () {
             this.numberOfGreyOuts = numberOfButtons;
             this.elementLabels = ['Arsenal', 'Chelsea', 'Liverpool', 'Portsmouth', 'Man United', 'Man City', 'Leeds', 'Bournemouth'];
             this.buttonLabels = ['Manager', 'Goal Keeper & Defence', 'Midfield', 'league Position & Recent Form', 'Attack'];
+            this.scorerValues = [];
+            this.scorerValuesUpdate;
             this.chartData = document.getElementById('jsonInput').value;
             this.chartData = JSON.parse(this.chartData);
             if (uiType == 'ui3') { this.numberOfElements = numberOfButtons; }
@@ -124,6 +127,14 @@ var UIModule = (function () {
             $('.sliderContainer').on('mouseover', function (event) {
                 event.stopPropagation();
                 toolTip.tooltipActivate('', this.id);
+            });
+            $('.sliderContainerYN').on('mouseover', function (event) {
+                event.stopPropagation();
+                toolTip.tooltipActivate('', this.id);
+            });
+            $('#modules').on('mouseout', function (event) {
+                event.stopPropagation();
+                toolTip.disableTooltip('', this.id);
             });
             //$('.sliderContainer').hover(function (event) {
             //    event.stopPropagation();
@@ -195,6 +206,7 @@ var UIModule = (function () {
                 buttonArray[i] = new ButtonModule();
                 buttonArray[i].setButtonID(i);
                 templateModule.createButton(i, this.buttonLabels[i]);
+                this.scorerValues.push([1,2,3,4,5]);
             }
             for (var scorerColumn = 0; scorerColumn < this.numberOfButtons; scorerColumn++) {
                 // for each column of scorers, one for each button, create a column
@@ -399,7 +411,12 @@ var UIModule = (function () {
                 dObj.doughnutObject.update();
             }
             for (var abutton = 0; abutton < this.numberOfButtons; abutton++) {
-                this.updateButtonValue(abutton);
+                if (this.uiType == 'ui3') {
+                    this.updateButtonValueYN(abutton);
+                }
+                else {
+                    this.updateButtonValue(abutton);
+                }
             }
            
         },
@@ -467,6 +484,32 @@ var UIModule = (function () {
         },
         setScorerValue: function (scorerID) {
             var scorerID = scorerID.match(/[0-9]+/g);
+            var currentScore = elementArray[scorerID[0]][scorerID[1]].setScorerValue;
+            var tempScoreArray = [];
+            var tempCurrentScore;
+            if (currentScore == 0) {
+                tempCurrentScore = 1;
+                for (var i = 0; i < this.scorerValues[scorerID[0]].length; i++) {
+                    if (this.scorerValues[scorerID[0]][i] != 1) {
+                        tempScoreArray.push(this.scorerValues[scorerID[0]][i]);
+                    }
+                }
+                this.scorerValues[scorerID[0]] = tempScoreArray;
+                elementArray[scorerID[0]][scorerID[1]].setScorerValue = tempCurrentScore;
+
+            }
+            else {
+                for (var i = 0; i < this.scorerValues[scorerID[0]].length; i++) {
+                    if (currentScore < this.scorerValues[scorerID[0]][i] && tempCurrentScore !== ) {
+                        tempCurrentScore = this.scorerValues[scorerID[0]][i];
+                        tempScoreArray.push(currentScore);
+                    }
+                    else {
+                        tempScoreArray.push(this.scorerValues[scorerID[0]][i]);
+                    }
+                }
+                elementArray[scorerID[0]][scorerID[1]].setScorerValue = tempCurrentScore;
+            }
             // update the scorer module values each time the scorer moves
             elementArray[scorerID[0]][scorerID[1]].setValues(scorerValue, buttonArray[scorerID[0]].buttonValue);
             var op = this.getOrdinalPosition(elementArray[scorerID[0]][scorerID[1]].setScorerValue);

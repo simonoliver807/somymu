@@ -55,7 +55,7 @@ a:hover {
 }
 .custom-col-md-3 {
 	padding-left: 0; 
-	width: 24.25%;
+	width: 25%;
 }
 .custom-col-md-4 {
 	padding: 0 0 0 20px;
@@ -126,7 +126,7 @@ footer {
 	display: none;
 	height: 100px; 
 	position: relative;
-	width: 268px;	
+	width: 100%;	
 }
 #shareHideBorder {
 	position: absolute;
@@ -138,6 +138,9 @@ footer {
 }
 #tabDecide {
 	border-right: 1px solid white;	
+	width: 100%;
+}
+#tabShare {
 	width: 100%;
 }
 .blueHeader {
@@ -195,7 +198,7 @@ footer {
 .navButtonContainer {
 	display: inline-block;
 	list-style: none;
-	width: 24px;
+	width: 14px;
 }
 .sliderNavButton {
 	color: #1597a7;
@@ -206,7 +209,7 @@ footer {
 }
 // charts
 .chartKey {
-	width: 100%;
+	width: 91%;
 
 }
 .chartKeyText {
@@ -270,8 +273,10 @@ footer {
 	width: $ckdw;
 	height: $ckdh;
 }
-.postionWidth {
-	width:47px;
+.positionWidth {
+	width: 20%;
+	text-align: center;
+	padding: 0;
 }
 .chartContainer {
 	height:102px; 
@@ -316,11 +321,11 @@ footer {
 			}
 		}
 		&.top {
-			left: -35px;
-			top: -15px;
+			left: -20px;
+			top: -20px;
 			transform: rotate(270deg);
 			.tooltip1-inner{
-				padding: 21%;
+				/*padding: 21%;*/
 				width:39px;
 			}
 		}
@@ -328,7 +333,6 @@ footer {
 .tooltip1-inner {
 	background-color: $hb;
 	@include border-radius(0);
-	font-size: 12px;
 	margin: 0 6px 0 0;
 	max-width: 320px;
 	text-align: center;
@@ -350,11 +354,15 @@ footer {
     height: 0;
     left: 15px;
     position: absolute;
-    top: 25px;
+    top: 20px;
     width: 0;
 }
 .tooltipValue {
 	color: $w;
+	font-family: "Open Sans";
+	font-size: 16px;
+	font-weight: 600;
+	padding: 6%;
 	text-align: center;
 }
 /* bs dropdown */
@@ -434,7 +442,10 @@ footer {
 	height: 100%;
 	right: 0px;
 }
-
+.elementContainer {
+	height: 100%;
+	overflow: hidden;
+}
 .results {
 	.first {
 		background-color:#fff;
@@ -460,7 +471,7 @@ footer {
 
 }
 .sliderRowFiller {
-	width:30px;
+	width:20px;
 	display:inline-block;
 	list-style:none;
 	height:5px;	
@@ -540,15 +551,24 @@ footer {
 	}
 }
 .slider .handleStyle {
-    background: #fff;
+    background: 0;
     border: 0 none;
     height: 24px;
     left: -6px;
 	position: absolute;
     width: 22px;
+		.handleBackground{
+		  width: 19px;
+		  height: 15px;
+		  position: relative;
+		  top: -21px;
+		  left: 2px;
+		  background: #fff;
+		  z-index: -1;
+		}
 }
 .slider .handleStyle:hover {
-    background: #fff;
+    background: 0;
     border:0;
 }
 /* style the factor button */
@@ -644,10 +664,15 @@ footer {
 	.chartHeaderNoBackground {
 		height: 205px;
 	}
+
 	.elementWrapper {
 		display: table;
 		padding-left: 25px;
 		width: 100%;
+		padding-right: 10px;
+	}
+	.elementContainer {
+		overflow: none;
 	}
 	#labels {
 		display: none;
@@ -694,8 +719,12 @@ footer {
 	.sliderNav {
 		display: none;
 	}
-	.sliderNavButton {
-		
+	.sliderRow {
+		padding-right: 15px;
+		padding-left: 25px;
+	}
+	custom-col-8-sliderRow {
+		width: 60%;
 	}
 	.sliderRowFiller {
 		display: none;
@@ -705,10 +734,21 @@ footer {
 		border: none;
 		height: 20px;
 			.handleStyle {
-			    width: 19px;
-				height: 15px;
+			    background: none repeat scroll 0 center rgba(0, 0, 0, 0);
 				border: 0 none;
-				margin-top: 7px;
+				height: 0;
+				margin-left: 14px;
+				margin-top: 6px;
+				width: 0;
+					.handleBackground{
+					  width: 19px;
+					  height: 15px;
+					  position: relative;
+					  top: -21px;
+					  left: 2px;
+					  background: #fff;
+					  z-index: -1;
+					}
 			}
 			.handleStyle:hover {
 			

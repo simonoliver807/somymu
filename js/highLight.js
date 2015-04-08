@@ -47,7 +47,13 @@ var HighLight = (function() {
 		            if (showHide === -1) {
 		            	this.removeHighLightOverlay();
 		            	this.bodyRemoveHighLight();
-		                $('.slider').addClass('bc');
+		            	if (modules.uiType = 'ui2') {
+		            	    updateClassNamesAdd('scorer', ' bc');
+		            	}
+		            	else {
+		            	    updateClassNamesRemove('tooltip1', 'right');
+		            	    updateClassNamesAdd('slider', ' bc');
+		            	}
 		                document.getElementById('tabSlide').className = classNames + ' selectBackground';
 		                var tapTabWidth = document.getElementById('labelsSecondCol').getBoundingClientRect().width;
 		                var offsetPosLeft = $('#tabSlide').offset().left;
@@ -70,6 +76,12 @@ var HighLight = (function() {
 		                document.getElementById('sliderNavRight').style.background = '#fff';
 		                document.getElementById('labelsBackground').className = 'labelsBackground';
 		                document.getElementById('sliderNavWrapper').className = removeClass('sliderNavWrapper', 'selectedCBC');
+		                if (modules.uiType = 'ui2') {
+		                    updateClassNamesRemove('scorer', 'bc');
+		                }
+		                else {
+		                    updateClassNamesRemove('slider', 'bc');
+		                }
 		                this.updateOverlay('highLightOverlay1', 0, 0, 0, 0, '', false);
 		                this.updateOverlay('highLightOverlay2', 0, 0, 0, 0, '', false);
 		                this.currentHighLighted1 = 'null';
@@ -131,7 +143,7 @@ var HighLight = (function() {
 		            	document.getElementById('results').className = addClass('results', 'resultsDisplayNone');
 		            	document.getElementById('shareDropDown').style.display = 'block';
 		            	document.getElementById('shareDropDown').style.borderTop = '1px solid #1597a7';
-		            	this.updateOverlay('highLightOverlay1', 0, $(window).width(), 'tabDecide', false);
+		            //	this.updateOverlay('highLightOverlay1', 0, $(window).width(), 'tabDecide', false);
 		            	this.currentHighLighted1 = 'tabShare';
 		                this.currentHighLighted2 = 'Now Share';
 		            	 $('.tab').unbind('click');

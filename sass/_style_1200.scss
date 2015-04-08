@@ -5,6 +5,11 @@
 	ul {
 		padding: 0;
 	}
+	.blueHeader {
+		.zeroPaddingLeft {
+			width: 25%;
+		}
+	}
 	.chart-col-8{
 		width: 60%;
 	}
@@ -33,7 +38,11 @@
 	}
 	.col-md-9 {
 		//width: 63%;
-		width: 726px;
+		width: 73%;
+	}
+	.elementContainer {
+		overflow: hidden;
+		width: 90%;
 	}
 	.leftPadding15 {
 		padding-left: 25px;
@@ -45,7 +54,7 @@
 	.sliderNavContainer {
 	  display: inline-block;
 	  overflow: hidden;
-	  width: 420px;
+	  width: 90%;
 	}
 	.sliderRow {
 		  display: inline-block;
@@ -57,6 +66,12 @@
 	}
 	.sliderRowFiller {
 		width: 0px;
+	}
+	.ui3 {
+		.elementContainer {
+			overflow: hidden;
+			width: 100%;
+		}
 	}
 }
 
