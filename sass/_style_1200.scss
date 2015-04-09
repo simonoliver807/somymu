@@ -42,6 +42,7 @@
 	}
 	.elementContainer {
 		overflow: hidden;
+		margin: 0 auto;
 		width: 90%;
 	}
 	.leftPadding15 {
@@ -55,6 +56,15 @@
 	  display: inline-block;
 	  overflow: hidden;
 	  width: 90%;
+	}
+	.sliderNavContainer1200 {
+		margin: 0 auto;
+		width: 90%;
+	}
+	.sliderNavFiller{
+		display: inline-block;
+		height: 10px;
+		width: 0px;
 	}
 	.sliderRow {
 		  display: inline-block;
@@ -70,7 +80,13 @@
 	.ui3 {
 		.elementContainer {
 			overflow: hidden;
-			width: 100%;
+			width: 95%;
+		}
+		.elementWrapper {
+			padding: 0;
+		}
+		.sliderRow {
+			padding: 0;
 		}
 	}
 }

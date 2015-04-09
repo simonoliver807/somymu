@@ -80,7 +80,6 @@ var UIModule = (function () {
             this.elementLabels = ['Arsenal', 'Chelsea', 'Liverpool', 'Portsmouth', 'Man United', 'Man City', 'Leeds', 'Bournemouth'];
             this.buttonLabels = ['Manager', 'Goal Keeper & Defence', 'Midfield', 'league Position & Recent Form', 'Attack'];
             this.scorerValues = [];
-            this.scorerValuesUpdate;
             this.chartData = document.getElementById('jsonInput').value;
             this.chartData = JSON.parse(this.chartData);
             if (uiType == 'ui3') { this.numberOfElements = numberOfButtons; }
@@ -152,7 +151,7 @@ var UIModule = (function () {
             var sliderLabels = ['Arsenal', 'Chelsea', 'Liverpool', 'Portsmouth', 'Man United', 'Man City', 'Leeds', 'Bournemouth'];
             // add a label for each slider
             for (var i = 0; i < this.numberOfElements; i++) {
-                $('#sliderNavWrapper').append('<li class="sliderLabelContainer">' + sliderLabels[i] + '</li>');
+                $('#sliderNavWrapper').append('<li id="sliderLabel' + i + '" class="sliderLabelContainer">' + sliderLabels[i] + '</li>');
             }
             for (var i = 0; i < this.numberOfButtons; i++) {
                 buttonArray[i] = new ButtonModule();
@@ -200,13 +199,17 @@ var UIModule = (function () {
             var templateModule = new TemplateModule();
             // add a label for each scorer
             for (var i = 0; i < this.numberOfElements; i++) {
-                $('#sliderNavWrapper').append('<li class="sliderLabelContainer">' + this.elementLabels[i] + '</li>');
+                $('#sliderNavWrapper').append('<li id="sliderLabel' + i + '" class="sliderLabelContainer">' + this.elementLabels[i] + '</li>');
+            }
+            var scorerArray = [];
+            for (var i = 0; i < this.numberOfElements; i++) {
+                scorerArray[i] = i + 1;
             }
             for (var i = 0; i < this.numberOfButtons; i++) {
                 buttonArray[i] = new ButtonModule();
                 buttonArray[i].setButtonID(i);
                 templateModule.createButton(i, this.buttonLabels[i]);
-                this.scorerValues.push([1,2,3,4,5]);
+                this.scorerValues.push(scorerArray);
             }
             for (var scorerColumn = 0; scorerColumn < this.numberOfButtons; scorerColumn++) {
                 // for each column of scorers, one for each button, create a column
@@ -214,7 +217,7 @@ var UIModule = (function () {
                 for (var i = 0; i < this.numberOfElements; i++) {
                     scorerColumnArray[i] = new ScorerModule();
                     var scorerID = scorerColumn + '_' + i;
-                    scorerColumnArray[i].setscorerID(scorerID);
+                    scorerColumnArray[i].setscorerID(scorerID, this.numberOfElements);
                     templateModule.createScorer(scorerID, scorerColumn, this.elementLabels[i], this.windowWidth);
                 }
                 elementArray.push(scorerColumnArray);
@@ -408,17 +411,10 @@ var UIModule = (function () {
                         segmentPlus1 = segementToUpdate + 1;
                     }
                 }
-                dObj.doughnutObject.update();
             }
-            for (var abutton = 0; abutton < this.numberOfButtons; abutton++) {
-                if (this.uiType == 'ui3') {
-                    this.updateButtonValueYN(abutton);
-                }
-                else {
-                    this.updateButtonValue(abutton);
-                }
+            for (var i = 0; i < doughnutArray.length; i++) {
+                doughnutArray[i].doughnutObject.update();
             }
-           
         },
         updateChartPositions: function () {
             if (this.uiType == 'ui3') {
@@ -484,36 +480,55 @@ var UIModule = (function () {
         },
         setScorerValue: function (scorerID) {
             var scorerID = scorerID.match(/[0-9]+/g);
-            var currentScore = elementArray[scorerID[0]][scorerID[1]].setScorerValue;
+            var currentPos = elementArray[scorerID[0]][scorerID[1]].opValue;
             var tempScoreArray = [];
-            var tempCurrentScore;
-            if (currentScore == 0) {
-                tempCurrentScore = 1;
+            var tempCurrentScore = null;
+            var lastValue = this.scorerValues[scorerID[0]][this.scorerValues[scorerID[0]].length - 1];
+            if (currentPos == 0) {
                 for (var i = 0; i < this.scorerValues[scorerID[0]].length; i++) {
-                    if (this.scorerValues[scorerID[0]][i] != 1) {
-                        tempScoreArray.push(this.scorerValues[scorerID[0]][i]);
-                    }
-                }
-                this.scorerValues[scorerID[0]] = tempScoreArray;
-                elementArray[scorerID[0]][scorerID[1]].setScorerValue = tempCurrentScore;
-
-            }
-            else {
-                for (var i = 0; i < this.scorerValues[scorerID[0]].length; i++) {
-                    if (currentScore < this.scorerValues[scorerID[0]][i] && tempCurrentScore !== ) {
+                    if (i == 0) {
                         tempCurrentScore = this.scorerValues[scorerID[0]][i];
-                        tempScoreArray.push(currentScore);
                     }
                     else {
                         tempScoreArray.push(this.scorerValues[scorerID[0]][i]);
                     }
                 }
-                elementArray[scorerID[0]][scorerID[1]].setScorerValue = tempCurrentScore;
+                this.scorerValues[scorerID[0]] = tempScoreArray;
+                elementArray[scorerID[0]][scorerID[1]].setScorerValue = this.numberOfElements - (tempCurrentScore - 1);
+                elementArray[scorerID[0]][scorerID[1]].opValue = tempCurrentScore;
+
+            }
+            else if (currentPos > lastValue || typeof(lastValue) == 'undefined') {
+                tempCurrentScore = 0;
+                for (var i = 0; i < this.scorerValues[scorerID[0]].length; i++) {
+                     tempScoreArray.push(this.scorerValues[scorerID[0]][i]); 
+                }
+                tempScoreArray.push(currentPos);
+                this.scorerValues[scorerID[0]] = tempScoreArray;
+                if (tempCurrentScore != 0) { elementArray[scorerID[0]][scorerID[1]].setScorerValue = this.numberOfElements - (tempCurrentScore - 1); }
+                else { elementArray[scorerID[0]][scorerID[1]].setScorerValue = 0; }
+                elementArray[scorerID[0]][scorerID[1]].opValue = tempCurrentScore;
+            }
+            else {
+                for (var i = 0; i < this.scorerValues[scorerID[0]].length; i++) {
+                    if (currentPos < this.scorerValues[scorerID[0]][i] && tempCurrentScore === null) {
+                        tempCurrentScore = this.scorerValues[scorerID[0]][i];
+                        tempScoreArray.push(currentPos);
+                    }
+                    else {
+                        tempScoreArray.push(this.scorerValues[scorerID[0]][i]);
+                    }
+                }
+                elementArray[scorerID[0]][scorerID[1]].setScorerValue = this.numberOfElements - (tempCurrentScore - 1);
+                elementArray[scorerID[0]][scorerID[1]].opValue = tempCurrentScore;
+                this.scorerValues[scorerID[0]] = tempScoreArray;
+
             }
             // update the scorer module values each time the scorer moves
             elementArray[scorerID[0]][scorerID[1]].setValues(scorerValue, buttonArray[scorerID[0]].buttonValue);
-            var op = this.getOrdinalPosition(elementArray[scorerID[0]][scorerID[1]].setScorerValue);
-            if (elementArray[scorerID[0]][scorerID[1]].setScorerValue !== 0) {
+            //var op = this.getOrdinalPosition(elementArray[scorerID[0]][scorerID[1]].setScorerValue);
+            var op = this.getOrdinalPosition(tempCurrentScore);
+            if (elementArray[scorerID[0]][scorerID[1]].opValue !== 0) {
                 document.getElementById('scorerValue' + scorerID[0] + '_' + scorerID[1]).innerHTML = op;
             }
             else {

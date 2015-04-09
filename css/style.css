@@ -37,6 +37,9 @@ footer {
   position: fixed;
   z-index: 9999; }
 
+.hideVisibility {
+  visibility: hidden; }
+
 #game-content {
   padding-top: 195px; }
 
@@ -44,7 +47,7 @@ footer {
   height: 100%; }
 
 .labelsBackground {
-  width: 97%;
+  width: 96%;
   height: 100%;
   background: #fff;
   position: absolute;
@@ -143,7 +146,11 @@ footer {
   overflow: hidden;
   width: 518px; }
 
+.sliderNavFiller {
+  display: none; }
+
 .sliderNavWrapper {
+  cursor: default;
   height: 100%;
   margin: 0;
   position: relative;
@@ -1131,6 +1138,7 @@ footer {
 
   .elementContainer {
     overflow: hidden;
+    margin: 0 auto;
     width: 90%; }
 
   .leftPadding15 {
@@ -1143,6 +1151,15 @@ footer {
     display: inline-block;
     overflow: hidden;
     width: 90%; }
+
+  .sliderNavContainer1200 {
+    margin: 0 auto;
+    width: 90%; }
+
+  .sliderNavFiller {
+    display: inline-block;
+    height: 10px;
+    width: 0px; }
 
   .sliderRow {
     display: inline-block;
@@ -1157,7 +1174,11 @@ footer {
 
   .ui3 .elementContainer {
     overflow: hidden;
-    width: 100%; } }
+    width: 95%; }
+  .ui3 .elementWrapper {
+    padding: 0; }
+  .ui3 .sliderRow {
+    padding: 0; } }
 @media (max-width: 992px) {
   body {
     background: #fff; }

@@ -76,31 +76,27 @@ var SliderModuleYN = (function () {
     };
 });
 var ScorerModule = (function () {
-    var scorerValue;
+    var opValue;
     var totalValue;
     var scorerID;
     var disabledBool;
     var tooltipBool;
+    var timesValue;
     //var setscorerValue;
     return {
-        setscorerID: function (scorerID) {
-            this.scorerValue = 0;
+        setscorerID: function (scorerID, numberOfElements) {
+            this.opValue = 0;
             this.totalValue = 0;
             this.scorerID = scorerID;
             this.disabledBool = false;
             this.tooltipBool = false;
             this.overscrollStatus = false;
             this.setScorerValue = 0;
+            this.timesValue = 100 / numberOfElements;
         },
         setValues: function (scorerValue, buttonValue) {
-            if (scorerValue !== '') {
-                //this.setScorerValue += 1
-                //if (this.setScorerValue == 6) {
-                //    this.setScorerValue = 0;
-                //}
-                this.scorerValue = this.setScorerValue * 20;
-            }
-            this.totalValue = buttonValue * this.scorerValue;
+            this.setScorerValue = this.setScorerValue * this.timesValue;
+            this.totalValue = buttonValue * this.setScorerValue;
         }
     };
 });
