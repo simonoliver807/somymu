@@ -25,7 +25,7 @@ var TemplateModule = (function () {
 		                                     '</div>' +
 		                                  '</div>' +
                      '</div>' +
-                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 col-lg-8 custom-col-8-sliderRow sliderRow">'+
+                     '<div id="sliderRow' + buttonID + '" class="col-sm-8 col-md-8 custom-col-lg-8-sliderRow custom-col-8-sliderRow sliderRow">'+
                      	'<div class="sliderNavButtonUI2 sliderNavLeftUI2">'+
                      		'<button class="sliderNavFunction fa fa-chevron-left fa-3x" id="sliderNavLeftUI2"></button>'+
                      	'</div>'+

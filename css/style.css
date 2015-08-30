@@ -13,6 +13,9 @@ a:hover {
   width: 63%;
   float: left; }
 
+.custom-col-lg-8-sliderRow {
+  width: 66%; }
+
 .custom-col-md-3 {
   padding-left: 0;
   width: 25%; }
@@ -277,7 +280,7 @@ footer {
   position: relative; }
   .tooltip1.right {
     left: 30px;
-    top: -27px; }
+    top: -42px; }
     .tooltip1.right .tooltip1-inner {
       padding: 25%;
       width: 37px; }
@@ -1138,7 +1141,6 @@ footer {
 
   .elementContainer {
     overflow: hidden;
-    margin: 0 auto;
     width: 90%; }
 
   .leftPadding15 {
@@ -1153,7 +1155,6 @@ footer {
     width: 90%; }
 
   .sliderNavContainer1200 {
-    margin: 0 auto;
     width: 90%; }
 
   .sliderNavFiller {
@@ -1477,6 +1478,17 @@ footer {
     -webkit-transition-property: none;
     -o-transition-property: none;
     transition-property: none; }
+  .ui1 .tooltip1 {
+    display: none;
+    cursor: default;
+    position: relative; }
+    .ui1 .tooltip1.top {
+      left: -32px;
+      top: -27px;
+      transform: rotate(270deg); }
+      .ui1 .tooltip1.top .tooltip1-inner {
+        padding: 5%;
+        width: 37px; }
 
   .ui2 .elementRow {
     overflow-x: scroll;

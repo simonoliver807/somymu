@@ -53,6 +53,9 @@ a:hover {
     width: 63%;
     float:left;
 }
+.custom-col-lg-8-sliderRow {
+		width: 66%;
+}
 .custom-col-md-3 {
 	padding-left: 0; 
 	width: 25%;
@@ -324,7 +327,7 @@ footer {
 	position: relative;
 		&.right {
 			left: 30px;
-			top: -27px;
+			top: -42px;
 			.tooltip1-inner{
 				padding: 25%;
 				width: 37px;

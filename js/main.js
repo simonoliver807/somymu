@@ -1,4 +1,4 @@
-﻿"use strict";
+"use strict";
 
 function l(output){	
 	console.log('the output is '+ output);
@@ -142,19 +142,38 @@ function changeSlider() {
 		}
 		if (windowWidth <= 1200) {
 		    var setWidthEl = $('#chartHeader0').outerWidth();
-		    var labelToHide = modules.currentElement + 4;
+		    var labelToHideRight = modules.currentElement + 4;
+            var labelToHideLeft = modules.currentElement - 1;
 		    // $('#sliderLabel' + labelToHide).css('visibility', 'hidden');
-		    var classNames = document.getElementById('sliderLabel' + labelToHide).className;
+		    var classNames = document.getElementById('sliderLabel' + labelToHideRight).className;
 		    var showHide = classNames.indexOf('hideVisibility');
 		    if (showHide === -1) {
-		        document.getElementById('sliderLabel' + labelToHide).className = addClass('sliderLabel' + labelToHide, 'hideVisibility');
-		    }
+		        document.getElementById('sliderLabel' + labelToHideRight).className = addClass('sliderLabel' + labelToHideRight, 'hideVisibility');
+                if(labelToHideLeft !== -1){
+                    document.getElementById('sliderLabel' + labelToHideLeft).className = addClass('sliderLabel' + labelToHideLeft, 'hideVisibility');
+                }
+            }
+            if(windowWidth <= 1100) {
+                $('.elementContainer').css('margin', '0');
+                $('.sliderNavContainer1200').css('margin', '0');
+            }
+            if(windowWidth > 1100) {
+                $('.elementContainer').css('margin', '0 auto');
+                 $('.sliderNavContainer1200').css('margin', '0 auto');
+            }
 		}
 		if (windowWidth > 1200) {
-		    var labelToHide = modules.currentElement + 4;
-		    // $('#sliderLabel' + labelToHide).css('visibility', 'hidden');
-		    document.getElementById('sliderLabel' + labelToHide).className = removeClass('sliderLabel' + labelToHide, 'hideVisibility');
-		}
+		    var labelToShowRight = modules.currentElement + 4;
+            var labelToShowLeft = modules.currentElement - 1;
+            var classNames = document.getElementById('sliderLabel' + labelToShowRight).className;
+		    var showHide = classNames.indexOf('hideVisibility');
+		    if (showHide !== -1) {
+		      document.getElementById('sliderLabel' + labelToShowRight).className = removeClass('sliderLabel' + labelToShowRight, 'hideVisibility');
+              if(labelToShowLeft !== -1){
+                document.getElementById('sliderLabel' + labelToShowLeft).className = removeClass('sliderLabel' + labelToShowLeft, 'hideVisibility');
+              }
+            }
+        }
 		document.getElementById('tabDecide').disabled = false;
 		document.getElementById('tabSlide').disabled = false;
 		document.getElementById('tabTap').disabled = false;
@@ -251,25 +270,42 @@ function turnOffGrey(id){
 }
 $('.sliderNavFunction').click( function (event){
 	var currentPos = $('.elementWrapper').css('right');
+    var windowWidth = $(window).width();
 	currentPos = currentPos.match(/[0-9]+/g);
 	if (event.target.id.match('Right') && (modules.currentElement + 5) < modules.numberOfElements) {
 		document.getElementById(event.target.id).disabled = true;
 		var newPos = parseInt(currentPos[0]) + modules.elementWidth + 'px';
-		var labelToHide = modules.currentElement + 5;
-        document.getElementById('sliderLabel' + labelToHide).className = removeClass('sliderLabel' + labelToHide, 'hideVisibility');
-		var classNames = document.getElementById('sliderLabel' + (labelToHide + 1)).className;
-		var showHide = classNames.indexOf('hideVisibility');
-		if (showHide === -1) {
-		    document.getElementById('sliderLabel' + labelToHide).className = addClass('sliderLabel' + labelToHide, 'hideVisibility');
-		}
-		modules.currentElement += 1;
-		setTimeout(function(){ document.getElementById(event.target.id).disabled = false; }, 1000);
+        if(windowWidth <= 1200 && windowWidth >= 1050){
+		  var labelToShowRight = modules.currentElement + 4;
+          var labelToHideRight = modules.currentElement + 5;
+          var labelToHideLeft = modules.currentElement;
+          document.getElementById('sliderLabel' + labelToShowRight).className = removeClass('sliderLabel' + labelToShowRight, 'hideVisibility');
+          document.getElementById('sliderLabel' + labelToHideRight).className = addClass('sliderLabel' + labelToHideRight, 'hideVisibility');
+        }
+		setTimeout(function(){ 
+            if(windowWidth <= 1200 && windowWidth >= 1050){
+                document.getElementById('sliderLabel' + labelToHideLeft).className = addClass('sliderLabel' + labelToHideLeft, 'hideVisibility');
+            }
+            document.getElementById(event.target.id).disabled = false;
+            modules.currentElement += 1;}, 1000);
 	}
 	else if(event.target.id.match('Left') && modules.currentElement > 0) {
 		document.getElementById(event.target.id).disabled = true;
 		var newPos =  parseInt(currentPos[0]) - modules.elementWidth + 'px';
-		modules.currentElement -= 1;
-		setTimeout(function(){ document.getElementById(event.target.id).disabled = false; }, 1000);
+         if(windowWidth <= 1200 && windowWidth >= 1050){
+		  var labelToShowLeft = modules.currentElement - 1;
+          var labelToHideRight = modules.currentElement + 3;
+          var lableToShowRight = modules.currentElement + 4;
+          document.getElementById('sliderLabel' + labelToShowLeft).className = removeClass('sliderLabel' + labelToShowLeft, 'hideVisibility');
+        }
+		setTimeout(function(){
+            if(windowWidth <= 1200 && windowWidth >= 1050){
+                document.getElementById('sliderLabel' + labelToHideRight).className = addClass('sliderLabel' + labelToHideRight, 'hideVisibility');
+                document.getElementById('sliderLabel' + lableToShowRight).className = removeClass('sliderLabel' + lableToShowRight, 'hideVisibility');
+            }
+            document.getElementById(event.target.id).disabled = false; 
+             modules.currentElement -= 1;
+        }, 1000);
 	}
 	$('.sliderNavWrapper').css({ right: newPos });
 	$('.elementWrapper').css({ right: newPos });

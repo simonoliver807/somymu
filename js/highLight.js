@@ -47,7 +47,10 @@ var HighLight = (function() {
 		            if (showHide === -1) {
 		            	this.removeHighLightOverlay();
 		            	this.bodyRemoveHighLight();
-		            	if (modules.uiType = 'ui2') {
+                        if (modules.uiType == 'ui1') {
+		            	    updateClassNamesAdd('slider', ' bc');
+		            	}
+		            	else if (modules.uiType == 'ui2') {
 		            	    updateClassNamesAdd('scorer', ' bc');
 		            	}
 		            	else {
@@ -76,7 +79,7 @@ var HighLight = (function() {
 		                document.getElementById('sliderNavRight').style.background = '#fff';
 		                document.getElementById('labelsBackground').className = 'labelsBackground';
 		                document.getElementById('sliderNavWrapper').className = removeClass('sliderNavWrapper', 'selectedCBC');
-		                if (modules.uiType = 'ui2') {
+		                if (modules.uiType == 'ui2') {
 		                    updateClassNamesRemove('scorer', 'bc');
 		                }
 		                else {

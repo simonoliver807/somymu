@@ -280,6 +280,20 @@
 			-o-transition-property: none;
 			transition-property: none;
 		}
+        .tooltip1 {
+            display: none;
+            cursor: default;
+            position: relative;
+                &.top {
+                    left: -32px;
+                    top: -27px;
+                    transform: rotate(270deg);
+                    .tooltip1-inner{
+                        padding: 5%;
+                        width: 37px;
+                    }
+                }
+        }
 	}
 	
 	// 992 UI2 scorer style 

@@ -135,6 +135,17 @@ var UIModule = (function () {
                 event.stopPropagation();
                 toolTip.disableTooltip('', this.id);
             });
+            if(this.windowWidth <= 1100) {
+                $('.elementContainer').css('margin', '0');
+                $('.sliderNavContainer1200').css('margin', '0');
+            }
+            if(this.windowWidth > 1100) {
+                $('.elementContainer').css('margin', '0 auto');
+                 $('.sliderNavContainer1200').css('margin', '0 auto');
+            }
+            if(this.windowWidth <= 1200){
+                document.getElementById('sliderLabel4').className = addClass('sliderLabel4', 'hideVisibility');
+            }
             //$('.sliderContainer').hover(function (event) {
             //    event.stopPropagation();
             //    toolTip.tooltipActivate(this, this.id);
